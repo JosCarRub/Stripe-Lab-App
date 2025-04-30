@@ -5,7 +5,7 @@ namespace App\services\Impl;
 use App\services\StripeWebhookService;
 use App\strategy\Impl\StripeStrategyPaymentIntentSucceed;
 use App\strategy\StripeStrategy;
-use http\Exception\RuntimeException;
+use RuntimeException;
 use Stripe\Event;
 use config;
 use Stripe\Exception\SignatureVerificationException;

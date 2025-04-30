@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextGen Payments | Portal Empresarial</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTYgMEMyNC44IDAgMzIgNy4yIDMyIDE2QzMyIDI0LjggMjQuOCAzMiAxNiAzMkM3LjIgMzIgMCAyNC44IDAgMTZDMCA3LjIgNy4yIDAgMTYgMFpNMTYgMTJDMTMuOCAxMiAxMiAxMy44IDEyIDE2QzEyIDE4LjIgMTMuOCAyMCAxNiAyMEMxOC4yIDIwIDIwIDE4LjIgMjAgMTZDMjAgMTMuOCAxOC4yIDEyIDE2IDEyWiIgZmlsbD0iIzYzNUJGRiIvPjwvc3ZnPg==">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary: #635BFF;
+            --primary-light: #7A73FF;
+            --primary-dark: #4B44C2;
+            --secondary: #0A2540;
+            --success: #0CAF60;
+            --danger: #EF4444;
+            --warning: #F59E0B;
+            --info: #3B82F6;
+            --light: #F9FAFB;
+            --dark: #111827;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9FAFB;
+            color: var(--secondary);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 0.75rem 1.5rem;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--secondary);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--gray-600);
+            padding: 0.5rem 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+        }
+
+        .navbar-toggler {
+            border: none;
+            padding: 0;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            font-weight: 500;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: var(--primary-light);
+            border-color: var(--primary-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(99, 91, 255, 0.15);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+            font-weight: 500;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(99, 91, 255, 0.15);
+        }
+
+        /* Card Styles */
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid var(--gray-200);
+            font-weight: 600;
+            padding: 1.25rem 1.5rem;
+            border-radius: 12px 12px 0 0 !important;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Stat Card */
+        .stat-card {
+            padding: 1.5rem;
+            border-radius: 12px;
+            height: 100%;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card .stat-title {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-500);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .stat-change {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .stat-card .stat-change.positive {
+            color: var(--success);
+        }
+
+        .stat-card .stat-change.negative {
+            color: var(--danger);
+        }
+
+        /* Table Styles */
+        .table-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table th {
+            font-weight: 600;
+            color: var(--gray-600);
+            border-bottom-width: 1px;
+            padding: 1rem 1.5rem;
+            background-color: var(--gray-100);
+        }
+
+        .table td {
+            padding: 1rem 1.5rem;
+            vertical-align: middle;
+            color: var(--gray-700);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table tbody tr:hover {
+            background-color: var(--gray-100);
+        }
+
+        /* Status Badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-badge.succeeded {
+            background-color: rgba(12, 175, 96, 0.1);
+            color: var(--success);
+        }
+
+        .status-badge.failed {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        .status-badge.pending {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        .status-badge.completed {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--info);
+        }
+
+        /* Footer */
+        footer {
+            background-color: white;
+            padding: 2rem 0;
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        /* API Key Display */
+        .api-key {
+            background-color: var(--gray-100);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.875rem;
+            color: var(--secondary);
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            right: 8px;
+            top: 6px;
+            background-color: white;
+            border: 1px solid var(--gray-300);
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--gray-100);
+            border-color: var(--gray-400);
+        }
+
+        /* Webhook Endpoint */
+        .webhook-endpoint {
+            background-color: var(--gray-100);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.875rem;
+            color: var(--secondary);
+            position: relative;
+        }
+
+        /* System Status */
+        .system-status {
+            margin-bottom: 0;
+        }
+
+        .system-status .status-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .system-status .status-item:last-child {
+            border-bottom: none;
+        }
+
+        .system-status .status-label {
+            display: flex;
+            align-items: center;
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+
+        .system-status .status-label i {
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .system-status .status-value {
+            display: flex;
+            align-items: center;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        .status-indicator.online {
+            background-color: var(--success);
+        }
+
+        .status-indicator.offline {
+            background-color: var(--danger);
+        }
+
+        .status-indicator.warning {
+            background-color: var(--warning);
+        }
+
+        /* Other Utilities */
+        .mono {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.875rem;
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        /* Custom Switch */
+        .form-switch .form-check-input {
+            width: 2.5em;
+            height: 1.25em;
+            margin-top: 0.15em;
+        }
+
+        .form-switch .form-check-input:checked {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        /* Dashboard-specific styles */
+        .dashboard-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Simulate Event Form */
+        .simulate-form {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+        }
+
+        .input-label {
+            font-weight: 500;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .stripe-input {
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--gray-300);
+            transition: all 0.2s ease;
+        }
+
+        .stripe-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 91, 255, 0.15);
+        }
+
+        /* Simple animation for loading state */
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .pulse {
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .dashboard-header .btn {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="me-2">
+                <path d="M16 0C24.8 0 32 7.2 32 16C32 24.8 24.8 32 16 32C7.2 32 0 24.8 0 16C0 7.2 7.2 0 16 0ZM16 12C13.8 12 12 13.8 12 16C12 18.2 13.8 20 16 20C18.2 20 20 18.2 20 16C20 13.8 18.2 12 16 12Z" fill="#635BFF"/>
+            </svg>
+            <span>NextGen<span class="text-gradient">Payments</span></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <i class="bi bi-list fs-4"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        <i class="bi bi-speedometer2 me-1"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-credit-card me-1"></i> Pagos
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-graph-up me-1"></i> Análisis
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-gear me-1"></i> Configuración
+                    </a>
+                </li>
+                <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="testModeSwitch" checked>
+                        <label class="form-check-label" for="testModeSwitch">Modo test</label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container py-4">
+    <!-- Dashboard Header -->
+    <div class="dashboard-header d-flex justify-content-between align-items-center">
+        <div>
+            <h1 class="fs-2 fw-bold mb-1">Panel de Control</h1>
+            <p class="text-muted mb-0">Gestiona tus procesos de pago con Stripe</p>
+        </div>
+        <a href="./v1/stripe" class="btn btn-primary">
+            <i class="bi bi-lightning-charge me-1"></i> Probar Webhook
+        </a>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-icon bg-primary-subtle text-primary">
+                    <i class="bi bi-cash-stack"></i>
+                </div>
+                <div class="stat-title">Total Transacciones</div>
+                <div class="stat-value">€24,950</div>
+                <div class="stat-change positive">
+                    <i class="bi bi-arrow-up"></i> 12.5% vs Ayer
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-icon bg-success-subtle text-success">
+                    <i class="bi bi-check-circle"></i>
+                </div>
+                <div class="stat-title">Pagos Exitosos</div>
+                <div class="stat-value">185</div>
+                <div class="stat-change positive">
+                    <i class="bi bi-arrow-up"></i> 8.3% vs Ayer
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-icon bg-danger-subtle text-danger">
+                    <i class="bi bi-x-circle"></i>
+                </div>
+                <div class="stat-title">Pagos Fallidos</div>
+                <div class="stat-value">12</div>
+                <div class="stat-change negative">
+                    <i class="bi bi-arrow-down"></i> 3.2% vs Ayer
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <div class="stat-icon bg-info-subtle text-info">
+                    <i class="bi bi-person-add"></i>
+                </div>
+                <div class="stat-title">Nuevos Clientes</div>
+                <div class="stat-value">43</div>
+                <div class="stat-change positive">
+                    <i class="bi bi-arrow-up"></i> 15.7% vs Ayer
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="row g-4">
+        <!-- Recent Events Table -->
+        <div class="col-lg-8">
+            <h2 class="section-title">Eventos Recientes</h2>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Fecha/Hora</th>
+                        <th>Tipo de Evento</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>2025-04-30 09:45:12</td>
+                        <td>payment_intent.succeeded</td>
+                        <td>
+                            <span class="mono">cus_O3XMhgGHJ6UxkL</span>
+                        </td>
+                        <td>
+                                    <span class="status-badge succeeded">
+                                        <i class="bi bi-check-circle me-1"></i> Exitoso
+                                    </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary">Ver detalles</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2025-04-30 09:42:18</td>
+                        <td>checkout.session.completed</td>
+                        <td>
+                            <span class="mono">cus_L9KjPxCd2FrT5v</span>
+                        </td>
+                        <td>
+                                    <span class="status-badge completed">
+                                        <i class="bi bi-check-circle me-1"></i> Completado
+                                    </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary">Ver detalles</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2025-04-30 09:37:55</td>
+                        <td>payment_intent.payment_failed</td>
+                        <td>
+                            <span class="mono">cus_R7BqWxYz3UtE2a</span>
+                        </td>
+                        <td>
+                                    <span class="status-badge failed">
+                                        <i class="bi bi-x-circle me-1"></i> Fallido
+                                    </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary">Ver detalles</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2025-04-30 09:32:40</td>
+                        <td>payment_intent.succeeded</td>
+                        <td>
+                            <span class="mono">cus_F2DmSgNh8PqJ4v</span>
+                        </td>
+                        <td>
+                                    <span class="status-badge succeeded">
+                                        <i class="bi bi-check-circle me-1"></i> Exitoso
+                                    </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary">Ver detalles</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2025-04-30 09:30:22</td>
+                        <td>payment_intent.succeeded</td>
+                        <td>
+                            <span class="mono">cus_V5XsTpQm1LrK9b</span>
+                        </td>
+                        <td>
+                                    <span class="status-badge succeeded">
+                                        <i class="bi bi-check-circle me-1"></i> Exitoso
+                                    </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary">Ver detalles</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Webhook Info & System Status -->
+        <div class="col-lg-4">
+            <!-- Simulate Event -->
+            <h2 class="section-title">Simular Evento</h2>
+            <div class="simulate-form mb-4">
+                <div class="mb-3">
+                    <label for="eventType" class="input-label">Tipo de evento</label>
+                    <select class="form-select stripe-input" id="eventType">
+                        <option value="payment_intent.succeeded">payment_intent.succeeded</option>
+                        <option value="payment_intent.payment_failed">payment_intent.payment_failed</option>
+                        <option value="checkout.session.completed">checkout.session.completed</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="customerId" class="input-label">ID de Cliente (opcional)</label>
+                    <div class="input-group">
+                        <span class="input-group-text">cus_</span>
+                        <input type="text" class="form-control stripe-input" id="customerId" placeholder="Ejemplo: a1b2c3d4">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="paymentIntentId" class="input-label">ID de Payment Intent (opcional)</label>
+                    <div class="input-group">
+                        <span class="input-group-text">pi_</span>
+                        <input type="text" class="form-control stripe-input" id="paymentIntentId" placeholder="Ejemplo: e5f6g7h8">
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary w-100" id="simulateBtn">
+                    <i class="bi bi-lightning-charge me-1"></i> Simular evento
+                </button>
+            </div>
+
+            <!-- Webhook Info -->
+            <h2 class="section-title">Información del Webhook</h2>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="input-label">Endpoint URL</label>
+                        <div class="webhook-endpoint">
+                            http://localhost:8000/v1/stripe
+                            <button class="copy-btn" onclick="copyToClipboard('http://localhost:8000/weebhok.php')">
+                                <i class="bi bi-clipboard"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="input-label">Webhook Secret</label>
+                        <div class="api-key">
+                            whsec_••••••••••••••••••••••••••••••••
+                            <button class="copy-btn">
+                                <i class="bi bi-clipboard"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="d-grid">
+                        <a href="https://dashboard.stripe.com/webhooks" target="_blank" class="btn btn-outline-primary">
+                            <i class="bi bi-gear me-1"></i> Configurar en Stripe
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Status -->
+            <h2 class="section-title">Estado del Sistema</h2>
+            <div class="card">
+                <div class="card-body">
+                    <ul class="system-status list-unstyled">
+                        <li class="status-item">
+                            <div class="status-label">
+                                <i class="bi bi-database"></i> Base de datos
+                            </div>
+                            <div class="status-value">
+                                <span class="status-indicator online"></span>
+                                <span>Conectada</span>
+                            </div>
+                        </li>
+                        <li class="status-item">
+                            <div class="status-label">
+                                <i class="bi bi-table"></i> Tabla 'payments'
+                            </div>
+                            <div class="status-value">
+                                <span class="status-indicator online"></span>
+                                <span>Existe</span>
+                            </div>
+                        </li>
+                        <li class="status-item">
+                            <div class="status-label">
+                                <i class="bi bi-key"></i> API Key de Stripe
+                            </div>
+                            <div class="status-value">
+                                <span class="status-indicator online"></span>
+                                <span>Configurada</span>
+                            </div>
+                        </li>
+                        <li class="status-item">
+                            <div class="status-label">
+                                <i class="bi bi-hdd-stack"></i> PHP
+                            </div>
+                            <div class="status-value">
+                                <span class="status-indicator online"></span>
+                                <span>v8.2.6</span>
+                            </div>
+                        </li>
+                        <li class="status-item">
+                            <div class="status-label">
+                                <i class="bi bi-hdd-network"></i> Servidor
+                            </div>
+                            <div class="status-value">
+                                <span class="status-indicator online"></span>
+                                <span>Operativo</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Quick API Commands -->
+            <h2 class="section-title mt-4">Comandos Rápidos</h2>
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="input-label">CLI de Stripe</label>
+                        <div class="webhook-endpoint">
+                            stripe listen --forward-to http://localhost:8000/v1/stripe
+                            <button class="copy-btn">
+                                <i class="bi bi-clipboard"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="input-label">Trigger de prueba</label>
+                        <div class="webhook-endpoint">
+                            stripe trigger payment_intent.succeeded
+                            <button class="copy-btn">
+                                <i class="bi bi-clipboard"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transaction Chart -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Resumen de Transacciones</h5>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-sm btn-outline-primary active">Hoy</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary">Semana</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary">Mes</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="transactionChart" height="100"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para detalles de evento -->
+<div class="modal fade" id="eventDetailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="bi bi-info-circle me-2"></i> Detalles del Evento
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <p><strong>ID del Evento:</strong> <span class="mono">evt_1032jKCZ6qsJgndJLOSPFOox</span></p>
+                        <p><strong>ID de Payment:</strong> <span class="mono">pi_3N7V2hCZ6qsJgndJ0OmJaCt8</span></p>
+                        <p><strong>Tipo de Evento:</strong> <span class="status-badge succeeded">payment_intent.succeeded</span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>ID de Cliente:</strong> <span class="mono">cus_O3XMhgGHJ6UxkL</span></p>
+                        <p><strong>Fecha de Creación:</strong> 2025-04-30 09:45:12</p>
+                        <p><strong>Monto:</strong> €129.99 EUR</p>
+                    </div>
+                </div>
+
+                <h6 class="mb-2">Payload JSON:</h6>
+                <div class="bg-light p-3 rounded" style="max-height: 300px; overflow-y: auto;">
+                        <pre><code>{
+  "id": "evt_1032jKCZ6qsJgndJLOSPFOox",
+  "object": "event",
+  "api_version": "2023-10-16",
+  "created": 1714464312,
+  "data": {
+    "object": {
+      "id": "pi_3N7V2hCZ6qsJgndJ0OmJaCt8",
+      "object": "payment_intent",
+      "amount": 12999,
+      "amount_capturable": 0,
+      "amount_received": 12999,
+      "application": null,
+      "application_fee_amount": null,
+      "automatic_payment_methods": null,
+      "canceled_at": null,
+      "cancellation_reason": null,
+      "capture_method": "automatic",
+      "client_secret": "pi_3N7V2hCZ6qsJgndJ0OmJaCt8_secret_oBtWz7j7ThMr7JsGcIy9X3Nwp",
+      "confirmation_method": "automatic",
+      "created": 1714464311,
+      "currency": "eur",
+      "customer": "cus_O3XMhgGHJ6UxkL",
+      "description": "Compra en NextGen Store",
+      "invoice": null,
+      "last_payment_error": null,
+      "livemode": false,
+      "metadata": {},
+      "next_action": null,
+      "payment_method": "pm_1N7V2hCZ6qsJgndJUAMZg9tW",
+      "payment_method_options": {
+        "card": {
+          "installments": null,
+          "network": null,
+          "request_three_d_secure": "automatic"
+        }
+      },
+      "payment_method_types": ["card"],
+      "processing": null,
+      "receipt_email": "cliente@ejemplo.com",
+      "setup_future_usage": null,
+      "shipping": null,
+      "source": null,
+      "status": "succeeded"
+    }
+  },
+  "livemode": false,
+  "pending_webhooks": 1,
+  "request": {
+    "id": "req_7nPJNDXA9L5OfS",
+    "idempotency_key": "5ecebbb8-aa66-4af1-9ec9-cf8d509c0050"
+  },
+  "type": "payment_intent.succeeded"
+}</code></pre>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">
+                    <i class="bi bi-download me-1"></i> Exportar JSON
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="mt-auto">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="mb-0">&copy; 2025 NextGen Payments. Todos los derechos reservados.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <p class="mb-0">Powered by <a href="#" class="text-decoration-none text-primary">Stripe</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Function to copy text to clipboard
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            // You could add a tooltip or notification here
+            alert('Copiado al portapapeles');
+        }).catch(err => {
+            console.error('Error al copiar: ', err);
+        });
+    }
+
+    // Initialize event details modals
+    document.querySelectorAll('.btn-outline-primary').forEach(button => {
+        button.addEventListener('click', function() {
+            const eventModal = new bootstrap.Modal(document.getElementById('eventDetailModal'));
+            eventModal.show();
+        });
+    });
+
+    // Simulate loading state
+    document.getElementById('simulateBtn').addEventListener('click', function() {
+        const button = this;
+        const originalText = button.innerHTML;
+
+        button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Procesando...';
+        button.disabled = true;
+
+        // Simulate processing time
+        setTimeout(() => {
+            button.innerHTML = '<i class="bi bi-check-circle me-1"></i> ¡Evento simulado!';
+
+            // Reset after 2 seconds
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.disabled = false;
+
+                // Show a toast or notification
+                alert('Evento simulado con éxito');
+            }, 2000);
+        }, 1500);
+    });
+
+    // Chart.js Transaction Chart
+    const ctx = document.getElementById('transactionChart').getContext('2d');
+    const transactionChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [
+                {
+                    label: 'Transacciones Exitosas',
+                    data: [12, 19, 13, 15, 22, 27, 21, 18, 15],
+                    backgroundColor: 'rgba(12, 175, 96, 0.1)',
+                    borderColor: '#0CAF60',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    pointBackgroundColor: '#0CAF60'
+                },
+                {
+                    label: 'Transacciones Fallidas',
+                    data: [2, 3, 1, 0, 2, 1, 3, 1, 2],
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    borderColor: '#EF4444',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    pointBackgroundColor: '#EF4444'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    align: 'end',
+                    labels: {
+                        boxWidth: 12,
+                        usePointStyle: true,
+                        pointStyle: 'circle'
+                    }
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    titleColor: '#0A2540',
+                    bodyColor: '#0A2540',
+                    borderColor: 'rgba(0, 0, 0, 0.1)',
+                    borderWidth: 1,
+                    padding: 12,
+                    boxPadding: 4,
+                    bodyFont: {
+                        family: "'Inter', sans-serif"
+                    },
+                    titleFont: {
+                        family: "'Inter', sans-serif",
+                        weight: 'bold'
+                    },
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            label += context.parsed.y;
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        color: '#6B7280'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0, 0, 0, 0.05)'
+                    },
+                    ticks: {
+                        precision: 0,
+                        color: '#6B7280'
+                    }
+                }
+            },
+            elements: {
+                point: {
+                    radius: 3,
+                    hoverRadius: 5
+                }
+            }
+        }
+    });
+
+    // Test mode switch
+    document.getElementById('testModeSwitch').addEventListener('change', function() {
+        if (this.checked) {
+            document.querySelector('.navbar-brand .text-gradient').textContent = 'Payments';
+        } else {
+            document.querySelector('.navbar-brand .text-gradient').textContent = 'Payments LIVE';
+        }
+    });
+
+    // Copy buttons for webhook endpoints
+    document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const content = this.parentNode.textContent.trim();
+            copyToClipboard(content);
+        });
+    });
+
+    // Initialize tooltips
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+</script>
+</body>
+</html>
