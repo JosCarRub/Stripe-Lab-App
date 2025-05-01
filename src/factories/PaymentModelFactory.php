@@ -13,9 +13,9 @@ class PaymentModelFactory
     {
         return new PaymentModel(
             id_payment: uniqid('pay_', true),
-            event_id: $event->eventId,
-            customer_id: $event->customerId,
-            payment_intent_id: $event->paymentIntentId,
+            event_id: $event->id,
+            customer_id: $event->data->object->customer ?? '',
+            payment_intent_id: $event->data->object->payment_intent ?? '',
             eventType: $eventType,
             payload: $payloadDto
         );

@@ -12,7 +12,7 @@ class PayloadDto
 
     public string $status;
 
-    public function __construct(string $eventId, string $customerId, string $paymentIntentId, int $amount, string $currency, string $status,)
+    public function __construct(string $eventId, string $customerId, string $paymentIntentId, int $amount, string $currency, string $status)
     {
         $this->eventId = $eventId;
         $this->customerId = $customerId;

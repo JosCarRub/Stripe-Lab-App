@@ -31,6 +31,8 @@ class StripeStrategyPaymentIntentSucceed implements StripeStrategy
     public function process(Event $event): void
     {
         $payloadDto = $this->PaymentIntentMapper->mapToDto($event);
+        var_dump($event);
+        exit;
         $paymentModel = PaymentModelFactory::createPaymentModel($event, $payloadDto,StripeEventTypeEnum::PAYMENT_INTENT_SUCCEEDED );
         $this->paymentRepository->save($paymentModel);
 

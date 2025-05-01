@@ -909,3 +909,30 @@
 [2025-05-01 10:13:43] Error manejando webhook: Unable to extract timestamp and signatures from header
 [2025-05-01 10:14:05] Error manejando webhook: Unable to extract timestamp and signatures from header
 [2025-05-01 10:14:14] Error manejando webhook: Unable to extract timestamp and signatures from header
+[2025-05-01 15:05:20] Conexión a base de datos establecida
+[2025-05-01 15:05:20] Webhook recibido - Payload: {
+  "id": "evt_3RJyfrP71JLI6sb910eFFaun",
+  "object": "event",
+  "api_version": "2025-03-31.basil",
+...
+[2025-05-01 15:05:20] Webhook procesado correctamente
+[2025-05-01 15:05:20] Conexión a base de datos establecida
+[2025-05-01 15:05:20] Webhook recibido - Payload: {
+  "id": "evt_3RJyfrP71JLI6sb919Zer6wb",
+  "object": "event",
+  "api_version": "2025-03-31.basil",
+...
+[2025-05-01 15:05:20] Webhook procesado correctamente
+[2025-05-01 15:05:21] Conexión a base de datos establecida
+[2025-05-01 15:05:21] Webhook recibido - Payload: {
+  "id": "evt_3RJyfrP71JLI6sb91p1Abcm7",
+  "object": "event",
+  "api_version": "2025-03-31.basil",
+...
+[2025-05-01 15:05:22] Conexión a base de datos establecida
+[2025-05-01 15:05:22] Webhook recibido - Payload: {
+  "id": "evt_3RJyfrP71JLI6sb91B8qAvns",
+  "object": "event",
+  "api_version": "2025-03-31.basil",
+...
+[2025-05-01 15:05:22] Webhook procesado correctamente
