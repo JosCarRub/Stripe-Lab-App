@@ -21,7 +21,7 @@ class StripeWebhookServiceImpl implements StripeWebhookService
 
     public function __construct(string $stripeWebhookSecret,  array $stripeStrategies )
     {
-        $this->stripeWebhookSecret = $_ENV['STRIPE_WEBHOOK_SECRET'];
+        $this->stripeWebhookSecret = $stripeWebhookSecret;
         $this->stripeStrategies = $stripeStrategies;
 
     }

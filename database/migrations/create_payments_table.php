@@ -12,7 +12,6 @@ return function(PDO $pdo) {
                         payload JSON NOT NULL,
                         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
 SQL;
     $pdo->exec($sql);
 };*/

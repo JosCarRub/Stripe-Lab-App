@@ -26,7 +26,6 @@ class DatabaseConnection
         $dotenv->required(['DB_HOST', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD']);
 
 
-        // AÑADIDO EL DB_PORT DESDE CASA, ENTIENDO QUE ES POR TENER MAPEADO EN OTRO PUERTO LA BBD DISTINTO AL QUE ESPERA LOCALHOST
         try {
             return new PDO(
                 'mysql:host=' . $_ENV['DB_HOST']. ':' . $_ENV['DB_PORT'] . ';dbname=' . $_ENV['DB_DATABASE'],

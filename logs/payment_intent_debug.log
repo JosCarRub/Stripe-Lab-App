@@ -34,3 +34,7 @@
 2025-05-01 22:59:27 - DTO creado correctamente
 2025-05-01 22:59:27 - Modelo de pago creado: pay_6813fccfbc3573.13270195
 2025-05-01 22:59:27 - Pago guardado exitosamente
+2025-05-01 23:17:11 - Procesando payment_intent.succeeded: evt_3RK6LqP71JLI6sb90919OEEP
+2025-05-01 23:17:11 - DTO creado correctamente
+2025-05-01 23:17:11 - Modelo de pago creado: pay_681400f71f2730.75186213
+2025-05-01 23:17:11 - Pago guardado exitosamente
