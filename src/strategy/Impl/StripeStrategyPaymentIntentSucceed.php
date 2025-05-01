@@ -30,11 +30,19 @@ class StripeStrategyPaymentIntentSucceed implements StripeStrategy
 
     public function process(Event $event): void
     {
+
+        $logFile = __DIR__ . '/../../../logs/payment_intent_debug.log';
+        file_put_contents($logFile, date('Y-m-d H:i:s') . " - Procesando payment_intent.succeeded: " . $event->id . "\n", FILE_APPEND);
         $payloadDto = $this->PaymentIntentMapper->mapToDto($event);
-        var_dump($event);
-        exit;
+        file_put_contents($logFile, date('Y-m-d H:i:s') . " - DTO creado correctamente\n", FILE_APPEND);
+
         $paymentModel = PaymentModelFactory::createPaymentModel($event, $payloadDto,StripeEventTypeEnum::PAYMENT_INTENT_SUCCEEDED );
+        file_put_contents($logFile, date('Y-m-d H:i:s') . " - Modelo de pago creado: " . $paymentModel->getId() . "\n", FILE_APPEND);
+
         $this->paymentRepository->save($paymentModel);
+        file_put_contents($logFile, date('Y-m-d H:i:s') . " - Pago guardado exitosamente\n", FILE_APPEND);
+
+
 
     }
 
