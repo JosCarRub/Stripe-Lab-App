@@ -17,7 +17,7 @@ $dotenv->required(['DB_HOST']);
 echo "<h2>Conexión a la base de datos:</h2>";
 
 try {
-    $pdo = DatabaseConnection::getInstance();
+    $databaseConnection = DatabaseConnection::getInstance();
     echo "<p style='color: green;'>✅ ¡Conexión exitosa a la base de datos!</p>";
 
 } catch (Exception $e) {

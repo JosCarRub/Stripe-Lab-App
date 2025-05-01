@@ -162,7 +162,7 @@ DB_PASS=$password
         echo "<ol>";
         echo "<li>Estado del contenedor: <code>docker ps | grep stripe_mysql</code></li>";
         echo "<li>Puerto mapeado: <code>docker port stripe_mysql</code></li>";
-        echo "<li>Logs del contenedor: <code>docker logs stripe_mysql</code></li>";
+        echo "<li>Logs del contenedor: <code>docker script_logs stripe_mysql</code></li>";
         echo "</ol>";
     }
 
@@ -171,7 +171,7 @@ DB_PASS=$password
         echo "<p>La base de datos '$database' no existe. Verifica:</p>";
         echo "<ol>";
         echo "<li>La configuración MYSQL_DATABASE en tu docker-compose.yml</li>";
-        echo "<li>Si el contenedor se inició correctamente: <code>docker logs stripe_mysql</code></li>";
+        echo "<li>Si el contenedor se inició correctamente: <code>docker script_logs stripe_mysql</code></li>";
         echo "</ol>";
     }
 }

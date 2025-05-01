@@ -23,13 +23,15 @@ class DatabaseConnection
     {
         $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
         $dotenv->load();
-        $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS']);
+        $dotenv->required(['DB_HOST', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD']);
 
+
+        // AÑADIDO EL DB_PORT DESDE CASA, ENTIENDO QUE ES POR TENER MAPEADO EN OTRO PUERTO LA BBD DISTINTO AL QUE ESPERA LOCALHOST
         try {
             return new PDO(
-                'mysql:host=' . $_ENV['DB_HOST'] . ';dbname=' . $_ENV['DB_NAME'],
-                $_ENV['DB_USER'],
-                $_ENV['DB_PASS'],
+                'mysql:host=' . $_ENV['DB_HOST']. ':' . $_ENV['DB_PORT'] . ';dbname=' . $_ENV['DB_DATABASE'],
+                $_ENV['DB_USERNAME'],
+                $_ENV['DB_PASSWORD'],
                 [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
             );
         } catch (PDOException $e) {
@@ -37,3 +39,5 @@ class DatabaseConnection
         }
     }
 }
+
+

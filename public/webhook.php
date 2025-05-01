@@ -12,17 +12,16 @@ use Dotenv\Dotenv;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-
     // Cargar variables de entorno
     $dotenv = Dotenv::createImmutable(__DIR__ . '/../');
     $dotenv->load();
 
     // Obtener instancia PDO
-    $pdo = DatabaseConnection::getInstance();
+    $databaseConnection = DatabaseConnection::getInstance();
 
     // Crear las instancias de las estrategias de Stripe
     $stripeStrategies = [
-        new StripeStrategyPaymentIntentSucceed(new PaymentRepositoryImpl($pdo)),
+        new StripeStrategyPaymentIntentSucceed(new PaymentRepositoryImpl($databaseConnection)),
         new StripeStrategyPaymentIntentFailed(),
         new StripeStrategyCheckoutSessionCompleted(),
     ];
@@ -42,4 +41,19 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 // Manejar la solicitud del webhook
     $stripeWebhookController->handleStripeWebhook($payload, $signatureHeader);
+
+/*
+*     *function logEvent(string $message): void {
+*        $logFile = __DIR__ . '/../logs/events.log';
+*       $date = date('Y-m-d H:i:s');
+*        file_put_contents($logFile, "[$date] $message\n", FILE_APPEND);
+*    }
+*
+*
+*/
+
+
+
+
+
 

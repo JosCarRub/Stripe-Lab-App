@@ -906,3 +906,6 @@
   },
   "type": "charge.updated"
 }
+[2025-05-01 10:13:43] Error manejando webhook: Unable to extract timestamp and signatures from header
+[2025-05-01 10:14:05] Error manejando webhook: Unable to extract timestamp and signatures from header
+[2025-05-01 10:14:14] Error manejando webhook: Unable to extract timestamp and signatures from header
