@@ -20,12 +20,6 @@ class StripeWebhookControllerImpl implements StripeWebhookController
 
     public function handleStripeWebhook(string $payload, string $signatureHeader): void
     {
-        //$event = $this->stripeWebhookService->constructEvent($payload, $signatureHeader);
-        /*$event = \Stripe\Webhook::constructEvent(
-                $payload,
-                $signatureHeader,
-                $_ENV['STRIPE_WEBHOOK_SECRET']
-            );*/
         try {
             $event = $this->stripeWebhookService->constructEvent($payload, $signatureHeader);
             $this->stripeWebhookService->manageWebhook($event);
