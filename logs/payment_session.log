@@ -32,3 +32,32 @@
 #8 C:\Users\nimsu\Desktop\StripeLabApp.v2\StripeLabApp\src\services\Impl\StripeCheckoutSessionServiceImpl.php(53): Stripe\Service\Checkout\SessionService->create()
 #9 C:\Users\nimsu\Desktop\StripeLabApp.v2\StripeLabApp\public\create_payment_session.php(32): App\services\Impl\StripeCheckoutSessionServiceImpl->createPaymentSession()
 #10 {main}
+[2025-05-05 12:49:41] Iniciando creación de sesión de pago único
+[2025-05-05 12:49:41] Variables de entorno cargadas correctamente
+[2025-05-05 12:49:41] Obteniendo servicio de pagos Stripe
+[2025-05-05 12:49:41] Servicio obtenido correctamente
+[2025-05-05 12:49:41] Llamando a createPaymentSession()
+[2025-05-05 12:49:41] ERROR: Invalid URL: localhost/success.html. URLs must begin with http or https.
+[2025-05-05 12:49:41] Traza: #0 C:\Users\nimsu\Desktop\StripeLabApp.v2\StripeLabApp\vendor\stripe\stripe-php\lib\Exception\InvalidRequestException.php(35): Stripe\Exception\ApiErrorException::factory()
+#1 C:\Users\nimsu\Desktop\StripeLabApp.v2\StripeLabApp\vendor\stripe\stripe-php\lib\ApiRequestor.php(232): Stripe\Exception\InvalidRequestException::factory()
+#2 C:\Users\nimsu\Desktop\StripeLabApp.v2\StripeLabApp\vendor\stripe\stripe-php\lib\ApiRequestor.php(193): Stripe\ApiRequestor::_specificV1APIError()
+#3 C:\Users\nimsu\Desktop\StripeLabApp.v2\StripeLabApp\vendor\stripe\stripe-php\lib\ApiRequestor.php(650): Stripe\ApiRequestor->handleErrorResponse()
+#4 C:\Users\nimsu\Desktop\StripeLabApp.v2\StripeLabApp\vendor\stripe\stripe-php\lib\ApiRequestor.php(137): Stripe\ApiRequestor->_interpretResponse()
+#5 C:\Users\nimsu\Desktop\StripeLabApp.v2\StripeLabApp\vendor\stripe\stripe-php\lib\BaseStripeClient.php(203): Stripe\ApiRequestor->request()
+#6 C:\Users\nimsu\Desktop\StripeLabApp.v2\StripeLabApp\vendor\stripe\stripe-php\lib\Service\AbstractService.php(75): Stripe\BaseStripeClient->request()
+#7 C:\Users\nimsu\Desktop\StripeLabApp.v2\StripeLabApp\vendor\stripe\stripe-php\lib\Service\Checkout\SessionService.php(60): Stripe\Service\AbstractService->request()
+#8 C:\Users\nimsu\Desktop\StripeLabApp.v2\StripeLabApp\src\services\Impl\StripeCheckoutSessionServiceImpl.php(53): Stripe\Service\Checkout\SessionService->create()
+#9 C:\Users\nimsu\Desktop\StripeLabApp.v2\StripeLabApp\public\create_payment_session.php(32): App\services\Impl\StripeCheckoutSessionServiceImpl->createPaymentSession()
+#10 {main}
+[2025-05-05 13:02:04] Iniciando creación de sesión de pago único
+[2025-05-05 13:02:04] Variables de entorno cargadas correctamente
+[2025-05-05 13:02:04] Obteniendo servicio de pagos Stripe
+[2025-05-05 13:02:04] Servicio obtenido correctamente
+[2025-05-05 13:02:04] Llamando a createPaymentSession()
+[2025-05-05 13:02:04] Sesión creada exitosamente con ID: cs_test_a1zhbtLjKhjIR2kEbjzle4ntB1KGicjF1h8MJzg1EmM071EPUme4DFhq1V
+[2025-05-05 13:02:28] Iniciando creación de sesión de pago único
+[2025-05-05 13:02:28] Variables de entorno cargadas correctamente
+[2025-05-05 13:02:28] Obteniendo servicio de pagos Stripe
+[2025-05-05 13:02:28] Servicio obtenido correctamente
+[2025-05-05 13:02:28] Llamando a createPaymentSession()
+[2025-05-05 13:02:29] Sesión creada exitosamente con ID: cs_test_a1WGnh5crSZO62JTHTbmgORy3k2vMTW3ncGEmdQIf3ENzb0LRuKxSEBMgH

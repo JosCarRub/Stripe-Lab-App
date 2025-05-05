@@ -1,0 +1,6 @@
+[2025-05-05 13:02:04] Servicio inicializado con domain: http://localhost:8000
+[2025-05-05 13:02:04] Iniciando createPaymentSession()
+[2025-05-05 13:02:04] URLs de redirección: success_url=http://localhost:8000/success.html, cancel_url=http://localhost:8000/cancel.html
+[2025-05-05 13:02:28] Servicio inicializado con domain: http://localhost:8000
+[2025-05-05 13:02:28] Iniciando createPaymentSession()
+[2025-05-05 13:02:28] URLs de redirección: success_url=http://localhost:8000/success.html, cancel_url=http://localhost:8000/cancel.html
