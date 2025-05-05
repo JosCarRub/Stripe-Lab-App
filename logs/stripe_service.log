@@ -32,3 +32,21 @@
 [2025-05-05 17:37:01] Servicio inicializado con domain: http://localhost:8000
 [2025-05-05 17:37:01] Iniciando createPaymentSession()
 [2025-05-05 17:37:01] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-05 17:50:38] Servicio inicializado con domain: http://localhost:8000
+[2025-05-05 17:50:38] Iniciando createPaymentSession()
+[2025-05-05 17:50:38] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-05 18:02:51] Servicio inicializado con domain: http://localhost:8000
+[2025-05-05 18:02:51] Iniciando createSubscriptionSession() con lookup_key: price_annual_key
+[2025-05-05 18:02:51] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-05 18:02:52] No se encontró precio con lookup_key: price_annual_key
+[2025-05-05 18:02:52] ERROR en createSubscriptionSession: The specified subscription plan was not found
+[2025-05-05 18:02:52] Traza: #0 /Users/josecarlos/Desktop/StripeLabApp/StripeLabApp/StripeLabApp/public/create_subscription_session.php(22): App\services\Impl\StripeCheckoutSessionServiceImpl->createSubscriptionSession('price_annual_ke...')
+#1 {main}
+[2025-05-05 18:16:01] Servicio inicializado con domain: http://localhost:8000
+[2025-05-05 18:16:01] Iniciando createSubscriptionSession() con lookup_key: annual_payment
+[2025-05-05 18:16:01] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-05 18:16:01] Precio encontrado con ID: price_1RLNsHP71JLI6sb9ez8HJsHt
+[2025-05-05 18:17:04] Servicio inicializado con domain: http://localhost:8000
+[2025-05-05 18:17:04] Iniciando createSubscriptionSession() con lookup_key: monthly_subscriptions
+[2025-05-05 18:17:04] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-05 18:17:05] Precio encontrado con ID: price_1RLNcyP71JLI6sb92qc9ywRx

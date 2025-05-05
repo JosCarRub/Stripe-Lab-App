@@ -17,7 +17,13 @@ $plans = [
         'price' => '9,99€',
         'period' => 'mes',
         'highlight' => false,
-        'lookup_key' => 'price_monthly_key'
+        'lookup_key' => 'monthly_subscriptions',
+        'features' => [
+            'Acceso a todas las funcionalidades',
+            'Soporte técnico estándar',
+            'Actualizaciones mensuales',
+            'Hasta 3 proyectos'
+        ]
     ],
     StripeProductsTypeEnum::YEARLY_SUBSCRIPTION->value => [
         'name' => 'Suscripción Anual',
@@ -25,7 +31,14 @@ $plans = [
         'price' => '95,88€',
         'period' => 'año',
         'highlight' => true,
-        'lookup_key' => 'price_annual_key'
+        'lookup_key' => 'annual_payment',
+        'features' => [
+            'Acceso a todas las funcionalidades',
+            'Soporte técnico prioritario',
+            'Actualizaciones en primicia',
+            'Proyectos ilimitados',
+            '2 meses gratis'
+        ]
     ],
 ];
 ?>
@@ -35,252 +48,223 @@ $plans = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Pagos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Cargar Stripe.js ANTES de cualquier otro script -->
+    <title>StripeLabApp - Sistema de Pagos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Stripe.js -->
     <script src="https://js.stripe.com/v3/"></script>
-    <style>
-        :root {
-            --primary-color: #4f46e5;
-            --secondary-color: #4338ca;
-            --light-color: #f3f4f6;
-            --dark-color: #1f2937;
-            --success-color: #047857;
-            --warning-color: #b91c1c;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: var(--dark-color);
-            background-color: #f4f5f7;
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .payment-section {
-            margin-bottom: 4rem;
-        }
-
-        .payment-options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .payment-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            width: 100%;
-            max-width: 350px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .payment-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .payment-card.highlight {
-            border: 2px solid var(--primary-color);
-            position: relative;
-        }
-
-        .highlight-badge {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: var(--dark-color);
-        }
-
-        .card-price {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .card-period {
-            font-size: 1rem;
-            color: #6b7280;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-description {
-            margin-bottom: 1.5rem;
-            color: #4b5563;
-        }
-
-        .btn-payment {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background-color 0.3s;
-            width: 100%;
-        }
-
-        .btn-payment:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .one-time-payment {
-            text-align: center;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--dark-color);
-            font-weight: bold;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 3rem;
-            color: #6b7280;
-            font-size: 0.9rem;
-        }
-
-        .payment-options-container {
-            display: flex;
-            justify-content: center;
-        }
-
-        #loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            display: none;
-        }
-
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top: 4px solid white;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @media (max-width: 768px) {
-            .payment-options {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .payment-card {
-                max-width: 100%;
-            }
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-<div id="loading-overlay">
-    <div class="spinner"></div>
+<!-- Loading overlay -->
+<div id="index-loading-overlay">
+    <div id="index-spinner"></div>
+    <p id="index-loading-text">Procesando tu pago...</p>
 </div>
 
-<div class="container">
-    <header class="header">
-        <h1>Sistema de Pagos</h1>
-        <p class="lead">Elige la opción de pago que mejor se adapte a tus necesidades</p>
-    </header>
+<div id="index-wrapper">
+    <!-- Sidebar -->
+    <nav id="index-sidebar">
+        <div id="index-sidebar-header">
+            <i class="fab fa-stripe" id="index-app-logo"></i>
+            <h1 id="index-app-title">StripeLabApp</h1>
+        </div>
 
-    <main>
-        <section class="payment-section">
-            <h2 class="section-title">Pago Único</h2>
-            <div class="one-time-payment">
-                <div class="card-title">Acceso Estándar</div>
-                <div class="card-price">10,00€</div>
-                <div class="card-description">
-                    Acceso completo a todas las funcionalidades con un pago único.
-                </div>
-                <button id="single-payment-btn" class="btn-payment" data-type="<?= StripeProductsTypeEnum::ONE_PAYMENT->value ?>">
-                    Realizar Pago
-                </button>
+        <ul id="index-sidebar-menu">
+            <li class="index-menu-item active">
+                <a href="index.php" class="index-menu-link">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </a>
+            </li>
+            <li class="index-menu-item">
+                <a href="#" class="index-menu-link">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Pagos</span>
+                </a>
+            </li>
+            <li class="index-menu-item">
+                <a href="#" class="index-menu-link">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span>Mis Facturas</span>
+                </a>
+            </li>
+            <li class="index-menu-item">
+                <a href="#" class="index-menu-link">
+                    <i class="fas fa-users"></i>
+                    <span>Facturas de Clientes</span>
+                </a>
+            </li>
+            <li class="index-menu-item">
+                <a href="#" class="index-menu-link">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Panel de Control</span>
+                </a>
+            </li>
+            <li class="index-menu-item">
+                <a href="#index-contact" class="index-menu-link">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Ayuda</span>
+                </a>
+            </li>
+        </ul>
+
+        <div id="index-sidebar-footer">
+            <a href="#" class="index-menu-link">
+                <i class="fas fa-cog"></i>
+                <span>Configuración</span>
+            </a>
+            <a href="#" class="index-menu-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Cerrar Sesión</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div id="index-content">
+        <div id="index-top-bar">
+            <button id="index-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div id="index-user-menu">
+                <img src="https://ui-avatars.com/api/?name=User&background=6772e5&color=fff" alt="User" id="index-user-avatar">
+                <span id="index-username">Usuario</span>
+                <i class="fas fa-chevron-down"></i>
             </div>
-        </section>
+        </div>
 
-        <section class="payment-section">
-            <h2 class="section-title">Suscripciones</h2>
-            <div class="payment-options-container">
-                <div class="payment-options">
-                    <?php foreach ($plans as $type => $plan): ?>
-                        <div class="payment-card <?= $plan['highlight'] ? 'highlight' : '' ?>">
-                            <?php if ($plan['highlight']): ?>
-                                <div class="highlight-badge">RECOMENDADO</div>
-                            <?php endif; ?>
-                            <div class="card-title"><?= htmlspecialchars($plan['name']) ?></div>
-                            <div class="card-price"><?= htmlspecialchars($plan['price']) ?></div>
-                            <div class="card-period">por <?= htmlspecialchars($plan['period']) ?></div>
-                            <div class="card-description">
-                                <?= htmlspecialchars($plan['description']) ?>
+        <!-- Header Section -->
+        <header id="index-header-section">
+            <div class="container">
+                <h1 id="index-header-title">Sistema de Pagos Integrado con Stripe</h1>
+                <p id="index-header-subtitle">Plataforma de prueba para integración con Stripe. Experimenta con pagos únicos y suscripciones en un entorno de prueba seguro.</p>
+            </div>
+        </header>
+
+        <main id="index-main-container" class="container">
+            <!-- One-time Payment Section -->
+            <section id="index-one-time" class="index-section">
+                <h2 id="index-one-time-title" class="index-section-title">Pago Único</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div id="index-one-time-payment">
+                            <div class="mb-4">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/stripe/stripe-original.svg" alt="Stripe" width="60">
                             </div>
-                            <button class="btn-payment subscription-btn"
-                                    data-type="<?= htmlspecialchars($type) ?>"
-                                    data-lookup="<?= htmlspecialchars($plan['lookup_key']) ?>">
-                                Suscribirse
+                            <h3 id="index-one-time-heading">Acceso Estándar</h3>
+                            <div id="index-one-time-price" class="index-card-price">10,00€</div>
+                            <p id="index-one-time-description" class="mb-4">Acceso completo a todas las funcionalidades con un pago único. Ideal para probar nuestra plataforma.</p>
+                            <button id="single-payment-btn" class="index-btn-primary" data-type="<?= StripeProductsTypeEnum::ONE_PAYMENT->value ?>">
+                                <i class="fas fa-credit-card me-2"></i>Realizar Pago
                             </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subscription Section -->
+            <section id="index-subscriptions" class="index-section">
+                <h2 id="index-subscriptions-title" class="index-section-title">Planes de Suscripción</h2>
+                <div class="row">
+                    <?php foreach ($plans as $type => $plan): ?>
+                        <div class="col-lg-6 mb-4">
+                            <div class="index-card <?= $plan['highlight'] ? 'index-highlight' : '' ?>">
+                                <div class="index-card-header">
+                                    <?php if ($plan['highlight']): ?>
+
+                                    <?php endif; ?>
+                                    <h3 id="index-plan-title-<?= $type ?>"><?= htmlspecialchars($plan['name']) ?></h3>
+                                    <div id="index-plan-price-<?= $type ?>" class="index-card-price"><?= htmlspecialchars($plan['price']) ?></div>
+                                    <div id="index-plan-period-<?= $type ?>" class="index-card-period">por <?= htmlspecialchars($plan['period']) ?></div>
+                                </div>
+                                <div class="index-card-body">
+                                    <p id="index-plan-description-<?= $type ?>"><?= htmlspecialchars($plan['description']) ?></p>
+                                    <ul id="index-plan-features-<?= $type ?>" class="index-feature-list">
+                                        <?php foreach ($plan['features'] as $index => $feature): ?>
+                                            <li id="index-plan-feature-<?= $type ?>-<?= $index ?>"><?= htmlspecialchars($feature) ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                                <div class="index-card-footer">
+                                    <button id="index-subscription-btn-<?= $type ?>"
+                                            class="<?= $plan['highlight'] ? 'index-btn-primary' : 'index-btn-outline' ?> subscription-btn w-100"
+                                            data-type="<?= htmlspecialchars($type) ?>"
+                                            data-lookup="<?= htmlspecialchars($plan['lookup_key']) ?>">
+                                        <i class="fas fa-check-circle me-2"></i>Suscribirse
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
 
-    <footer class="footer">
-        <p>Pagos procesados de forma segura a través de Stripe</p>
-        <p>&copy; <?= date('Y') ?> Sistema de Pagos. Todos los derechos reservados.</p>
-    </footer>
+            <!-- Contact Section -->
+            <section id="index-contact" class="index-section">
+                <h2 id="index-contact-title" class="index-section-title">¿Necesitas Ayuda?</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="index-card">
+                            <div class="index-card-body p-4">
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 mb-md-0">
+                                        <h4 id="index-contact-heading">Contacto</h4>
+                                        <p id="index-contact-text">Si tienes alguna pregunta sobre nuestros planes de pago o necesitas asistencia, no dudes en contactarnos.</p>
+                                        <ul id="index-contact-list" class="list-unstyled">
+                                            <li id="index-contact-email" class="mb-2"><i class="fas fa-envelope me-2 text-primary"></i> soporte@stripelab.com</li>
+                                            <li id="index-contact-phone" class="mb-2"><i class="fas fa-phone me-2 text-primary"></i> +34 912 345 678</li>
+                                            <li id="index-contact-address"><i class="fas fa-map-marker-alt me-2 text-primary"></i> Calle Principal 123, Madrid</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4 id="index-faq-heading">Preguntas Frecuentes</h4>
+                                        <div class="mb-3">
+                                            <h6 id="index-faq-question-1" class="fw-bold">¿Cómo funciona el sistema de prueba?</h6>
+                                            <p id="index-faq-answer-1" class="small">Esta es una plataforma de prueba para integración con Stripe. Los pagos son simulados.</p>
+                                        </div>
+                                        <div>
+                                            <h6 id="index-faq-question-2" class="fw-bold">¿Puedo cancelar mi suscripción?</h6>
+                                            <p id="index-faq-answer-2" class="small">Sí, puedes cancelar tu suscripción en cualquier momento desde tu panel de usuario.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer id="index-footer">
+            <div class="container">
+                <div id="index-copyright" class="text-center">
+                    <p>&copy; <?= date('Y') ?> StripeLabApp. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
 </div>
 
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     // Inicializar Stripe (con la clave pública)
     const stripe = Stripe('<?= $stripePublicKey ?>');
-    const loadingOverlay = document.getElementById('loading-overlay');
+    const loadingOverlay = document.getElementById('index-loading-overlay');
+
+    // Toggle sidebar
+    document.getElementById('index-menu-toggle').addEventListener('click', function() {
+        document.getElementById('index-wrapper').classList.toggle('collapsed');
+    });
 
     // Configurar el botón de pago único
     document.getElementById('single-payment-btn').addEventListener('click', async () => {

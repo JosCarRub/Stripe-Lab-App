@@ -1,0 +1,539 @@
+/* INDEX.PHP STYLE */
+
+/* Variables de colores */
+:root {
+    --primary: #6772e5;
+    --primary-dark: #5469d4;
+    --secondary: #24b47e;
+    --secondary-dark: #0a965b;
+    --tertiary: #e25950;
+    --light: #f6f9fc;
+    --dark: #32325d;
+    --gray: #8898aa;
+    --card-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+    --hover-shadow: 0 30px 60px rgba(50, 50, 93, 0.15), 0 8px 25px rgba(0, 0, 0, 0.1);
+    --sidebar-width: 250px;
+    --sidebar-collapsed-width: 70px;
+    --transition-speed: 0.3s;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+#index-wrapper {
+    display: flex;
+    position: relative;
+    min-height: 100vh;
+    transition: all var(--transition-speed) ease;
+}
+
+/* Estilos para el sidebar */
+#index-sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    transition: width var(--transition-speed) ease;
+}
+
+#index-sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+#index-app-logo {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-right: 10px;
+}
+
+#index-app-title {
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--dark);
+    white-space: nowrap;
+    overflow: hidden;
+    transition: opacity var(--transition-speed) ease;
+}
+
+#index-sidebar-menu {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.index-menu-item {
+    margin-bottom: 5px;
+}
+
+.index-menu-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: var(--gray);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.index-menu-link:hover,
+.index-menu-item.active .index-menu-link {
+    color: var(--primary);
+    background-color: rgba(103, 114, 229, 0.05);
+    border-left-color: var(--primary);
+}
+
+.index-menu-link i {
+    font-size: 1.2rem;
+    min-width: 30px;
+}
+
+.index-menu-link span {
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 10px;
+    transition: opacity var(--transition-speed) ease;
+}
+
+#index-sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Estilos para el contenido principal */
+#index-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    transition: margin-left var(--transition-speed) ease;
+}
+
+#index-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+#index-menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+#index-menu-toggle:hover {
+    background-color: var(--light);
+}
+
+#index-user-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+#index-user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+#index-username {
+    font-weight: 500;
+}
+
+/* Sidebar colapsado */
+#index-wrapper.collapsed #index-sidebar {
+    width: var(--sidebar-collapsed-width);
+}
+
+#index-wrapper.collapsed #index-app-title,
+#index-wrapper.collapsed .index-menu-link span {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#index-wrapper.collapsed #index-content {
+    margin-left: var(--sidebar-collapsed-width);
+}
+
+/* Header section */
+#index-header-section {
+    background: linear-gradient(120deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 3rem 0;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+#index-header-title {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 2.2rem;
+}
+
+#index-header-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Secciones y tarjetas */
+#index-main-container {
+    padding-bottom: 4rem;
+}
+
+.index-section {
+    margin-bottom: 3rem;
+}
+
+.index-section-title {
+    position: relative;
+    color: var(--dark);
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.index-section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 3px;
+}
+
+.index-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    height: 100%;
+    background-color: white;
+    overflow: hidden;
+}
+
+.index-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+.index-card.index-highlight {
+    border: 2px solid var(--primary);
+}
+
+.index-card-header {
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-radius: 10px 10px 0 0;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.index-highlight-badge {
+    position: absolute;
+    top: -13px;
+    right: 20px;
+    background-color: var(--primary);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.index-card-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 1rem 0 0.5rem;
+}
+
+.index-card-period {
+    color: var(--gray);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.index-card-body {
+    padding: 1.5rem;
+}
+
+.index-feature-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 2rem;
+}
+
+.index-feature-list li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.index-feature-list li::before {
+    content: "✓";
+    color: var(--secondary);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.index-card-footer {
+    background-color: white;
+    border-top: none;
+    padding: 1.5rem;
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+}
+
+#index-one-time-payment {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+#index-one-time-payment:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+/* Botones */
+.index-btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.index-btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.index-btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.index-btn-outline:hover {
+    background-color: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+#index-footer {
+    background-color: white;
+    padding: 1.5rem 0;
+    box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 2rem;
+}
+
+#index-copyright {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/* Loading overlay */
+#index-loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(50, 50, 93, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: none;
+}
+
+#index-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid white;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+#index-loading-text {
+    color: white;
+    font-weight: 500;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Media Queries para responsive */
+@media (max-width: 992px) {
+    :root {
+        --sidebar-width: 220px;
+    }
+
+    #index-header-title {
+        font-size: 1.8rem;
+    }
+
+    #index-header-subtitle {
+        font-size: 1rem;
+    }
+
+    .index-card {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: 0;
+        --sidebar-collapsed-width: 0;
+    }
+
+    #index-sidebar {
+        transform: translateX(calc(-1 * var(--sidebar-width)));
+        width: 250px;
+    }
+
+    #index-wrapper:not(.collapsed) #index-sidebar {
+        transform: translateX(0);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #index-content {
+        margin-left: 0 !important;
+    }
+
+    #index-header-section {
+        border-radius: 0;
+        padding: 2rem 0;
+    }
+
+    #index-app-title,
+    .index-menu-link span {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    #index-wrapper.collapsed #index-sidebar {
+        transform: translateX(-250px);
+    }
+
+    #index-one-time-payment,
+    .index-card {
+        transform: none !important;
+    }
+
+    #index-one-time-heading {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    #index-header-title {
+        font-size: 1.5rem;
+    }
+
+    #index-header-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .index-section-title {
+        font-size: 1.4rem;
+    }
+
+    .index-card-header {
+        padding: 1.2rem;
+    }
+
+    .index-card-body,
+    .index-card-footer {
+        padding: 1.2rem;
+    }
+
+    .index-card-price {
+        font-size: 2rem;
+    }
+
+    #index-one-time-payment {
+        padding: 1.5rem;
+    }
+
+    #index-user-menu span {
+        display: none;
+    }
+
+    #index-username {
+        display: none;
+    }
+}
+
