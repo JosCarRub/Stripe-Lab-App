@@ -2,12 +2,11 @@
 
 namespace App\services\Impl;
 
+use App\commons\exceptions\StripeStrategyException;
 use App\services\StripeWebhookService;
-use App\strategy\Impl\StripeStrategyPaymentIntentSucceed;
 use App\strategy\StripeStrategy;
 use RuntimeException;
 use Stripe\Event;
-use config;
 use Stripe\Exception\SignatureVerificationException;
 
 class StripeWebhookServiceImpl implements StripeWebhookService
@@ -26,12 +25,18 @@ class StripeWebhookServiceImpl implements StripeWebhookService
 
     }
 
+    /**
+     * @throws StripeStrategyException
+     */
     public function manageWebhook(Event $event): void
     {
         $this->processStrategy($event);
 
     }
 
+    /**
+     * @throws SignatureVerificationException
+     */
     public function constructEvent(string $payload, string $signatureHeader): Event
     {
 
@@ -42,22 +47,27 @@ class StripeWebhookServiceImpl implements StripeWebhookService
                 $this->stripeWebhookSecret
             );
         } catch (SignatureVerificationException $e) {
-            throw new RuntimeException($e->getMessage());
+            throw new SignatureVerificationException($e->getMessage());
         }
 
     }
 
+    /**
+     * @throws StripeStrategyException
+     */
     public function processStrategy(Event $event): void
     {
         try {
             foreach ($this->stripeStrategies as $strategy) {
                 if ($strategy->isApplicable($event)) {
                     $strategy->process($event);
+                    $EventMessage = ': ';
+                    return;
                 }
             }
 
-        } catch (RuntimeException $e) {
-            throw new RuntimeException('No applicable strategy found for event type: ' . $event->type);
+        } catch (StripeStrategyException $e) {
+            throw new StripeStrategyException('No applicable strategy found for event type: ' . $event->type);
         }
     }
 

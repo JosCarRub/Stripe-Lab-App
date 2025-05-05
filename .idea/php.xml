@@ -25,11 +25,16 @@
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />
   <component name="PhpStan">
     <PhpStan_settings>
-      <phpstan_by_interpreter asDefaultInterpreter="true" interpreter_id="e63ad559-f92b-438e-a35b-ef6910e494f7" timeout="60000" />
+      <phpstan_by_interpreter interpreter_id="e63ad559-f92b-438e-a35b-ef6910e494f7" timeout="60000" />
     </PhpStan_settings>
   </component>
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
+  </component>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" />
+    </phpunit_settings>
   </component>
   <component name="PsalmOptionsConfiguration">
     <option name="transferred" value="true" />

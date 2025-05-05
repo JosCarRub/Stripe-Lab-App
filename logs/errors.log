@@ -1,0 +1,8 @@
+[2025-05-05 08:46:16] - [ERROR: ] Webhook signature verification failed:  - ["Signaturature verification failed"]
+[2025-05-05 08:49:08] - [ERROR] Webhook signature verification failed:  - ["Signaturature verification failed"]
+[2025-05-05 10:15:24] - [ERROR] Webhook signature verification failed:  - 
+[2025-05-05 10:16:17] - [ERROR] Webhook signature verification failed:  . 
+[2025-05-05 10:16:35] - [ERROR] Webhook signature verification failed:   
+[2025-05-05 10:17:11] - [ERROR] Webhook signature verification failed Unable to extract timestamp and signatures from header  
+[2025-05-05 10:17:25] - [ERROR] Webhook signature verification failed Unable to extract timestamp and signatures from header  
+[2025-05-05 10:17:45] - [ERROR] Webhook signature verification failed: Unable to extract timestamp and signatures from header  

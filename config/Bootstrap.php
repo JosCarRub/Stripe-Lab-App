@@ -7,7 +7,9 @@ use App\controllers\Impl\StripeWebhookControllerImpl;
 use App\controllers\StripeWebhookController;
 use App\repositories\Impl\PaymentRepositoryImpl;
 use App\repositories\PaymentRepository;
+use App\services\Impl\StripeCheckoutSessionServiceImpl;
 use App\services\Impl\StripeWebhookServiceImpl;
+use App\services\StripeCheckoutSessionService;
 use App\services\StripeWebhookService;
 use App\strategy\Impl\StripeStrategyCheckoutSessionCompleted;
 use App\strategy\Impl\StripeStrategyPaymentIntentFailed;
@@ -125,4 +127,27 @@ class Bootstrap
 
         return self::$db;
     }
+
+    /**
+     * Test para probar los pagos unicos y para suscripciones
+     */
+    private static ?StripeCheckoutSessionServiceImpl $stripeCheckoutSessionService = null;
+
+    /**
+     * Obtiene una instancia del servicio de pagos Stripe.
+     *
+     * @return StripeCheckoutSessionService
+     */
+    public static function getStripePaymentService(): StripeCheckoutSessionServiceImpl
+    {
+        if (self::$stripeCheckoutSessionService === null) {
+            self::$stripeCheckoutSessionService = new StripeCheckoutSessionServiceImpl(
+                $_ENV['STRIPE_SECRET_KEY'],
+                $_ENV['APP_DOMAIN']
+            );
+        }
+
+        return self::$stripeCheckoutSessionService;
+    }
+
 }

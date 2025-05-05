@@ -5,7 +5,7 @@ header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 header('Content-Type: application/json');
 
 // Ruta al archivo de script_logs (relativa a la ubicación de este script)
-$errorLogPath = __DIR__ . '/../logs/error.log';
+$errorLogPath = __DIR__ . '/../logs/errors.log';
 
 // Variable para almacenar respuesta
 $response = ['success' => false];

@@ -38,3 +38,19 @@
 2025-05-01 23:17:11 - DTO creado correctamente
 2025-05-01 23:17:11 - Modelo de pago creado: pay_681400f71f2730.75186213
 2025-05-01 23:17:11 - Pago guardado exitosamente
+2025-05-02 10:13:12 - Procesando payment_intent.succeeded: evt_3RKGahP71JLI6sb90DEFsZ0N
+2025-05-02 10:13:12 - DTO creado correctamente
+2025-05-02 10:13:12 - Modelo de pago creado: pay_68149ab82799a4.63907187
+2025-05-02 10:13:12 - Pago guardado exitosamente
+2025-05-02 10:14:48 - Procesando payment_intent.succeeded: evt_3RKGcEP71JLI6sb91M4liS17
+2025-05-02 10:14:48 - DTO creado correctamente
+2025-05-02 10:14:48 - Modelo de pago creado: pay_68149b182d3894.16128427
+2025-05-02 10:14:48 - Pago guardado exitosamente
+2025-05-02 10:51:44 - Procesando payment_intent.succeeded: evt_3RKHBzP71JLI6sb91vqwzdFp
+2025-05-02 10:51:44 - DTO creado correctamente
+2025-05-02 10:51:44 - Modelo de pago creado: pay_6814a3c0deea49.85425893
+2025-05-02 10:51:44 - Pago guardado exitosamente
+2025-05-02 10:52:04 - Procesando payment_intent.succeeded: evt_3RKHCJP71JLI6sb90djSzDBy
+2025-05-02 10:52:04 - DTO creado correctamente
+2025-05-02 10:52:04 - Modelo de pago creado: pay_6814a3d4c09753.83285460
+2025-05-02 10:52:04 - Pago guardado exitosamente
