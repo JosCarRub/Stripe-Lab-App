@@ -4,3 +4,31 @@
 [2025-05-05 13:02:28] Servicio inicializado con domain: http://localhost:8000
 [2025-05-05 13:02:28] Iniciando createPaymentSession()
 [2025-05-05 13:02:28] URLs de redirección: success_url=http://localhost:8000/success.html, cancel_url=http://localhost:8000/cancel.html
+[2025-05-05 16:48:43] Servicio inicializado con domain: https://localhost
+[2025-05-05 16:48:43] Iniciando createPaymentSession()
+[2025-05-05 16:48:43] URLs de redirección: success_url=https://localhost/success.html, cancel_url=https://localhost/cancel.html
+[2025-05-05 17:02:30] Servicio inicializado con domain: https://localhost
+[2025-05-05 17:02:30] Iniciando createPaymentSession()
+[2025-05-05 17:02:30] URLs de redirección: success_url=https://localhost/public/success.html, cancel_url=https://localhost/public/cancel.html
+[2025-05-05 17:07:05] Servicio inicializado con domain: https://localhost
+[2025-05-05 17:07:05] Iniciando createPaymentSession()
+[2025-05-05 17:07:05] URLs de redirección: success_url=https://localhost/public/success.html, cancel_url=https://localhost/public/cancel.html
+[2025-05-05 17:15:25] Servicio inicializado con domain: https://localhost:8000
+[2025-05-05 17:15:25] Iniciando createPaymentSession()
+[2025-05-05 17:15:25] URLs de redirección: success_url=https://localhost:8000/public/success.html, cancel_url=https://localhost:8000/public/cancel.html
+[2025-05-05 17:15:36] Servicio inicializado con domain: https://localhost:8000
+[2025-05-05 17:15:36] Iniciando createPaymentSession()
+[2025-05-05 17:15:36] URLs de redirección: success_url=https://localhost:8000/public/success.html, cancel_url=https://localhost:8000/public/cancel.html
+[2025-05-05 17:18:16] Servicio inicializado con domain: http://localhost:8000
+[2025-05-05 17:18:16] Iniciando createPaymentSession()
+[2025-05-05 17:18:16] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-05 17:25:02] Servicio inicializado con domain: http://localhost:8000
+[2025-05-05 17:25:02] Iniciando createPaymentSession()
+[2025-05-05 17:25:07] Servicio inicializado con domain: http://localhost:8000
+[2025-05-05 17:25:07] Iniciando createPaymentSession()
+[2025-05-05 17:25:38] Servicio inicializado con domain: http://localhost:8000
+[2025-05-05 17:25:38] Iniciando createPaymentSession()
+[2025-05-05 17:25:38] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-05 17:37:01] Servicio inicializado con domain: http://localhost:8000
+[2025-05-05 17:37:01] Iniciando createPaymentSession()
+[2025-05-05 17:37:01] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html

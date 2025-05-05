@@ -21,5 +21,8 @@ return [
         'username' => env('DB_USERNAME'),
         'password' => env('DB_PASSWORD'),
     ],
+    'app' => [
+        'domain' => env('APP_DOMAIN'),
+    ],
 ];
 

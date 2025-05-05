@@ -4,6 +4,7 @@ namespace App\services\Impl;
 
 use App\commons\enums\StripeProductsTypeEnum;
 use App\commons\exceptions\StripePaymentException;
+use App\commons\routes\StripeApiPath;
 use App\services\StripeCheckoutSessionService;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
@@ -68,8 +69,8 @@ class StripeCheckoutSessionServiceImpl implements StripeCheckoutSessionService
             $this->log("Iniciando createPaymentSession()");
 
             // Verifica las URLs de redirección
-            $successUrl = $this->domain . '/success.html';
-            $cancelUrl = $this->domain . '/cancel.html';
+            $successUrl = $this->domain . '/public' . StripeApiPath::SUCCESS;
+            $cancelUrl = $this->domain . '/public' . StripeApiPath::CANCEL;
 
             $this->log("URLs de redirección: success_url={$successUrl}, cancel_url={$cancelUrl}");
 
@@ -103,8 +104,8 @@ class StripeCheckoutSessionServiceImpl implements StripeCheckoutSessionService
             $this->log("Iniciando createSubscriptionSession() con lookup_key: {$lookup_key}");
 
             // Verifica las URLs de redirección
-            $successUrl = $this->domain . '/success.html';
-            $cancelUrl = $this->domain . '/cancel.html';
+            $successUrl = $this->domain . '/public' . StripeApiPath::SUCCESS;
+            $cancelUrl = $this->domain . '/public' . StripeApiPath::CANCEL;
 
             $this->log("URLs de redirección: success_url={$successUrl}, cancel_url={$cancelUrl}");
 
