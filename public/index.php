@@ -14,7 +14,7 @@ $plans = [
     StripeProductsTypeEnum::MONTHLY_SUBSCRIPTION->value => [
         'name' => 'Suscripción Mensual',
         'description' => 'Acceso completo con pago mensual',
-        'price' => '9,99€',
+        'price' => '3,00 €',
         'period' => 'mes',
         'highlight' => false,
         'lookup_key' => 'monthly_subscriptions',
@@ -28,7 +28,7 @@ $plans = [
     StripeProductsTypeEnum::YEARLY_SUBSCRIPTION->value => [
         'name' => 'Suscripción Anual',
         'description' => 'Acceso completo con pago anual (ahorro del 20%)',
-        'price' => '95,88€',
+        'price' => '15,00 €',
         'period' => 'año',
         'highlight' => true,
         'lookup_key' => 'annual_payment',
@@ -78,7 +78,7 @@ $plans = [
         </div>
 
         <ul id="index-sidebar-menu">
-            <li class="index-menu-item active">
+            <li class="index-menu-item ">
                 <a href="index.php" class="index-menu-link">
                     <i class="fas fa-home"></i>
                     <span>Inicio</span>
@@ -135,17 +135,15 @@ $plans = [
                 <i class="fas fa-bars"></i>
             </button>
             <div id="index-user-menu">
-                <img src="https://ui-avatars.com/api/?name=User&background=6772e5&color=fff" alt="User" id="index-user-avatar">
-                <span id="index-username">Usuario</span>
-                <i class="fas fa-chevron-down"></i>
+
             </div>
         </div>
 
         <!-- Header Section -->
         <header id="index-header-section">
-            <div class="container">
-                <h1 id="index-header-title">Sistema de Pagos Integrado con Stripe</h1>
-                <p id="index-header-subtitle">Plataforma de prueba para integración con Stripe. Experimenta con pagos únicos y suscripciones en un entorno de prueba seguro.</p>
+            <div class="container" id="container-header">
+                <h1 id="index-header-title"><i class="fab fa-stripe" id="index-app-logo-header"></i>  StripeLabApp</h1>
+                <p id="index-header-subtitle">Plataforma de prueba para integración de pagos con Stripe. Pagos únicos y suscripciones en un entorno de prueba seguro.</p>
             </div>
         </header>
 
@@ -157,7 +155,7 @@ $plans = [
                     <div class="col-md-6">
                         <div id="index-one-time-payment">
                             <div class="mb-4">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/stripe/stripe-original.svg" alt="Stripe" width="60">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="#fab123" width="80px" height="80px" viewBox="0 0 24 24"><path d="M13.479 9.883c-1.626-.604-2.512-1.067-2.512-1.803 0-.622.511-.977 1.423-.977 1.667 0 3.379.642 4.558 1.22l.666-4.111c-.935-.446-2.847-1.177-5.49-1.177-1.87 0-3.425.489-4.536 1.401-1.155.954-1.757 2.334-1.757 4 0 3.023 1.847 4.312 4.847 5.403 1.936.688 2.579 1.178 2.579 1.934 0 .732-.629 1.155-1.762 1.155-1.403 0-3.716-.689-5.231-1.578l-.674 4.157c1.304.732 3.705 1.488 6.197 1.488 1.976 0 3.624-.467 4.735-1.356 1.245-.977 1.89-2.422 1.89-4.289 0-3.091-1.889-4.38-4.935-5.468h.002z"/></svg>
                             </div>
                             <h3 id="index-one-time-heading">Acceso Estándar</h3>
                             <div id="index-one-time-price" class="index-card-price">10,00€</div>
@@ -177,6 +175,7 @@ $plans = [
                     <?php foreach ($plans as $type => $plan): ?>
                         <div class="col-lg-6 mb-4">
                             <div class="index-card <?= $plan['highlight'] ? 'index-highlight' : '' ?>">
+
                                 <div class="index-card-header">
                                     <?php if ($plan['highlight']): ?>
 
@@ -219,9 +218,9 @@ $plans = [
                                         <h4 id="index-contact-heading">Contacto</h4>
                                         <p id="index-contact-text">Si tienes alguna pregunta sobre nuestros planes de pago o necesitas asistencia, no dudes en contactarnos.</p>
                                         <ul id="index-contact-list" class="list-unstyled">
-                                            <li id="index-contact-email" class="mb-2"><i class="fas fa-envelope me-2 text-primary"></i> soporte@stripelab.com</li>
-                                            <li id="index-contact-phone" class="mb-2"><i class="fas fa-phone me-2 text-primary"></i> +34 912 345 678</li>
-                                            <li id="index-contact-address"><i class="fas fa-map-marker-alt me-2 text-primary"></i> Calle Principal 123, Madrid</li>
+                                            <li id="index-contact-email" class="mb-2"><i class="fas fa-envelope me-2 text-primary" id="index-contact-icon"></i> soporte@stripelab.com</li>
+                                            <li id="index-contact-phone" class="mb-2"><i class="fas fa-phone me-2 text-primary" id="index-contact-icon"></i> +34 912 345 678</li>
+                                            <li id="index-contact-address"><i class="fas fa-map-marker-alt me-2 text-primary" id="index-contact-icon"></i> Calle Principal 123, Madrid</li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6">

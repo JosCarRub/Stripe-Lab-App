@@ -2,10 +2,10 @@
 
 /* Variables de colores */
 :root {
-    --primary: #6772e5;
-    --primary-dark: #5469d4;
-    --secondary: #24b47e;
-    --secondary-dark: #0a965b;
+    --primary: #005b4d;
+    --primary-dark: #005b4d;
+    --secondary: #fab123;
+    --secondary-dark: #e39a07;
     --tertiary: #e25950;
     --light: #f6f9fc;
     --dark: #32325d;
@@ -20,7 +20,7 @@
 /* Estilos generales */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--light);
+    background-color: #eef3f1;
     color: var(--dark);
     margin: 0;
     padding: 0;
@@ -57,7 +57,7 @@ body {
 }
 
 #index-app-logo {
-    color: var(--primary);
+    color: var(--secondary-dark);
     font-size: 1.8rem;
     margin-right: 10px;
 }
@@ -66,7 +66,7 @@ body {
     font-weight: 600;
     margin: 0;
     font-size: 1.5rem;
-    color: var(--dark);
+    color: var(--primary);
     white-space: nowrap;
     overflow: hidden;
     transition: opacity var(--transition-speed) ease;
@@ -104,6 +104,12 @@ body {
 .index-menu-link i {
     font-size: 1.2rem;
     min-width: 30px;
+}
+
+.index-menu-link i:hover {
+    font-size: 1.2rem;
+    min-width: 30px;
+    color: var(--secondary);
 }
 
 .index-menu-link span {
@@ -176,6 +182,7 @@ body {
     font-weight: 500;
 }
 
+
 /* Sidebar colapsado */
 #index-wrapper.collapsed #index-sidebar {
     width: var(--sidebar-collapsed-width);
@@ -193,7 +200,7 @@ body {
 
 /* Header section */
 #index-header-section {
-    background: linear-gradient(120deg, var(--primary), var(--primary-dark));
+    background: linear-gradient(180deg, #005b4d, #005b4d);
     color: white;
     padding: 3rem 0;
     text-align: center;
@@ -204,6 +211,11 @@ body {
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 2.2rem;
+}
+
+#index-app-logo-header {
+    font-size: 4.5rem;
+    color: #fab123;
 }
 
 #index-header-subtitle {
@@ -238,7 +250,7 @@ body {
     transform: translateX(-50%);
     width: 50px;
     height: 3px;
-    background-color: var(--primary);
+    background-color: var(--secondary);
     border-radius: 3px;
 }
 
@@ -252,14 +264,12 @@ body {
     overflow: hidden;
 }
 
+
 .index-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--hover-shadow);
 }
 
-.index-card.index-highlight {
-    border: 2px solid var(--primary);
-}
 
 .index-card-header {
     background-color: white;
@@ -315,7 +325,7 @@ body {
 
 .index-feature-list li::before {
     content: "✓";
-    color: var(--secondary);
+    color: var(--primary);
     font-weight: bold;
     margin-right: 10px;
 }
@@ -394,7 +404,7 @@ body {
 }
 
 #index-copyright {
-    color: var(--gray);
+    color: var(--primary-dark);
     font-size: 0.9rem;
 }
 
@@ -425,7 +435,7 @@ body {
 }
 
 #index-loading-text {
-    color: white;
+    color: var(--secondary);
     font-weight: 500;
 }
 
@@ -497,6 +507,12 @@ body {
         font-size: 1.5rem;
     }
 }
+
+#index-contact-list #index-contact-icon {
+    color: var(--primary) !important;
+    font-size: 1.1em;
+}
+
 
 @media (max-width: 576px) {
     #index-header-title {

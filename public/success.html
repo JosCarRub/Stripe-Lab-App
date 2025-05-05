@@ -3,161 +3,565 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pago Exitoso</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Pago Exitoso - StripeLabApp</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
-            --primary-color: #4CAF50;
-            --secondary-color: #2196F3;
-            --text-color: #333;
-            --light-bg: #f5f5f5;
-            --success-gradient: linear-gradient(135deg, #4CAF50, #8BC34A);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --primary: #005b4d;
+            --primary-dark: #005b4d;
+            --secondary: #fab123;
+            --secondary-dark: #e39a07;
+            --tertiary: #e25950;
+            --light: #f6f9fc;
+            --dark: #32325d;
+            --gray: #8898aa;
+            --card-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+            --hover-shadow: 0 30px 60px rgba(50, 50, 93, 0.15), 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-bg);
-            color: var(--text-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: #eef3f1;
+            color: var(--dark);
             min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container.success {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .success-icon {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 25px;
-            border-radius: 50%;
-            background: var(--success-gradient);
+            position: relative;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+        }
+
+        #success-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            z-index: 1;
+        }
+
+        #success-header {
+            background: linear-gradient(120deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.1);
+            position: relative;
+        }
+
+        #success-navbar {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.6); }
-            70% { box-shadow: 0 0 0 15px rgba(76, 175, 80, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
-        }
-
-        .success-icon svg {
-            width: 60px;
-            height: 60px;
-            fill: white;
-        }
-
-        h1 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .success-message {
-            font-size: 18px;
-            line-height: 1.5;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .transaction-info {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 30px;
-        }
-
-        .links {
-            margin-top: 30px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--secondary-color);
+        #success-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             color: white;
             text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(33, 150, 243, 0.3);
         }
 
-        .btn:hover {
-            background: #0b7dda;
+        #success-app-logo {
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+
+        #success-app-title {
+            font-weight: 600;
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        #success-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        #success-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        #success-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #success-card-header {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        #success-checkmark-container {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        #success-checkmark {
+            color: var(--primary);
+            font-size: 4rem;
+            line-height: 0;
+        }
+
+        #success-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        #success-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+
+        #success-card-body {
+            padding: 2.5rem;
+        }
+
+        #success-info-row {
+            display: flex;
+            margin-bottom: 2rem;
+        }
+
+        #success-transaction-details {
+            flex: 3;
+            padding-right: 2rem;
+        }
+
+        #success-transaction-heading {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        #success-details-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .success-detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .success-detail-label {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .success-detail-value {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        #success-amount-value {
+            color: var(--dark);
+            font-size: 1.2rem;
+        }
+
+        #success-summary {
+            flex: 2;
+            background-color: rgba(103, 114, 229, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        #success-summary-heading {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: var(--dark);
+        }
+
+        #success-summary-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .success-summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+
+        #success-total {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-weight: 700;
+        }
+
+        #success-total-value {
+            color: var(--dark);
+            font-size: 1.2rem;
+        }
+
+        #success-next-steps {
+            background-color: rgba(36, 180, 126, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        #success-next-steps-heading {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        #success-next-steps-text {
+            margin-bottom: 0;
+            color: var(--gray);
+        }
+
+        #success-contact-support {
+            font-weight: 500;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        #success-contact-support:hover {
+            text-decoration: underline;
+        }
+
+        #success-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .success-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        #success-btn-dashboard {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            flex: 2;
+        }
+
+        #success-btn-dashboard:hover {
+            background-color: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(33, 150, 243, 0.4);
+            box-shadow: 0 4px 8px rgba(103, 114, 229, 0.3);
+        }
+
+        #success-btn-invoice {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            flex: 1;
+        }
+
+        #success-btn-invoice:hover {
+            background-color: rgba(103, 114, 229, 0.05);
+            transform: translateY(-2px);
+        }
+
+        #success-footer {
+            background-color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        #success-copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .success-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        #success-blob-1 {
+            width: 300px;
+            height: 300px;
+            background-color: rgba(103, 114, 229, 0.3);
+            top: 100px;
+            left: -150px;
+        }
+
+        #success-blob-2 {
+            width: 400px;
+            height: 400px;
+            background-color: rgba(36, 180, 126, 0.2);
+            bottom: -200px;
+            right: -150px;
+        }
+
+        .animate__animated.animate__fadeInUp {
+            --animate-duration: 0.8s;
+        }
+
+        .animate__animated.animate__fadeIn {
+            --animate-duration: 1.2s;
+        }
+
+        @media (max-width: 992px) {
+            #success-info-row {
+                flex-direction: column;
+            }
+
+            #success-transaction-details {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #success-card-header {
+                padding: 1.5rem;
+            }
+
+            #success-checkmark-container {
+                width: 80px;
+                height: 80px;
+            }
+
+            #success-checkmark {
+                font-size: 3rem;
+            }
+
+            #success-title {
+                font-size: 1.8rem;
+            }
+
+            #success-subtitle {
+                font-size: 1rem;
+            }
+
+            #success-card-body {
+                padding: 1.5rem;
+            }
+
+            #success-buttons {
+                flex-direction: column;
+            }
+
+            #success-btn-dashboard, #success-btn-invoice {
+                flex: 1;
+            }
+        }
+
+        .success-confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: var(--secondary);
+            opacity: 0;
+            top: 0;
+            z-index: 10;
+            animation: confetti 5s ease-in-out -2s infinite;
+        }
+
+        .success-confetti.blue {
+            background-color: var(--secondary-dark);
+        }
+
+        .success-confetti.green {
+            background-color: var(--primary-dark);
+        }
+
+        .success-confetti.pink {
+            background-color: var(--primary);
+        }
+
+        @keyframes confetti {
+            0% {
+                transform: translateY(0) rotateX(0) rotateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotateX(360deg) rotateY(360deg);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
-<div class="container success">
-    <div class="success-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-        </svg>
-    </div>
+<!-- Decorative blobs -->
+<div id="success-blob-1" class="success-blob"></div>
+<div id="success-blob-2" class="success-blob"></div>
 
-    <h1>¡Pago completado con éxito!</h1>
+<!-- Confetti effect -->
+<div id="success-confetti-container"></div>
 
-    <p class="success-message">
-        Gracias por tu compra. Hemos recibido tu pago y estamos procesando tu pedido.
-        Recibirás un correo electrónico con los detalles de la transacción.
-    </p>
+<div id="success-wrapper">
+    <!-- Header -->
+    <header id="success-header">
+        <div class="container">
+            <div id="success-navbar">
+                <a href="/public/index.php" id="success-brand">
+                    <i class="fab fa-stripe" id="success-app-logo"></i>
+                    <h1 id="success-app-title">StripeLabApp</h1>
+                </a>
+            </div>
+        </div>
+    </header>
 
-    <div class="transaction-info">
-        <p><strong>ID de transacción:</strong> <span id="transaction-id">stripe_1234567890</span></p>
-        <p><strong>Fecha:</strong> <span id="transaction-date">5 de mayo de 2025</span></p>
-    </div>
+    <!-- Main content -->
+    <main id="success-main">
+        <div id="success-container" class="container">
+            <div id="success-card" class="animate__animated animate__fadeInUp">
+                <!-- Card header -->
+                <div id="success-card-header">
+                    <div id="success-checkmark-container">
+                        <i class="fas fa-check" id="success-checkmark"></i>
+                    </div>
+                    <h2 id="success-title">¡Pago completado con éxito!</h2>
+                    <p id="success-subtitle">Gracias por tu confianza. A continuación encontrarás los detalles de tu transacción.</p>
+                </div>
 
-    <div class="links">
-        <a href="/public/index.php" class="btn">Volver al inicio</a>
-    </div>
+                <!-- Card body -->
+                <div id="success-card-body">
+                    <!-- Transaction info row -->
+                    <div id="success-info-row">
+                        <!-- Transaction details -->
+                        <div id="success-transaction-details">
+                            <h3 id="success-transaction-heading">Detalles de la transacción</h3>
+                            <ul id="success-details-list">
+                                <li class="success-detail-item">
+                                    <span class="success-detail-label">ID de transacción</span>
+                                    <span id="success-transaction-id" class="success-detail-value">stripe_1234567890</span>
+                                </li>
+                                <li class="success-detail-item">
+                                    <span class="success-detail-label">Fecha</span>
+                                    <span id="success-transaction-date" class="success-detail-value">5 de mayo de 2025</span>
+                                </li>
+                                <li class="success-detail-item">
+                                    <span class="success-detail-label">Método de pago</span>
+                                    <span id="success-payment-method" class="success-detail-value">
+                                            <i class="fab fa-cc-visa"></i> •••• 4242
+                                        </span>
+                                </li>
+                                <li class="success-detail-item">
+                                    <span class="success-detail-label">Estado</span>
+                                    <span id="success-status" class="success-detail-value">
+                                            <span class="badge bg-success">Completado</span>
+                                        </span>
+                                </li>
+                                <li class="success-detail-item">
+                                    <span class="success-detail-label">Importe</span>
+                                    <span id="success-amount-value" class="success-detail-value">10,00 €</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Order summary -->
+                        <div id="success-summary">
+                            <h3 id="success-summary-heading">Resumen del pedido</h3>
+                            <ul id="success-summary-list">
+                                <li class="success-summary-item">
+                                    <span>Acceso Estándar</span>
+                                    <span>10,00 €</span>
+                                </li>
+                                <li class="success-summary-item">
+                                    <span>IVA (21%)</span>
+                                    <span>2,10 €</span>
+                                </li>
+                            </ul>
+                            <div id="success-total">
+                                <span>Total</span>
+                                <span id="success-total-value">12,10 €</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Next steps section -->
+                    <div id="success-next-steps">
+                        <h3 id="success-next-steps-heading">Siguientes pasos</h3>
+                        <p id="success-next-steps-text">
+                            Hemos enviado un correo electrónico de confirmación a la dirección que proporcionaste. Tu acceso ya está activo y puedes comenzar a utilizar todas las funcionalidades premium. Si tienes alguna pregunta, no dudes en <a href="#" id="success-contact-support">contactar con soporte</a>.
+                        </p>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div id="success-buttons">
+                        <a href="/public/index.php" id="success-btn-dashboard" class="success-btn">
+                            <i class="fas fa-tachometer-alt me-2"></i> Ir al panel de control
+                        </a>
+                        <a href="#" id="success-btn-invoice" class="success-btn">
+                            <i class="fas fa-file-invoice-dollar me-2"></i> Ver factura
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="success-footer">
+        <div class="container">
+            <p id="success-copyright">&copy; <?= date('Y') ?> StripeLabApp. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 </div>
 
 <script>
-    // Opcionalmente puedes obtener el ID de la sesión de la URL
+    // Obtener el ID de la sesión de la URL
     document.addEventListener('DOMContentLoaded', function() {
         const urlParams = new URLSearchParams(window.location.search);
         const sessionId = urlParams.get('session_id');
 
         if (sessionId) {
-            document.getElementById('transaction-id').textContent = sessionId;
+            document.getElementById('success-transaction-id').textContent = sessionId;
         }
 
         const today = new Date();
-        document.getElementById('transaction-date').textContent = today.toLocaleDateString('es-ES', {
+        document.getElementById('success-transaction-date').textContent = today.toLocaleDateString('es-ES', {
             day: 'numeric',
             month: 'long',
             year: 'numeric'
         });
+
+
     });
 </script>
 </body>
