@@ -47,6 +47,8 @@ class StripeStrategyInvoicePaymentSucceeded implements StripeStrategy
 
         $invoiceDto = $this->InvoiceMapper->mapToDto($event);
 
+        EventLogger::eventLog("FACTURA MAPEADA");
+
         $invoiceModel = InvoiceModelFactory::createInvoiceModel($event, $invoiceDto, StripeEventTypeEnum::INVOCE_PAYMENT_SUCCEDED);
 
         $this->invoiceRepository->saveInvoice($invoiceModel);

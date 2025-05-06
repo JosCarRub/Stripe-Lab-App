@@ -18,7 +18,7 @@ SQL;
 
 /*
  * CREATE TABLE invoices (
-    id_invoice VARCHAR(50) PRIMARY KEY,
+    id_intern_invoice VARCHAR(50) PRIMARY KEY,
     invoice_id VARCHAR(255) NOT NULL,
     payment_id VARCHAR(50),
     customer_id VARCHAR(50) NOT NULL,

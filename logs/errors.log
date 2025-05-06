@@ -8,3 +8,4 @@
 [2025-05-05 10:17:45] - [ERROR] Webhook signature verification failed: Unable to extract timestamp and signatures from header  
 [2025-05-06 12:38:02] - [ERROR] An unexpected error occurred: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_intern_invoice' in 'field list'  
 [2025-05-06 12:42:19] - [ERROR] An unexpected error occurred: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_intern_invoice' in 'field list'  
+[2025-05-06 12:58:13] - [ERROR] An unexpected error occurred: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id_intern_invoice' in 'field list'  
