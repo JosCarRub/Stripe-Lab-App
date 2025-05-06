@@ -5,13 +5,17 @@ namespace config;
 
 use App\controllers\Impl\StripeWebhookControllerImpl;
 use App\controllers\StripeWebhookController;
+use App\mappers\StripeInvoiceMapper;
+use App\repositories\Impl\InvoiceRepositoryImpl;
 use App\repositories\Impl\PaymentRepositoryImpl;
+use App\repositories\InvoiceRepository;
 use App\repositories\PaymentRepository;
 use App\services\Impl\StripeCheckoutSessionServiceImpl;
 use App\services\Impl\StripeWebhookServiceImpl;
 use App\services\StripeCheckoutSessionService;
 use App\services\StripeWebhookService;
 use App\strategy\Impl\StripeStrategyCheckoutSessionCompleted;
+use App\strategy\Impl\StripeStrategyInvoicePaymentSucceeded;
 use App\strategy\Impl\StripeStrategyPaymentIntentFailed;
 use App\strategy\Impl\StripeStrategyPaymentIntentSucceed;
 use App\mappers\StripePaymentIntentMapper;
@@ -29,6 +33,8 @@ class Bootstrap
     private static ?array $stripeStrategies = null;
     private static ?StripeWebhookService $stripeWebhookService = null;
     private static ?StripeWebhookController $stripeWebhookController = null;
+    private static ?InvoiceRepository $invoiceRepository = null;
+    private static ?StripeInvoiceMapper $invoiceMapper = null;
 
     /**
      * Obtiene una instancia del controlador de webhooks de Stripe.
@@ -78,6 +84,10 @@ class Bootstrap
                 ),
                 new StripeStrategyPaymentIntentFailed(),
                 new StripeStrategyCheckoutSessionCompleted(),
+                new StripeStrategyInvoicePaymentSucceeded(
+                    self::getInvoiceRepository(),
+                    self::getInvoiceMapper()
+                ),
             ];
         }
 
@@ -115,6 +125,36 @@ class Bootstrap
     }
 
     /**
+     * Obtiene una instancia del repositorio de facturas.
+     *
+     * @return InvoiceRepository
+     */
+    private static function getInvoiceRepository(): InvoiceRepository
+    {
+        if (self::$invoiceRepository === null) {
+            self::$invoiceRepository = new InvoiceRepositoryImpl(
+                self::getDatabase()
+            );
+        }
+
+        return self::$invoiceRepository;
+    }
+
+    /**
+     * Obtiene una instancia del mapeador de facturas de Stripe.
+     *
+     * @return StripeInvoiceMapper
+     */
+    private static function getInvoiceMapper(): StripeInvoiceMapper
+    {
+        if (self::$invoiceMapper === null) {
+            self::$invoiceMapper = new StripeInvoiceMapper();
+        }
+
+        return self::$invoiceMapper;
+    }
+
+    /**
      * Obtiene una conexión a la base de datos.
      *
      * @return PDO
@@ -149,5 +189,7 @@ class Bootstrap
 
         return self::$stripeCheckoutSessionService;
     }
+
+
 
 }

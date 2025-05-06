@@ -92,3 +92,21 @@
 [2025-05-06 08:47:22] Servicio obtenido correctamente
 [2025-05-06 08:47:22] Llamando a createSubscriptionSession() con lookup_key: monthly_subscriptions
 [2025-05-06 08:47:23] Sesión de suscripción creada exitosamente con ID: cs_test_a1e6UASkLaIw6e4bxDYnFh4BmzFNVHFcJlV9RezkwXrKiulxNvIt7BEYDD
+[2025-05-06 12:34:54] Iniciando creación de sesión de suscripción con lookup_key: annual_payment
+[2025-05-06 12:34:54] Variables de entorno cargadas correctamente
+[2025-05-06 12:34:54] Obteniendo servicio de pagos Stripe
+[2025-05-06 12:34:54] Servicio obtenido correctamente
+[2025-05-06 12:34:54] Llamando a createSubscriptionSession() con lookup_key: annual_payment
+[2025-05-06 12:34:55] Sesión de suscripción creada exitosamente con ID: cs_test_a12ailHyDaRctIPvIBlpo8MybF7bnZ8C6q9jpB716V9uHZToa0tSPjBccm
+[2025-05-06 12:37:42] Iniciando creación de sesión de suscripción con lookup_key: annual_payment
+[2025-05-06 12:37:42] Variables de entorno cargadas correctamente
+[2025-05-06 12:37:42] Obteniendo servicio de pagos Stripe
+[2025-05-06 12:37:42] Servicio obtenido correctamente
+[2025-05-06 12:37:42] Llamando a createSubscriptionSession() con lookup_key: annual_payment
+[2025-05-06 12:37:43] Sesión de suscripción creada exitosamente con ID: cs_test_a1n2KJHD5neNzAhAAKgI3pFcgUDzeadzi2cvk4KdR6N4FVOrwaz2m9AI0W
+[2025-05-06 12:41:53] Iniciando creación de sesión de suscripción con lookup_key: annual_payment
+[2025-05-06 12:41:53] Variables de entorno cargadas correctamente
+[2025-05-06 12:41:53] Obteniendo servicio de pagos Stripe
+[2025-05-06 12:41:53] Servicio obtenido correctamente
+[2025-05-06 12:41:53] Llamando a createSubscriptionSession() con lookup_key: annual_payment
+[2025-05-06 12:41:54] Sesión de suscripción creada exitosamente con ID: cs_test_a1AT4H7lgyKsUSeJ0COsoNkIORm2DjEjf7CgeYkrj4qVuZzBVjiTGtn6ps

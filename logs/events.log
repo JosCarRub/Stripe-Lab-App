@@ -224,3 +224,45 @@
 [2025-05-06 11:21:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLjZUP71JLI6sb91tcnyRyG","event_type":"payment_intent.succeeded"}
 [2025-05-06 11:21:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLjZUP71JLI6sb91X7a75Cj","event_type":"payment_intent.created"}
 [2025-05-06 11:22:00] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLjZUP71JLI6sb91uoe1wth","event_type":"charge.updated"}
+[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkiOP71JLI6sb90XpIU3IO","event_type":"charge.succeeded"}
+[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb9IQCgxOaL","event_type":"checkout.session.completed"}
+[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb9Ab9sfzVA","event_type":"payment_method.attached"}
+[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb9vUOjZwpG","event_type":"customer.created"}
+[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb9wZDakwI3","event_type":"customer.updated"}
+[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb91bcNELDP","event_type":"customer.subscription.created"}
+[2025-05-06 12:35:15] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681a0203d77698.84067792"]
+[2025-05-06 12:35:15] - [INFO] Payment intent succeded saved succesfully  - ["pay_681a0203d77698.84067792"]
+[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkiOP71JLI6sb90DoHxgS4","event_type":"payment_intent.succeeded"}
+[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkiOP71JLI6sb905OHcJt0","event_type":"payment_intent.created"}
+[2025-05-06 12:35:16] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb9fXbxTBBr","event_type":"invoice.created"}
+[2025-05-06 12:35:16] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb908JNtwxC","event_type":"invoice.finalized"}
+[2025-05-06 12:35:16] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb9aOGqOOxs","event_type":"invoice.paid"}
+[2025-05-06 12:35:16] - [INFO] Evento de factura recibido: invoice.payment_succeeded - {"event_id":"evt_1RLkiQP71JLI6sb9fcpa1EfN","invoice_id":"in_1RLkiPP71JLI6sb93juCtUSo"}
+[2025-05-06 12:38:01] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkl4P71JLI6sb90evrjXoM","event_type":"charge.succeeded"}
+[2025-05-06 12:38:01] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl6P71JLI6sb9WGwDCmOa","event_type":"payment_method.attached"}
+[2025-05-06 12:38:01] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl6P71JLI6sb9zZaFy2Z9","event_type":"customer.created"}
+[2025-05-06 12:38:01] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl6P71JLI6sb9DPkEuPWd","event_type":"customer.updated"}
+[2025-05-06 12:38:01] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl6P71JLI6sb96nCpJz2H","event_type":"checkout.session.completed"}
+[2025-05-06 12:38:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl6P71JLI6sb9BRcBzJX8","event_type":"customer.subscription.created"}
+[2025-05-06 12:38:02] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681a02aa122785.41878190"]
+[2025-05-06 12:38:02] - [INFO] Payment intent succeded saved succesfully  - ["pay_681a02aa122785.41878190"]
+[2025-05-06 12:38:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkl4P71JLI6sb90u5lnqQ2","event_type":"payment_intent.succeeded"}
+[2025-05-06 12:38:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkl4P71JLI6sb90aBsHtWe","event_type":"payment_intent.created"}
+[2025-05-06 12:38:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl6P71JLI6sb9lwmynyJB","event_type":"invoice.created"}
+[2025-05-06 12:38:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl6P71JLI6sb9aAAKt4Cq","event_type":"invoice.finalized"}
+[2025-05-06 12:38:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl7P71JLI6sb9rtj18Zb0","event_type":"invoice.paid"}
+[2025-05-06 12:38:02] - [INFO] Evento de factura recibido: invoice.payment_succeeded - {"event_id":"evt_1RLkl7P71JLI6sb9hfVasNwM","invoice_id":"in_1RLkl5P71JLI6sb9Vd5uOTEs"}
+[2025-05-06 12:42:18] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkpDP71JLI6sb90oi6qOhd","event_type":"charge.succeeded"}
+[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpFP71JLI6sb9AyPpqzGh","event_type":"payment_method.attached"}
+[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpFP71JLI6sb9I53ipUpl","event_type":"customer.created"}
+[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpFP71JLI6sb9VwKlZiIX","event_type":"customer.updated"}
+[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpFP71JLI6sb9FF07yII0","event_type":"customer.subscription.created"}
+[2025-05-06 12:42:19] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681a03ab4cb133.66424558"]
+[2025-05-06 12:42:19] - [INFO] Payment intent succeded saved succesfully  - ["pay_681a03ab4cb133.66424558"]
+[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkpDP71JLI6sb90hvDcJrQ","event_type":"payment_intent.succeeded"}
+[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpFP71JLI6sb9HszO3rw4","event_type":"invoice.created"}
+[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkpDP71JLI6sb90v4toTBI","event_type":"payment_intent.created"}
+[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpGP71JLI6sb903F1p9pz","event_type":"invoice.finalized"}
+[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpGP71JLI6sb9fxOQJirV","event_type":"invoice.paid"}
+[2025-05-06 12:42:19] - [INFO] Evento de factura recibido: invoice.payment_succeeded - {"event_id":"evt_1RLkpGP71JLI6sb9SsuIHUE1","invoice_id":"in_1RLkpEP71JLI6sb9LS4qOyaV"}
+[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpGP71JLI6sb9Z6gKaCMc","event_type":"checkout.session.completed"}

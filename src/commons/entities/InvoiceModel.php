@@ -39,7 +39,7 @@ class InvoiceModel
         ?int $period_start = null,
         ?int $period_end = null
     ) {
-        $this->$id_intern_invoice = $id_intern_invoice;
+        $this->id_intern_invoice = $id_intern_invoice;
         $this->invoice_id = $invoice_id;
         $this->payment_id = $payment_id;
         $this->customer_id = $customer_id;
@@ -60,7 +60,7 @@ class InvoiceModel
     public function toArray(): array
     {
         return [
-            '$id_intern_invoice' => $this->id_intern_invoice,
+            'id_intern_invoice' => $this->id_intern_invoice,
             'invoice_id' => $this->invoice_id,
             'payment_id' => $this->payment_id,
             'customer_id' => $this->customer_id,
