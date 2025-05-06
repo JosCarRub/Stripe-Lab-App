@@ -61,7 +61,7 @@ class StripeWebhookServiceImpl implements StripeWebhookService
             foreach ($this->stripeStrategies as $strategy) {
                 if ($strategy->isApplicable($event)) {
                     $strategy->process($event);
-                    $EventMessage = ': ';
+
                     return;
                 }
             }

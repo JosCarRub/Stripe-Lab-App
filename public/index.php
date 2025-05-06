@@ -66,7 +66,7 @@ $plans = [
 <!-- Loading overlay -->
 <div id="index-loading-overlay">
     <div id="index-spinner"></div>
-    <p id="index-loading-text">Procesando tu pago...</p>
+    <p id="index-loading-text">Procesando el pago...</p>
 </div>
 
 <div id="index-wrapper">
@@ -269,7 +269,7 @@ $plans = [
     document.getElementById('single-payment-btn').addEventListener('click', async () => {
         try {
             showLoading();
-            // Corregir la ruta del fetch para que coincida con tu estructura
+
             const response = await fetch('./create_payment_session.php');
 
             if (!response.ok) {
@@ -301,7 +301,7 @@ $plans = [
             try {
                 showLoading();
                 const lookupKey = event.target.dataset.lookup;
-                // Corregir la ruta del fetch para que coincida con tu estructura
+
                 const response = await fetch(`./create_subscription_session.php?lookup_key=${encodeURIComponent(lookupKey)}`);
 
                 if (!response.ok) {
@@ -314,7 +314,7 @@ $plans = [
                     throw new Error(session.error);
                 }
 
-                // Redirigir a la página de checkout de Stripe
+
                 const result = await stripe.redirectToCheckout({ sessionId: session.id });
 
                 if (result.error) {

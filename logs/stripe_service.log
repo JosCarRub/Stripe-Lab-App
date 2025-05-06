@@ -106,3 +106,47 @@
 [2025-05-05 23:34:42] Servicio inicializado con domain: http://localhost:8000
 [2025-05-05 23:34:42] Iniciando createPaymentSession()
 [2025-05-05 23:34:42] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-06 06:27:11] Servicio inicializado con domain: http://localhost:8000
+[2025-05-06 06:27:11] Iniciando createPaymentSession()
+[2025-05-06 06:27:11] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-06 06:27:20] Servicio inicializado con domain: http://localhost:8000
+[2025-05-06 06:27:20] Iniciando createSubscriptionSession() con lookup_key: annual_payment
+[2025-05-06 06:27:20] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-06 06:27:20] Precio encontrado con ID: price_1RLNsHP71JLI6sb9ez8HJsHt
+[2025-05-06 06:32:00] Servicio inicializado con domain: http://localhost:8000
+[2025-05-06 06:32:00] Iniciando createPaymentSession()
+[2025-05-06 06:32:00] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-06 06:35:12] Servicio inicializado con domain: http://localhost:8000
+[2025-05-06 06:35:12] Iniciando createSubscriptionSession() con lookup_key: monthly_subscriptions
+[2025-05-06 06:35:12] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-06 06:35:12] Precio encontrado con ID: price_1RLNcyP71JLI6sb92qc9ywRx
+[2025-05-06 06:37:22] Servicio inicializado con domain: http://localhost:8000
+[2025-05-06 06:37:22] Iniciando createSubscriptionSession() con lookup_key: monthly_subscriptions
+[2025-05-06 06:37:22] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-06 06:37:23] Precio encontrado con ID: price_1RLNcyP71JLI6sb92qc9ywRx
+[2025-05-06 07:22:16] Servicio inicializado con domain: http://localhost:8000
+[2025-05-06 07:22:16] Iniciando createPaymentSession()
+[2025-05-06 07:22:16] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-06 07:23:02] Servicio inicializado con domain: http://localhost:8000
+[2025-05-06 07:23:02] Iniciando createSubscriptionSession() con lookup_key: undefined
+[2025-05-06 07:23:02] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-06 07:23:02] No se encontró precio con lookup_key: undefined
+[2025-05-06 07:23:02] ERROR en createSubscriptionSession: The specified subscription plan was not found
+[2025-05-06 07:23:02] Traza: #0 C:\Users\nimsu\Desktop\StripeLabApp.v2\StripeLabApp\public\create_subscription_session.php(38): App\services\Impl\StripeCheckoutSessionServiceImpl->createSubscriptionSession()
+#1 {main}
+[2025-05-06 07:23:04] Servicio inicializado con domain: http://localhost:8000
+[2025-05-06 07:23:04] Iniciando createSubscriptionSession() con lookup_key: monthly_subscriptions
+[2025-05-06 07:23:04] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-06 07:23:04] Precio encontrado con ID: price_1RLNcyP71JLI6sb92qc9ywRx
+[2025-05-06 07:25:34] Servicio inicializado con domain: http://localhost:8000
+[2025-05-06 07:25:34] Iniciando createSubscriptionSession() con lookup_key: annual_payment
+[2025-05-06 07:25:34] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-06 07:25:35] Precio encontrado con ID: price_1RLNsHP71JLI6sb9ez8HJsHt
+[2025-05-06 08:43:13] Servicio inicializado con domain: http://localhost:8000
+[2025-05-06 08:43:13] Iniciando createSubscriptionSession() con lookup_key: monthly_subscriptions
+[2025-05-06 08:43:13] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-06 08:43:14] Precio encontrado con ID: price_1RLNcyP71JLI6sb92qc9ywRx
+[2025-05-06 08:47:22] Servicio inicializado con domain: http://localhost:8000
+[2025-05-06 08:47:22] Iniciando createSubscriptionSession() con lookup_key: monthly_subscriptions
+[2025-05-06 08:47:22] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-06 08:47:23] Precio encontrado con ID: price_1RLNcyP71JLI6sb92qc9ywRx

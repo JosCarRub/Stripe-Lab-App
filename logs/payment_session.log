@@ -191,3 +191,21 @@
 [2025-05-05 23:34:42] Servicio obtenido correctamente
 [2025-05-05 23:34:42] Llamando a createPaymentSession()
 [2025-05-05 23:34:42] Sesión creada exitosamente con ID: cs_test_a1MThnUyftTNi0g904GHRZvkHDyH4GAONjIt2xDaDx4Lou6GY1UhCA70cV
+[2025-05-06 06:27:11] Iniciando creación de sesión de pago único
+[2025-05-06 06:27:11] Variables de entorno cargadas correctamente
+[2025-05-06 06:27:11] Obteniendo servicio de pagos Stripe
+[2025-05-06 06:27:11] Servicio obtenido correctamente
+[2025-05-06 06:27:11] Llamando a createPaymentSession()
+[2025-05-06 06:27:12] Sesión creada exitosamente con ID: cs_test_a15W0gVvqKLO6QtlCY96r3SuUWBcIEiVd9hINtZJl7HILrOJsYIqKJFO7F
+[2025-05-06 06:32:00] Iniciando creación de sesión de pago único
+[2025-05-06 06:32:00] Variables de entorno cargadas correctamente
+[2025-05-06 06:32:00] Obteniendo servicio de pagos Stripe
+[2025-05-06 06:32:00] Servicio obtenido correctamente
+[2025-05-06 06:32:00] Llamando a createPaymentSession()
+[2025-05-06 06:32:01] Sesión creada exitosamente con ID: cs_test_a1VpU05zngMpNZLZvoClIle6sOYGSz2PtSxUp5KI68UfqPa43ieSt02Ysj
+[2025-05-06 07:22:16] Iniciando creación de sesión de pago único
+[2025-05-06 07:22:16] Variables de entorno cargadas correctamente
+[2025-05-06 07:22:16] Obteniendo servicio de pagos Stripe
+[2025-05-06 07:22:16] Servicio obtenido correctamente
+[2025-05-06 07:22:16] Llamando a createPaymentSession()
+[2025-05-06 07:22:16] Sesión creada exitosamente con ID: cs_test_a13TZuU5V9YETA772uUikPwQ2c5zOVJBNXOhoD79dqTPFihpuxjgeg8aNI
