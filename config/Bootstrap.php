@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace config;
 
+use App\controllers\Impl\StripeInvoiceControllerImpl;
 use App\controllers\Impl\StripeWebhookControllerImpl;
+use App\controllers\StripeInvoiceController;
 use App\controllers\StripeWebhookController;
 use App\mappers\StripeInvoiceMapper;
 use App\repositories\Impl\InvoiceRepositoryImpl;
@@ -188,6 +190,19 @@ class Bootstrap
         }
 
         return self::$stripeCheckoutSessionService;
+    }
+
+    private static ?StripeInvoiceController $stripeInvoiceController = null;
+
+    public static function getStripeInvoiceController(): StripeInvoiceController
+    {
+        if (self::$stripeInvoiceController === null) {
+            self::$stripeInvoiceController = new StripeInvoiceControllerImpl(
+                self::getInvoiceRepository()
+            );
+        }
+
+        return self::$stripeInvoiceController;
     }
 
 

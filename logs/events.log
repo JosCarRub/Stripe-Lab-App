@@ -314,3 +314,37 @@
 [2025-05-06 13:02:28] - [INFO] FACTURA MAPEADA - 
 [2025-05-06 13:02:28] - [INFO] Factura procesada y guardada exitosamente - {"id_intern_invoice":"inv_681a08645c78c9.18693396","invoice_id":"in_1RLl8jP71JLI6sb9kk9kUFee","amount":"1500 eur","status":"paid"}
 [2025-05-06 13:02:28] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl8kP71JLI6sb9jacCMH7z","event_type":"invoice.payment_succeeded"}
+[2025-05-07 06:50:16] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RM1o7P71JLI6sb90TiJZfPX","event_type":"charge.succeeded"}
+[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1o9P71JLI6sb9SFpFLdHj","event_type":"payment_method.attached"}
+[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1o9P71JLI6sb9DmhmEZiP","event_type":"customer.created"}
+[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1o9P71JLI6sb9v7YYcWht","event_type":"customer.updated"}
+[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1o9P71JLI6sb9rig5Y0Kw","event_type":"customer.subscription.created"}
+[2025-05-07 06:50:17] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681b02a9314e89.33438496"]
+[2025-05-07 06:50:17] - [INFO] Payment intent succeded saved succesfully  - ["pay_681b02a9314e89.33438496"]
+[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RM1o7P71JLI6sb901S2onTB","event_type":"payment_intent.succeeded"}
+[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RM1o7P71JLI6sb9095WdYak","event_type":"payment_intent.created"}
+[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1o9P71JLI6sb9fpJOF4KJ","event_type":"checkout.session.completed"}
+[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1o9P71JLI6sb9yWM8nf7A","event_type":"invoice.created"}
+[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1o9P71JLI6sb9EaW9c1pj","event_type":"invoice.finalized"}
+[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1oAP71JLI6sb9LT7vuqKN","event_type":"invoice.paid"}
+[2025-05-07 06:50:17] - [INFO] Evento de factura recibido: invoice.payment_succeeded - {"event_id":"evt_1RM1oAP71JLI6sb9qty0sJiU","invoice_id":"in_1RM1o8P71JLI6sb9WAfJD0N3"}
+[2025-05-07 06:50:17] - [INFO] FACTURA MAPEADA - 
+[2025-05-07 06:50:17] - [INFO] Factura procesada y guardada exitosamente - {"id_intern_invoice":"inv_681b02a9a0a676.60573957","invoice_id":"in_1RM1o8P71JLI6sb9WAfJD0N3","amount":"1500 eur","status":"paid"}
+[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1oAP71JLI6sb9qty0sJiU","event_type":"invoice.payment_succeeded"}
+[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RM1q0P71JLI6sb91WfY1qfS","event_type":"charge.succeeded"}
+[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9ye1FPAz4","event_type":"checkout.session.completed"}
+[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9aDJ5ItuG","event_type":"payment_method.attached"}
+[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9nGZX95K0","event_type":"customer.created"}
+[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9TFx1Cghq","event_type":"customer.updated"}
+[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9cV8nJWwA","event_type":"customer.subscription.created"}
+[2025-05-07 06:52:13] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681b031dd9ed52.54739349"]
+[2025-05-07 06:52:13] - [INFO] Payment intent succeded saved succesfully  - ["pay_681b031dd9ed52.54739349"]
+[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RM1q0P71JLI6sb913tuFK6V","event_type":"payment_intent.succeeded"}
+[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RM1q0P71JLI6sb91ZcrLXtJ","event_type":"payment_intent.created"}
+[2025-05-07 06:52:14] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9N2Tjc8Gn","event_type":"invoice.created"}
+[2025-05-07 06:52:14] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9X5sOu1nl","event_type":"invoice.finalized"}
+[2025-05-07 06:52:14] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9TEcngaY0","event_type":"invoice.paid"}
+[2025-05-07 06:52:14] - [INFO] Evento de factura recibido: invoice.payment_succeeded - {"event_id":"evt_1RM1q2P71JLI6sb9d26hoq9i","invoice_id":"in_1RM1q1P71JLI6sb9Cnz2MiNT"}
+[2025-05-07 06:52:14] - [INFO] FACTURA MAPEADA - 
+[2025-05-07 06:52:14] - [INFO] Factura procesada y guardada exitosamente - {"id_intern_invoice":"inv_681b031e712ed3.45498025","invoice_id":"in_1RM1q1P71JLI6sb9Cnz2MiNT","amount":"300 eur","status":"paid"}
+[2025-05-07 06:52:14] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9d26hoq9i","event_type":"invoice.payment_succeeded"}

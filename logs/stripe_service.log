@@ -174,3 +174,11 @@
 [2025-05-06 13:02:00] Iniciando createSubscriptionSession() con lookup_key: annual_payment
 [2025-05-06 13:02:00] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
 [2025-05-06 13:02:00] Precio encontrado con ID: price_1RLNsHP71JLI6sb9ez8HJsHt
+[2025-05-07 06:49:54] Servicio inicializado con domain: http://localhost:8000
+[2025-05-07 06:49:54] Iniciando createSubscriptionSession() con lookup_key: annual_payment
+[2025-05-07 06:49:54] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-07 06:49:54] Precio encontrado con ID: price_1RLNsHP71JLI6sb9ez8HJsHt
+[2025-05-07 06:51:49] Servicio inicializado con domain: http://localhost:8000
+[2025-05-07 06:51:49] Iniciando createSubscriptionSession() con lookup_key: monthly_subscriptions
+[2025-05-07 06:51:49] URLs de redirección: success_url=http://localhost:8000/public/success.html, cancel_url=http://localhost:8000/public/cancel.html
+[2025-05-07 06:51:49] Precio encontrado con ID: price_1RLNcyP71JLI6sb92qc9ywRx

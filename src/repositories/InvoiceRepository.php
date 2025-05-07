@@ -10,6 +10,6 @@ interface InvoiceRepository
     public function saveInvoice(InvoiceModel $invoiceModel): void;
     public function getCustomerInvoices(string $customerId): array;
 
-    public function getInvoiceByIdInternId(string $id): ?array;
+    public function getAllInvoices(): ?array;
 
 }

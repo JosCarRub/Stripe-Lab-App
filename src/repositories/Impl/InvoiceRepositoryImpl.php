@@ -51,11 +51,36 @@ class InvoiceRepositoryImpl implements InvoiceRepository
 
     public function getCustomerInvoices(string $customerId): array
     {
-        // TODO: Implement getCustomerInvoices() method.
+        $stmt = $this->db->prepare("
+            SELECT * FROM invoices 
+            WHERE customer_id = :customer_id 
+            ORDER BY created_at DESC
+        ");
+
+        $stmt->execute([':customer_id' => $customerId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getInvoiceByIdInternId(string $id): ?array
+    /**
+     * Obtiene todas las facturas del sistema
+     *
+     * @param int $limit Límite de facturas a recuperar
+     * @param int $offset Desplazamiento para paginación
+     * @return array Lista de todas las facturas
+     */
+    public function getAllInvoices(int $limit = 100, int $offset = 0): array
     {
-        // TODO: Implement getInvoiceByIdInternId() method.
+        $stmt = $this->db->prepare("
+            SELECT * FROM invoices 
+            ORDER BY created_at DESC
+            LIMIT :limit OFFSET :offset
+        ");
+
+        // Necesario para que PDO trate correctamente los parámetros enteros
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

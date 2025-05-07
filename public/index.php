@@ -85,33 +85,15 @@ $plans = [
                 </a>
             </li>
             <li class="index-menu-item">
-                <a href="#" class="index-menu-link">
-                    <i class="fas fa-credit-card"></i>
-                    <span>Pagos</span>
-                </a>
-            </li>
-            <li class="index-menu-item">
-                <a href="#" class="index-menu-link">
+                <a href="invoices.html" class="index-menu-link">
                     <i class="fas fa-file-invoice-dollar"></i>
                     <span>Mis Facturas</span>
                 </a>
             </li>
             <li class="index-menu-item">
                 <a href="#" class="index-menu-link">
-                    <i class="fas fa-users"></i>
-                    <span>Facturas de Clientes</span>
-                </a>
-            </li>
-            <li class="index-menu-item">
-                <a href="#" class="index-menu-link">
                     <i class="fas fa-tachometer-alt"></i>
                     <span>Panel de Control</span>
-                </a>
-            </li>
-            <li class="index-menu-item">
-                <a href="#index-contact" class="index-menu-link">
-                    <i class="fas fa-question-circle"></i>
-                    <span>Ayuda</span>
                 </a>
             </li>
         </ul>
