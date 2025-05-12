@@ -176,4 +176,26 @@ class SubscriptionRepositoryImpl implements SubscriptionRepositoryInterface
             throw new \App\Commons\Exceptions\DatabaseException("Error al contar todas las suscripciones: " . $e->getMessage(), (int)$e->getCode(), $e);
         }
     }
+
+    public function findAll(int $limit = 25, int $offset = 0): array // ASEGÚRATE QUE ESTÉ IMPLEMENTADO
+    {
+        $sql = "SELECT * FROM StripeSubscriptions 
+                ORDER BY created_at_stripe DESC
+                LIMIT :limit OFFSET :offset";
+        DatabaseLogger::query($sql, ['limit' => $limit, 'offset' => $offset]);
+        $subscriptions = [];
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $subscriptions[] = $this->mapRowToSubscriptionModel($row);
+            }
+        } catch (PDOException $e) {
+            DatabaseLogger::error("Error al buscar todas las suscripciones: " . $e->getMessage(), ['sql' => $sql]);
+            throw new DatabaseException("Error al buscar todas las suscripciones: " . $e->getMessage(), (int)$e->getCode(), $e);
+        }
+        return $subscriptions;
+    }
 }

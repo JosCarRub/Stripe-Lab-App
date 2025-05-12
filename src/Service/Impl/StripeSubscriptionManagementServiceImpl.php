@@ -24,14 +24,13 @@ class StripeSubscriptionManagementServiceImpl implements StripeSubscriptionManag
     {
         EventLogger::log(self::class . ": Solicitando cancelación inmediata vía API.", ['subscription_id' => $subscriptionId]);
         try {
-            // Usar delete() para cancelación inmediata.
-            // Stripe por defecto no prorratea al usar delete() a menos que se especifique `invoice_now: true` y/o `prorate: true`.
-            // Para una simple cancelación, delete() es suficiente.
+
+            // el metodo nuevo de stripe para borrar es cancel, antes delete
             $stripeSubscriptionObject = $this->stripeClient->subscriptions->cancel($subscriptionId, []);
 
             EventLogger::log(self::class . ": Suscripción cancelada inmediatamente (respuesta API).", [
                 'subscription_id' => $subscriptionId,
-                'api_status' => $stripeSubscriptionObject->status // Debería ser 'canceled'
+                'api_status' => $stripeSubscriptionObject->status
             ]);
             return $stripeSubscriptionObject;
         } catch (ApiErrorException $e) {

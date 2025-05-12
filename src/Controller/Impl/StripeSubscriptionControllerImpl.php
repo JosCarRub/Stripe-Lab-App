@@ -16,11 +16,10 @@ class StripeSubscriptionControllerImpl implements StripeSubscriptionControllerIn
 {
     public function __construct(
         private SubscriptionRepositoryInterface $subscriptionRepository,
-        private ?StripeSubscriptionManagementServiceInterface $subscriptionManagementService = null // <--- INYECTAR NUEVO SERVICIO (puede ser null si Bootstrap no lo provee)
+        private ?StripeSubscriptionManagementServiceInterface $subscriptionManagementService = null
     ) {
     }
 
-    // ... tus métodos listAllSubscriptions, listCustomerSubscriptions, getSubscriptionDetails se mantienen ...
     public function listAllSubscriptions(int $page = 1, int $limit = 10): array
     {
         EventLogger::log(self::class . ": Solicitando todas las suscripciones.", ['page' => $page, 'limit' => $limit]);
@@ -124,7 +123,7 @@ class StripeSubscriptionControllerImpl implements StripeSubscriptionControllerIn
                     $message = "Suscripción {$subscriptionId} programada para cancelación al final del periodo.";
                     EventLogger::log(self::class . ": " . $message, ['subscription_id' => $subscriptionId]);
                     break;
-                // case 'reactivate': // Ejemplo si implementas reactivación
+                // case 'reactivate': // para implementar reactivación
                 //     $stripeSubscriptionObject = $this->subscriptionManagementService->reactivateSubscription($subscriptionId);
                 //     $message = "Solicitud de reactivación para {$subscriptionId} enviada.";
                 //     break;
@@ -138,7 +137,7 @@ class StripeSubscriptionControllerImpl implements StripeSubscriptionControllerIn
             return [
                 'success' => true,
                 'message' => $message,
-                'stripe_subscription_details' => [ // Datos del objeto devuelto por la API de Stripe
+                'stripe_subscription_details' => [ // datos del objeto devuelto por la API de Stripe
                     'id' => $stripeSubscriptionObject->id,
                     'status' => $stripeSubscriptionObject->status,
                     'cancel_at_period_end' => $stripeSubscriptionObject->cancel_at_period_end,

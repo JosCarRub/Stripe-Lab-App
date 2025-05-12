@@ -158,7 +158,7 @@
 }
 
 /* Estados de suscripción */
-.subscription-status {
+.status-badge {
     display: inline-flex;
     align-items: center;
     padding: 0.35rem 0.75rem;
@@ -187,6 +187,16 @@
     color: var(--warning);
 }
 
+.status-unpaid {
+    background-color: rgba(var(--danger), 0.1);
+    color: var(--danger);
+}
+
+.status-ended {
+    background-color: rgba(var(--dark), 0.1);
+    color: var(--dark);
+}
+
 /* Botones de acción */
 .actions-cell {
     display: flex;
@@ -212,12 +222,12 @@
     color: var(--white);
 }
 
-.action-btn.cancel-btn:hover {
+.action-btn.btn-danger:hover {
     background-color: var(--danger);
 }
 
-.action-btn.info-btn:hover {
-    background-color: var(--info);
+.action-btn.btn-warning:hover {
+    background-color: var(--warning);
 }
 
 /* Spinner de carga */
@@ -232,6 +242,20 @@
     height: 100%;
     background-color: rgba(var(--bg-surface-rgb), 0.7);
     z-index: 20;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(var(--primary-rgb), 0.1);
+    border-radius: 50%;
+    border-top-color: var(--primary);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Estado vacío */
@@ -269,51 +293,45 @@
     padding: 1rem;
 }
 
-.pagination-btn {
-    width: 36px;
-    height: 36px;
-    border-radius: var(--border-radius-md);
+.pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.page-item {
+    margin: 0 2px;
+}
+
+.page-link {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    border-radius: var(--border-radius-md);
     background-color: var(--bg-subtle);
     color: var(--text-secondary);
-    border: none;
+    text-decoration: none;
     transition: all var(--transition-normal);
     font-size: 0.85rem;
+    padding: 0.375rem 0.75rem;
 }
 
-.pagination-btn:hover {
+.page-link:hover {
     background-color: var(--bg-input);
     color: var(--text-primary);
 }
 
-.pagination-btn.active {
+.page-item.active .page-link {
     background-color: var(--primary);
     color: var(--white);
 }
 
-.pagination-info {
-    display: flex;
-    align-items: center;
-    color: var(--text-tertiary);
-    font-size: 0.85rem;
-    margin-left: 1rem;
-}
-
-/* Período de suscripción */
-.subscription-period {
-    display: flex;
-    flex-direction: column;
-}
-
-.period-date {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-}
-
-.period-date-start {
-    margin-bottom: 0.25rem;
+.page-item.disabled .page-link {
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 /* Identificador de cliente */
@@ -327,7 +345,8 @@
 }
 
 /* Botón de refrescar */
-#refresh-my-subscriptions-btn {
+#refresh-my-subscriptions-btn,
+#refresh-all-system-subscriptions-btn {
     width: 36px;
     height: 36px;
     border-radius: var(--border-radius-md);
@@ -340,7 +359,8 @@
     transition: all var(--transition-normal);
 }
 
-#refresh-my-subscriptions-btn:hover {
+#refresh-my-subscriptions-btn:hover,
+#refresh-all-system-subscriptions-btn:hover {
     background-color: var(--primary);
     color: var(--white);
 }
@@ -356,6 +376,27 @@
     color: var(--primary);
     font-family: var(--font-monospace);
     font-size: 0.9rem;
+}
+
+/* Loading Overlay */
+#app-loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-text {
+    color: var(--white);
+    margin-top: 1rem;
+    font-weight: 500;
 }
 
 /* Adaptación a pantallas más pequeñas */
@@ -383,7 +424,7 @@
         font-size: 0.9rem;
     }
 
-    .subscription-status {
+    .status-badge {
         padding: 0.25rem 0.5rem;
         font-size: 0.75rem;
     }

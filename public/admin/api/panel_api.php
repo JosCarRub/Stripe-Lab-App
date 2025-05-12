@@ -2,7 +2,7 @@
 // Configuración de la base de datos
 $dbConfig = [
     'host' => '127.0.0.1',
-    'port' => 3306,
+    'port' => 3307,
     'database' => 'stripe_lab',
     'username' => 'test_user',
     'password' => 'password'
@@ -248,7 +248,7 @@ switch ($action) {
             'password' => $_POST['password']
         ];
 
-        // Probar la conexión con la nueva configuración
+
         $testConnection = connectDB($newConfig);
 
         if (!$testConnection['success']) {

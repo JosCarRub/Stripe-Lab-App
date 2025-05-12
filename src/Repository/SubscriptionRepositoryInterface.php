@@ -35,6 +35,15 @@ interface SubscriptionRepositoryInterface
     public function findByStripeCustomerId(string $stripeCustomerId): array;
 
     public function countByStripeCustomerId(string $stripeCustomerId): int;
+
+    /**
+     * Encuentra todas las suscripciones del sistema, con paginación.
+     * @param int $limit
+     * @param int $offset
+     * @return SubscriptionsModel[]
+     * @throws DatabaseException
+     */
+    public function findAll(int $limit = 25, int $offset = 0): array;
     public function countAll(): int;
 
 }

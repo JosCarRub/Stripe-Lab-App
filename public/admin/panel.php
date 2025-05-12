@@ -2,7 +2,7 @@
 
 $dbConfig = [
     'host' => '127.0.0.1',
-    'port' => 3306,
+    'port' => 3307,
     'database' => 'stripe_lab',
     'username' => 'test_user',
     'password' => 'password'
@@ -184,10 +184,8 @@ function getTableRelationships($pdo, $dbName) {
     return $relationships;
 }
 
-// Conectar a la base de datos
 $dbConnection = connectDB($dbConfig);
 
-// Preparar datos para el frontend
 $frontendData = [
     'connectionStatus' => $dbConnection['success'] ? 'connected' : 'error',
     'dbConfig' => [
@@ -206,14 +204,12 @@ $frontendData = [
     'relationships' => []
 ];
 
-// Si la conexión es exitosa, obtener datos adicionales
 if ($dbConnection['success']) {
     $pdo = $dbConnection['connection'];
     $frontendData['tables'] = getTables($pdo);
     $frontendData['stats'] = getDBStats($pdo, $dbConfig['database']);
     $frontendData['relationships'] = getTableRelationships($pdo, $dbConfig['database']);
 
-    // No necesitamos cerrar la conexión explícitamente con PDO, se cierra al finalizar el script
 }
 
 // Convertir a JSON para usar en JavaScript
@@ -736,10 +732,8 @@ $frontendDataJson = json_encode($frontendData);
         document.getElementById('total-payments').textContent = data.stats.payments;
         document.getElementById('total-subscriptions').textContent = data.stats.subscriptions;
 
-        // Cargar lista de tablas
         loadTableList(data.tables);
 
-        // Inicializar diagrama de relaciones si hay relaciones
         if (data.relationships && data.relationships.length > 0) {
             initRelationshipsDiagram(data.relationships);
         } else {
@@ -839,7 +833,6 @@ $frontendDataJson = json_encode($frontendData);
         document.getElementById('current-table-name').textContent = tableName;
         document.getElementById('preview-table-name').textContent = tableName;
 
-        // En móvil, cerrar el sidebar
         if (window.innerWidth < 992) {
             document.querySelector('.app-container').classList.remove('sidebar-visible');
         }
@@ -926,8 +919,7 @@ $frontendDataJson = json_encode($frontendData);
 
         diagramContainer.innerHTML = htmlContent;
 
-        // Agregar conexiones visuales entre tablas (se implementaría con SVG o líneas CSS)
-        // Esta implementación simplificada solo muestra las tablas, sin conexiones visuales
+
 
         // Agregar evento de clic para seleccionar tablas desde el diagrama
         document.querySelectorAll('.diagram-table').forEach(tableElem => {
@@ -946,13 +938,10 @@ $frontendDataJson = json_encode($frontendData);
         }
     });
 
-    // Cargar los datos de una tabla
     function loadTableData(tableName, page = 1) {
-        // Mostrar indicador de carga
         const dataTable = document.getElementById('data-table');
         dataTable.innerHTML = '<tbody><tr><td colspan="10" class="loading-cell"><div class="spinner"></div></td></tr></tbody>';
 
-        // Realizar solicitud AJAX para obtener los datos
         fetch(`api/panel_api.php?action=get_table_data&table=${encodeURIComponent(tableName)}&page=${page}`)
             .then(response => response.json())
             .then(data => {
@@ -1028,9 +1017,7 @@ $frontendDataJson = json_encode($frontendData);
         };
     }
 
-    // Botón para probar la conexión
     document.getElementById('test-connection-btn').addEventListener('click', function() {
-        // Realizar solicitud AJAX para probar la conexión
         fetch('panel_api.php?action=test_connection')
             .then(response => response.json())
             .then(data => {

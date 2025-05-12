@@ -2794,3 +2794,1401 @@
     "webhooks_delivered_at": null
 }
 ---
+[2025-05-12 17:01:00] [UNHANDLED_STRIPE_EVENT] Event Type: payment_intent.created, Event ID: evt_3RNzioP71JLI6sb91CQJdxRM
+{
+    "id": "pi_3RNzioP71JLI6sb91QZ9YVxk",
+    "object": "payment_intent",
+    "amount": 1000,
+    "amount_capturable": 0,
+    "amount_details": {
+        "tip": []
+    },
+    "amount_received": 0,
+    "application": null,
+    "application_fee_amount": null,
+    "automatic_payment_methods": null,
+    "canceled_at": null,
+    "cancellation_reason": null,
+    "capture_method": "automatic_async",
+    "client_secret": "pi_3RNzioP71JLI6sb91QZ9YVxk_secret_DDj861X0sasgk3eISKwRwAii5",
+    "confirmation_method": "automatic",
+    "created": 1747069258,
+    "currency": "eur",
+    "customer": null,
+    "description": null,
+    "last_payment_error": null,
+    "latest_charge": null,
+    "livemode": false,
+    "metadata": [],
+    "next_action": null,
+    "on_behalf_of": null,
+    "payment_method": null,
+    "payment_method_configuration_details": null,
+    "payment_method_options": {
+        "card": {
+            "installments": null,
+            "mandate_options": null,
+            "network": null,
+            "request_three_d_secure": "automatic"
+        }
+    },
+    "payment_method_types": [
+        "card"
+    ],
+    "processing": null,
+    "receipt_email": null,
+    "review": null,
+    "setup_future_usage": null,
+    "shipping": null,
+    "source": null,
+    "statement_descriptor": null,
+    "statement_descriptor_suffix": null,
+    "status": "requires_payment_method",
+    "transfer_data": null,
+    "transfer_group": null
+}
+---
+[2025-05-12 17:01:01] [UNHANDLED_STRIPE_EVENT] Event Type: charge.updated, Event ID: evt_3RNzioP71JLI6sb910av1UxL
+{
+    "id": "ch_3RNzioP71JLI6sb91hXTVorr",
+    "object": "charge",
+    "amount": 1000,
+    "amount_captured": 1000,
+    "amount_refunded": 0,
+    "application": null,
+    "application_fee": null,
+    "application_fee_amount": null,
+    "balance_transaction": "txn_3RNzioP71JLI6sb91mpT9gr5",
+    "billing_details": {
+        "address": {
+            "city": null,
+            "country": "ES",
+            "line1": null,
+            "line2": null,
+            "postal_code": null,
+            "state": null
+        },
+        "email": "carlos@admin.com",
+        "name": "Carlos",
+        "phone": null,
+        "tax_id": null
+    },
+    "calculated_statement_descriptor": "Stripe",
+    "captured": true,
+    "created": 1747069258,
+    "currency": "eur",
+    "customer": null,
+    "description": null,
+    "destination": null,
+    "dispute": null,
+    "disputed": false,
+    "failure_balance_transaction": null,
+    "failure_code": null,
+    "failure_message": null,
+    "fraud_details": [],
+    "livemode": false,
+    "metadata": [],
+    "on_behalf_of": null,
+    "order": null,
+    "outcome": {
+        "advice_code": null,
+        "network_advice_code": null,
+        "network_decline_code": null,
+        "network_status": "approved_by_network",
+        "reason": null,
+        "risk_level": "normal",
+        "risk_score": 52,
+        "seller_message": "Payment complete.",
+        "type": "authorized"
+    },
+    "paid": true,
+    "payment_intent": "pi_3RNzioP71JLI6sb91QZ9YVxk",
+    "payment_method": "pm_1RNzioP71JLI6sb9XX6oNjNw",
+    "payment_method_details": {
+        "card": {
+            "amount_authorized": 1000,
+            "authorization_code": null,
+            "brand": "visa",
+            "checks": {
+                "address_line1_check": null,
+                "address_postal_code_check": null,
+                "cvc_check": "pass"
+            },
+            "country": "US",
+            "exp_month": 2,
+            "exp_year": 2026,
+            "extended_authorization": {
+                "status": "disabled"
+            },
+            "fingerprint": "H2RjQOzJ2vMTHb1p",
+            "funding": "credit",
+            "incremental_authorization": {
+                "status": "unavailable"
+            },
+            "installments": null,
+            "last4": "4242",
+            "mandate": null,
+            "multicapture": {
+                "status": "unavailable"
+            },
+            "network": "visa",
+            "network_token": {
+                "used": false
+            },
+            "network_transaction_id": "725082106817912",
+            "overcapture": {
+                "maximum_amount_capturable": 1000,
+                "status": "unavailable"
+            },
+            "regulated_status": "unregulated",
+            "three_d_secure": null,
+            "wallet": null
+        },
+        "type": "card"
+    },
+    "radar_options": [],
+    "receipt_email": null,
+    "receipt_number": null,
+    "receipt_url": "https://pay.stripe.com/receipts/payment/CAcaFwoVYWNjdF8xUkhKNjFQNzFKTEk2c2I5KM3SiMEGMgaMWElQfdI6LBZxeMDWM_sCxxGp3Qg27ORVgFEzHDeRjyDn8nkTBiiC3ofXFUvY06o-DSXv",
+    "refunded": false,
+    "review": null,
+    "shipping": null,
+    "source": null,
+    "source_transfer": null,
+    "statement_descriptor": null,
+    "statement_descriptor_suffix": null,
+    "status": "succeeded",
+    "transfer_data": null,
+    "transfer_group": null
+}
+---
+[2025-05-12 17:01:46] [UNHANDLED_STRIPE_EVENT] Event Type: payment_method.attached, Event ID: evt_1RNzjaP71JLI6sb9P85wPmL4
+{
+    "id": "pm_1RNzjXP71JLI6sb9NcRRoEy9",
+    "object": "payment_method",
+    "allow_redisplay": "limited",
+    "billing_details": {
+        "address": {
+            "city": null,
+            "country": "ES",
+            "line1": null,
+            "line2": null,
+            "postal_code": null,
+            "state": null
+        },
+        "email": "test@test.com",
+        "name": "Abraham",
+        "phone": null,
+        "tax_id": null
+    },
+    "card": {
+        "brand": "visa",
+        "checks": {
+            "address_line1_check": null,
+            "address_postal_code_check": null,
+            "cvc_check": "pass"
+        },
+        "country": "US",
+        "display_brand": "visa",
+        "exp_month": 3,
+        "exp_year": 2033,
+        "fingerprint": "H2RjQOzJ2vMTHb1p",
+        "funding": "credit",
+        "generated_from": null,
+        "last4": "4242",
+        "networks": {
+            "available": [
+                "visa"
+            ],
+            "preferred": null
+        },
+        "regulated_status": "unregulated",
+        "three_d_secure_usage": {
+            "supported": true
+        },
+        "wallet": null
+    },
+    "created": 1747069303,
+    "customer": "cus_SIavAuI67rYzeO",
+    "livemode": false,
+    "metadata": [],
+    "type": "card"
+}
+---
+[2025-05-12 17:01:47] [UNHANDLED_STRIPE_EVENT] Event Type: payment_intent.created, Event ID: evt_3RNzjYP71JLI6sb90gWSBAIe
+{
+    "id": "pi_3RNzjYP71JLI6sb90PhZCZX2",
+    "object": "payment_intent",
+    "amount": 300,
+    "amount_capturable": 0,
+    "amount_details": {
+        "tip": []
+    },
+    "amount_received": 0,
+    "application": null,
+    "application_fee_amount": null,
+    "automatic_payment_methods": null,
+    "canceled_at": null,
+    "cancellation_reason": null,
+    "capture_method": "automatic",
+    "client_secret": "pi_3RNzjYP71JLI6sb90PhZCZX2_secret_aDDdxY2JlLn93SYDM73ibKyY8",
+    "confirmation_method": "automatic",
+    "created": 1747069304,
+    "currency": "eur",
+    "customer": "cus_SIavAuI67rYzeO",
+    "description": "Subscription creation",
+    "last_payment_error": null,
+    "latest_charge": null,
+    "livemode": false,
+    "metadata": [],
+    "next_action": null,
+    "on_behalf_of": null,
+    "payment_method": null,
+    "payment_method_configuration_details": null,
+    "payment_method_options": {
+        "card": {
+            "installments": null,
+            "mandate_options": null,
+            "network": null,
+            "request_three_d_secure": "automatic"
+        },
+        "link": {
+            "persistent_token": null
+        }
+    },
+    "payment_method_types": [
+        "card",
+        "link"
+    ],
+    "processing": null,
+    "receipt_email": null,
+    "review": null,
+    "setup_future_usage": "off_session",
+    "shipping": null,
+    "source": null,
+    "statement_descriptor": null,
+    "statement_descriptor_suffix": null,
+    "status": "requires_payment_method",
+    "transfer_data": null,
+    "transfer_group": null
+}
+---
+[2025-05-12 17:01:47] [UNHANDLED_STRIPE_EVENT] Event Type: invoice.created, Event ID: evt_1RNzjbP71JLI6sb9gjImr4iH
+{
+    "id": "in_1RNzjZP71JLI6sb97rR0853H",
+    "object": "invoice",
+    "account_country": "ES",
+    "account_name": "Stripe Lab App",
+    "account_tax_ids": null,
+    "amount_due": 300,
+    "amount_overpaid": 0,
+    "amount_paid": 300,
+    "amount_remaining": 0,
+    "amount_shipping": 0,
+    "application": null,
+    "attempt_count": 0,
+    "attempted": true,
+    "auto_advance": false,
+    "automatic_tax": {
+        "disabled_reason": null,
+        "enabled": false,
+        "liability": null,
+        "provider": null,
+        "status": null
+    },
+    "automatically_finalizes_at": null,
+    "billing_reason": "subscription_create",
+    "collection_method": "charge_automatically",
+    "created": 1747069304,
+    "currency": "eur",
+    "custom_fields": null,
+    "customer": "cus_SIavAuI67rYzeO",
+    "customer_address": {
+        "city": null,
+        "country": "ES",
+        "line1": null,
+        "line2": null,
+        "postal_code": null,
+        "state": null
+    },
+    "customer_email": "test@test.com",
+    "customer_name": "Abraham",
+    "customer_phone": null,
+    "customer_shipping": null,
+    "customer_tax_exempt": "none",
+    "customer_tax_ids": [],
+    "default_payment_method": null,
+    "default_source": null,
+    "default_tax_rates": [],
+    "description": null,
+    "discounts": [],
+    "due_date": null,
+    "effective_at": 1747069304,
+    "ending_balance": 0,
+    "footer": null,
+    "from_invoice": null,
+    "hosted_invoice_url": "https://invoice.stripe.com/i/acct_1RHJ61P71JLI6sb9/test_YWNjdF8xUkhKNjFQNzFKTEk2c2I5LF9TSWF2SXFkTnlwYTBxTE94MkFuQ29pU0xuTEpoMWpXLDEzNzYxMDEwNw0200ys6Q5I4q?s=ap",
+    "invoice_pdf": "https://pay.stripe.com/invoice/acct_1RHJ61P71JLI6sb9/test_YWNjdF8xUkhKNjFQNzFKTEk2c2I5LF9TSWF2SXFkTnlwYTBxTE94MkFuQ29pU0xuTEpoMWpXLDEzNzYxMDEwNw0200ys6Q5I4q/pdf?s=ap",
+    "issuer": {
+        "type": "self"
+    },
+    "last_finalization_error": null,
+    "latest_revision": null,
+    "lines": {
+        "object": "list",
+        "data": [
+            {
+                "id": "il_1RNzjZP71JLI6sb9CzdkNY1Q",
+                "object": "line_item",
+                "amount": 300,
+                "currency": "eur",
+                "description": "1 × Test App (at €3.00 / month)",
+                "discount_amounts": [],
+                "discountable": true,
+                "discounts": [],
+                "invoice": "in_1RNzjZP71JLI6sb97rR0853H",
+                "livemode": false,
+                "metadata": [],
+                "parent": {
+                    "invoice_item_details": null,
+                    "subscription_item_details": {
+                        "invoice_item": null,
+                        "proration": false,
+                        "proration_details": {
+                            "credited_items": null
+                        },
+                        "subscription": "sub_1RNzjZP71JLI6sb91KbSwuBy",
+                        "subscription_item": "si_SIav9XeXyKyYB7"
+                    },
+                    "type": "subscription_item_details"
+                },
+                "period": {
+                    "end": 1749747704,
+                    "start": 1747069304
+                },
+                "pretax_credit_amounts": [],
+                "pricing": {
+                    "price_details": {
+                        "price": "price_1RLNcyP71JLI6sb92qc9ywRx",
+                        "product": "prod_SFsxoaHLKoYbKj"
+                    },
+                    "type": "price_details",
+                    "unit_amount_decimal": "300"
+                },
+                "quantity": 1,
+                "taxes": []
+            }
+        ],
+        "has_more": false,
+        "total_count": 1,
+        "url": "/v1/invoices/in_1RNzjZP71JLI6sb97rR0853H/lines"
+    },
+    "livemode": false,
+    "metadata": [],
+    "next_payment_attempt": null,
+    "number": "98CD073B-0042",
+    "on_behalf_of": null,
+    "parent": {
+        "quote_details": null,
+        "subscription_details": {
+            "metadata": [],
+            "subscription": "sub_1RNzjZP71JLI6sb91KbSwuBy"
+        },
+        "type": "subscription_details"
+    },
+    "payment_settings": {
+        "default_mandate": null,
+        "payment_method_options": {
+            "acss_debit": null,
+            "bancontact": null,
+            "card": {
+                "request_three_d_secure": "automatic"
+            },
+            "customer_balance": null,
+            "konbini": null,
+            "sepa_debit": null,
+            "us_bank_account": null
+        },
+        "payment_method_types": [
+            "card"
+        ]
+    },
+    "period_end": 1747069304,
+    "period_start": 1747069304,
+    "post_payment_credit_notes_amount": 0,
+    "pre_payment_credit_notes_amount": 0,
+    "receipt_number": null,
+    "rendering": null,
+    "shipping_cost": null,
+    "shipping_details": null,
+    "starting_balance": 0,
+    "statement_descriptor": null,
+    "status": "paid",
+    "status_transitions": {
+        "finalized_at": 1747069304,
+        "marked_uncollectible_at": null,
+        "paid_at": 1747069304,
+        "voided_at": null
+    },
+    "subtotal": 300,
+    "subtotal_excluding_tax": 300,
+    "test_clock": null,
+    "total": 300,
+    "total_discount_amounts": [],
+    "total_excluding_tax": 300,
+    "total_pretax_credit_amounts": [],
+    "total_taxes": [],
+    "webhooks_delivered_at": null
+}
+---
+[2025-05-12 17:01:47] [UNHANDLED_STRIPE_EVENT] Event Type: invoice.finalized, Event ID: evt_1RNzjbP71JLI6sb9nrDbUAB6
+{
+    "id": "in_1RNzjZP71JLI6sb97rR0853H",
+    "object": "invoice",
+    "account_country": "ES",
+    "account_name": "Stripe Lab App",
+    "account_tax_ids": null,
+    "amount_due": 300,
+    "amount_overpaid": 0,
+    "amount_paid": 300,
+    "amount_remaining": 0,
+    "amount_shipping": 0,
+    "application": null,
+    "attempt_count": 0,
+    "attempted": true,
+    "auto_advance": false,
+    "automatic_tax": {
+        "disabled_reason": null,
+        "enabled": false,
+        "liability": null,
+        "provider": null,
+        "status": null
+    },
+    "automatically_finalizes_at": null,
+    "billing_reason": "subscription_create",
+    "collection_method": "charge_automatically",
+    "created": 1747069304,
+    "currency": "eur",
+    "custom_fields": null,
+    "customer": "cus_SIavAuI67rYzeO",
+    "customer_address": {
+        "city": null,
+        "country": "ES",
+        "line1": null,
+        "line2": null,
+        "postal_code": null,
+        "state": null
+    },
+    "customer_email": "test@test.com",
+    "customer_name": "Abraham",
+    "customer_phone": null,
+    "customer_shipping": null,
+    "customer_tax_exempt": "none",
+    "customer_tax_ids": [],
+    "default_payment_method": null,
+    "default_source": null,
+    "default_tax_rates": [],
+    "description": null,
+    "discounts": [],
+    "due_date": null,
+    "effective_at": 1747069304,
+    "ending_balance": 0,
+    "footer": null,
+    "from_invoice": null,
+    "hosted_invoice_url": "https://invoice.stripe.com/i/acct_1RHJ61P71JLI6sb9/test_YWNjdF8xUkhKNjFQNzFKTEk2c2I5LF9TSWF2SXFkTnlwYTBxTE94MkFuQ29pU0xuTEpoMWpXLDEzNzYxMDEwNw0200ys6Q5I4q?s=ap",
+    "invoice_pdf": "https://pay.stripe.com/invoice/acct_1RHJ61P71JLI6sb9/test_YWNjdF8xUkhKNjFQNzFKTEk2c2I5LF9TSWF2SXFkTnlwYTBxTE94MkFuQ29pU0xuTEpoMWpXLDEzNzYxMDEwNw0200ys6Q5I4q/pdf?s=ap",
+    "issuer": {
+        "type": "self"
+    },
+    "last_finalization_error": null,
+    "latest_revision": null,
+    "lines": {
+        "object": "list",
+        "data": [
+            {
+                "id": "il_1RNzjZP71JLI6sb9CzdkNY1Q",
+                "object": "line_item",
+                "amount": 300,
+                "currency": "eur",
+                "description": "1 × Test App (at €3.00 / month)",
+                "discount_amounts": [],
+                "discountable": true,
+                "discounts": [],
+                "invoice": "in_1RNzjZP71JLI6sb97rR0853H",
+                "livemode": false,
+                "metadata": [],
+                "parent": {
+                    "invoice_item_details": null,
+                    "subscription_item_details": {
+                        "invoice_item": null,
+                        "proration": false,
+                        "proration_details": {
+                            "credited_items": null
+                        },
+                        "subscription": "sub_1RNzjZP71JLI6sb91KbSwuBy",
+                        "subscription_item": "si_SIav9XeXyKyYB7"
+                    },
+                    "type": "subscription_item_details"
+                },
+                "period": {
+                    "end": 1749747704,
+                    "start": 1747069304
+                },
+                "pretax_credit_amounts": [],
+                "pricing": {
+                    "price_details": {
+                        "price": "price_1RLNcyP71JLI6sb92qc9ywRx",
+                        "product": "prod_SFsxoaHLKoYbKj"
+                    },
+                    "type": "price_details",
+                    "unit_amount_decimal": "300"
+                },
+                "quantity": 1,
+                "taxes": []
+            }
+        ],
+        "has_more": false,
+        "total_count": 1,
+        "url": "/v1/invoices/in_1RNzjZP71JLI6sb97rR0853H/lines"
+    },
+    "livemode": false,
+    "metadata": [],
+    "next_payment_attempt": null,
+    "number": "98CD073B-0042",
+    "on_behalf_of": null,
+    "parent": {
+        "quote_details": null,
+        "subscription_details": {
+            "metadata": [],
+            "subscription": "sub_1RNzjZP71JLI6sb91KbSwuBy"
+        },
+        "type": "subscription_details"
+    },
+    "payment_settings": {
+        "default_mandate": null,
+        "payment_method_options": {
+            "acss_debit": null,
+            "bancontact": null,
+            "card": {
+                "request_three_d_secure": "automatic"
+            },
+            "customer_balance": null,
+            "konbini": null,
+            "sepa_debit": null,
+            "us_bank_account": null
+        },
+        "payment_method_types": [
+            "card"
+        ]
+    },
+    "period_end": 1747069304,
+    "period_start": 1747069304,
+    "post_payment_credit_notes_amount": 0,
+    "pre_payment_credit_notes_amount": 0,
+    "receipt_number": null,
+    "rendering": null,
+    "shipping_cost": null,
+    "shipping_details": null,
+    "starting_balance": 0,
+    "statement_descriptor": null,
+    "status": "paid",
+    "status_transitions": {
+        "finalized_at": 1747069304,
+        "marked_uncollectible_at": null,
+        "paid_at": 1747069304,
+        "voided_at": null
+    },
+    "subtotal": 300,
+    "subtotal_excluding_tax": 300,
+    "test_clock": null,
+    "total": 300,
+    "total_discount_amounts": [],
+    "total_excluding_tax": 300,
+    "total_pretax_credit_amounts": [],
+    "total_taxes": [],
+    "webhooks_delivered_at": null
+}
+---
+[2025-05-12 17:01:47] [UNHANDLED_STRIPE_EVENT] Event Type: invoice.payment_succeeded, Event ID: evt_1RNzjbP71JLI6sb9gkNp69lY
+{
+    "id": "in_1RNzjZP71JLI6sb97rR0853H",
+    "object": "invoice",
+    "account_country": "ES",
+    "account_name": "Stripe Lab App",
+    "account_tax_ids": null,
+    "amount_due": 300,
+    "amount_overpaid": 0,
+    "amount_paid": 300,
+    "amount_remaining": 0,
+    "amount_shipping": 0,
+    "application": null,
+    "attempt_count": 0,
+    "attempted": true,
+    "auto_advance": false,
+    "automatic_tax": {
+        "disabled_reason": null,
+        "enabled": false,
+        "liability": null,
+        "provider": null,
+        "status": null
+    },
+    "automatically_finalizes_at": null,
+    "billing_reason": "subscription_create",
+    "collection_method": "charge_automatically",
+    "created": 1747069304,
+    "currency": "eur",
+    "custom_fields": null,
+    "customer": "cus_SIavAuI67rYzeO",
+    "customer_address": {
+        "city": null,
+        "country": "ES",
+        "line1": null,
+        "line2": null,
+        "postal_code": null,
+        "state": null
+    },
+    "customer_email": "test@test.com",
+    "customer_name": "Abraham",
+    "customer_phone": null,
+    "customer_shipping": null,
+    "customer_tax_exempt": "none",
+    "customer_tax_ids": [],
+    "default_payment_method": null,
+    "default_source": null,
+    "default_tax_rates": [],
+    "description": null,
+    "discounts": [],
+    "due_date": null,
+    "effective_at": 1747069304,
+    "ending_balance": 0,
+    "footer": null,
+    "from_invoice": null,
+    "hosted_invoice_url": "https://invoice.stripe.com/i/acct_1RHJ61P71JLI6sb9/test_YWNjdF8xUkhKNjFQNzFKTEk2c2I5LF9TSWF2SXFkTnlwYTBxTE94MkFuQ29pU0xuTEpoMWpXLDEzNzYxMDEwNw0200ys6Q5I4q?s=ap",
+    "invoice_pdf": "https://pay.stripe.com/invoice/acct_1RHJ61P71JLI6sb9/test_YWNjdF8xUkhKNjFQNzFKTEk2c2I5LF9TSWF2SXFkTnlwYTBxTE94MkFuQ29pU0xuTEpoMWpXLDEzNzYxMDEwNw0200ys6Q5I4q/pdf?s=ap",
+    "issuer": {
+        "type": "self"
+    },
+    "last_finalization_error": null,
+    "latest_revision": null,
+    "lines": {
+        "object": "list",
+        "data": [
+            {
+                "id": "il_1RNzjZP71JLI6sb9CzdkNY1Q",
+                "object": "line_item",
+                "amount": 300,
+                "currency": "eur",
+                "description": "1 × Test App (at €3.00 / month)",
+                "discount_amounts": [],
+                "discountable": true,
+                "discounts": [],
+                "invoice": "in_1RNzjZP71JLI6sb97rR0853H",
+                "livemode": false,
+                "metadata": [],
+                "parent": {
+                    "invoice_item_details": null,
+                    "subscription_item_details": {
+                        "invoice_item": null,
+                        "proration": false,
+                        "proration_details": {
+                            "credited_items": null
+                        },
+                        "subscription": "sub_1RNzjZP71JLI6sb91KbSwuBy",
+                        "subscription_item": "si_SIav9XeXyKyYB7"
+                    },
+                    "type": "subscription_item_details"
+                },
+                "period": {
+                    "end": 1749747704,
+                    "start": 1747069304
+                },
+                "pretax_credit_amounts": [],
+                "pricing": {
+                    "price_details": {
+                        "price": "price_1RLNcyP71JLI6sb92qc9ywRx",
+                        "product": "prod_SFsxoaHLKoYbKj"
+                    },
+                    "type": "price_details",
+                    "unit_amount_decimal": "300"
+                },
+                "quantity": 1,
+                "taxes": []
+            }
+        ],
+        "has_more": false,
+        "total_count": 1,
+        "url": "/v1/invoices/in_1RNzjZP71JLI6sb97rR0853H/lines"
+    },
+    "livemode": false,
+    "metadata": [],
+    "next_payment_attempt": null,
+    "number": "98CD073B-0042",
+    "on_behalf_of": null,
+    "parent": {
+        "quote_details": null,
+        "subscription_details": {
+            "metadata": [],
+            "subscription": "sub_1RNzjZP71JLI6sb91KbSwuBy"
+        },
+        "type": "subscription_details"
+    },
+    "payment_settings": {
+        "default_mandate": null,
+        "payment_method_options": {
+            "acss_debit": null,
+            "bancontact": null,
+            "card": {
+                "request_three_d_secure": "automatic"
+            },
+            "customer_balance": null,
+            "konbini": null,
+            "sepa_debit": null,
+            "us_bank_account": null
+        },
+        "payment_method_types": [
+            "card"
+        ]
+    },
+    "period_end": 1747069304,
+    "period_start": 1747069304,
+    "post_payment_credit_notes_amount": 0,
+    "pre_payment_credit_notes_amount": 0,
+    "receipt_number": null,
+    "rendering": null,
+    "shipping_cost": null,
+    "shipping_details": null,
+    "starting_balance": 0,
+    "statement_descriptor": null,
+    "status": "paid",
+    "status_transitions": {
+        "finalized_at": 1747069304,
+        "marked_uncollectible_at": null,
+        "paid_at": 1747069304,
+        "voided_at": null
+    },
+    "subtotal": 300,
+    "subtotal_excluding_tax": 300,
+    "test_clock": null,
+    "total": 300,
+    "total_discount_amounts": [],
+    "total_excluding_tax": 300,
+    "total_pretax_credit_amounts": [],
+    "total_taxes": [],
+    "webhooks_delivered_at": null
+}
+---
+[2025-05-12 17:10:57] [UNHANDLED_STRIPE_EVENT] Event Type: payment_method.attached, Event ID: evt_1RNzsTP71JLI6sb9W5tGC3fJ
+{
+    "id": "pm_1RNzsQP71JLI6sb9qADbDTL9",
+    "object": "payment_method",
+    "allow_redisplay": "limited",
+    "billing_details": {
+        "address": {
+            "city": null,
+            "country": "ES",
+            "line1": null,
+            "line2": null,
+            "postal_code": null,
+            "state": null
+        },
+        "email": "test@test.com",
+        "name": "Lopera",
+        "phone": null,
+        "tax_id": null
+    },
+    "card": {
+        "brand": "visa",
+        "checks": {
+            "address_line1_check": null,
+            "address_postal_code_check": null,
+            "cvc_check": "pass"
+        },
+        "country": "US",
+        "display_brand": "visa",
+        "exp_month": 2,
+        "exp_year": 2027,
+        "fingerprint": "H2RjQOzJ2vMTHb1p",
+        "funding": "credit",
+        "generated_from": null,
+        "last4": "4242",
+        "networks": {
+            "available": [
+                "visa"
+            ],
+            "preferred": null
+        },
+        "regulated_status": "unregulated",
+        "three_d_secure_usage": {
+            "supported": true
+        },
+        "wallet": null
+    },
+    "created": 1747069854,
+    "customer": "cus_SIb46njMKzhjcL",
+    "livemode": false,
+    "metadata": [],
+    "type": "card"
+}
+---
+[2025-05-12 17:10:57] [UNHANDLED_STRIPE_EVENT] Event Type: payment_intent.created, Event ID: evt_3RNzsRP71JLI6sb90xa0mh2h
+{
+    "id": "pi_3RNzsRP71JLI6sb90e5i4oN7",
+    "object": "payment_intent",
+    "amount": 300,
+    "amount_capturable": 0,
+    "amount_details": {
+        "tip": []
+    },
+    "amount_received": 0,
+    "application": null,
+    "application_fee_amount": null,
+    "automatic_payment_methods": null,
+    "canceled_at": null,
+    "cancellation_reason": null,
+    "capture_method": "automatic",
+    "client_secret": "pi_3RNzsRP71JLI6sb90e5i4oN7_secret_xmwpCU12DpXhR7nsZxmJqM9f5",
+    "confirmation_method": "automatic",
+    "created": 1747069855,
+    "currency": "eur",
+    "customer": "cus_SIb46njMKzhjcL",
+    "description": "Subscription creation",
+    "last_payment_error": null,
+    "latest_charge": null,
+    "livemode": false,
+    "metadata": [],
+    "next_action": null,
+    "on_behalf_of": null,
+    "payment_method": null,
+    "payment_method_configuration_details": null,
+    "payment_method_options": {
+        "card": {
+            "installments": null,
+            "mandate_options": null,
+            "network": null,
+            "request_three_d_secure": "automatic"
+        },
+        "link": {
+            "persistent_token": null
+        }
+    },
+    "payment_method_types": [
+        "card",
+        "link"
+    ],
+    "processing": null,
+    "receipt_email": null,
+    "review": null,
+    "setup_future_usage": "off_session",
+    "shipping": null,
+    "source": null,
+    "statement_descriptor": null,
+    "statement_descriptor_suffix": null,
+    "status": "requires_payment_method",
+    "transfer_data": null,
+    "transfer_group": null
+}
+---
+[2025-05-12 17:10:57] [UNHANDLED_STRIPE_EVENT] Event Type: invoice.created, Event ID: evt_1RNzsTP71JLI6sb9ycx6CrBK
+{
+    "id": "in_1RNzsSP71JLI6sb97fAxk0mn",
+    "object": "invoice",
+    "account_country": "ES",
+    "account_name": "Stripe Lab App",
+    "account_tax_ids": null,
+    "amount_due": 300,
+    "amount_overpaid": 0,
+    "amount_paid": 300,
+    "amount_remaining": 0,
+    "amount_shipping": 0,
+    "application": null,
+    "attempt_count": 0,
+    "attempted": true,
+    "auto_advance": false,
+    "automatic_tax": {
+        "disabled_reason": null,
+        "enabled": false,
+        "liability": null,
+        "provider": null,
+        "status": null
+    },
+    "automatically_finalizes_at": null,
+    "billing_reason": "subscription_create",
+    "collection_method": "charge_automatically",
+    "created": 1747069854,
+    "currency": "eur",
+    "custom_fields": null,
+    "customer": "cus_SIb46njMKzhjcL",
+    "customer_address": {
+        "city": null,
+        "country": "ES",
+        "line1": null,
+        "line2": null,
+        "postal_code": null,
+        "state": null
+    },
+    "customer_email": "test@test.com",
+    "customer_name": "Lopera",
+    "customer_phone": null,
+    "customer_shipping": null,
+    "customer_tax_exempt": "none",
+    "customer_tax_ids": [],
+    "default_payment_method": null,
+    "default_source": null,
+    "default_tax_rates": [],
+    "description": null,
+    "discounts": [],
+    "due_date": null,
+    "effective_at": 1747069854,
+    "ending_balance": 0,
+    "footer": null,
+    "from_invoice": null,
+    "hosted_invoice_url": "https://invoice.stripe.com/i/acct_1RHJ61P71JLI6sb9/test_YWNjdF8xUkhKNjFQNzFKTEk2c2I5LF9TSWI0SGJIRzVxWThTbGxZT045NTVOcGFucmxKMXNGLDEzNzYxMDY1Nw02006L3p9vAv?s=ap",
+    "invoice_pdf": "https://pay.stripe.com/invoice/acct_1RHJ61P71JLI6sb9/test_YWNjdF8xUkhKNjFQNzFKTEk2c2I5LF9TSWI0SGJIRzVxWThTbGxZT045NTVOcGFucmxKMXNGLDEzNzYxMDY1Nw02006L3p9vAv/pdf?s=ap",
+    "issuer": {
+        "type": "self"
+    },
+    "last_finalization_error": null,
+    "latest_revision": null,
+    "lines": {
+        "object": "list",
+        "data": [
+            {
+                "id": "il_1RNzsSP71JLI6sb9I6aqe52w",
+                "object": "line_item",
+                "amount": 300,
+                "currency": "eur",
+                "description": "1 × Test App (at €3.00 / month)",
+                "discount_amounts": [],
+                "discountable": true,
+                "discounts": [],
+                "invoice": "in_1RNzsSP71JLI6sb97fAxk0mn",
+                "livemode": false,
+                "metadata": [],
+                "parent": {
+                    "invoice_item_details": null,
+                    "subscription_item_details": {
+                        "invoice_item": null,
+                        "proration": false,
+                        "proration_details": {
+                            "credited_items": null
+                        },
+                        "subscription": "sub_1RNzsSP71JLI6sb9WZ410nai",
+                        "subscription_item": "si_SIb49yY1yYcIxr"
+                    },
+                    "type": "subscription_item_details"
+                },
+                "period": {
+                    "end": 1749748254,
+                    "start": 1747069854
+                },
+                "pretax_credit_amounts": [],
+                "pricing": {
+                    "price_details": {
+                        "price": "price_1RLNcyP71JLI6sb92qc9ywRx",
+                        "product": "prod_SFsxoaHLKoYbKj"
+                    },
+                    "type": "price_details",
+                    "unit_amount_decimal": "300"
+                },
+                "quantity": 1,
+                "taxes": []
+            }
+        ],
+        "has_more": false,
+        "total_count": 1,
+        "url": "/v1/invoices/in_1RNzsSP71JLI6sb97fAxk0mn/lines"
+    },
+    "livemode": false,
+    "metadata": [],
+    "next_payment_attempt": null,
+    "number": "98CD073B-0043",
+    "on_behalf_of": null,
+    "parent": {
+        "quote_details": null,
+        "subscription_details": {
+            "metadata": [],
+            "subscription": "sub_1RNzsSP71JLI6sb9WZ410nai"
+        },
+        "type": "subscription_details"
+    },
+    "payment_settings": {
+        "default_mandate": null,
+        "payment_method_options": {
+            "acss_debit": null,
+            "bancontact": null,
+            "card": {
+                "request_three_d_secure": "automatic"
+            },
+            "customer_balance": null,
+            "konbini": null,
+            "sepa_debit": null,
+            "us_bank_account": null
+        },
+        "payment_method_types": [
+            "card"
+        ]
+    },
+    "period_end": 1747069854,
+    "period_start": 1747069854,
+    "post_payment_credit_notes_amount": 0,
+    "pre_payment_credit_notes_amount": 0,
+    "receipt_number": null,
+    "rendering": null,
+    "shipping_cost": null,
+    "shipping_details": null,
+    "starting_balance": 0,
+    "statement_descriptor": null,
+    "status": "paid",
+    "status_transitions": {
+        "finalized_at": 1747069854,
+        "marked_uncollectible_at": null,
+        "paid_at": 1747069855,
+        "voided_at": null
+    },
+    "subtotal": 300,
+    "subtotal_excluding_tax": 300,
+    "test_clock": null,
+    "total": 300,
+    "total_discount_amounts": [],
+    "total_excluding_tax": 300,
+    "total_pretax_credit_amounts": [],
+    "total_taxes": [],
+    "webhooks_delivered_at": null
+}
+---
+[2025-05-12 17:10:57] [UNHANDLED_STRIPE_EVENT] Event Type: invoice.finalized, Event ID: evt_1RNzsTP71JLI6sb9ZlCMHd1y
+{
+    "id": "in_1RNzsSP71JLI6sb97fAxk0mn",
+    "object": "invoice",
+    "account_country": "ES",
+    "account_name": "Stripe Lab App",
+    "account_tax_ids": null,
+    "amount_due": 300,
+    "amount_overpaid": 0,
+    "amount_paid": 300,
+    "amount_remaining": 0,
+    "amount_shipping": 0,
+    "application": null,
+    "attempt_count": 0,
+    "attempted": true,
+    "auto_advance": false,
+    "automatic_tax": {
+        "disabled_reason": null,
+        "enabled": false,
+        "liability": null,
+        "provider": null,
+        "status": null
+    },
+    "automatically_finalizes_at": null,
+    "billing_reason": "subscription_create",
+    "collection_method": "charge_automatically",
+    "created": 1747069854,
+    "currency": "eur",
+    "custom_fields": null,
+    "customer": "cus_SIb46njMKzhjcL",
+    "customer_address": {
+        "city": null,
+        "country": "ES",
+        "line1": null,
+        "line2": null,
+        "postal_code": null,
+        "state": null
+    },
+    "customer_email": "test@test.com",
+    "customer_name": "Lopera",
+    "customer_phone": null,
+    "customer_shipping": null,
+    "customer_tax_exempt": "none",
+    "customer_tax_ids": [],
+    "default_payment_method": null,
+    "default_source": null,
+    "default_tax_rates": [],
+    "description": null,
+    "discounts": [],
+    "due_date": null,
+    "effective_at": 1747069854,
+    "ending_balance": 0,
+    "footer": null,
+    "from_invoice": null,
+    "hosted_invoice_url": "https://invoice.stripe.com/i/acct_1RHJ61P71JLI6sb9/test_YWNjdF8xUkhKNjFQNzFKTEk2c2I5LF9TSWI0SGJIRzVxWThTbGxZT045NTVOcGFucmxKMXNGLDEzNzYxMDY1Nw02006L3p9vAv?s=ap",
+    "invoice_pdf": "https://pay.stripe.com/invoice/acct_1RHJ61P71JLI6sb9/test_YWNjdF8xUkhKNjFQNzFKTEk2c2I5LF9TSWI0SGJIRzVxWThTbGxZT045NTVOcGFucmxKMXNGLDEzNzYxMDY1Nw02006L3p9vAv/pdf?s=ap",
+    "issuer": {
+        "type": "self"
+    },
+    "last_finalization_error": null,
+    "latest_revision": null,
+    "lines": {
+        "object": "list",
+        "data": [
+            {
+                "id": "il_1RNzsSP71JLI6sb9I6aqe52w",
+                "object": "line_item",
+                "amount": 300,
+                "currency": "eur",
+                "description": "1 × Test App (at €3.00 / month)",
+                "discount_amounts": [],
+                "discountable": true,
+                "discounts": [],
+                "invoice": "in_1RNzsSP71JLI6sb97fAxk0mn",
+                "livemode": false,
+                "metadata": [],
+                "parent": {
+                    "invoice_item_details": null,
+                    "subscription_item_details": {
+                        "invoice_item": null,
+                        "proration": false,
+                        "proration_details": {
+                            "credited_items": null
+                        },
+                        "subscription": "sub_1RNzsSP71JLI6sb9WZ410nai",
+                        "subscription_item": "si_SIb49yY1yYcIxr"
+                    },
+                    "type": "subscription_item_details"
+                },
+                "period": {
+                    "end": 1749748254,
+                    "start": 1747069854
+                },
+                "pretax_credit_amounts": [],
+                "pricing": {
+                    "price_details": {
+                        "price": "price_1RLNcyP71JLI6sb92qc9ywRx",
+                        "product": "prod_SFsxoaHLKoYbKj"
+                    },
+                    "type": "price_details",
+                    "unit_amount_decimal": "300"
+                },
+                "quantity": 1,
+                "taxes": []
+            }
+        ],
+        "has_more": false,
+        "total_count": 1,
+        "url": "/v1/invoices/in_1RNzsSP71JLI6sb97fAxk0mn/lines"
+    },
+    "livemode": false,
+    "metadata": [],
+    "next_payment_attempt": null,
+    "number": "98CD073B-0043",
+    "on_behalf_of": null,
+    "parent": {
+        "quote_details": null,
+        "subscription_details": {
+            "metadata": [],
+            "subscription": "sub_1RNzsSP71JLI6sb9WZ410nai"
+        },
+        "type": "subscription_details"
+    },
+    "payment_settings": {
+        "default_mandate": null,
+        "payment_method_options": {
+            "acss_debit": null,
+            "bancontact": null,
+            "card": {
+                "request_three_d_secure": "automatic"
+            },
+            "customer_balance": null,
+            "konbini": null,
+            "sepa_debit": null,
+            "us_bank_account": null
+        },
+        "payment_method_types": [
+            "card"
+        ]
+    },
+    "period_end": 1747069854,
+    "period_start": 1747069854,
+    "post_payment_credit_notes_amount": 0,
+    "pre_payment_credit_notes_amount": 0,
+    "receipt_number": null,
+    "rendering": null,
+    "shipping_cost": null,
+    "shipping_details": null,
+    "starting_balance": 0,
+    "statement_descriptor": null,
+    "status": "paid",
+    "status_transitions": {
+        "finalized_at": 1747069854,
+        "marked_uncollectible_at": null,
+        "paid_at": 1747069855,
+        "voided_at": null
+    },
+    "subtotal": 300,
+    "subtotal_excluding_tax": 300,
+    "test_clock": null,
+    "total": 300,
+    "total_discount_amounts": [],
+    "total_excluding_tax": 300,
+    "total_pretax_credit_amounts": [],
+    "total_taxes": [],
+    "webhooks_delivered_at": null
+}
+---
+[2025-05-12 17:10:58] [UNHANDLED_STRIPE_EVENT] Event Type: invoice.payment_succeeded, Event ID: evt_1RNzsTP71JLI6sb96AUt2CG3
+{
+    "id": "in_1RNzsSP71JLI6sb97fAxk0mn",
+    "object": "invoice",
+    "account_country": "ES",
+    "account_name": "Stripe Lab App",
+    "account_tax_ids": null,
+    "amount_due": 300,
+    "amount_overpaid": 0,
+    "amount_paid": 300,
+    "amount_remaining": 0,
+    "amount_shipping": 0,
+    "application": null,
+    "attempt_count": 0,
+    "attempted": true,
+    "auto_advance": false,
+    "automatic_tax": {
+        "disabled_reason": null,
+        "enabled": false,
+        "liability": null,
+        "provider": null,
+        "status": null
+    },
+    "automatically_finalizes_at": null,
+    "billing_reason": "subscription_create",
+    "collection_method": "charge_automatically",
+    "created": 1747069854,
+    "currency": "eur",
+    "custom_fields": null,
+    "customer": "cus_SIb46njMKzhjcL",
+    "customer_address": {
+        "city": null,
+        "country": "ES",
+        "line1": null,
+        "line2": null,
+        "postal_code": null,
+        "state": null
+    },
+    "customer_email": "test@test.com",
+    "customer_name": "Lopera",
+    "customer_phone": null,
+    "customer_shipping": null,
+    "customer_tax_exempt": "none",
+    "customer_tax_ids": [],
+    "default_payment_method": null,
+    "default_source": null,
+    "default_tax_rates": [],
+    "description": null,
+    "discounts": [],
+    "due_date": null,
+    "effective_at": 1747069854,
+    "ending_balance": 0,
+    "footer": null,
+    "from_invoice": null,
+    "hosted_invoice_url": "https://invoice.stripe.com/i/acct_1RHJ61P71JLI6sb9/test_YWNjdF8xUkhKNjFQNzFKTEk2c2I5LF9TSWI0SGJIRzVxWThTbGxZT045NTVOcGFucmxKMXNGLDEzNzYxMDY1Nw02006L3p9vAv?s=ap",
+    "invoice_pdf": "https://pay.stripe.com/invoice/acct_1RHJ61P71JLI6sb9/test_YWNjdF8xUkhKNjFQNzFKTEk2c2I5LF9TSWI0SGJIRzVxWThTbGxZT045NTVOcGFucmxKMXNGLDEzNzYxMDY1Nw02006L3p9vAv/pdf?s=ap",
+    "issuer": {
+        "type": "self"
+    },
+    "last_finalization_error": null,
+    "latest_revision": null,
+    "lines": {
+        "object": "list",
+        "data": [
+            {
+                "id": "il_1RNzsSP71JLI6sb9I6aqe52w",
+                "object": "line_item",
+                "amount": 300,
+                "currency": "eur",
+                "description": "1 × Test App (at €3.00 / month)",
+                "discount_amounts": [],
+                "discountable": true,
+                "discounts": [],
+                "invoice": "in_1RNzsSP71JLI6sb97fAxk0mn",
+                "livemode": false,
+                "metadata": [],
+                "parent": {
+                    "invoice_item_details": null,
+                    "subscription_item_details": {
+                        "invoice_item": null,
+                        "proration": false,
+                        "proration_details": {
+                            "credited_items": null
+                        },
+                        "subscription": "sub_1RNzsSP71JLI6sb9WZ410nai",
+                        "subscription_item": "si_SIb49yY1yYcIxr"
+                    },
+                    "type": "subscription_item_details"
+                },
+                "period": {
+                    "end": 1749748254,
+                    "start": 1747069854
+                },
+                "pretax_credit_amounts": [],
+                "pricing": {
+                    "price_details": {
+                        "price": "price_1RLNcyP71JLI6sb92qc9ywRx",
+                        "product": "prod_SFsxoaHLKoYbKj"
+                    },
+                    "type": "price_details",
+                    "unit_amount_decimal": "300"
+                },
+                "quantity": 1,
+                "taxes": []
+            }
+        ],
+        "has_more": false,
+        "total_count": 1,
+        "url": "/v1/invoices/in_1RNzsSP71JLI6sb97fAxk0mn/lines"
+    },
+    "livemode": false,
+    "metadata": [],
+    "next_payment_attempt": null,
+    "number": "98CD073B-0043",
+    "on_behalf_of": null,
+    "parent": {
+        "quote_details": null,
+        "subscription_details": {
+            "metadata": [],
+            "subscription": "sub_1RNzsSP71JLI6sb9WZ410nai"
+        },
+        "type": "subscription_details"
+    },
+    "payment_settings": {
+        "default_mandate": null,
+        "payment_method_options": {
+            "acss_debit": null,
+            "bancontact": null,
+            "card": {
+                "request_three_d_secure": "automatic"
+            },
+            "customer_balance": null,
+            "konbini": null,
+            "sepa_debit": null,
+            "us_bank_account": null
+        },
+        "payment_method_types": [
+            "card"
+        ]
+    },
+    "period_end": 1747069854,
+    "period_start": 1747069854,
+    "post_payment_credit_notes_amount": 0,
+    "pre_payment_credit_notes_amount": 0,
+    "receipt_number": null,
+    "rendering": null,
+    "shipping_cost": null,
+    "shipping_details": null,
+    "starting_balance": 0,
+    "statement_descriptor": null,
+    "status": "paid",
+    "status_transitions": {
+        "finalized_at": 1747069854,
+        "marked_uncollectible_at": null,
+        "paid_at": 1747069855,
+        "voided_at": null
+    },
+    "subtotal": 300,
+    "subtotal_excluding_tax": 300,
+    "test_clock": null,
+    "total": 300,
+    "total_discount_amounts": [],
+    "total_excluding_tax": 300,
+    "total_pretax_credit_amounts": [],
+    "total_taxes": [],
+    "webhooks_delivered_at": null
+}
+---
