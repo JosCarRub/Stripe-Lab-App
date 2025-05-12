@@ -1,0 +1,87 @@
+Por favor, genera la estructura y el contenido para una documentación web (HTML con Bootstrap 5) para una aplicación PHP llamada "StripeLabApp". Esta aplicación sirve como un proyecto de prueba y aprendizaje para integrar Stripe, manejando pagos únicos y suscripciones.
+
+La documentación debe estar organizada y ser fácil de navegar, dirigida tanto a desarrolladores que quieran entender la aplicación como a usuarios (hipotéticos) que quieran saber cómo funciona. Debe incluir diagramas generados con Mermaid.js donde sea apropiado.
+
+**Secciones Principales de la Documentación:**
+
+**1. Introducción a StripeLabApp:**
+    *   Propósito de la aplicación (aprendizaje, prueba de integración con Stripe).
+    *   Breve descripción de las funcionalidades principales (pagos únicos, suscripciones, manejo de webhooks, visualización de datos).
+
+**2. Guía de Inicio Rápido:**
+    *   Requisitos previos (PHP, Composer, MySQL, cuenta de Stripe, Stripe CLI).
+    *   Pasos de instalación:
+        *   Clonar repositorio.
+        *   `composer install`.
+        *   Configuración del archivo `.env` (detallar variables importantes: claves de Stripe, lookup keys de precios, credenciales de BD, `APP_DOMAIN`).
+        *   Configuración de la base de datos (mencionar Docker Compose opcional y creación manual de tablas con `database/tables.txt`).
+        *   Iniciar el servidor PHP local.
+        *   Configurar el webhook de Stripe con `stripe listen` y actualizar `STRIPE_WEBHOOK_SECRET`.
+    *   Probar la aplicación (sugerir usar `stripe trigger` y el flujo de UI).
+
+**3. Arquitectura de la Aplicación:**
+    *   **Diagrama de Componentes (Mermaid):** Mostrar las capas principales (`Controller`, `Service`, `Strategy`, `Mapper`, `Factory`, `Repository`, `Commons`) y cómo interactúan.
+    *   **Explicación de cada Capa:**
+        *   `Commons`: DTOs, Entidades, Enums, Excepciones, Loggers.
+        *   `config`: `Bootstrap.php` (explicar su rol como Service Locator/DI simple), `DatabaseConnection.php`.
+        *   `public`: Puntos de entrada (`index.php`, `webhook.php`, scripts de creación de sesión, vistas).
+        *   `src`: Detallar subdirectorios (`Controller`, `Service`, etc.) y su responsabilidad.
+    *   **Flujo de Datos Principal (Diagrama de Secuencia - Mermaid):**
+        *   **Flujo de Creación de Sesión de Checkout:** Desde `index.php` -> JS `fetch` -> `create_checkout_session.php` -> `StripeCheckoutSessionService` -> API de Stripe -> Redirección.
+        *   **Flujo de Manejo de Webhook:** Stripe -> `webhook.php` -> `StripeWebhookController` -> `StripeWebhookService` -> (Selección de Strategy) -> `Strategy` -> `Mapper` -> `Factory` -> `Repository` -> Base de Datos.
+
+**4. Integración con Stripe - Conceptos Clave y Flujos:**
+    *   **Stripe Checkout:**
+        *   Explicación de cómo se usa para pagos únicos y suscripciones.
+        *   Rol de `StripeCheckoutSessionService`.
+        *   Importancia de `success_url` y `cancel_url`.
+    *   **Webhooks de Stripe:**
+        *   Importancia de los webhooks para la sincronización de datos.
+        *   Verificación de firmas (`StripeWebhookService::constructEvent`).
+        *   **Patrón Strategy para Manejar Eventos:** Explicar por qué se usa y cómo funciona (`isApplicable`, `process`).
+    *   **Eventos de Stripe Manejados (Detalle por evento):**
+        Para cada uno de los siguientes eventos, explicar brevemente qué significa, qué estrategia lo maneja en la app, y qué acciones principales realiza esa estrategia (qué datos se mapean, qué entidades se crean/actualizan, qué se guarda en BD).
+        *   `checkout.session.completed`
+        *   `customer.created` / `customer.updated`
+        *   `payment_intent.succeeded` (explicar la lógica para diferenciar pagos únicos de pagos de facturas de suscripción)
+        *   `charge.succeeded` (rol en obtener `receipt_url`)
+        *   `customer.subscription.created` (creación en BD, obtención de email del cliente)
+        *   `customer.subscription.updated` (actualización de estado, periodos)
+        *   `customer.subscription.deleted` (marcar como cancelada/finalizada)
+        *   `invoice.paid` (creación de transacción, actualización de `latest_transaction_id` en suscripción)
+    *   **Payloads de Ejemplo (Simplificados):** Para cada evento clave, mostrar un snippet JSON del payload de Stripe y cómo se mapea a los DTOs de la aplicación.
+    *   **Idempotencia en Webhooks:** Mencionar brevemente por qué es importante y cómo se maneja (ej. verificar si un registro ya existe antes de crearlo).
+
+**5. Diseño de Base de Datos:**
+    *   **Diagrama Entidad-Relación (Mermaid):** Mostrar las tablas `StripeTransactions` y `StripeSubscriptions` y sus relaciones.
+    *   **Descripción de Tablas y Columnas Clave:**
+        *   `StripeTransactions`: `transaction_id` (autoincremental), `transaction_type`, IDs de Stripe (`stripe_payment_intent_id`, `stripe_invoice_id`, `stripe_subscription_id`), `document_url`, `pdf_url`.
+        *   `StripeSubscriptions`: `subscription_id` (PK de Stripe), `status`, `stripe_price_id`, `current_period_start/end`, `latest_transaction_id` (FK).
+
+**6. Guía de Uso del Frontend:**
+    *   Breve descripción de las páginas principales:
+        *   `index.php` (o la página de inicio de pagos).
+        *   `invoices.php` (cómo ver todas las facturas, cómo buscar por cliente).
+        *   `view-subscriptions.php` (cómo ver todas las suscripciones, cómo buscar por cliente, cómo cancelar).
+    *   Uso de tarjetas de prueba de Stripe.
+
+**7. Logging y Depuración:**
+    *   Descripción de los diferentes archivos de log (`events.log`, `errors.log`, `database.log`, `stripe_payloads.log`, `unhandled_stripe_events.log`) y qué información contienen.
+    *   Consejos para depurar problemas comunes.
+
+**8. Desarrollo y Ampliación:**
+    *   Cómo añadir soporte para nuevos eventos de webhook (crear DTO, Mapper, Strategy, registrar en Bootstrap).
+    *   Sugerencias para futuras mejoras (autenticación de usuarios, panel de admin más completo, etc.).
+
+**Formato y Estilo:**
+*   Utilizar HTML semántico.
+*   Aplicar estilos de Bootstrap 5 para una apariencia limpia y profesional.
+*   Incluir una barra de navegación lateral o superior para facilitar el acceso a las diferentes secciones.
+*   Usar bloques de código (`<pre><code>`) para ejemplos de código, comandos y configuraciones.
+*   Integrar diagramas Mermaid.js para los flujos y la arquitectura. (Ej. ````mermaid graph TD; A-->B; ````)
+
+**Consideraciones Adicionales para el Modelo:**
+*   Genera el contenido de cada sección de forma detallada.
+*   Donde se mencionan archivos o clases específicas, usa las rutas y nombres de la estructura de directorios proporcionada.
+*   Los diagramas Mermaid deben ser sintácticamente correctos.
+*   La documentación debe ser clara, concisa y útil para alguien que quiera entender o extender la aplicación.

@@ -227,159 +227,71 @@ use App\Commons\Enums\StripeProductsTypeEnum;
                     </div>
 
                     <div class="feature-card">
-                        <div class="feature-icon security-icon">
-                            <i class="fas fa-shield-alt"></i>
+                        <div class="feature-icon analytics-icon">
+                            <i class="fas fa-tachometer-alt"></i>
                         </div>
-                        <h3 class="feature-title">Seguridad</h3>
-                        <p class="feature-desc">Protección avanzada contra fraudes, cifrado SSL y cumplimiento con estándares PCI DSS.</p>
+                        <h3 class="feature-title">Panel de Control</h3>
+                        <p class="feature-desc">Visualiza y gestiona todas las tablas alojadas en el contenedor de forma intuitiva y completa desde un único panel.</p>
                     </div>
 
                     <div class="feature-card">
-                        <div class="feature-icon analytics-icon">
-                            <i class="fas fa-chart-pie"></i>
+                        <div class="feature-icon security-icon">
+                            <i class="fas fa-list-alt"></i>
                         </div>
-                        <h3 class="feature-title">Análisis</h3>
-                        <p class="feature-desc">Estadísticas detalladas sobre ingresos, conversiones y comportamiento de clientes.</p>
+                        <h3 class="feature-title">Sistema de Logs</h3>
+                        <p class="feature-desc">Monitoriza en tiempo real todas las operaciones y eventos que ocurren en el servidor con registro detallado y personalizable.</p>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon integration-icon">
-                            <i class="fas fa-plug"></i>
+                            <i class="fas fa-book"></i>
                         </div>
-                        <h3 class="feature-title">Integración</h3>
-                        <p class="feature-desc">Conecta fácilmente con otras plataformas mediante webhooks y nuestra API RESTful.</p>
+                        <h3 class="feature-title">Documentación</h3>
+                        <p class="feature-desc">Accede a guías detalladas, tutoriales y referencia técnica completa de la API directamente desde la aplicación.</p>
                     </div>
                 </div>
             </section>
 
+            <!-- La sección pricing-section ha sido removida -->
+            <!--
             <section class="pricing-section">
-                <div class="section-header">
-                    <h2 class="section-title">Planes y Precios</h2>
-                    <p class="section-subtitle">Selecciona la opción que mejor se adapte a tus necesidades</p>
-
-                    <div class="pricing-tabs">
-                        <button class="pricing-tab active" data-tab="onetime">Pago Único</button>
-                        <button class="pricing-tab" data-tab="subscription">Suscripciones</button>
-                    </div>
-                </div>
-
-                <div class="pricing-container">
-                    <!-- Pago Único Tab -->
-                    <div class="pricing-panel active" id="onetime-panel">
-                        <?php
-                        $oneTimePlanData = $plans[StripeProductsTypeEnum::ONE_PAYMENT->value] ?? [
-                            'name' => 'Error: Plan Pago Único No Configurado',
-                            'price' => 'N/A',
-                            'description' => 'Contacte a soporte.',
-                            'lookup_key' => ''
-                        ];
-                        ?>
-                        <div class="pricing-card premium">
-                            <div class="pricing-badge">Recomendado</div>
-                            <div class="pricing-header">
-                                <div class="pricing-icon">
-                                    <i class="fas fa-gem"></i>
-                                </div>
-                                <h3 class="pricing-name"><?= htmlspecialchars($oneTimePlanData['name']) ?></h3>
-                                <div class="pricing-price"><?= htmlspecialchars($oneTimePlanData['price']) ?></div>
-                                <div class="pricing-description"><?= htmlspecialchars($oneTimePlanData['description']) ?></div>
-                            </div>
-                            <div class="pricing-action">
-                                <button id="single-payment-btn" class="btn btn-primary btn-block"
-                                        data-lookup="<?= htmlspecialchars($oneTimePlanData['lookup_key']) ?>">
-                                    <i class="fas fa-credit-card"></i>
-                                    <span>Realizar Pago</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Suscripciones Tab -->
-                    <div class="pricing-panel" id="subscription-panel">
-                        <div class="pricing-cards">
-                            <?php
-                            $subscriptionPlans = array_filter($plans, function($key) {
-                                return $key !== StripeProductsTypeEnum::ONE_PAYMENT->value;
-                            }, ARRAY_FILTER_USE_KEY);
-
-                            if (empty($subscriptionPlans)) : ?>
-                                <p class="empty-message">No hay planes de suscripción disponibles en este momento.</p>
-                            <?php else:
-                                foreach ($subscriptionPlans as $type => $plan):
-                                    $planName = $plan['name'] ?? 'Plan Desconocido';
-                                    $planPrice = $plan['price'] ?? 'N/A';
-                                    $planPeriod = $plan['period'] ?? '';
-                                    $planDescription = $plan['description'] ?? 'Sin descripción.';
-                                    $planFeatures = $plan['features'] ?? [];
-                                    $planLookupKey = $plan['lookup_key'] ?? '';
-                                    $isHighlighted = $plan['highlight'] ?? false;
-                                    ?>
-                                    <div class="pricing-card <?= $isHighlighted ? 'premium' : '' ?>">
-                                        <?php if ($isHighlighted): ?>
-                                            <div class="pricing-badge">Recomendado</div>
-                                        <?php endif; ?>
-                                        <div class="pricing-header">
-                                            <div class="pricing-icon">
-                                                <i class="fas <?= $isHighlighted ? 'fa-crown' : 'fa-check-circle' ?>"></i>
-                                            </div>
-                                            <h3 class="pricing-name"><?= htmlspecialchars($planName) ?></h3>
-                                            <div class="pricing-price"><?= htmlspecialchars($planPrice) ?></div>
-                                            <div class="pricing-period">por <?= htmlspecialchars($planPeriod) ?></div>
-                                            <div class="pricing-description"><?= htmlspecialchars($planDescription) ?></div>
-                                        </div>
-                                        <div class="pricing-features">
-                                            <?php foreach ($planFeatures as $feature): ?>
-                                                <div class="pricing-feature">
-                                                    <i class="fas fa-check"></i>
-                                                    <span><?= htmlspecialchars($feature) ?></span>
-                                                </div>
-                                            <?php endforeach; ?>
-                                        </div>
-                                        <div class="pricing-action">
-                                            <button class="btn <?= $isHighlighted ? 'btn-primary' : 'btn-outline' ?> btn-block subscription-btn"
-                                                    data-type="<?= htmlspecialchars($type) ?>"
-                                                    data-lookup="<?= htmlspecialchars($planLookupKey) ?>">
-                                                <i class="fas fa-check-circle"></i>
-                                                <span>Suscribirse</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                <?php endforeach;
-                            endif; ?>
-                        </div>
-                    </div>
-                </div>
+                ...código removido...
             </section>
+            -->
 
             <section class="integration-section">
                 <div class="section-header">
                     <h2 class="section-title">Integración sin Complicaciones</h2>
-                    <p class="section-subtitle">Conecta StripeLabApp con tu ecosistema tecnológico en minutos</p>
+                    <p class="section-subtitle">Conecta StripeLabApp con una base de datos utilizando este docker compose</p>
                 </div>
 
                 <div class="code-snippet">
                     <div class="code-header">
-                        <span class="code-language">JavaScript</span>
+                        <span class="code-language">docker-compose.yml</span>
                         <button class="copy-button" data-clipboard-target="#integration-code">
                             <i class="fas fa-copy"></i>
                         </button>
                     </div>
-                    <pre class="code-content"><code id="integration-code">// Inicializar StripeLabApp
-const stripeLab = new StripeLabApp({
-  apiKey: 'sk_test_your_key',
-  options: {
-    locale: 'es',
-    currency: 'EUR'
-  }
-});
+                    <pre class="code-content"><code id="integration-code">version: '3.8'
 
-// Crear un checkout de pago único
-const checkout = await stripeLab.createCheckout({
-  amount: 2500, // 25.00 EUR
-  description: 'Compra premium',
-  successUrl: '/thank-you',
-  cancelUrl: '/cancel'
-});</code></pre>
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: stripe_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: stripe_lab
+      MYSQL_USER: test_user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+
+volumes:
+  mysql_data:</code></pre>
                 </div>
 
                 <div class="integration-platforms">
@@ -393,7 +305,7 @@ const checkout = await stripeLab.createCheckout({
                         <i class="fab fa-stripe"></i>
                     </div>
                     <div class="platform-icon">
-                        <i class="fab fa-composer"></i>
+                        <i class="fab fa-docker"></i>
                     </div>
                 </div>
             </section>
@@ -416,7 +328,6 @@ const checkout = await stripeLab.createCheckout({
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // STRIPE_PUBLISHABLE_KEY ahora es una constante PHP definida por Bootstrap
     const stripe = Stripe('<?= STRIPE_PUBLISHABLE_KEY ?>');
     const loadingOverlay = document.getElementById('app-loading-overlay');
 
