@@ -3,208 +3,351 @@ declare(strict_types=1);
 
 namespace config;
 
-use App\controllers\Impl\StripeInvoiceControllerImpl;
-use App\controllers\Impl\StripeWebhookControllerImpl;
-use App\controllers\StripeInvoiceController;
-use App\controllers\StripeWebhookController;
-use App\mappers\StripeInvoiceMapper;
-use App\repositories\Impl\InvoiceRepositoryImpl;
-use App\repositories\Impl\PaymentRepositoryImpl;
-use App\repositories\InvoiceRepository;
-use App\repositories\PaymentRepository;
-use App\services\Impl\StripeCheckoutSessionServiceImpl;
-use App\services\Impl\StripeWebhookServiceImpl;
-use App\services\StripeCheckoutSessionService;
-use App\services\StripeWebhookService;
-use App\strategy\Impl\StripeStrategyCheckoutSessionCompleted;
-use App\strategy\Impl\StripeStrategyInvoicePaymentSucceeded;
-use App\strategy\Impl\StripeStrategyPaymentIntentFailed;
-use App\strategy\Impl\StripeStrategyPaymentIntentSucceed;
-use App\mappers\StripePaymentIntentMapper;
-use PDO;
+// --- Vendor ---
 
-/**
- * Clase de configuración para cargar todas las dependencias necesarias
- * para el procesamiento de webhooks de Stripe.
- */
+use Dotenv\Dotenv;
+use PDO;
+use Stripe\StripeClient;
+use Stripe\Exception\AuthenticationException as StripeAuthenticationException; // Alias para evitar colisión
+
+
+// Commons
+use App\Commons\Loggers\EventLogger;
+use App\Commons\Loggers\ErrorLogger;
+use App\Commons\Loggers\DatabaseLogger;
+use App\Commons\Loggers\StripePayloadLogger;
+use App\Commons\Enums\StripeProductsTypeEnum;
+use App\Commons\Exceptions\ConfigurationException;
+
+// Controllers
+use App\Controller\Impl\StripeWebhookControllerImpl;
+use App\Controller\StripeWebhookControllerInterface;
+use App\Controller\Impl\StripeInvoiceControllerImpl;
+use App\Controller\StripeInvoiceControllerInterface;
+
+
+// Mappers
+use App\Mappers\CheckoutSessionMapper;
+use App\Mappers\CustomerMapper;
+use App\Mappers\PaymentIntentMapper;
+use App\Mappers\ChargeMapper;
+use App\Mappers\SubscriptionMapper;
+use App\Mappers\InvoiceMapper;
+
+// Factories
+use App\Factories\TransactionModelFactory;
+use App\Factories\SubscriptionModelFactory;
+
+// Repositories
+use App\Repository\Impl\TransactionRepositoryImpl;
+use App\Repository\Impl\SubscriptionRepositoryImpl;
+use App\Repository\TransactionRepositoryInterface;
+use App\Repository\SubscriptionRepositoryInterface;
+use App\Repository\Impl\InvoiceRepositoryImpl;
+use App\Repository\InvoiceRepositoryInterface;
+
+// Services
+use App\Service\Impl\StripeCheckoutSessionServiceImpl;
+use App\Service\Impl\StripeWebhookServiceImpl;
+use App\Service\StripeCheckoutServiceInterface;
+use App\Service\StripeWebhookServiceInterface;
+
+// Strategies
+use App\Strategy\Impl\CheckoutSessionCompletedStrategyImpl;
+use App\Strategy\Impl\CustomerCreatedOrUpdatedStrategyImpl;
+use App\Strategy\Impl\PaymentIntentSucceededStrategyImpl;
+use App\Strategy\Impl\ChargeSucceededStrategyImpl;
+use App\Strategy\Impl\SubscriptionCreatedStrategyImpl;
+use App\Strategy\Impl\SubscriptionUpdatedStrategyImpl;
+use App\Strategy\Impl\SubscriptionDeletedStrategyImpl;
+use App\Strategy\Impl\InvoicePaidStrategyImpl;
+use App\Strategy\StripeWebhookStrategyInterface;
+
+
 class Bootstrap
 {
-    private static ?PDO $db = null;
-    private static ?PaymentRepository $paymentRepository = null;
-    private static ?StripePaymentIntentMapper $paymentIntentMapper = null;
+    private static bool $initialized = false;
+
+    private static ?PDO $pdo = null;
+    private static ?StripeClient $stripeClientGlobal = null;
+    private static array $displayablePlans = [];
+
+    private static ?CheckoutSessionMapper $checkoutSessionMapper = null;
+    private static ?CustomerMapper $customerMapper = null;
+    private static ?PaymentIntentMapper $paymentIntentMapper = null;
+    private static ?ChargeMapper $chargeMapper = null;
+    private static ?SubscriptionMapper $subscriptionMapper = null;
+    private static ?InvoiceMapper $invoiceMapper = null;
+
+    private static ?TransactionModelFactory $transactionFactory = null;
+    private static ?SubscriptionModelFactory $subscriptionFactory = null;
+
+    private static ?TransactionRepositoryInterface $transactionRepository = null;
+    private static ?SubscriptionRepositoryInterface $subscriptionRepository = null;
+
+    /** @var StripeWebhookStrategyInterface[]|null */
     private static ?array $stripeStrategies = null;
-    private static ?StripeWebhookService $stripeWebhookService = null;
-    private static ?StripeWebhookController $stripeWebhookController = null;
-    private static ?InvoiceRepository $invoiceRepository = null;
-    private static ?StripeInvoiceMapper $invoiceMapper = null;
 
-    /**
-     * Obtiene una instancia del controlador de webhooks de Stripe.
-     *
-     * @return StripeWebhookController
-     */
-    public static function getStripeWebhookController(): StripeWebhookController
+    private static ?StripeWebhookServiceInterface $stripeWebhookService = null;
+    private static ?StripeCheckoutServiceInterface $stripeCheckoutService = null;
+    private static ?StripeWebhookControllerInterface $stripeWebhookController = null;
+    private static ?InvoiceRepositoryInterface $invoiceRepository = null; // Nueva
+    private static ?StripeInvoiceControllerInterface $stripeInvoiceController = null; // Nueva
+
+
+    public static function initialize(string $projectRootPath): void
     {
-        if (self::$stripeWebhookController === null) {
-            self::$stripeWebhookController = new StripeWebhookControllerImpl(
-                self::getStripeWebhookService()
-            );
+        if (self::$initialized) {
+            return;
         }
 
-        return self::$stripeWebhookController;
-    }
-
-    /**
-     * Obtiene una instancia del servicio de webhooks de Stripe.
-     *
-     * @return StripeWebhookService
-     */
-    private static function getStripeWebhookService(): StripeWebhookService
-    {
-        if (self::$stripeWebhookService === null) {
-            self::$stripeWebhookService = new StripeWebhookServiceImpl(
-                $_ENV['STRIPE_WEBHOOK_SECRET'],
-                self::getStripeStrategies()
-            );
+        try {
+            if (file_exists($projectRootPath . '/.env')) {
+                $dotenv = Dotenv::createImmutable($projectRootPath);
+                $dotenv->load();
+                // Opcional: Requerir variables esenciales para toda la app
+                // $dotenv->required(['STRIPE_SECRET_KEY', 'STRIPE_WEBHOOK_SECRET', 'APP_DOMAIN', 'DB_HOST', /* ... */]);
+                EventLogger::log("Bootstrap: .env cargado.");
+            } else {
+                EventLogger::log("Bootstrap: .env file not found at {$projectRootPath}. Relying on server environment variables.", [], '[INFO]');
+            }
+        } catch (\Throwable $e) { // Captura cualquier error de Dotenv
+            ErrorLogger::log("Bootstrap: Error al intentar cargar .env: " . $e->getMessage(), ['exception' => get_class($e)], '[CRITICAL_CONFIG]');
+            // Dependiendo de la criticidad, podrías querer detener la app aquí
+            // die("Error crítico: No se pudieron cargar las variables de entorno.");
         }
 
-        return self::$stripeWebhookService;
+        // Definir constantes globales de configuración desde $_ENV
+        // Es importante que Dotenv se haya cargado antes de esto.
+        define('STRIPE_PUBLISHABLE_KEY', $_ENV['STRIPE_PUBLISHABLE_KEY'] ?? '');
+        define('STRIPE_SECRET_KEY', $_ENV['STRIPE_SECRET_KEY'] ?? '');
+        define('STRIPE_WEBHOOK_SECRET', $_ENV['STRIPE_WEBHOOK_SECRET'] ?? '');
+        define('APP_DOMAIN', $_ENV['APP_DOMAIN'] ?? 'http://localhost:8000'); // Ajusta tu puerto por defecto
+
+        EventLogger::log("Bootstrap: Inicializado. Constantes definidas.");
+
+        // Definir los planes para la vista
+        self::$displayablePlans = [
+            StripeProductsTypeEnum::MONTHLY_SUBSCRIPTION->value => [
+                'name' => 'Suscripción Mensual',
+                'description' => 'Acceso completo con pago mensual',
+                'price' => $_ENV['PRICE_DISPLAY_MONTHLY'] ?? '3,00 €',
+                'period' => 'mes',
+                'highlight' => false,
+                'lookup_key' => $_ENV['STRIPE_PRICE_LOOKUP_KEY_MONTHLY'] ?? 'monthly_lookup_key_default',
+                'features' => [
+                    'Acceso a todas las funcionalidades', 'Soporte técnico estándar',
+                    'Actualizaciones mensuales', 'Hasta 3 proyectos'
+                ]
+            ],
+            StripeProductsTypeEnum::YEARLY_SUBSCRIPTION->value => [
+                'name' => 'Suscripción Anual',
+                'description' => 'Acceso completo con pago anual (ahorro del 20%)',
+                'price' => $_ENV['PRICE_DISPLAY_YEARLY'] ?? '15,00 €',
+                'period' => 'año',
+                'highlight' => true,
+                'lookup_key' => $_ENV['STRIPE_PRICE_LOOKUP_KEY_YEARLY'] ?? 'annual_lookup_key_default',
+                'features' => [
+                    'Acceso a todas las funcionalidades', 'Soporte técnico prioritario',
+                    'Actualizaciones en primicia', 'Proyectos ilimitados', '2 meses gratis'
+                ]
+            ],
+            StripeProductsTypeEnum::ONE_PAYMENT->value => [
+                'name' => 'Acceso Estándar',
+                'description' => 'Acceso completo a todas las funcionalidades con un pago único. Ideal para probar nuestra plataforma.',
+                'price' => $_ENV['PRICE_DISPLAY_ONE_TIME'] ?? '10,00 €',
+                'period' => 'único',
+                'lookup_key' => $_ENV['STRIPE_PRICE_LOOKUP_KEY_ONE_TIME'] ?? 'one_time_lookup_key_default',
+                'features' => ['Todas las funcionalidades base', 'Soporte por email']
+            ]
+        ];
+        self::$initialized = true;
     }
 
-    /**
-     * Obtiene un array de estrategias de Stripe.
-     *
-     * @return array
-     */
-    private static function getStripeStrategies(): array
+    public static function getDisplayPlans(): array
     {
+        if (!self::$initialized) {
+            // Esto no debería ocurrir si initialize() se llama primero desde los scripts de entrada.
+            ErrorLogger::log("Bootstrap: getDisplayPlans() llamado antes de initialize().", [], '[WARNING]');
+            // Podrías forzar la inicialización aquí, pero es mejor asegurar el orden de llamada.
+        }
+        return self::$displayablePlans;
+    }
+
+    private static function getPdo(): PDO
+    {
+        // DatabaseConnection::getInstance() se encarga de cargar .env si es necesario
+        // y de la lógica de conexión.
+        return self::$pdo ??= DatabaseConnection::getInstance();
+    }
+
+    // --- MAPPERS ---
+    private static function getCheckoutSessionMapper(): CheckoutSessionMapper {
+        return self::$checkoutSessionMapper ??= new CheckoutSessionMapper();
+    }
+    private static function getCustomerMapper(): CustomerMapper {
+        return self::$customerMapper ??= new CustomerMapper();
+    }
+    private static function getPaymentIntentMapper(): PaymentIntentMapper {
+        return self::$paymentIntentMapper ??= new PaymentIntentMapper();
+    }
+    private static function getChargeMapper(): ChargeMapper {
+        return self::$chargeMapper ??= new ChargeMapper();
+    }
+    private static function getSubscriptionMapper(): SubscriptionMapper {
+        return self::$subscriptionMapper ??= new SubscriptionMapper();
+    }
+    private static function getInvoiceMapper(): InvoiceMapper {
+        return self::$invoiceMapper ??= new InvoiceMapper();
+    }
+
+    // --- FACTORIES ---
+    private static function getTransactionFactory(): TransactionModelFactory {
+        return self::$transactionFactory ??= new TransactionModelFactory();
+    }
+    private static function getSubscriptionFactory(): SubscriptionModelFactory {
+        return self::$subscriptionFactory ??= new SubscriptionModelFactory();
+    }
+
+    // --- REPOSITORIES ---
+    private static function getTransactionRepository(): TransactionRepositoryInterface {
+        return self::$transactionRepository ??= new TransactionRepositoryImpl(self::getPdo());
+    }
+    private static function getSubscriptionRepository(): SubscriptionRepositoryInterface {
+        return self::$subscriptionRepository ??= new SubscriptionRepositoryImpl(self::getPdo());
+    }
+    // --- GETTER PARA InvoiceRepository ---
+    private static function getInvoiceRepository(): InvoiceRepositoryInterface {
+        return self::$invoiceRepository ??= new InvoiceRepositoryImpl(self::getPdo());
+    }
+
+    // --- STRIPE CLIENT (Global, para estrategias que lo necesiten) ---
+    private static function getGlobalStripeClient(): ?StripeClient {
+        if (self::$stripeClientGlobal === null) {
+            // Usar la constante definida en initialize()
+            $apiKey = defined('STRIPE_SECRET_KEY') ? STRIPE_SECRET_KEY : ($_ENV['STRIPE_SECRET_KEY'] ?? null);
+            if (empty($apiKey)) {
+                ErrorLogger::log("Bootstrap: STRIPE_SECRET_KEY no definida para GlobalStripeClient.", [], '[CRITICAL_CONFIG]');
+                return null;
+            }
+            try {
+                self::$stripeClientGlobal = new StripeClient($apiKey);
+                EventLogger::log("Bootstrap: GlobalStripeClient instanciado.");
+            } catch (StripeAuthenticationException $e) { // Ser específico con la excepción de Stripe
+                ErrorLogger::exception($e, ['key_used_first_chars' => substr($apiKey, 0, 8)], '[CRITICAL_STRIPE_AUTH]');
+                return null;
+            } catch (\Throwable $e) {
+                ErrorLogger::exception($e, [], '[ERROR_GLOBAL_STRIPE_CLIENT_INIT]');
+                return null;
+            }
+        }
+        return self::$stripeClientGlobal;
+    }
+
+    /** @return StripeWebhookStrategyInterface[] */
+    private static function getStripeStrategies(): array {
         if (self::$stripeStrategies === null) {
+            $apiKeyForStrategies = defined('STRIPE_SECRET_KEY') ? STRIPE_SECRET_KEY : ($_ENV['STRIPE_SECRET_KEY'] ?? null);
+
             self::$stripeStrategies = [
-                new StripeStrategyPaymentIntentSucceed(
-                    self::getPaymentRepository(),
-                    self::getPaymentIntentMapper()
+                new CheckoutSessionCompletedStrategyImpl(
+                    self::getCheckoutSessionMapper(), self::getTransactionFactory(),
+                    self::getTransactionRepository(), self::getSubscriptionRepository()
                 ),
-                new StripeStrategyPaymentIntentFailed(),
-                new StripeStrategyCheckoutSessionCompleted(),
-                new StripeStrategyInvoicePaymentSucceeded(
-                    self::getInvoiceRepository(),
-                    self::getInvoiceMapper()
+                new CustomerCreatedOrUpdatedStrategyImpl(
+                    self::getCustomerMapper(), self::getSubscriptionRepository()
+                ),
+                new PaymentIntentSucceededStrategyImpl(
+                    self::getPaymentIntentMapper(), self::getTransactionFactory(),
+                    self::getTransactionRepository(), self::getChargeMapper(), $apiKeyForStrategies
+                ),
+                new ChargeSucceededStrategyImpl(
+                    self::getChargeMapper(), self::getTransactionRepository()
+                ),
+                new SubscriptionCreatedStrategyImpl(
+                    self::getSubscriptionMapper(), self::getSubscriptionFactory(),
+                    self::getSubscriptionRepository(), self::getCustomerMapper(), $apiKeyForStrategies
+                ),
+                new SubscriptionUpdatedStrategyImpl(
+                    self::getSubscriptionMapper(), self::getSubscriptionFactory(),
+                    self::getSubscriptionRepository(), self::getCustomerMapper(), $apiKeyForStrategies
+                ),
+                new SubscriptionDeletedStrategyImpl(
+                    self::getSubscriptionMapper(), self::getSubscriptionRepository(), self::getSubscriptionFactory()
+                ),
+                new InvoicePaidStrategyImpl(
+                    self::getInvoiceMapper(), self::getTransactionFactory(),
+                    self::getTransactionRepository(), self::getSubscriptionRepository()
                 ),
             ];
+            EventLogger::log("Bootstrap: Todas las estrategias (" . count(self::$stripeStrategies) . ") instanciadas.");
         }
-
         return self::$stripeStrategies;
     }
 
-    /**
-     * Obtiene una instancia del repositorio de pagos.
-     *
-     * @return PaymentRepository
-     */
-    private static function getPaymentRepository(): PaymentRepository
-    {
-        if (self::$paymentRepository === null) {
-            self::$paymentRepository = new PaymentRepositoryImpl(
-                self::getDatabase()
+    // --- SERVICES ---
+    private static function getStripeWebhookService(): ?StripeWebhookServiceInterface {
+        if (self::$stripeWebhookService === null) {
+            $webhookSecret = defined('STRIPE_WEBHOOK_SECRET') ? STRIPE_WEBHOOK_SECRET : ($_ENV['STRIPE_WEBHOOK_SECRET'] ?? null);
+            if (empty($webhookSecret)) {
+                ErrorLogger::log("Bootstrap: STRIPE_WEBHOOK_SECRET no definido o vacío.", [], '[CRITICAL_CONFIG]');
+                return null;
+            }
+            self::$stripeWebhookService = new StripeWebhookServiceImpl(
+                $webhookSecret, self::getStripeStrategies()
             );
+            EventLogger::log("Bootstrap: StripeWebhookService instanciado.");
         }
-
-        return self::$paymentRepository;
+        return self::$stripeWebhookService;
     }
 
-    /**
-     * Obtiene una instancia del mapeador de intenciones de pago de Stripe.
-     *
-     * @return StripePaymentIntentMapper
-     */
-    private static function getPaymentIntentMapper(): StripePaymentIntentMapper
-    {
-        if (self::$paymentIntentMapper === null) {
-            self::$paymentIntentMapper = new StripePaymentIntentMapper();
-        }
+    public static function getStripeCheckoutService(): ?StripeCheckoutServiceInterface {
+        if (self::$stripeCheckoutService === null) {
+            $apiKey = defined('STRIPE_SECRET_KEY') ? STRIPE_SECRET_KEY : ($_ENV['STRIPE_SECRET_KEY'] ?? null);
+            $appDomain = defined('APP_DOMAIN') ? APP_DOMAIN : ($_ENV['APP_DOMAIN'] ?? null);
 
-        return self::$paymentIntentMapper;
-    }
-
-    /**
-     * Obtiene una instancia del repositorio de facturas.
-     *
-     * @return InvoiceRepository
-     */
-    private static function getInvoiceRepository(): InvoiceRepository
-    {
-        if (self::$invoiceRepository === null) {
-            self::$invoiceRepository = new InvoiceRepositoryImpl(
-                self::getDatabase()
+            if (empty($apiKey)) {
+                ErrorLogger::log("Bootstrap: STRIPE_SECRET_KEY no disponible para CheckoutService.", [], '[CRITICAL_CONFIG]');
+                return null;
+            }
+            if (empty($appDomain) || !filter_var($appDomain, FILTER_VALIDATE_URL)) {
+                ErrorLogger::log("Bootstrap: APP_DOMAIN no configurado o inválido para CheckoutService.", ['app_domain' => $appDomain ?? 'indefinido'], '[CRITICAL_CONFIG]');
+                return null;
+            }
+            // StripeCheckoutSessionServiceImpl ahora espera la clave secreta y el appDomain
+            self::$stripeCheckoutService = new StripeCheckoutSessionServiceImpl(
+                $apiKey,
+                $appDomain
             );
+            EventLogger::log("Bootstrap: StripeCheckoutSessionService instanciado.");
         }
-
-        return self::$invoiceRepository;
+        return self::$stripeCheckoutService;
     }
 
-    /**
-     * Obtiene una instancia del mapeador de facturas de Stripe.
-     *
-     * @return StripeInvoiceMapper
-     */
-    private static function getInvoiceMapper(): StripeInvoiceMapper
-    {
-        if (self::$invoiceMapper === null) {
-            self::$invoiceMapper = new StripeInvoiceMapper();
+    // --- CONTROLLERS ---
+    public static function getStripeWebhookController(): ?StripeWebhookControllerInterface {
+        if (self::$stripeWebhookController === null) {
+            $webhookService = self::getStripeWebhookService();
+            if (!$webhookService) {
+                ErrorLogger::log("Bootstrap: WebhookService no disponible para Controller.", [], '[CRITICAL_SERVICE_UNAVAILABLE]');
+                return null;
+            }
+            self::$stripeWebhookController = new StripeWebhookControllerImpl($webhookService);
+            EventLogger::log("Bootstrap: StripeWebhookController instanciado.");
         }
-
-        return self::$invoiceMapper;
+        return self::$stripeWebhookController;
     }
 
-    /**
-     * Obtiene una conexión a la base de datos.
-     *
-     * @return PDO
-     */
-    private static function getDatabase(): PDO
-    {
-        if (self::$db === null) {
-            self::$db = DatabaseConnection::getInstance();
-        }
-
-        return self::$db;
-    }
-
-    /**
-     * Test para probar los pagos unicos y para suscripciones
-     */
-    private static ?StripeCheckoutSessionServiceImpl $stripeCheckoutSessionService = null;
-
-    /**
-     * Obtiene una instancia del servicio de pagos Stripe.
-     *
-     * @return StripeCheckoutSessionService
-     */
-    public static function getStripePaymentService(): StripeCheckoutSessionServiceImpl
-    {
-        if (self::$stripeCheckoutSessionService === null) {
-            self::$stripeCheckoutSessionService = new StripeCheckoutSessionServiceImpl(
-                $_ENV['STRIPE_SECRET_KEY'],
-                $_ENV['APP_DOMAIN']
-            );
-        }
-
-        return self::$stripeCheckoutSessionService;
-    }
-
-    private static ?StripeInvoiceController $stripeInvoiceController = null;
-
-    public static function getStripeInvoiceController(): StripeInvoiceController
-    {
+    public static function getStripeInvoiceController(): ?StripeInvoiceControllerInterface {
         if (self::$stripeInvoiceController === null) {
-            self::$stripeInvoiceController = new StripeInvoiceControllerImpl(
-                self::getInvoiceRepository()
-            );
+            $invoiceRepo = self::getInvoiceRepository();
+            if (!$invoiceRepo) {
+                ErrorLogger::log("Bootstrap: InvoiceRepository no disponible para StripeInvoiceController.", [], '[CRITICAL_SERVICE_UNAVAILABLE]');
+                return null;
+            }
+            self::$stripeInvoiceController = new StripeInvoiceControllerImpl($invoiceRepo);
+            EventLogger::log("Bootstrap: StripeInvoiceController instanciado.");
         }
-
         return self::$stripeInvoiceController;
     }
-
-
-
 }

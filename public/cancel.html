@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,412 +11,130 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Animation CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
-        :root {
-            --primary: #005b4d;
-            --primary-dark: #005b4d;
-            --secondary: #fab123;
-            --secondary-dark: #e39a07;
-            --tertiary: #e25950;
-            --light: #f6f9fc;
-            --dark: #32325d;
-            --gray: #8898aa;
-            --card-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
-            --hover-shadow: 0 30px 60px rgba(50, 50, 93, 0.15), 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #eef3f1;
-            color: var(--dark);
-            min-height: 100vh;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        #cancel-wrapper {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            z-index: 1;
-        }
-
-        #cancel-header {
-            background: linear-gradient(120deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 1.5rem 0;
-            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.1);
-            position: relative;
-        }
-
-        #cancel-navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        #cancel-brand {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: white;
-            text-decoration: none;
-        }
-
-        #cancel-app-logo {
-            font-size: 1.8rem;
-            color: var(--secondary);
-        }
-
-        #cancel-app-title {
-            font-weight: 600;
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        #cancel-main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 3rem 0;
-            position: relative;
-        }
-
-        #cancel-container {
-            position: relative;
-            z-index: 2;
-        }
-
-        #cancel-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: var(--card-shadow);
-            overflow: hidden;
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        #cancel-card-header {
-            background: linear-gradient(120deg, var(--tertiary), var(--tertiary-dark));
-            color: var(--dark);
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-        }
-
-        #cancel-icon-container {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 1.5rem;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        #cancel-icon {
-            color: var(--tertiary);
-            font-size: 4rem;
-            line-height: 0;
-        }
-
-        #cancel-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        #cancel-subtitle {
-            font-size: a1.2rem;
-            opacity: 0.9;
-            margin-bottom: 0;
-        }
-
-        #cancel-card-body {
-            padding: 2.5rem;
-        }
-
-        #cancel-message {
-            background-color: rgba(226, 89, 80, 0.05);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border-left: 4px solid var(--tertiary);
-        }
-
-        #cancel-message-heading {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        #cancel-message-text {
-            color: var(--gray);
-            margin-bottom: 0;
-            line-height: 1.6;
-        }
-
-        #cancel-options {
-            background-color: rgba(103, 114, 229, 0.05);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        #cancel-options-heading {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        #cancel-options-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .cancel-option-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .cancel-option-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .cancel-option-icon {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin-right: 1rem;
-            min-width: 20px;
-        }
-
-        .cancel-option-content h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-
-        .cancel-option-content p {
-            font-size: 0.95rem;
-            color: var(--gray);
-            margin-bottom: 0;
-            line-height: 1.5;
-        }
-
-        #cancel-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .cancel-btn {
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        #cancel-btn-home {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            flex: 2;
-        }
-
-        #cancel-btn-home:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(103, 114, 229, 0.3);
-        }
-
-        #cancel-btn-retry {
-            background-color: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            flex: 1;
-        }
-
-        #cancel-btn-retry:hover {
-            background-color: rgba(103, 114, 229, 0.05);
-            transform: translateY(-2px);
-        }
-
-        #cancel-footer {
-            background-color: #eef3f1;
-            padding: 1.5rem 0;
-            text-align: center;
-            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.05);
-        }
-
-        #cancel-copyright {
-            color: var(--primary-dark);
-            font-size: 0.9rem;
-            margin-bottom: 0;
-        }
-
-        .cancel-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            z-index: 0;
-            opacity: 0.4;
-        }
-
-        #cancel-blob-1 {
-            width: 300px;
-            height: 300px;
-            background-color: rgba(226, 89, 80, 0.2);
-            top: 100px;
-            right: -150px;
-        }
-
-        #cancel-blob-2 {
-            width: 400px;
-            height: 400px;
-            background-color: rgba(103, 114, 229, 0.2);
-            bottom: -200px;
-            left: -150px;
-        }
-
-        .animate__animated.animate__fadeInUp {
-            --animate-duration: 0.8s;
-        }
-
-        @media (max-width: 768px) {
-            #cancel-card-header {
-                padding: 1.5rem;
-            }
-
-            #cancel-icon-container {
-                width: 80px;
-                height: 80px;
-            }
-
-            #cancel-icon {
-                font-size: 3rem;
-            }
-
-            #cancel-title {
-                font-size: 1.8rem;
-            }
-
-            #cancel-subtitle {
-                font-size: 1rem;
-            }
-
-            #cancel-card-body {
-                padding: 1.5rem;
-            }
-
-            #cancel-buttons {
-                flex-direction: column;
-            }
-
-            #cancel-btn-home, #cancel-btn-retry {
-                flex: 1;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/cancel.css">
 </head>
 <body>
-<!-- Decorative blobs -->
-<div id="cancel-blob-1" class="cancel-blob"></div>
-<div id="cancel-blob-2" class="cancel-blob"></div>
+<div class="app-container">
+    <!-- Navbar -->
+    <header class="app-navbar">
+        <div class="navbar-container">
+            <a href="index.php" class="app-brand">
+                <i class="fab fa-stripe app-logo"></i>
+                <span class="app-name">StripeLabApp</span>
+            </a>
 
-<div id="cancel-wrapper">
-    <!-- Header -->
-    <header id="cancel-header">
-        <div class="container">
-            <div id="cancel-navbar">
-                <a href="/public/index.php" id="cancel-brand">
-                    <i class="fab fa-stripe" id="cancel-app-logo"></i>
-                    <h1 id="cancel-app-title">StripeLabApp</h1>
-                </a>
-            </div>
+            <label class="theme-toggle" aria-label="Cambiar modo oscuro">
+                <input type="checkbox" id="theme-toggle-input">
+                <span class="theme-slider">
+                        <i class="fas fa-sun sun-icon"></i>
+                        <i class="fas fa-moon moon-icon"></i>
+                    </span>
+            </label>
         </div>
     </header>
 
+    <!-- Background shapes -->
+    <div class="app-canvas">
+        <div class="canvas-shape shape-1"></div>
+        <div class="canvas-shape shape-2"></div>
+        <div class="canvas-shape shape-3"></div>
+    </div>
+
     <!-- Main content -->
-    <main id="cancel-main">
-        <div id="cancel-container" class="container">
-            <div id="cancel-card" class="animate__animated animate__fadeInUp">
+    <main class="app-main">
+        <div class="container">
+            <div class="cancel-card">
+                <!-- Glow effect for dark mode -->
+                <div class="glow-effect"></div>
+
+                <!-- Floating particles -->
+                <div class="particle particle-1"></div>
+                <div class="particle particle-2"></div>
+                <div class="particle particle-3"></div>
+                <div class="particle particle-4"></div>
+
                 <!-- Card header -->
-                <div id="cancel-card-header">
-                    <div id="cancel-icon-container">
-                        <i class="fas fa-times" id="cancel-icon"></i>
+                <div class="card-header">
+                    <div class="card-header-content">
+                        <div class="icon-circle">
+                            <i class="fas fa-times cancel-icon"></i>
+                        </div>
+                        <h1 class="cancel-title">Pago cancelado</h1>
+                        <p class="cancel-subtitle">El proceso de pago ha sido interrumpido. No se ha realizado ningún cargo a tu cuenta.</p>
                     </div>
-                    <h2 id="cancel-title">Pago cancelado</h2>
-                    <p id="cancel-subtitle">El proceso de pago ha sido interrumpido. No se ha realizado ningún cargo a tu cuenta.</p>
                 </div>
 
                 <!-- Card body -->
-                <div id="cancel-card-body">
-                    <!-- Message section -->
-                    <div id="cancel-message">
-                        <h3 id="cancel-message-heading">Información importante</h3>
-                        <p id="cancel-message-text">
+                <div class="card-body">
+                    <!-- Info message -->
+                    <div class="info-box info-box-warning">
+                        <div class="info-box-heading">
+                            <div class="info-box-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h3 class="info-box-title">Información importante</h3>
+                        </div>
+                        <p class="info-text">
                             El proceso de pago ha sido cancelado y no se ha realizado ningún cargo a tu método de pago.
                             Puedes volver a intentarlo en cualquier momento. Si has experimentado alguna dificultad
                             durante el proceso, te sugerimos algunas opciones que podrían ayudarte.
                         </p>
                     </div>
 
-                    <!-- Options section -->
-                    <div id="cancel-options">
-                        <h3 id="cancel-options-heading">¿Por qué ha sido cancelado?</h3>
-                        <ul id="cancel-options-list">
-                            <li class="cancel-option-item">
-                                <i class="fas fa-credit-card cancel-option-icon"></i>
-                                <div class="cancel-option-content">
+                    <!-- Possible causes section -->
+                    <div class="info-box info-box-info">
+                        <div class="info-box-heading">
+                            <div class="info-box-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <h3 class="info-box-title">¿Por qué ha sido cancelado?</h3>
+                        </div>
+
+                        <div class="options-list">
+                            <div class="option-card">
+                                <div class="option-icon option-icon-payment">
+                                    <i class="fas fa-credit-card"></i>
+                                </div>
+                                <div class="option-content">
                                     <h4>Problemas con el método de pago</h4>
-                                    <p>Asegúrate de que tu tarjeta esté activa y con fondos suficientes. También puedes intentar con otro método de pago.</p>
+                                    <p>Asegúrate de que tu tarjeta esté activa y con fondos suficientes. También puedes intentar con otro método de pago disponible en nuestra plataforma.</p>
                                 </div>
-                            </li>
-                            <li class="cancel-option-item">
-                                <i class="fas fa-question-circle cancel-option-icon"></i>
-                                <div class="cancel-option-content">
+                            </div>
+
+                            <div class="option-card">
+                                <div class="option-icon option-icon-question">
+                                    <i class="fas fa-question-circle"></i>
+                                </div>
+                                <div class="option-content">
                                     <h4>Dudas sobre el servicio</h4>
-                                    <p>Si tienes preguntas sobre nuestros servicios, puedes contactar con nuestro equipo de soporte o revisar la sección de preguntas frecuentes.</p>
+                                    <p>Si tienes preguntas sobre nuestros servicios o el proceso de pago, puedes consultar nuestra documentación o contactar directamente con nuestro equipo de soporte.</p>
                                 </div>
-                            </li>
-                            <li class="cancel-option-item">
-                                <i class="fas fa-lock cancel-option-icon"></i>
-                                <div class="cancel-option-content">
-                                    <h4>Preocupaciones de seguridad</h4>
-                                    <p>Utilizamos Stripe, uno de los procesadores de pago más seguros del mundo, con encriptación de extremo a extremo para proteger tu información.</p>
+                            </div>
+
+                            <div class="option-card">
+                                <div class="option-icon option-icon-security">
+                                    <i class="fas fa-shield-alt"></i>
                                 </div>
-                            </li>
-                        </ul>
+                                <div class="option-content">
+                                    <h4>Seguridad garantizada</h4>
+                                    <p>Utilizamos Stripe, uno de los procesadores de pago más seguros del mundo, con encriptación de extremo a extremo para proteger tu información y transacciones.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Action buttons -->
-                    <div id="cancel-buttons">
-                        <a href="/public/index.php" id="cancel-btn-home" class="cancel-btn">
-                            <i class="fas fa-home me-2"></i> Volver al inicio
+                    <div class="action-buttons">
+                        <a href="index.php" class="btn btn-primary">
+                            <i class="fas fa-home"></i>
+                            <span>Volver al inicio</span>
                         </a>
-                        <a href="#" onclick="history.back(); return false;" id="cancel-btn-retry" class="cancel-btn">
-                            <i class="fas fa-redo me-2"></i> Intentar de nuevo
+                        <a href="#" onclick="history.back(); return false;" class="btn btn-outline">
+                            <i class="fas fa-redo"></i>
+                            <span>Intentar de nuevo</span>
                         </a>
                     </div>
                 </div>
@@ -425,11 +143,109 @@
     </main>
 
     <!-- Footer -->
-    <footer id="cancel-footer">
+    <footer class="app-footer">
         <div class="container">
-            <p id="cancel-copyright">&copy; <?= date('Y') ?> StripeLabApp. Todos los derechos reservados.</p>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fab fa-stripe footer-logo"></i>
+                    <span class="footer-name">StripeLabApp</span>
+                </div>
+                <div class="footer-copyright">
+                    © <script>document.write(new Date().getFullYear())</script> StripeLabApp. Todos los derechos reservados.
+                </div>
+                <div class="footer-links">
+                    <a href="doc/index.html">Documentación</a>
+                    <a href="doc/api.html">API</a>
+                    <a href="doc/privacy.html">Privacidad</a>
+                </div>
+            </div>
         </div>
     </footer>
 </div>
+
+<script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle-input');
+
+    // Check for saved theme preference or respect OS preference
+    const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (localStorage.getItem('dark-mode') === 'true' || (prefersDarkMode && !localStorage.getItem('dark-mode'))) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggle.checked = true;
+    }
+
+    // Theme switch event listener
+    themeToggle.addEventListener('change', function() {
+        if (this.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('dark-mode', 'true');
+
+            // Enhance dark mode effects
+            document.querySelector('.glow-effect').style.animation = 'pulseGlow 4s infinite';
+
+            // Increase opacity of shapes in dark mode
+            document.querySelectorAll('.canvas-shape').forEach(shape => {
+                shape.style.opacity = '0.2';
+            });
+
+            // Add subtle pulsing to buttons in dark mode
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.style.transition = 'all 0.3s ease, transform 0.5s ease';
+            });
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('dark-mode', 'false');
+
+            // Remove dark mode enhancements
+            document.querySelector('.glow-effect').style.animation = 'none';
+
+            // Reset shape opacity
+            document.querySelectorAll('.canvas-shape').forEach(shape => {
+                shape.style.opacity = '0.15';
+            });
+
+            // Reset button transitions
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.style.transition = 'all 0.25s ease';
+            });
+        }
+    });
+
+    // Add slight parallax effect to particles
+    document.addEventListener('mousemove', function(e) {
+        const particles = document.querySelectorAll('.particle');
+        const moveX = (e.clientX - window.innerWidth / 2) / 50;
+        const moveY = (e.clientY - window.innerHeight / 2) / 50;
+
+        particles.forEach(function(particle, index) {
+            const speed = index * 0.2 + 0.5;
+            particle.style.transform = `translate(${moveX * speed}px, ${moveY * speed}px)`;
+        });
+    });
+
+    // Initialize animations if in dark mode
+    if (document.documentElement.getAttribute('data-theme') === 'dark') {
+        document.querySelector('.glow-effect').style.animation = 'pulseGlow 4s infinite';
+
+        // Increase opacity of shapes in dark mode
+        document.querySelectorAll('.canvas-shape').forEach(shape => {
+            shape.style.opacity = '0.2';
+        });
+    }
+
+    // Add hover effect to option cards
+    document.querySelectorAll('.option-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            const icon = this.querySelector('.option-icon');
+            icon.style.transform = 'scale(1.1)';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            const icon = this.querySelector('.option-icon');
+            icon.style.transform = 'scale(1)';
+        });
+    });
+</script>
 </body>
 </html>

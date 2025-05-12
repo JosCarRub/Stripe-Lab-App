@@ -1,321 +1,554 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
+// 1. Definir la ruta raíz del proyecto (importante para Bootstrap)
+if (!defined('PROJECT_ROOT')) {
+    define('PROJECT_ROOT', __DIR__ . '/..'); // Asume que index.php está en public/ y .env en la raíz
+}
 
-use App\commons\enums\StripeProductsTypeEnum;
+// 2. Cargar el autoloader de Composer
+require_once PROJECT_ROOT . '/vendor/autoload.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
+// 3. Inicializar la aplicación a través de Bootstrap
+\config\Bootstrap::initialize(PROJECT_ROOT);
 
-// Clave pública de Stripe
-$stripePublicKey = $_ENV['STRIPE_PUBLISHABLE_KEY'] ?? 'pk_test_51RHJ61P71JLI6sb9n5j8nuXdad0jWnTz03XP7QaWF09jKsZnMsGEXURA8rMCd23unCphMA88UBNfKkxwB7YREaVy00AkXqDYSx';
+// 4. Obtener los planes para la vista desde Bootstrap
+$plans = \config\Bootstrap::getDisplayPlans();
 
-// Planes disponibles basados en tu enumeración
-$plans = [
-    StripeProductsTypeEnum::MONTHLY_SUBSCRIPTION->value => [
-        'name' => 'Suscripción Mensual',
-        'description' => 'Acceso completo con pago mensual',
-        'price' => '3,00 €',
-        'period' => 'mes',
-        'highlight' => false,
-        'lookup_key' => 'monthly_subscriptions',
-        'features' => [
-            'Acceso a todas las funcionalidades',
-            'Soporte técnico estándar',
-            'Actualizaciones mensuales',
-            'Hasta 3 proyectos'
-        ]
-    ],
-    StripeProductsTypeEnum::YEARLY_SUBSCRIPTION->value => [
-        'name' => 'Suscripción Anual',
-        'description' => 'Acceso completo con pago anual (ahorro del 20%)',
-        'price' => '15,00 €',
-        'period' => 'año',
-        'highlight' => true,
-        'lookup_key' => 'annual_payment',
-        'features' => [
-            'Acceso a todas las funcionalidades',
-            'Soporte técnico prioritario',
-            'Actualizaciones en primicia',
-            'Proyectos ilimitados',
-            '2 meses gratis'
-        ]
-    ],
-];
+// La constante STRIPE_PUBLISHABLE_KEY ya está definida por Bootstrap::initialize()
+
+// Importar el Enum para usarlo en la vista (si no se importa en Bootstrap)
+use App\Commons\Enums\StripeProductsTypeEnum;
 ?>
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StripeLabApp - Sistema de Pagos</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Stripe.js -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://js.stripe.com/v3/"></script>
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 <!-- Loading overlay -->
-<div id="index-loading-overlay">
-    <div id="index-spinner"></div>
-    <p id="index-loading-text">Procesando el pago...</p>
+<div id="app-loading-overlay">
+    <div class="spinner"></div>
+    <p class="loading-text">Procesando el pago...</p>
 </div>
 
-<div id="index-wrapper">
+<div class="app-container">
     <!-- Sidebar -->
-    <nav id="index-sidebar">
-        <div id="index-sidebar-header">
-            <i class="fab fa-stripe" id="index-app-logo"></i>
-            <h1 id="index-app-title">StripeLabApp</h1>
+    <aside class="app-sidebar">
+        <div class="sidebar-top">
+            <div class="app-brand">
+                <i class="fab fa-stripe app-logo"></i>
+                <span class="app-name">StripeLabApp</span>
+            </div>
+
+            <label class="theme-toggle" aria-label="Cambiar modo oscuro">
+                <input type="checkbox" id="theme-toggle-input">
+                <span class="theme-slider">
+                    <i class="fas fa-sun sun-icon"></i>
+                    <i class="fas fa-moon moon-icon"></i>
+                </span>
+            </label>
         </div>
 
-        <ul id="index-sidebar-menu">
-            <li class="index-menu-item ">
-                <a href="index.php" class="index-menu-link">
-                    <i class="fas fa-home"></i>
-                    <span>Inicio</span>
-                </a>
-            </li>
-            <li class="index-menu-item">
-                <a href="invoices.html" class="index-menu-link">
-                    <i class="fas fa-file-invoice-dollar"></i>
-                    <span>Mis Facturas</span>
-                </a>
-            </li>
-            <li class="index-menu-item">
-                <a href="#" class="index-menu-link">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Panel de Control</span>
-                </a>
-            </li>
-        </ul>
-
-        <div id="index-sidebar-footer">
-            <a href="#" class="index-menu-link">
-                <i class="fas fa-cog"></i>
-                <span>Configuración</span>
-            </a>
-            <a href="#" class="index-menu-link">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Cerrar Sesión</span>
-            </a>
+        <div class="nav-separator">
+            <span>Navegación</span>
         </div>
-    </nav>
+
+        <nav class="sidebar-nav">
+            <a href="index.php" class="nav-item active">
+                <div class="nav-icon"><i class="fas fa-home"></i></div>
+                <span class="nav-label">Inicio</span>
+            </a>
+
+            <a href="single-payment.php" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-credit-card"></i></div>
+                <span class="nav-label">Pago Único</span>
+            </a>
+
+            <a href="subscriptions-payment.php" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-sync-alt"></i></div>
+                <span class="nav-label">Pagar Suscripción</span>
+            </a>
+
+            <a href="invoices.php" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                <span class="nav-label">Facturas</span>
+            </a>
+
+            <a href="subscriptions.html" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-users"></i></div>
+                <span class="nav-label">Gestionar Suscripciones</span>
+            </a>
+
+            <div class="nav-separator">
+                <span>Administración</span>
+            </div>
+
+            <a href="admin/panel.html" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-tachometer-alt"></i></div>
+                <span class="nav-label">Panel de Control</span>
+            </a>
+
+            <a href="logs/system.html" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-list-alt"></i></div>
+                <span class="nav-label">Logs del Sistema</span>
+            </a>
+
+            <a href="doc/index.html" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-book"></i></div>
+                <span class="nav-label">Documentación</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="app-version">v1.2.5</div>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+    </aside>
 
     <!-- Main Content -->
-    <div id="index-content">
-        <div id="index-top-bar">
-            <button id="index-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div id="index-user-menu">
-
-            </div>
+    <main class="app-main">
+        <div class="app-canvas">
+            <div class="canvas-shape shape-1"></div>
+            <div class="canvas-shape shape-2"></div>
+            <div class="canvas-shape shape-3"></div>
         </div>
 
-        <!-- Header Section -->
-        <header id="index-header-section">
-            <div class="container" id="container-header">
-                <h1 id="index-header-title"><i class="fab fa-stripe" id="index-app-logo-header"></i>  StripeLabApp</h1>
-                <p id="index-header-subtitle">Plataforma de prueba para integración de pagos con Stripe. Pagos únicos y suscripciones en un entorno de prueba seguro.</p>
-            </div>
-        </header>
+        <div class="content-wrapper">
+            <section class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-label">Plataforma de Pagos</div>
+                    <h1 class="hero-title">
+                        <span class="hero-title-highlight">StripeLabApp</span>
+                        Sistema de Gestión de Pagos
+                    </h1>
+                    <p class="hero-subtitle">Plataforma integral para la gestión de pagos únicos y suscripciones con Stripe, optimizada para máxima seguridad y facilidad de uso.</p>
+                    <div class="hero-cta">
+                        <a href="single-payment.php" class="btn btn-primary">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Realizar Pago</span>
+                        </a>
+                        <a href="subscriptions.php" class="btn btn-secondary">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Gestionar Suscripciones</span>
+                        </a>
+                        <a href="doc/index.html" class="btn btn-outline">
+                            <i class="fas fa-book"></i>
+                            <span>Documentación</span>
+                        </a>
+                    </div>
 
-        <main id="index-main-container" class="container">
-            <!-- One-time Payment Section -->
-            <section id="index-one-time" class="index-section">
-                <h2 id="index-one-time-title" class="index-section-title">Pago Único</h2>
-                <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <div id="index-one-time-payment">
-                            <div class="mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="#fab123" width="80px" height="80px" viewBox="0 0 24 24"><path d="M13.479 9.883c-1.626-.604-2.512-1.067-2.512-1.803 0-.622.511-.977 1.423-.977 1.667 0 3.379.642 4.558 1.22l.666-4.111c-.935-.446-2.847-1.177-5.49-1.177-1.87 0-3.425.489-4.536 1.401-1.155.954-1.757 2.334-1.757 4 0 3.023 1.847 4.312 4.847 5.403 1.936.688 2.579 1.178 2.579 1.934 0 .732-.629 1.155-1.762 1.155-1.403 0-3.716-.689-5.231-1.578l-.674 4.157c1.304.732 3.705 1.488 6.197 1.488 1.976 0 3.624-.467 4.735-1.356 1.245-.977 1.89-2.422 1.89-4.289 0-3.091-1.889-4.38-4.935-5.468h.002z"/></svg>
+                    <div class="hero-cards">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-chart-line"></i>
                             </div>
-                            <h3 id="index-one-time-heading">Acceso Estándar</h3>
-                            <div id="index-one-time-price" class="index-card-price">10,00€</div>
-                            <p id="index-one-time-description" class="mb-4">Acceso completo a todas las funcionalidades con un pago único. Ideal para probar nuestra plataforma.</p>
-                            <button id="single-payment-btn" class="index-btn-primary" data-type="<?= StripeProductsTypeEnum::ONE_PAYMENT->value ?>">
-                                <i class="fas fa-credit-card me-2"></i>Realizar Pago
-                            </button>
+                            <div class="stat-content">
+                                <div class="stat-value">99.9%</div>
+                                <div class="stat-label">Uptime</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">SSL</div>
+                                <div class="stat-label">Encriptado</div>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">160+</div>
+                                <div class="stat-label">Países</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <div class="card-visual">
+                        <div class="card-chip"></div>
+                        <div class="card-logo">
+                            <i class="fab fa-stripe"></i>
+                        </div>
+                        <div class="card-number">•••• •••• •••• 4242</div>
+                        <div class="card-details">
+                            <div class="card-holder">STRIPELAB USER</div>
+                            <div class="card-expiry">08/28</div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Subscription Section -->
-            <section id="index-subscriptions" class="index-section">
-                <h2 id="index-subscriptions-title" class="index-section-title">Planes de Suscripción</h2>
-                <div class="row">
-                    <?php foreach ($plans as $type => $plan): ?>
-                        <div class="col-lg-6 mb-4">
-                            <div class="index-card <?= $plan['highlight'] ? 'index-highlight' : '' ?>">
+            <section class="features-section">
+                <div class="section-header">
+                    <h2 class="section-title">Características Principales</h2>
+                    <p class="section-subtitle">Descubre todas las herramientas que StripeLabApp te ofrece para gestionar tus pagos</p>
+                </div>
 
-                                <div class="index-card-header">
-                                    <?php if ($plan['highlight']): ?>
-
-                                    <?php endif; ?>
-                                    <h3 id="index-plan-title-<?= $type ?>"><?= htmlspecialchars($plan['name']) ?></h3>
-                                    <div id="index-plan-price-<?= $type ?>" class="index-card-price"><?= htmlspecialchars($plan['price']) ?></div>
-                                    <div id="index-plan-period-<?= $type ?>" class="index-card-period">por <?= htmlspecialchars($plan['period']) ?></div>
-                                </div>
-                                <div class="index-card-body">
-                                    <p id="index-plan-description-<?= $type ?>"><?= htmlspecialchars($plan['description']) ?></p>
-                                    <ul id="index-plan-features-<?= $type ?>" class="index-feature-list">
-                                        <?php foreach ($plan['features'] as $index => $feature): ?>
-                                            <li id="index-plan-feature-<?= $type ?>-<?= $index ?>"><?= htmlspecialchars($feature) ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div>
-                                <div class="index-card-footer">
-                                    <button id="index-subscription-btn-<?= $type ?>"
-                                            class="<?= $plan['highlight'] ? 'index-btn-primary' : 'index-btn-outline' ?> subscription-btn w-100"
-                                            data-type="<?= htmlspecialchars($type) ?>"
-                                            data-lookup="<?= htmlspecialchars($plan['lookup_key']) ?>">
-                                        <i class="fas fa-check-circle me-2"></i>Suscribirse
-                                    </button>
-                                </div>
-                            </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon payment-icon">
+                            <i class="fas fa-credit-card"></i>
                         </div>
-                    <?php endforeach; ?>
+                        <h3 class="feature-title">Pagos Únicos</h3>
+                        <p class="feature-desc">Procesa pagos de una sola vez con total seguridad y verifica en tiempo real el estado de cada transacción.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon subscription-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Suscripciones</h3>
+                        <p class="feature-desc">Gestiona suscripciones recurrentes con planes personalizables y ciclos de facturación flexibles.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon invoice-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <h3 class="feature-title">Facturación</h3>
+                        <p class="feature-desc">Sistema completo de facturas con histórico, exportación a PDF y notificaciones automáticas.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon security-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Seguridad</h3>
+                        <p class="feature-desc">Protección avanzada contra fraudes, cifrado SSL y cumplimiento con estándares PCI DSS.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon analytics-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3 class="feature-title">Análisis</h3>
+                        <p class="feature-desc">Estadísticas detalladas sobre ingresos, conversiones y comportamiento de clientes.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon integration-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h3 class="feature-title">Integración</h3>
+                        <p class="feature-desc">Conecta fácilmente con otras plataformas mediante webhooks y nuestra API RESTful.</p>
+                    </div>
                 </div>
             </section>
 
-            <!-- Contact Section -->
-            <section id="index-contact" class="index-section">
-                <h2 id="index-contact-title" class="index-section-title">¿Necesitas Ayuda?</h2>
-                <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        <div class="index-card">
-                            <div class="index-card-body p-4">
-                                <div class="row">
-                                    <div class="col-md-6 mb-4 mb-md-0">
-                                        <h4 id="index-contact-heading">Contacto</h4>
-                                        <p id="index-contact-text">Si tienes alguna pregunta sobre nuestros planes de pago o necesitas asistencia, no dudes en contactarnos.</p>
-                                        <ul id="index-contact-list" class="list-unstyled">
-                                            <li id="index-contact-email" class="mb-2"><i class="fas fa-envelope me-2 text-primary" id="index-contact-icon"></i> soporte@stripelab.com</li>
-                                            <li id="index-contact-phone" class="mb-2"><i class="fas fa-phone me-2 text-primary" id="index-contact-icon"></i> +34 912 345 678</li>
-                                            <li id="index-contact-address"><i class="fas fa-map-marker-alt me-2 text-primary" id="index-contact-icon"></i> Calle Principal 123, Madrid</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h4 id="index-faq-heading">Preguntas Frecuentes</h4>
-                                        <div class="mb-3">
-                                            <h6 id="index-faq-question-1" class="fw-bold">¿Cómo funciona el sistema de prueba?</h6>
-                                            <p id="index-faq-answer-1" class="small">Esta es una plataforma de prueba para integración con Stripe. Los pagos son simulados.</p>
-                                        </div>
-                                        <div>
-                                            <h6 id="index-faq-question-2" class="fw-bold">¿Puedo cancelar mi suscripción?</h6>
-                                            <p id="index-faq-answer-2" class="small">Sí, puedes cancelar tu suscripción en cualquier momento desde tu panel de usuario.</p>
-                                        </div>
-                                    </div>
+            <section class="pricing-section">
+                <div class="section-header">
+                    <h2 class="section-title">Planes y Precios</h2>
+                    <p class="section-subtitle">Selecciona la opción que mejor se adapte a tus necesidades</p>
+
+                    <div class="pricing-tabs">
+                        <button class="pricing-tab active" data-tab="onetime">Pago Único</button>
+                        <button class="pricing-tab" data-tab="subscription">Suscripciones</button>
+                    </div>
+                </div>
+
+                <div class="pricing-container">
+                    <!-- Pago Único Tab -->
+                    <div class="pricing-panel active" id="onetime-panel">
+                        <?php
+                        $oneTimePlanData = $plans[StripeProductsTypeEnum::ONE_PAYMENT->value] ?? [
+                            'name' => 'Error: Plan Pago Único No Configurado',
+                            'price' => 'N/A',
+                            'description' => 'Contacte a soporte.',
+                            'lookup_key' => ''
+                        ];
+                        ?>
+                        <div class="pricing-card premium">
+                            <div class="pricing-badge">Recomendado</div>
+                            <div class="pricing-header">
+                                <div class="pricing-icon">
+                                    <i class="fas fa-gem"></i>
                                 </div>
+                                <h3 class="pricing-name"><?= htmlspecialchars($oneTimePlanData['name']) ?></h3>
+                                <div class="pricing-price"><?= htmlspecialchars($oneTimePlanData['price']) ?></div>
+                                <div class="pricing-description"><?= htmlspecialchars($oneTimePlanData['description']) ?></div>
                             </div>
+                            <div class="pricing-action">
+                                <button id="single-payment-btn" class="btn btn-primary btn-block"
+                                        data-lookup="<?= htmlspecialchars($oneTimePlanData['lookup_key']) ?>">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Realizar Pago</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Suscripciones Tab -->
+                    <div class="pricing-panel" id="subscription-panel">
+                        <div class="pricing-cards">
+                            <?php
+                            $subscriptionPlans = array_filter($plans, function($key) {
+                                return $key !== StripeProductsTypeEnum::ONE_PAYMENT->value;
+                            }, ARRAY_FILTER_USE_KEY);
+
+                            if (empty($subscriptionPlans)) : ?>
+                                <p class="empty-message">No hay planes de suscripción disponibles en este momento.</p>
+                            <?php else:
+                                foreach ($subscriptionPlans as $type => $plan):
+                                    $planName = $plan['name'] ?? 'Plan Desconocido';
+                                    $planPrice = $plan['price'] ?? 'N/A';
+                                    $planPeriod = $plan['period'] ?? '';
+                                    $planDescription = $plan['description'] ?? 'Sin descripción.';
+                                    $planFeatures = $plan['features'] ?? [];
+                                    $planLookupKey = $plan['lookup_key'] ?? '';
+                                    $isHighlighted = $plan['highlight'] ?? false;
+                                    ?>
+                                    <div class="pricing-card <?= $isHighlighted ? 'premium' : '' ?>">
+                                        <?php if ($isHighlighted): ?>
+                                            <div class="pricing-badge">Recomendado</div>
+                                        <?php endif; ?>
+                                        <div class="pricing-header">
+                                            <div class="pricing-icon">
+                                                <i class="fas <?= $isHighlighted ? 'fa-crown' : 'fa-check-circle' ?>"></i>
+                                            </div>
+                                            <h3 class="pricing-name"><?= htmlspecialchars($planName) ?></h3>
+                                            <div class="pricing-price"><?= htmlspecialchars($planPrice) ?></div>
+                                            <div class="pricing-period">por <?= htmlspecialchars($planPeriod) ?></div>
+                                            <div class="pricing-description"><?= htmlspecialchars($planDescription) ?></div>
+                                        </div>
+                                        <div class="pricing-features">
+                                            <?php foreach ($planFeatures as $feature): ?>
+                                                <div class="pricing-feature">
+                                                    <i class="fas fa-check"></i>
+                                                    <span><?= htmlspecialchars($feature) ?></span>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                        <div class="pricing-action">
+                                            <button class="btn <?= $isHighlighted ? 'btn-primary' : 'btn-outline' ?> btn-block subscription-btn"
+                                                    data-type="<?= htmlspecialchars($type) ?>"
+                                                    data-lookup="<?= htmlspecialchars($planLookupKey) ?>">
+                                                <i class="fas fa-check-circle"></i>
+                                                <span>Suscribirse</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                <?php endforeach;
+                            endif; ?>
                         </div>
                     </div>
                 </div>
             </section>
-        </main>
 
-        <!-- Footer -->
-        <footer id="index-footer">
-            <div class="container">
-                <div id="index-copyright" class="text-center">
-                    <p>&copy; <?= date('Y') ?> StripeLabApp. Todos los derechos reservados.</p>
+            <section class="integration-section">
+                <div class="section-header">
+                    <h2 class="section-title">Integración sin Complicaciones</h2>
+                    <p class="section-subtitle">Conecta StripeLabApp con tu ecosistema tecnológico en minutos</p>
+                </div>
+
+                <div class="code-snippet">
+                    <div class="code-header">
+                        <span class="code-language">JavaScript</span>
+                        <button class="copy-button" data-clipboard-target="#integration-code">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <pre class="code-content"><code id="integration-code">// Inicializar StripeLabApp
+const stripeLab = new StripeLabApp({
+  apiKey: 'sk_test_your_key',
+  options: {
+    locale: 'es',
+    currency: 'EUR'
+  }
+});
+
+// Crear un checkout de pago único
+const checkout = await stripeLab.createCheckout({
+  amount: 2500, // 25.00 EUR
+  description: 'Compra premium',
+  successUrl: '/thank-you',
+  cancelUrl: '/cancel'
+});</code></pre>
+                </div>
+
+                <div class="integration-platforms">
+                    <div class="platform-icon">
+                        <i class="fab fa-php"></i>
+                    </div>
+                    <div class="platform-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <div class="platform-icon">
+                        <i class="fab fa-stripe"></i>
+                    </div>
+                    <div class="platform-icon">
+                        <i class="fab fa-composer"></i>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="app-footer">
+            <div class="footer-content">
+                <div class="footer-copyright">
+                    © <?= date('Y') ?> StripeLabApp. Todos los derechos reservados.
+                </div>
+                <div class="footer-links">
+                    <a href="doc/index.html">Documentación</a>
+                    <a href="doc/api.html">API</a>
+                    <a href="doc/privacy.html">Privacidad</a>
                 </div>
             </div>
         </footer>
-    </div>
+    </main>
 </div>
 
-<!-- Bootstrap JS Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Inicializar Stripe (con la clave pública)
-    const stripe = Stripe('<?= $stripePublicKey ?>');
-    const loadingOverlay = document.getElementById('index-loading-overlay');
+    // STRIPE_PUBLISHABLE_KEY ahora es una constante PHP definida por Bootstrap
+    const stripe = Stripe('<?= STRIPE_PUBLISHABLE_KEY ?>');
+    const loadingOverlay = document.getElementById('app-loading-overlay');
 
     // Toggle sidebar
-    document.getElementById('index-menu-toggle').addEventListener('click', function() {
-        document.getElementById('index-wrapper').classList.toggle('collapsed');
+    document.getElementById('sidebar-toggle').addEventListener('click', function() {
+        document.querySelector('.app-container').classList.toggle('sidebar-collapsed');
     });
 
-    // Configurar el botón de pago único
-    document.getElementById('single-payment-btn').addEventListener('click', async () => {
-        try {
-            showLoading();
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle-input');
 
-            const response = await fetch('./create_payment_session.php');
+    // Check for saved theme preference or respect OS preference
+    const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-            if (!response.ok) {
-                throw new Error('Error al conectar con el servidor: ' + response.status);
-            }
+    if (localStorage.getItem('dark-mode') === 'true' || (prefersDarkMode && !localStorage.getItem('dark-mode'))) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggle.checked = true;
+    }
 
-            const session = await response.json();
-
-            if (session.error) {
-                throw new Error(session.error);
-            }
-
-            // Redirigir a la página de checkout de Stripe
-            const result = await stripe.redirectToCheckout({ sessionId: session.id });
-
-            if (result.error) {
-                throw new Error(result.error.message);
-            }
-        } catch (error) {
-            hideLoading();
-            console.error('Error:', error);
-            alert('Ha ocurrido un error: ' + error.message);
+    // Theme switch event listener
+    themeToggle.addEventListener('change', function() {
+        if (this.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('dark-mode', 'true');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('dark-mode', 'false');
         }
     });
 
-    // Configurar los botones de suscripción
-    document.querySelectorAll('.subscription-btn').forEach(button => {
-        button.addEventListener('click', async (event) => {
+    // Pricing tabs
+    document.querySelectorAll('.pricing-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+
+            // Remove active class from all tabs
+            document.querySelectorAll('.pricing-tab').forEach(t => {
+                t.classList.remove('active');
+            });
+
+            // Hide all panels
+            document.querySelectorAll('.pricing-panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+
+            // Add active class to clicked tab
+            this.classList.add('active');
+
+            // Show corresponding panel
+            document.getElementById(`${tabId}-panel`).classList.add('active');
+        });
+    });
+
+    // Copy code button
+    document.querySelector('.copy-button').addEventListener('click', function() {
+        const code = document.getElementById('integration-code').textContent;
+        navigator.clipboard.writeText(code).then(() => {
+            const icon = this.querySelector('i');
+            icon.className = 'fas fa-check';
+
+            setTimeout(() => {
+                icon.className = 'fas fa-copy';
+            }, 2000);
+        });
+    });
+
+    // Single Payment Button
+    const singlePaymentButton = document.getElementById('single-payment-btn');
+    if (singlePaymentButton) {
+        singlePaymentButton.addEventListener('click', async (event) => {
             try {
                 showLoading();
-                const lookupKey = event.target.dataset.lookup;
-
-                const response = await fetch(`./create_subscription_session.php?lookup_key=${encodeURIComponent(lookupKey)}`);
-
+                const lookupKey = event.currentTarget.dataset.lookup;
+                if (!lookupKey) {
+                    throw new Error('Lookup key no configurada para el pago único.');
+                }
+                // Endpoint en public/v1/
+                const response = await fetch('./v1/create_payment_session.php?lookup_key=' + encodeURIComponent(lookupKey));
                 if (!response.ok) {
-                    throw new Error('Error al conectar con el servidor: ' + response.status);
+                    const errorData = await response.json().catch(() => ({ error: 'Error de servidor desconocido.' }));
+                    throw new Error(errorData.error || `Error del servidor: ${response.status}`);
                 }
-
                 const session = await response.json();
-
-                if (session.error) {
-                    throw new Error(session.error);
-                }
-
-
+                if (session.error) { throw new Error(session.error); }
                 const result = await stripe.redirectToCheckout({ sessionId: session.id });
-
                 if (result.error) {
+                    hideLoading(); // Ocultar si redirectToCheckout falla antes de redirigir
                     throw new Error(result.error.message);
                 }
             } catch (error) {
                 hideLoading();
-                console.error('Error:', error);
+                console.error('Error en pago único:', error);
+                alert('Ha ocurrido un error: ' + error.message);
+            }
+        });
+    }
+
+    // Subscription Buttons
+    document.querySelectorAll('.subscription-btn').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            try {
+                showLoading();
+                const lookupKey = event.currentTarget.dataset.lookup;
+                if (!lookupKey) {
+                    throw new Error('Lookup key no configurada para la suscripción.');
+                }
+                // Endpoint en public/v1/
+                const response = await fetch(`./v1/create_subscription_session.php?lookup_key=${encodeURIComponent(lookupKey)}`);
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({ error: 'Error de servidor desconocido.' }));
+                    throw new Error(errorData.error || `Error del servidor: ${response.status}`);
+                }
+                const session = await response.json();
+                if (session.error) { throw new Error(session.error); }
+                const result = await stripe.redirectToCheckout({ sessionId: session.id });
+                if (result.error) {
+                    hideLoading();
+                    throw new Error(result.error.message);
+                }
+            } catch (error) {
+                hideLoading();
+                console.error('Error en suscripción:', error);
                 alert('Ha ocurrido un error: ' + error.message);
             }
         });
     });
 
     function showLoading() {
-        loadingOverlay.style.display = 'flex';
+        if (loadingOverlay) loadingOverlay.style.display = 'flex';
     }
-
     function hideLoading() {
-        loadingOverlay.style.display = 'none';
+        if (loadingOverlay) loadingOverlay.style.display = 'none';
     }
 </script>
 </body>

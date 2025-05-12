@@ -1,350 +1,927 @@
-[2025-05-05 08:50:47] - [INFO: ] Webhook event processed successfully:  - {"event_id":"evt_3RLKjcP71JLI6sb91dSCTbSD","event_type":"charge.succeeded"}
-[2025-05-05 08:50:48] - [INFO: ] Payment intent succeded procesed succesfully  - 
-[2025-05-05 08:50:48] - [INFO: ] Payment intent succeded saved succesfully  - 
-[2025-05-05 08:50:48] - [INFO: ] Webhook event processed successfully:  - {"event_id":"evt_3RLKjcP71JLI6sb918iCl0AD","event_type":"payment_intent.succeeded"}
-[2025-05-05 08:50:48] - [INFO: ] Webhook event processed successfully:  - {"event_id":"evt_3RLKjcP71JLI6sb91sa4fnzc","event_type":"payment_intent.created"}
-[2025-05-05 08:50:50] - [INFO: ] Webhook event processed successfully:  - {"event_id":"evt_3RLKjcP71JLI6sb91U6kD4rx","event_type":"charge.updated"}
-[2025-05-05 08:54:30] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLKnDP71JLI6sb9c0DA5gcR","event_type":"product.created"}
-[2025-05-05 08:54:30] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLKnDP71JLI6sb9sIKeuDOG","event_type":"price.created"}
-[2025-05-05 08:54:33] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLKnFP71JLI6sb90fAfuMOM","event_type":"charge.succeeded"}
-[2025-05-05 08:54:33] - [INFO] Payment intent succeded procesed succesfully  - 
-[2025-05-05 08:54:33] - [INFO] Payment intent succeded saved succesfully  - 
-[2025-05-05 08:54:33] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLKnFP71JLI6sb90ewrcTFe","event_type":"payment_intent.succeeded"}
-[2025-05-05 08:54:33] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLKnFP71JLI6sb905GTTob2","event_type":"payment_intent.created"}
-[2025-05-05 08:54:33] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLKnGP71JLI6sb9ZwSCNLTI","event_type":"checkout.session.completed"}
-[2025-05-05 08:54:35] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLKnFP71JLI6sb90E7lM5bs","event_type":"charge.updated"}
-[2025-05-05 11:27:43] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLNBUP71JLI6sb9ckfBRMvI","event_type":"product.created"}
-[2025-05-05 11:27:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLNBVP71JLI6sb9a3FzxUqL","event_type":"price.created"}
-[2025-05-05 11:27:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLNBVP71JLI6sb95QptTbZk","event_type":"product.updated"}
-[2025-05-05 11:51:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLNYIP71JLI6sb9DOhoRImK","event_type":"price.created"}
-[2025-05-05 11:51:25] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLNYQP71JLI6sb9jVaFAzrT","event_type":"product.updated"}
-[2025-05-05 11:51:25] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLNYQP71JLI6sb9lwTYUWFx","event_type":"price.deleted"}
-[2025-05-05 11:56:07] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLNcyP71JLI6sb9OKhmDVCb","event_type":"plan.created"}
-[2025-05-05 11:56:07] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLNcyP71JLI6sb98awMYSjk","event_type":"price.created"}
-[2025-05-05 12:11:56] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLNsHP71JLI6sb9Zkt5C67j","event_type":"plan.created"}
-[2025-05-05 12:11:56] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLNsHP71JLI6sb9JUTKeS6u","event_type":"price.created"}
-[2025-05-05 17:14:37] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSbBP71JLI6sb90eYvjKlJ","event_type":"charge.succeeded"}
-[2025-05-05 17:14:38] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSbBP71JLI6sb90ojzHb04","event_type":"payment_intent.created"}
-[2025-05-05 17:14:38] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6818f1fe0c5cf7.48131048"]
-[2025-05-05 17:14:38] - [INFO] Payment intent succeded saved succesfully  - ["pay_6818f1fe0c5cf7.48131048"]
-[2025-05-05 17:14:38] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSbBP71JLI6sb90ky8Qaqu","event_type":"payment_intent.succeeded"}
-[2025-05-05 17:14:40] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSbBP71JLI6sb90tkn3rwa","event_type":"charge.updated"}
-[2025-05-05 17:16:00] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLScVP71JLI6sb91gGDFBqJ","event_type":"charge.succeeded"}
-[2025-05-05 17:16:00] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6818f250a52352.62188138"]
-[2025-05-05 17:16:00] - [INFO] Payment intent succeded saved succesfully  - ["pay_6818f250a52352.62188138"]
-[2025-05-05 17:16:00] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLScVP71JLI6sb91QlYXaJ6","event_type":"payment_intent.succeeded"}
-[2025-05-05 17:16:00] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLScWP71JLI6sb90PlLGnjx","event_type":"checkout.session.completed"}
-[2025-05-05 17:16:00] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLScVP71JLI6sb916k7bwRJ","event_type":"payment_intent.created"}
-[2025-05-05 17:16:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLScVP71JLI6sb91lIU0Cgk","event_type":"charge.updated"}
-[2025-05-05 17:18:34] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSezP71JLI6sb90XP5y9eQ","event_type":"charge.succeeded"}
-[2025-05-05 17:18:34] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6818f2ea670e83.17390094"]
-[2025-05-05 17:18:34] - [INFO] Payment intent succeded saved succesfully  - ["pay_6818f2ea670e83.17390094"]
-[2025-05-05 17:18:34] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSezP71JLI6sb905emRCOy","event_type":"payment_intent.succeeded"}
-[2025-05-05 17:18:34] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSezP71JLI6sb90pzFWJFC","event_type":"payment_intent.created"}
-[2025-05-05 17:18:34] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLSf0P71JLI6sb9uIPqOlno","event_type":"checkout.session.completed"}
-[2025-05-05 17:18:36] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSezP71JLI6sb90Qie4d6g","event_type":"charge.updated"}
-[2025-05-05 17:25:55] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSm5P71JLI6sb90jhwrZ14","event_type":"charge.succeeded"}
-[2025-05-05 17:25:55] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLSm7P71JLI6sb9bI7mPFlr","event_type":"checkout.session.completed"}
-[2025-05-05 17:25:55] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6818f4a32d4741.07217413"]
-[2025-05-05 17:25:55] - [INFO] Payment intent succeded saved succesfully  - ["pay_6818f4a32d4741.07217413"]
-[2025-05-05 17:25:55] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSm5P71JLI6sb90sg9DjeE","event_type":"payment_intent.succeeded"}
-[2025-05-05 17:25:55] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSm5P71JLI6sb90grBnQZD","event_type":"payment_intent.created"}
-[2025-05-05 17:25:57] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSm5P71JLI6sb90MXUJnh8","event_type":"charge.updated"}
-[2025-05-05 17:37:25] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSxEP71JLI6sb91unlokoK","event_type":"charge.succeeded"}
-[2025-05-05 17:37:25] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6818f7557003f8.48332907"]
-[2025-05-05 17:37:25] - [INFO] Payment intent succeded saved succesfully  - ["pay_6818f7557003f8.48332907"]
-[2025-05-05 17:37:25] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSxEP71JLI6sb91K0mEnwL","event_type":"payment_intent.succeeded"}
-[2025-05-05 17:37:25] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSxEP71JLI6sb91iThS1Ma","event_type":"payment_intent.created"}
-[2025-05-05 17:37:27] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLSxEP71JLI6sb91MHLFrdt","event_type":"charge.updated"}
-[2025-05-05 17:37:28] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLSxIP71JLI6sb9w3gZFuNO","event_type":"checkout.session.completed"}
-[2025-05-05 18:16:50] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLTZMP71JLI6sb91q6QOkz7","event_type":"charge.succeeded"}
-[2025-05-05 18:16:50] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTZOP71JLI6sb9VM2lZdqv","event_type":"payment_method.attached"}
-[2025-05-05 18:16:50] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTZOP71JLI6sb9V1DYNjUt","event_type":"customer.created"}
-[2025-05-05 18:16:50] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTZOP71JLI6sb9xMBFCLSc","event_type":"customer.updated"}
-[2025-05-05 18:16:50] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTZOP71JLI6sb9QiYLGRvE","event_type":"customer.subscription.created"}
-[2025-05-05 18:16:50] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTZOP71JLI6sb9yP3LIoYb","event_type":"checkout.session.completed"}
-[2025-05-05 18:16:50] - [INFO] Payment intent succeded procesed succesfully  - ["pay_68190092dd0214.91886918"]
-[2025-05-05 18:16:50] - [INFO] Payment intent succeded saved succesfully  - ["pay_68190092dd0214.91886918"]
-[2025-05-05 18:16:50] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLTZMP71JLI6sb91hZTzoOy","event_type":"payment_intent.succeeded"}
-[2025-05-05 18:16:50] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLTZMP71JLI6sb91TWSJfX6","event_type":"payment_intent.created"}
-[2025-05-05 18:16:51] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTZOP71JLI6sb9WR5vbi49","event_type":"invoice.created"}
-[2025-05-05 18:16:51] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTZPP71JLI6sb9BpKmnZHx","event_type":"invoice.finalized"}
-[2025-05-05 18:16:51] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTZPP71JLI6sb9BhW3Ig2J","event_type":"invoice.paid"}
-[2025-05-05 18:16:51] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTZPP71JLI6sb9bjDUuo9K","event_type":"invoice.payment_succeeded"}
-[2025-05-05 18:18:14] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLTaiP71JLI6sb91XXC2eux","event_type":"charge.succeeded"}
-[2025-05-05 18:18:14] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTakP71JLI6sb9uaOxScFG","event_type":"payment_method.attached"}
-[2025-05-05 18:18:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTakP71JLI6sb9MwbCc3pB","event_type":"checkout.session.completed"}
-[2025-05-05 18:18:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTakP71JLI6sb9wb10J9cP","event_type":"customer.created"}
-[2025-05-05 18:18:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTakP71JLI6sb9NorxsphL","event_type":"customer.updated"}
-[2025-05-05 18:18:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTalP71JLI6sb9ONN3owv3","event_type":"customer.subscription.created"}
-[2025-05-05 18:18:15] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681900e7392141.81813449"]
-[2025-05-05 18:18:15] - [INFO] Payment intent succeded saved succesfully  - ["pay_681900e7392141.81813449"]
-[2025-05-05 18:18:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLTaiP71JLI6sb91FgAkRoV","event_type":"payment_intent.succeeded"}
-[2025-05-05 18:18:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLTaiP71JLI6sb919VMkYgy","event_type":"payment_intent.created"}
-[2025-05-05 18:18:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTalP71JLI6sb9eBKT4OqO","event_type":"invoice.created"}
-[2025-05-05 18:18:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTalP71JLI6sb957pNv0oa","event_type":"invoice.finalized"}
-[2025-05-05 18:18:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTalP71JLI6sb9XRZJFtDw","event_type":"invoice.paid"}
-[2025-05-05 18:18:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTalP71JLI6sb9bL97ourK","event_type":"invoice.payment_succeeded"}
-[2025-05-05 18:23:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTfdP71JLI6sb9ZXSKaPNQ","event_type":"price.updated"}
-[2025-05-05 18:26:41] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLTiuP71JLI6sb90YEjlfYr","event_type":"charge.failed"}
-[2025-05-05 18:26:41] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTiuP71JLI6sb9ZkxIa4OY","event_type":"customer.created"}
-[2025-05-05 18:26:41] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTiuP71JLI6sb9R0CENTok","event_type":"customer.updated"}
-[2025-05-05 18:26:41] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLTiuP71JLI6sb90w3nMHK8","event_type":"payment_intent.created"}
-[2025-05-05 18:26:41] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLTiuP71JLI6sb90XrPBRSh","event_type":"payment_intent.payment_failed"}
-[2025-05-05 18:27:18] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLTiuP71JLI6sb90vfbQNY1","event_type":"charge.succeeded"}
-[2025-05-05 18:27:18] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTjWP71JLI6sb94eFBualf","event_type":"payment_method.attached"}
-[2025-05-05 18:27:18] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTjWP71JLI6sb9Az71f4gd","event_type":"customer.subscription.created"}
-[2025-05-05 18:27:18] - [INFO] Payment intent succeded procesed succesfully  - ["pay_68190306d51830.37580976"]
-[2025-05-05 18:27:18] - [INFO] Payment intent succeded saved succesfully  - ["pay_68190306d51830.37580976"]
-[2025-05-05 18:27:18] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLTiuP71JLI6sb90u5ReJBQ","event_type":"payment_intent.succeeded"}
-[2025-05-05 18:27:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTjWP71JLI6sb9cCRhD4EE","event_type":"checkout.session.completed"}
-[2025-05-05 18:27:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTjXP71JLI6sb9z38vII0y","event_type":"invoice.created"}
-[2025-05-05 18:27:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTjXP71JLI6sb9DRWu64kJ","event_type":"invoice.finalized"}
-[2025-05-05 18:27:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTjXP71JLI6sb9QcbCzXRg","event_type":"invoice.paid"}
-[2025-05-05 18:27:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLTjXP71JLI6sb9NOlMaJWK","event_type":"invoice.payment_succeeded"}
-[2025-05-05 21:30:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLWaYP71JLI6sb91QHAOCKp","event_type":"charge.succeeded"}
-[2025-05-05 21:30:15] - [INFO] Payment intent succeded procesed succesfully  - ["pay_68192de76209a3.42095061"]
-[2025-05-05 21:30:15] - [INFO] Payment intent succeded saved succesfully  - ["pay_68192de76209a3.42095061"]
-[2025-05-05 21:30:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLWaYP71JLI6sb91SVn0VdE","event_type":"payment_intent.succeeded"}
-[2025-05-05 21:30:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLWaYP71JLI6sb918zxAufs","event_type":"payment_intent.created"}
-[2025-05-05 21:30:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLWaZP71JLI6sb9pCS8hr95","event_type":"checkout.session.completed"}
-[2025-05-05 21:30:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLWaYP71JLI6sb91PefsYcc","event_type":"charge.updated"}
-[2025-05-05 22:58:32] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLXxyP71JLI6sb912Zdg5S6","event_type":"charge.succeeded"}
-[2025-05-05 22:58:32] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681942980ab455.71526699"]
-[2025-05-05 22:58:32] - [INFO] Payment intent succeded saved succesfully  - ["pay_681942980ab455.71526699"]
-[2025-05-05 22:58:32] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLXxyP71JLI6sb91cVX9r7A","event_type":"payment_intent.succeeded"}
-[2025-05-05 22:58:32] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLXxzP71JLI6sb9GyAOB4eN","event_type":"checkout.session.completed"}
-[2025-05-05 22:58:32] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLXxyP71JLI6sb91YQSutyS","event_type":"payment_intent.created"}
-[2025-05-05 22:58:34] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLXxyP71JLI6sb910K5K8JP","event_type":"charge.updated"}
-[2025-05-05 23:30:23] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLYSoP71JLI6sb90uy4PXcR","event_type":"charge.succeeded"}
-[2025-05-05 23:30:23] - [INFO] Payment intent succeded procesed succesfully  - ["pay_68194a0f8b0e26.73604212"]
-[2025-05-05 23:30:23] - [INFO] Payment intent succeded saved succesfully  - ["pay_68194a0f8b0e26.73604212"]
-[2025-05-05 23:30:23] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLYSoP71JLI6sb90PxdeLtm","event_type":"payment_intent.succeeded"}
-[2025-05-05 23:30:23] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLYSpP71JLI6sb9kbGx7qXr","event_type":"checkout.session.completed"}
-[2025-05-05 23:30:23] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLYSoP71JLI6sb90ry4w8ie","event_type":"payment_intent.created"}
-[2025-05-05 23:30:25] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLYSoP71JLI6sb90M5RgXvB","event_type":"charge.updated"}
-[2025-05-06 06:34:56] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLf5iP71JLI6sb91r2MbRwJ","event_type":"charge.succeeded"}
-[2025-05-06 06:34:56] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6819ad90386023.63512099"]
-[2025-05-06 06:34:56] - [INFO] Payment intent succeded saved succesfully  - ["pay_6819ad90386023.63512099"]
-[2025-05-06 06:34:56] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLf5iP71JLI6sb915PgRvaT","event_type":"payment_intent.succeeded"}
-[2025-05-06 06:34:56] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLf5iP71JLI6sb91404yfeW","event_type":"payment_intent.created"}
-[2025-05-06 06:34:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLf5iP71JLI6sb91LypAS5B","event_type":"charge.updated"}
-[2025-05-06 06:35:43] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLf6RP71JLI6sb90FTkEGDE","event_type":"charge.succeeded"}
-[2025-05-06 06:35:43] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf6UP71JLI6sb9179RTpr2","event_type":"payment_method.attached"}
-[2025-05-06 06:35:43] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf6UP71JLI6sb9fsxgaTqT","event_type":"customer.created"}
-[2025-05-06 06:35:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf6UP71JLI6sb9zYdX7970","event_type":"customer.updated"}
-[2025-05-06 06:35:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf6UP71JLI6sb95qMWYwnC","event_type":"customer.subscription.created"}
-[2025-05-06 06:35:44] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6819adc03a50f1.43914020"]
-[2025-05-06 06:35:44] - [INFO] Payment intent succeded saved succesfully  - ["pay_6819adc03a50f1.43914020"]
-[2025-05-06 06:35:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLf6RP71JLI6sb9056tijf2","event_type":"payment_intent.succeeded"}
-[2025-05-06 06:35:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf6UP71JLI6sb9VatRjR0L","event_type":"checkout.session.completed"}
-[2025-05-06 06:35:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf6UP71JLI6sb9RNNbrkDA","event_type":"invoice.created"}
-[2025-05-06 06:35:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf6UP71JLI6sb9cQt3gTNC","event_type":"invoice.finalized"}
-[2025-05-06 06:35:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf6VP71JLI6sb9DmBH2Aat","event_type":"invoice.paid"}
-[2025-05-06 06:35:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf6VP71JLI6sb9dghL53SA","event_type":"invoice.payment_succeeded"}
-[2025-05-06 06:35:45] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLf6RP71JLI6sb90foug3C3","event_type":"payment_intent.created"}
-[2025-05-06 06:37:57] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLf8cP71JLI6sb915hPNa5k","event_type":"charge.succeeded"}
-[2025-05-06 06:37:57] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf8eP71JLI6sb9qBkiTc6O","event_type":"payment_method.attached"}
-[2025-05-06 06:37:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf8eP71JLI6sb9kGTtPYQP","event_type":"customer.created"}
-[2025-05-06 06:37:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf8eP71JLI6sb9qfOGibhp","event_type":"customer.updated"}
-[2025-05-06 06:37:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf8eP71JLI6sb9cS5xT1dH","event_type":"customer.subscription.created"}
-[2025-05-06 06:37:58] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6819ae464ab0e5.26339051"]
-[2025-05-06 06:37:58] - [INFO] Payment intent succeded saved succesfully  - ["pay_6819ae464ab0e5.26339051"]
-[2025-05-06 06:37:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLf8cP71JLI6sb91YQLUvGw","event_type":"payment_intent.succeeded"}
-[2025-05-06 06:37:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf8eP71JLI6sb9QAk6W9y2","event_type":"checkout.session.completed"}
-[2025-05-06 06:37:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLf8cP71JLI6sb91GQweeFR","event_type":"payment_intent.created"}
-[2025-05-06 06:37:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf8eP71JLI6sb9armIR5aW","event_type":"invoice.created"}
-[2025-05-06 06:37:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf8fP71JLI6sb95MqLYWzk","event_type":"invoice.finalized"}
-[2025-05-06 06:37:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf8fP71JLI6sb9K918rlPi","event_type":"invoice.paid"}
-[2025-05-06 06:37:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLf8fP71JLI6sb9geoQNJaX","event_type":"invoice.payment_succeeded"}
-[2025-05-06 07:22:34] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLfpnP71JLI6sb91u1SbLes","event_type":"charge.succeeded"}
-[2025-05-06 07:22:34] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6819b8ba29c889.99360071"]
-[2025-05-06 07:22:34] - [INFO] Payment intent succeded saved succesfully  - ["pay_6819b8ba29c889.99360071"]
-[2025-05-06 07:22:34] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLfpnP71JLI6sb91BqNAk7v","event_type":"payment_intent.succeeded"}
-[2025-05-06 07:22:34] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLfpnP71JLI6sb91bBxsZnM","event_type":"payment_intent.created"}
-[2025-05-06 07:22:34] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLfpoP71JLI6sb9dvAvxTrv","event_type":"checkout.session.completed"}
-[2025-05-06 07:22:37] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLfpnP71JLI6sb91evtns8u","event_type":"charge.updated"}
-[2025-05-06 07:23:25] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLfqcP71JLI6sb91smnmkcY","event_type":"charge.succeeded"}
-[2025-05-06 07:23:25] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLfqdP71JLI6sb92g0JrFak","event_type":"payment_method.attached"}
-[2025-05-06 07:23:25] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLfqeP71JLI6sb9t5GSdRKF","event_type":"customer.created"}
-[2025-05-06 07:23:25] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLfqeP71JLI6sb9XwnYO9hC","event_type":"customer.updated"}
-[2025-05-06 07:23:25] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLfqeP71JLI6sb9hllePDvI","event_type":"customer.subscription.created"}
-[2025-05-06 07:23:25] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6819b8edba3754.69639762"]
-[2025-05-06 07:23:25] - [INFO] Payment intent succeded saved succesfully  - ["pay_6819b8edba3754.69639762"]
-[2025-05-06 07:23:25] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLfqcP71JLI6sb91SNt5G3L","event_type":"payment_intent.succeeded"}
-[2025-05-06 07:23:25] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLfqcP71JLI6sb91PkovLHj","event_type":"payment_intent.created"}
-[2025-05-06 07:23:25] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLfqeP71JLI6sb9gDPFVXht","event_type":"checkout.session.completed"}
-[2025-05-06 07:23:26] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLfqeP71JLI6sb9AJhfotz8","event_type":"invoice.created"}
-[2025-05-06 07:23:26] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLfqeP71JLI6sb9lYsamDQX","event_type":"invoice.finalized"}
-[2025-05-06 07:23:26] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLfqeP71JLI6sb953tMi5dR","event_type":"invoice.paid"}
-[2025-05-06 07:23:26] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLfqeP71JLI6sb9EwTY2IRX","event_type":"invoice.payment_succeeded"}
-[2025-05-06 07:26:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLft9P71JLI6sb90lNugK3T","event_type":"charge.succeeded"}
-[2025-05-06 07:26:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLftBP71JLI6sb9b7nz6Tbx","event_type":"payment_method.attached"}
-[2025-05-06 07:26:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLftBP71JLI6sb9jtFIaW9C","event_type":"customer.created"}
-[2025-05-06 07:26:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLftBP71JLI6sb9hgV2Zdxd","event_type":"customer.updated"}
-[2025-05-06 07:26:03] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLftBP71JLI6sb9IZLeCMlY","event_type":"checkout.session.completed"}
-[2025-05-06 07:26:03] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLftBP71JLI6sb9HCiVYF3J","event_type":"customer.subscription.created"}
-[2025-05-06 07:26:03] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6819b98b32e525.60567670"]
-[2025-05-06 07:26:03] - [INFO] Payment intent succeded saved succesfully  - ["pay_6819b98b32e525.60567670"]
-[2025-05-06 07:26:03] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLft9P71JLI6sb902X5k6P0","event_type":"payment_intent.succeeded"}
-[2025-05-06 07:26:03] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLft9P71JLI6sb90gV53zjJ","event_type":"payment_intent.created"}
-[2025-05-06 07:26:03] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLftBP71JLI6sb9d3pm9mTs","event_type":"invoice.created"}
-[2025-05-06 07:26:03] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLftBP71JLI6sb9woNl5bcR","event_type":"invoice.finalized"}
-[2025-05-06 07:26:03] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLftBP71JLI6sb9yId3oZuc","event_type":"invoice.paid"}
-[2025-05-06 07:26:03] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLftCP71JLI6sb9Yj85NsEr","event_type":"invoice.payment_succeeded"}
-[2025-05-06 08:27:30] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLgqeP71JLI6sb91VvrolTj","event_type":"charge.succeeded"}
-[2025-05-06 08:27:30] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6819c7f2cef902.94531050"]
-[2025-05-06 08:27:30] - [INFO] Payment intent succeded saved succesfully  - ["pay_6819c7f2cef902.94531050"]
-[2025-05-06 08:27:30] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLgqeP71JLI6sb91sizyJRG","event_type":"payment_intent.succeeded"}
-[2025-05-06 08:27:30] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLgqeP71JLI6sb9138QndKL","event_type":"payment_intent.created"}
-[2025-05-06 08:27:33] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLgqeP71JLI6sb91m7tQWbR","event_type":"charge.updated"}
-[2025-05-06 08:32:05] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6819c905b2de59.98970129"]
-[2025-05-06 08:32:05] - [INFO] Payment intent succeded saved succesfully  - ["pay_6819c905b2de59.98970129"]
-[2025-05-06 08:32:05] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLgv5P71JLI6sb91JPIxKxb","event_type":"payment_intent.succeeded"}
-[2025-05-06 08:32:05] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLgv5P71JLI6sb91TUKfXNa","event_type":"charge.succeeded"}
-[2025-05-06 08:32:05] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLgv5P71JLI6sb91ggxsUX8","event_type":"payment_intent.created"}
-[2025-05-06 08:32:09] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLgv5P71JLI6sb91neUQBqZ","event_type":"charge.updated"}
-[2025-05-06 08:43:53] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLh6UP71JLI6sb90A5GPO22","event_type":"charge.succeeded"}
-[2025-05-06 08:43:53] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLh6WP71JLI6sb90w1mrJJf","event_type":"payment_method.attached"}
-[2025-05-06 08:43:53] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLh6WP71JLI6sb9puEJibrG","event_type":"customer.created"}
-[2025-05-06 08:43:54] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLh6WP71JLI6sb9eIbqI0oY","event_type":"customer.updated"}
-[2025-05-06 08:43:54] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLh6WP71JLI6sb9H545HhcD","event_type":"customer.subscription.created"}
-[2025-05-06 08:43:54] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6819cbca4ae206.93600287"]
-[2025-05-06 08:43:54] - [INFO] Payment intent succeded saved succesfully  - ["pay_6819cbca4ae206.93600287"]
-[2025-05-06 08:43:54] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLh6UP71JLI6sb90epVmctW","event_type":"payment_intent.succeeded"}
-[2025-05-06 08:43:54] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLh6UP71JLI6sb90zJRMgUA","event_type":"payment_intent.created"}
-[2025-05-06 08:43:54] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLh6WP71JLI6sb94U0GhMw2","event_type":"invoice.created"}
-[2025-05-06 08:43:54] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLh6WP71JLI6sb9vTbTHnJv","event_type":"invoice.finalized"}
-[2025-05-06 08:43:54] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLh6WP71JLI6sb9OgZwG8as","event_type":"invoice.paid"}
-[2025-05-06 08:43:54] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLh6WP71JLI6sb9VPLFXve4","event_type":"invoice.payment_succeeded"}
-[2025-05-06 08:43:55] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLh6YP71JLI6sb9oF9BIoVz","event_type":"checkout.session.completed"}
-[2025-05-06 11:21:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLjZUP71JLI6sb91vulTJAE","event_type":"charge.succeeded"}
-[2025-05-06 11:21:58] - [INFO] Payment intent succeded procesed succesfully  - ["pay_6819f0d6984b01.28635155"]
-[2025-05-06 11:21:58] - [INFO] Payment intent succeded saved succesfully  - ["pay_6819f0d6984b01.28635155"]
-[2025-05-06 11:21:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLjZUP71JLI6sb91tcnyRyG","event_type":"payment_intent.succeeded"}
-[2025-05-06 11:21:58] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLjZUP71JLI6sb91X7a75Cj","event_type":"payment_intent.created"}
-[2025-05-06 11:22:00] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLjZUP71JLI6sb91uoe1wth","event_type":"charge.updated"}
-[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkiOP71JLI6sb90XpIU3IO","event_type":"charge.succeeded"}
-[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb9IQCgxOaL","event_type":"checkout.session.completed"}
-[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb9Ab9sfzVA","event_type":"payment_method.attached"}
-[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb9vUOjZwpG","event_type":"customer.created"}
-[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb9wZDakwI3","event_type":"customer.updated"}
-[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb91bcNELDP","event_type":"customer.subscription.created"}
-[2025-05-06 12:35:15] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681a0203d77698.84067792"]
-[2025-05-06 12:35:15] - [INFO] Payment intent succeded saved succesfully  - ["pay_681a0203d77698.84067792"]
-[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkiOP71JLI6sb90DoHxgS4","event_type":"payment_intent.succeeded"}
-[2025-05-06 12:35:15] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkiOP71JLI6sb905OHcJt0","event_type":"payment_intent.created"}
-[2025-05-06 12:35:16] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb9fXbxTBBr","event_type":"invoice.created"}
-[2025-05-06 12:35:16] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb908JNtwxC","event_type":"invoice.finalized"}
-[2025-05-06 12:35:16] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkiQP71JLI6sb9aOGqOOxs","event_type":"invoice.paid"}
-[2025-05-06 12:35:16] - [INFO] Evento de factura recibido: invoice.payment_succeeded - {"event_id":"evt_1RLkiQP71JLI6sb9fcpa1EfN","invoice_id":"in_1RLkiPP71JLI6sb93juCtUSo"}
-[2025-05-06 12:38:01] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkl4P71JLI6sb90evrjXoM","event_type":"charge.succeeded"}
-[2025-05-06 12:38:01] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl6P71JLI6sb9WGwDCmOa","event_type":"payment_method.attached"}
-[2025-05-06 12:38:01] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl6P71JLI6sb9zZaFy2Z9","event_type":"customer.created"}
-[2025-05-06 12:38:01] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl6P71JLI6sb9DPkEuPWd","event_type":"customer.updated"}
-[2025-05-06 12:38:01] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl6P71JLI6sb96nCpJz2H","event_type":"checkout.session.completed"}
-[2025-05-06 12:38:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl6P71JLI6sb9BRcBzJX8","event_type":"customer.subscription.created"}
-[2025-05-06 12:38:02] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681a02aa122785.41878190"]
-[2025-05-06 12:38:02] - [INFO] Payment intent succeded saved succesfully  - ["pay_681a02aa122785.41878190"]
-[2025-05-06 12:38:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkl4P71JLI6sb90u5lnqQ2","event_type":"payment_intent.succeeded"}
-[2025-05-06 12:38:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkl4P71JLI6sb90aBsHtWe","event_type":"payment_intent.created"}
-[2025-05-06 12:38:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl6P71JLI6sb9lwmynyJB","event_type":"invoice.created"}
-[2025-05-06 12:38:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl6P71JLI6sb9aAAKt4Cq","event_type":"invoice.finalized"}
-[2025-05-06 12:38:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkl7P71JLI6sb9rtj18Zb0","event_type":"invoice.paid"}
-[2025-05-06 12:38:02] - [INFO] Evento de factura recibido: invoice.payment_succeeded - {"event_id":"evt_1RLkl7P71JLI6sb9hfVasNwM","invoice_id":"in_1RLkl5P71JLI6sb9Vd5uOTEs"}
-[2025-05-06 12:42:18] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkpDP71JLI6sb90oi6qOhd","event_type":"charge.succeeded"}
-[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpFP71JLI6sb9AyPpqzGh","event_type":"payment_method.attached"}
-[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpFP71JLI6sb9I53ipUpl","event_type":"customer.created"}
-[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpFP71JLI6sb9VwKlZiIX","event_type":"customer.updated"}
-[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpFP71JLI6sb9FF07yII0","event_type":"customer.subscription.created"}
-[2025-05-06 12:42:19] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681a03ab4cb133.66424558"]
-[2025-05-06 12:42:19] - [INFO] Payment intent succeded saved succesfully  - ["pay_681a03ab4cb133.66424558"]
-[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkpDP71JLI6sb90hvDcJrQ","event_type":"payment_intent.succeeded"}
-[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpFP71JLI6sb9HszO3rw4","event_type":"invoice.created"}
-[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLkpDP71JLI6sb90v4toTBI","event_type":"payment_intent.created"}
-[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpGP71JLI6sb903F1p9pz","event_type":"invoice.finalized"}
-[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpGP71JLI6sb9fxOQJirV","event_type":"invoice.paid"}
-[2025-05-06 12:42:19] - [INFO] Evento de factura recibido: invoice.payment_succeeded - {"event_id":"evt_1RLkpGP71JLI6sb9SsuIHUE1","invoice_id":"in_1RLkpEP71JLI6sb9LS4qOyaV"}
-[2025-05-06 12:42:19] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLkpGP71JLI6sb9Z6gKaCMc","event_type":"checkout.session.completed"}
-[2025-05-06 12:54:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLl1FP71JLI6sb91F0GtpLc","event_type":"charge.succeeded"}
-[2025-05-06 12:54:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl1HP71JLI6sb9yJfwbYU7","event_type":"payment_method.attached"}
-[2025-05-06 12:54:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl1HP71JLI6sb95FRx0IzS","event_type":"customer.created"}
-[2025-05-06 12:54:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl1HP71JLI6sb94J0x4WuW","event_type":"customer.updated"}
-[2025-05-06 12:54:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl1HP71JLI6sb9DfAQNjhm","event_type":"checkout.session.completed"}
-[2025-05-06 12:54:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl1HP71JLI6sb9AeeHgEcz","event_type":"customer.subscription.created"}
-[2025-05-06 12:54:44] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681a0694e2ad34.95408357"]
-[2025-05-06 12:54:44] - [INFO] Payment intent succeded saved succesfully  - ["pay_681a0694e2ad34.95408357"]
-[2025-05-06 12:54:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLl1FP71JLI6sb91ZFZKtl7","event_type":"payment_intent.succeeded"}
-[2025-05-06 12:54:44] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLl1FP71JLI6sb91o2iShup","event_type":"payment_intent.created"}
-[2025-05-06 12:54:45] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl1HP71JLI6sb9cFNV1z1V","event_type":"invoice.created"}
-[2025-05-06 12:54:45] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl1HP71JLI6sb9ENlmL9sr","event_type":"invoice.finalized"}
-[2025-05-06 12:54:45] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl1HP71JLI6sb9MOVizX3N","event_type":"invoice.paid"}
-[2025-05-06 12:54:45] - [INFO] Evento de factura recibido: invoice.payment_succeeded - {"event_id":"evt_1RLl1HP71JLI6sb946vwNaSV","invoice_id":"in_1RLl1GP71JLI6sb9qjkqGkEa"}
-[2025-05-06 12:58:12] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLl4bP71JLI6sb90WV8hEPq","event_type":"charge.succeeded"}
-[2025-05-06 12:58:12] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl4dP71JLI6sb9uLSU3W5w","event_type":"payment_method.attached"}
-[2025-05-06 12:58:12] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl4dP71JLI6sb9tK4iA3UL","event_type":"customer.created"}
-[2025-05-06 12:58:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl4dP71JLI6sb9dSmNMhbQ","event_type":"checkout.session.completed"}
-[2025-05-06 12:58:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl4dP71JLI6sb9waMbrSuX","event_type":"customer.updated"}
-[2025-05-06 12:58:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl4dP71JLI6sb9FQCQ1eYk","event_type":"customer.subscription.created"}
-[2025-05-06 12:58:13] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681a07653759b2.12577461"]
-[2025-05-06 12:58:13] - [INFO] Payment intent succeded saved succesfully  - ["pay_681a07653759b2.12577461"]
-[2025-05-06 12:58:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLl4bP71JLI6sb90anJ8jTE","event_type":"payment_intent.succeeded"}
-[2025-05-06 12:58:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLl4bP71JLI6sb90xyWszRg","event_type":"payment_intent.created"}
-[2025-05-06 12:58:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl4dP71JLI6sb90x25sJp0","event_type":"invoice.created"}
-[2025-05-06 12:58:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl4dP71JLI6sb90uQHXY1T","event_type":"invoice.finalized"}
-[2025-05-06 12:58:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl4eP71JLI6sb9F9VtOfLT","event_type":"invoice.paid"}
-[2025-05-06 12:58:13] - [INFO] Evento de factura recibido: invoice.payment_succeeded - {"event_id":"evt_1RLl4eP71JLI6sb909rmR4Bs","invoice_id":"in_1RLl4cP71JLI6sb9ylj68FJb"}
-[2025-05-06 12:58:13] - [INFO] FACTURA MAPEADA - 
-[2025-05-06 13:02:02] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl8LP71JLI6sb9SX5fOMHt","event_type":"checkout.session.expired"}
-[2025-05-06 13:02:27] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLl8hP71JLI6sb91nUIRCdh","event_type":"charge.succeeded"}
-[2025-05-06 13:02:27] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl8kP71JLI6sb9ZF59QZQX","event_type":"payment_method.attached"}
-[2025-05-06 13:02:27] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl8kP71JLI6sb9qMlItxMp","event_type":"customer.created"}
-[2025-05-06 13:02:27] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl8kP71JLI6sb9aWplnHuV","event_type":"customer.updated"}
-[2025-05-06 13:02:27] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl8kP71JLI6sb9Lv1Zn7G5","event_type":"checkout.session.expired"}
-[2025-05-06 13:02:27] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl8kP71JLI6sb9bB44QFaA","event_type":"checkout.session.completed"}
-[2025-05-06 13:02:27] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl8kP71JLI6sb9ZcdqU3pR","event_type":"customer.subscription.created"}
-[2025-05-06 13:02:27] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681a0863cd34f3.98012604"]
-[2025-05-06 13:02:27] - [INFO] Payment intent succeded saved succesfully  - ["pay_681a0863cd34f3.98012604"]
-[2025-05-06 13:02:27] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLl8hP71JLI6sb91iS82BAG","event_type":"payment_intent.succeeded"}
-[2025-05-06 13:02:27] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RLl8hP71JLI6sb91O066tW6","event_type":"payment_intent.created"}
-[2025-05-06 13:02:28] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl8kP71JLI6sb9tFsc4LwG","event_type":"invoice.created"}
-[2025-05-06 13:02:28] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl8kP71JLI6sb9qp65hEgk","event_type":"invoice.finalized"}
-[2025-05-06 13:02:28] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl8kP71JLI6sb9ds2msDwi","event_type":"invoice.paid"}
-[2025-05-06 13:02:28] - [INFO] Evento de factura recibido: invoice.payment_succeeded - {"event_id":"evt_1RLl8kP71JLI6sb9jacCMH7z","invoice_id":"in_1RLl8jP71JLI6sb9kk9kUFee"}
-[2025-05-06 13:02:28] - [INFO] FACTURA MAPEADA - 
-[2025-05-06 13:02:28] - [INFO] Factura procesada y guardada exitosamente - {"id_intern_invoice":"inv_681a08645c78c9.18693396","invoice_id":"in_1RLl8jP71JLI6sb9kk9kUFee","amount":"1500 eur","status":"paid"}
-[2025-05-06 13:02:28] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RLl8kP71JLI6sb9jacCMH7z","event_type":"invoice.payment_succeeded"}
-[2025-05-07 06:50:16] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RM1o7P71JLI6sb90TiJZfPX","event_type":"charge.succeeded"}
-[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1o9P71JLI6sb9SFpFLdHj","event_type":"payment_method.attached"}
-[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1o9P71JLI6sb9DmhmEZiP","event_type":"customer.created"}
-[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1o9P71JLI6sb9v7YYcWht","event_type":"customer.updated"}
-[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1o9P71JLI6sb9rig5Y0Kw","event_type":"customer.subscription.created"}
-[2025-05-07 06:50:17] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681b02a9314e89.33438496"]
-[2025-05-07 06:50:17] - [INFO] Payment intent succeded saved succesfully  - ["pay_681b02a9314e89.33438496"]
-[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RM1o7P71JLI6sb901S2onTB","event_type":"payment_intent.succeeded"}
-[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RM1o7P71JLI6sb9095WdYak","event_type":"payment_intent.created"}
-[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1o9P71JLI6sb9fpJOF4KJ","event_type":"checkout.session.completed"}
-[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1o9P71JLI6sb9yWM8nf7A","event_type":"invoice.created"}
-[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1o9P71JLI6sb9EaW9c1pj","event_type":"invoice.finalized"}
-[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1oAP71JLI6sb9LT7vuqKN","event_type":"invoice.paid"}
-[2025-05-07 06:50:17] - [INFO] Evento de factura recibido: invoice.payment_succeeded - {"event_id":"evt_1RM1oAP71JLI6sb9qty0sJiU","invoice_id":"in_1RM1o8P71JLI6sb9WAfJD0N3"}
-[2025-05-07 06:50:17] - [INFO] FACTURA MAPEADA - 
-[2025-05-07 06:50:17] - [INFO] Factura procesada y guardada exitosamente - {"id_intern_invoice":"inv_681b02a9a0a676.60573957","invoice_id":"in_1RM1o8P71JLI6sb9WAfJD0N3","amount":"1500 eur","status":"paid"}
-[2025-05-07 06:50:17] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1oAP71JLI6sb9qty0sJiU","event_type":"invoice.payment_succeeded"}
-[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RM1q0P71JLI6sb91WfY1qfS","event_type":"charge.succeeded"}
-[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9ye1FPAz4","event_type":"checkout.session.completed"}
-[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9aDJ5ItuG","event_type":"payment_method.attached"}
-[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9nGZX95K0","event_type":"customer.created"}
-[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9TFx1Cghq","event_type":"customer.updated"}
-[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9cV8nJWwA","event_type":"customer.subscription.created"}
-[2025-05-07 06:52:13] - [INFO] Payment intent succeded procesed succesfully  - ["pay_681b031dd9ed52.54739349"]
-[2025-05-07 06:52:13] - [INFO] Payment intent succeded saved succesfully  - ["pay_681b031dd9ed52.54739349"]
-[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RM1q0P71JLI6sb913tuFK6V","event_type":"payment_intent.succeeded"}
-[2025-05-07 06:52:13] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_3RM1q0P71JLI6sb91ZcrLXtJ","event_type":"payment_intent.created"}
-[2025-05-07 06:52:14] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9N2Tjc8Gn","event_type":"invoice.created"}
-[2025-05-07 06:52:14] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9X5sOu1nl","event_type":"invoice.finalized"}
-[2025-05-07 06:52:14] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9TEcngaY0","event_type":"invoice.paid"}
-[2025-05-07 06:52:14] - [INFO] Evento de factura recibido: invoice.payment_succeeded - {"event_id":"evt_1RM1q2P71JLI6sb9d26hoq9i","invoice_id":"in_1RM1q1P71JLI6sb9Cnz2MiNT"}
-[2025-05-07 06:52:14] - [INFO] FACTURA MAPEADA - 
-[2025-05-07 06:52:14] - [INFO] Factura procesada y guardada exitosamente - {"id_intern_invoice":"inv_681b031e712ed3.45498025","invoice_id":"in_1RM1q1P71JLI6sb9Cnz2MiNT","amount":"300 eur","status":"paid"}
-[2025-05-07 06:52:14] - [INFO] Webhook event processed successfully:  - {"event_id":"evt_1RM1q2P71JLI6sb9d26hoq9i","event_type":"invoice.payment_succeeded"}
+[2025-05-11 12:43:53] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 12:43:53] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 12:44:26] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 12:44:26] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 12:47:51] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 12:47:51] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 12:47:52] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 12:47:52] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 12:47:52] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 12:47:52] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 14:47:30] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 14:47:30] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 14:50:42] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 14:50:42] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 14:58:30] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 14:58:30] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 14:59:18] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 14:59:18] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 15:02:33] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 15:02:33] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 15:02:50] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 15:02:50] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 15:12:59] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 15:12:59] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 15:13:40] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 15:13:40] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 15:15:08] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 15:15:08] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 15:18:22] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 15:18:22] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 16:13:09] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 16:13:09] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 16:21:14] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 16:21:14] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 16:24:06] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 16:24:06] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 16:32:23] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 16:32:23] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 16:47:36] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 16:47:36] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:09:23] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:09:23] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:16:00] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:16:00] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:18:27] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:18:27] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:21:18] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:21:18] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:25:54] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:25:54] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:25:58] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:25:58] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:25:58] [EVENT] Endpoint create_subscription_session.php: Solicitud recibida.
+[2025-05-11 17:25:58] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-11 17:25:58] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-11 17:25:58] [EVENT] create_subscription_session.php: Llamando a createSubscriptionSession. - Context: {"lookup_key":"one_payment"}
+[2025-05-11 17:25:58] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de suscripción. - Context: {"lookup_key":"one_payment"}
+[2025-05-11 17:25:58] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"one_payment","context":"suscripción"}
+[2025-05-11 17:25:58] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"one_payment","price_id":"price_1RLNYIP71JLI6sb99HofbYd0"}
+[2025-05-11 17:25:58] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para suscripción. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-11 17:27:58] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:27:58] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:28:54] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:28:54] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:28:56] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:28:56] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:28:56] [EVENT] Endpoint create_subscription_session.php: Solicitud recibida.
+[2025-05-11 17:28:56] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-11 17:28:56] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-11 17:28:56] [EVENT] create_subscription_session.php: Llamando a createSubscriptionSession. - Context: {"lookup_key":"one_payment"}
+[2025-05-11 17:28:56] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de suscripción. - Context: {"lookup_key":"one_payment"}
+[2025-05-11 17:28:56] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"one_payment","context":"suscripción"}
+[2025-05-11 17:28:56] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"one_payment","price_id":"price_1RLNYIP71JLI6sb99HofbYd0"}
+[2025-05-11 17:28:56] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para suscripción. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-11 17:32:23] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:32:23] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:32:23] [EVENT] Endpoint create_subscription_session.php: Solicitud recibida.
+[2025-05-11 17:32:23] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-11 17:32:23] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-11 17:32:23] [EVENT] create_subscription_session.php: Llamando a createSubscriptionSession. - Context: {"lookup_key":"one_payment"}
+[2025-05-11 17:32:23] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de suscripción. - Context: {"lookup_key":"one_payment"}
+[2025-05-11 17:32:23] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"one_payment","context":"suscripción"}
+[2025-05-11 17:32:24] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"one_payment","price_id":"price_1RLNYIP71JLI6sb99HofbYd0"}
+[2025-05-11 17:32:24] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para suscripción. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-11 17:37:18] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:37:18] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:38:06] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:38:06] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:44:05] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:44:05] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:44:08] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:44:08] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:44:08] [EVENT] Endpoint create_subscription_session.php: Solicitud recibida.
+[2025-05-11 17:44:08] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-11 17:44:08] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-11 17:44:08] [EVENT] create_subscription_session.php: Llamando a createSubscriptionSession. - Context: {"lookup_key":"one_payment"}
+[2025-05-11 17:44:08] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de pago único. - Context: {"lookup_key":"one_payment"}
+[2025-05-11 17:44:08] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"one_payment","context":"pago único"}
+[2025-05-11 17:44:08] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"one_payment","price_id":"price_1RLNYIP71JLI6sb99HofbYd0"}
+[2025-05-11 17:44:08] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para pago único. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-11 17:44:08] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Sesión de pago único creada. - Context: {"session_id":"cs_test_a1danTfC6lX9XWP68odl4BXZUgvhvaqAJZH8y31d45TjzIoWiwkqCTFku9","price_id":"price_1RLNYIP71JLI6sb99HofbYd0"}
+[2025-05-11 17:44:08] [EVENT] create_subscription_session.php: Sesión de suscripción creada. - Context: {"session_id":"cs_test_a1danTfC6lX9XWP68odl4BXZUgvhvaqAJZH8y31d45TjzIoWiwkqCTFku9"}
+[2025-05-11 17:44:28] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:44:28] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:44:28] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 17:44:28] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 17:44:28] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 17:44:28] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 17:44:28] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 17:44:28] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 17:44:28] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90WXGDiVp","event_type":"payment_intent.succeeded"}
+[2025-05-11 17:44:28] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90WXGDiVp","event_type":"payment_intent.succeeded"}
+[2025-05-11 17:44:28] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_3RNdvLP71JLI6sb90WXGDiVp","event_type":"payment_intent.succeeded","strategy_class":"App\\Strategy\\Impl\\PaymentIntentSucceededStrategyImpl"}
+[2025-05-11 17:44:28] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90WXGDiVp","event_type":"payment_intent.succeeded"}
+[2025-05-11 17:44:28] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: DTO mapeado. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90WXGDiVp","pi_id":"pi_3RNdvLP71JLI6sb901OkJR7A"}
+[2025-05-11 17:44:28] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: Intentando obtener Charge. - Context: {"charge_id":"ch_3RNdvLP71JLI6sb90xwUsgEf"}
+[2025-05-11 17:44:29] [EVENT] TransactionModelFactory: Preparando TransactionsModel desde PaymentIntentDTO. - Context: {"pi_id":"pi_3RNdvLP71JLI6sb901OkJR7A"}
+[2025-05-11 17:44:29] [EVENT] TransactionModelFactory: TransactionsModel (sin ID local aún) preparado desde PaymentIntentDTO. - Context: {"pi_id":"pi_3RNdvLP71JLI6sb901OkJR7A"}
+[2025-05-11 17:44:29] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: Transacción creada. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90WXGDiVp","pi_id":"pi_3RNdvLP71JLI6sb901OkJR7A","transaction_id_local":2}
+[2025-05-11 17:44:29] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90WXGDiVp"}
+[2025-05-11 17:44:29] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90WXGDiVp","strategy_class":"App\\Strategy\\Impl\\PaymentIntentSucceededStrategyImpl"}
+[2025-05-11 17:44:29] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90WXGDiVp"}
+[2025-05-11 17:44:29] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:44:29] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:44:29] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 17:44:29] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 17:44:29] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 17:44:29] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 17:44:29] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 17:44:29] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 17:44:29] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90JxkCbKd","event_type":"payment_intent.created"}
+[2025-05-11 17:44:29] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90JxkCbKd","event_type":"payment_intent.created"}
+[2025-05-11 17:44:29] [EVENT] StripeWebhookService: No se encontró estrategia aplicable (payload logueado en unhandled_stripe_events.log). - Context: {"event_id":"evt_3RNdvLP71JLI6sb90JxkCbKd","event_type":"payment_intent.created"}
+[2025-05-11 17:44:29] [EVENT] StripeWebhookController: No se encontró estrategia aplicable. - Context: {"event_type":null,"event_id":"evt_3RNdvLP71JLI6sb90JxkCbKd"}
+[2025-05-11 17:44:29] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:44:29] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:44:29] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 17:44:29] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 17:44:29] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 17:44:29] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 17:44:29] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 17:44:29] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 17:44:29] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RNdvMP71JLI6sb9iVt1joDE","event_type":"checkout.session.completed"}
+[2025-05-11 17:44:29] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RNdvMP71JLI6sb9iVt1joDE","event_type":"checkout.session.completed"}
+[2025-05-11 17:44:29] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_1RNdvMP71JLI6sb9iVt1joDE","event_type":"checkout.session.completed","strategy_class":"App\\Strategy\\Impl\\CheckoutSessionCompletedStrategyImpl"}
+[2025-05-11 17:44:29] [EVENT] App\Strategy\Impl\CheckoutSessionCompletedStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_1RNdvMP71JLI6sb9iVt1joDE","event_type":"checkout.session.completed"}
+[2025-05-11 17:44:29] [EVENT] App\Strategy\Impl\CheckoutSessionCompletedStrategyImpl: DTO CheckoutSession mapeado. - Context: {"event_id":"evt_1RNdvMP71JLI6sb9iVt1joDE","cs_id":"cs_test_a1danTfC6lX9XWP68odl4BXZUgvhvaqAJZH8y31d45TjzIoWiwkqCTFku9","mode":"payment","customer_id_stripe":null,"customer_email":"TEST@TEST.COM","payment_intent_id":"pi_3RNdvLP71JLI6sb901OkJR7A","subscription_id":null}
+[2025-05-11 17:44:29] [EVENT] App\Strategy\Impl\CheckoutSessionCompletedStrategyImpl: Transacción ya existente para PI de Checkout (pago único). - Context: {"pi_id":"pi_3RNdvLP71JLI6sb901OkJR7A","local_tx_id":2}
+[2025-05-11 17:44:29] [EVENT] App\Strategy\Impl\CheckoutSessionCompletedStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_1RNdvMP71JLI6sb9iVt1joDE","cs_id":"cs_test_a1danTfC6lX9XWP68odl4BXZUgvhvaqAJZH8y31d45TjzIoWiwkqCTFku9"}
+[2025-05-11 17:44:29] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_1RNdvMP71JLI6sb9iVt1joDE","strategy_class":"App\\Strategy\\Impl\\CheckoutSessionCompletedStrategyImpl"}
+[2025-05-11 17:44:29] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_1RNdvMP71JLI6sb9iVt1joDE"}
+[2025-05-11 17:44:29] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:44:29] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:44:29] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 17:44:29] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 17:44:29] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 17:44:29] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 17:44:29] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 17:44:29] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 17:44:29] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90e0hytLJ","event_type":"charge.succeeded"}
+[2025-05-11 17:44:29] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90e0hytLJ","event_type":"charge.succeeded"}
+[2025-05-11 17:44:29] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_3RNdvLP71JLI6sb90e0hytLJ","event_type":"charge.succeeded","strategy_class":"App\\Strategy\\Impl\\ChargeSucceededStrategyImpl"}
+[2025-05-11 17:44:29] [EVENT] App\Strategy\Impl\ChargeSucceededStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90e0hytLJ","event_type":"charge.succeeded"}
+[2025-05-11 17:44:29] [EVENT] App\Strategy\Impl\ChargeSucceededStrategyImpl: Charge DTO mapeado. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90e0hytLJ","charge_id":"ch_3RNdvLP71JLI6sb90xwUsgEf","pi_id":"pi_3RNdvLP71JLI6sb901OkJR7A","receipt_url":"https://pay.stripe.com/receipts/payment/CAcaFwoVYWNjdF8xUkhKNjFQNzFKTEk2c2I5KPzDg8EGMgaT7PAuIMM6LBa09hgZfpo0Tsq-ttR5c_1ucUDkyld65MBVZUfTZsLARG7_m-wKmeHzi7X2"}
+[2025-05-11 17:44:29] [EVENT] App\Strategy\Impl\ChargeSucceededStrategyImpl: Transacción actualizada con detalles del Charge. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90e0hytLJ","transaction_id_local":2,"charge_id":"ch_3RNdvLP71JLI6sb90xwUsgEf"}
+[2025-05-11 17:44:29] [EVENT] App\Strategy\Impl\ChargeSucceededStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90e0hytLJ","charge_id":"ch_3RNdvLP71JLI6sb90xwUsgEf"}
+[2025-05-11 17:44:29] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90e0hytLJ","strategy_class":"App\\Strategy\\Impl\\ChargeSucceededStrategyImpl"}
+[2025-05-11 17:44:29] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90e0hytLJ"}
+[2025-05-11 17:44:31] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:44:31] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:44:31] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 17:44:31] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 17:44:31] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 17:44:31] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 17:44:31] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 17:44:31] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 17:44:31] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90junT8p3","event_type":"charge.updated"}
+[2025-05-11 17:44:31] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_3RNdvLP71JLI6sb90junT8p3","event_type":"charge.updated"}
+[2025-05-11 17:44:31] [EVENT] StripeWebhookService: No se encontró estrategia aplicable (payload logueado en unhandled_stripe_events.log). - Context: {"event_id":"evt_3RNdvLP71JLI6sb90junT8p3","event_type":"charge.updated"}
+[2025-05-11 17:44:31] [EVENT] StripeWebhookController: No se encontró estrategia aplicable. - Context: {"event_type":null,"event_id":"evt_3RNdvLP71JLI6sb90junT8p3"}
+[2025-05-11 17:45:09] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:45:09] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:46:20] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:46:20] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:46:47] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:46:47] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 17:46:49] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 17:46:49] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:11:55] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:11:55] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:12:06] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:12:06] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:12:07] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:12:07] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:12:08] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:12:08] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:18:42] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:18:42] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:18:55] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:18:55] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:22:03] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:22:03] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:22:17] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:22:17] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:22:23] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:22:23] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:22:42] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:22:42] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:22:58] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:22:58] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:23:00] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:23:00] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:23:17] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:23:17] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:23:46] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:23:46] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:24:47] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:24:47] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:25:06] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:25:06] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:25:14] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:25:14] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:25:33] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:25:33] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:25:39] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:25:39] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:25:43] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:25:43] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:26:06] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:26:06] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:26:06] [EVENT] Endpoint create_payment_session.php: Solicitud recibida.
+[2025-05-11 22:26:06] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-11 22:26:06] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-11 22:26:06] [EVENT] create_payment_session.php: Llamando a createOneTimePaymentSession. - Context: {"lookup_key":"annual_payment"}
+[2025-05-11 22:26:06] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de pago único. - Context: {"lookup_key":"annual_payment"}
+[2025-05-11 22:26:06] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"annual_payment","context":"pago único"}
+[2025-05-11 22:26:07] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"annual_payment","price_id":"price_1RLNsHP71JLI6sb9ez8HJsHt"}
+[2025-05-11 22:26:07] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para pago único. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-11 22:26:08] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:26:08] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:26:08] [EVENT] Endpoint create_payment_session.php: Solicitud recibida.
+[2025-05-11 22:26:08] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-11 22:26:08] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-11 22:26:08] [EVENT] create_payment_session.php: Llamando a createOneTimePaymentSession. - Context: {"lookup_key":"annual_payment"}
+[2025-05-11 22:26:08] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de pago único. - Context: {"lookup_key":"annual_payment"}
+[2025-05-11 22:26:08] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"annual_payment","context":"pago único"}
+[2025-05-11 22:26:09] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"annual_payment","price_id":"price_1RLNsHP71JLI6sb9ez8HJsHt"}
+[2025-05-11 22:26:09] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para pago único. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-11 22:26:10] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:26:10] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:26:10] [EVENT] Endpoint create_payment_session.php: Solicitud recibida.
+[2025-05-11 22:26:10] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-11 22:26:10] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-11 22:26:10] [EVENT] create_payment_session.php: Llamando a createOneTimePaymentSession. - Context: {"lookup_key":"monthly_subscriptions"}
+[2025-05-11 22:26:10] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de pago único. - Context: {"lookup_key":"monthly_subscriptions"}
+[2025-05-11 22:26:10] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"monthly_subscriptions","context":"pago único"}
+[2025-05-11 22:26:10] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"monthly_subscriptions","price_id":"price_1RLNcyP71JLI6sb92qc9ywRx"}
+[2025-05-11 22:26:10] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para pago único. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-11 22:29:05] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:29:05] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:29:05] [EVENT] Endpoint create_payment_session.php: Solicitud recibida.
+[2025-05-11 22:29:05] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-11 22:29:05] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-11 22:29:05] [EVENT] create_payment_session.php: Llamando a createOneTimePaymentSession. - Context: {"lookup_key":"monthly_subscriptions"}
+[2025-05-11 22:29:05] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de pago único. - Context: {"lookup_key":"monthly_subscriptions"}
+[2025-05-11 22:29:05] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"monthly_subscriptions","context":"pago único"}
+[2025-05-11 22:29:05] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"monthly_subscriptions","price_id":"price_1RLNcyP71JLI6sb92qc9ywRx"}
+[2025-05-11 22:29:05] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para pago único. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-11 22:31:58] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:31:58] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:33:23] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:33:23] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:36:42] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:36:42] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:36:57] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:36:57] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:37:22] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:37:22] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:37:26] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:37:26] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:37:26] [EVENT] Endpoint create_payment_session.php: Solicitud recibida.
+[2025-05-11 22:37:26] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-11 22:37:26] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-11 22:37:26] [EVENT] create_payment_session.php: Llamando a createOneTimePaymentSession. - Context: {"lookup_key":"annual_payment"}
+[2025-05-11 22:37:26] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de pago único. - Context: {"lookup_key":"annual_payment"}
+[2025-05-11 22:37:26] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"annual_payment","context":"pago único"}
+[2025-05-11 22:37:26] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"annual_payment","price_id":"price_1RLNsHP71JLI6sb9ez8HJsHt"}
+[2025-05-11 22:37:26] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para pago único. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-11 22:37:30] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:37:30] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:37:30] [EVENT] Endpoint create_payment_session.php: Solicitud recibida.
+[2025-05-11 22:37:30] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-11 22:37:30] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-11 22:37:30] [EVENT] create_payment_session.php: Llamando a createOneTimePaymentSession. - Context: {"lookup_key":"monthly_subscriptions"}
+[2025-05-11 22:37:30] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de pago único. - Context: {"lookup_key":"monthly_subscriptions"}
+[2025-05-11 22:37:30] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"monthly_subscriptions","context":"pago único"}
+[2025-05-11 22:37:30] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"monthly_subscriptions","price_id":"price_1RLNcyP71JLI6sb92qc9ywRx"}
+[2025-05-11 22:37:30] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para pago único. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-11 22:40:30] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:40:30] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:40:31] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:40:31] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:40:31] [EVENT] Endpoint create_subscription_session.php: Solicitud recibida.
+[2025-05-11 22:40:31] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-11 22:40:31] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-11 22:40:31] [EVENT] create_subscription_session.php: Llamando a createSubscriptionSession. - Context: {"lookup_key":"monthly_subscriptions"}
+[2025-05-11 22:40:31] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de suscripción. - Context: {"lookup_key":"monthly_subscriptions"}
+[2025-05-11 22:40:31] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"monthly_subscriptions","context":"suscripción"}
+[2025-05-11 22:40:31] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"monthly_subscriptions","price_id":"price_1RLNcyP71JLI6sb92qc9ywRx"}
+[2025-05-11 22:40:31] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para suscripción. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-11 22:40:32] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Sesión de suscripción creada. - Context: {"session_id":"cs_test_a1IbmJHZwk0YbQBFVPazmZcHUiOT58fekHGp1CjS63QbCqVRzG2xx5xdLy","price_id":"price_1RLNcyP71JLI6sb92qc9ywRx"}
+[2025-05-11 22:40:32] [EVENT] create_subscription_session.php: Sesión de suscripción creada. - Context: {"session_id":"cs_test_a1IbmJHZwk0YbQBFVPazmZcHUiOT58fekHGp1CjS63QbCqVRzG2xx5xdLy"}
+[2025-05-11 22:40:39] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:40:39] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:40:46] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:40:46] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:41:45] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:41:45] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:43:12] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:43:12] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:43:39] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:43:39] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:43:43] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:43:43] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:43:48] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:43:48] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:43:53] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:43:53] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:43:56] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:43:56] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:44:30] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:44:30] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:44:37] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:44:37] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:44:49] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:44:49] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:47:07] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:47:07] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:55:27] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:55:27] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:56:52] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:56:52] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:57:11] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:57:11] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 22:57:11] [EVENT] Endpoint create_payment_session.php: Solicitud recibida.
+[2025-05-11 22:57:11] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-11 22:57:11] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-11 22:57:11] [EVENT] create_payment_session.php: Llamando a createOneTimePaymentSession. - Context: {"lookup_key":"one_payment"}
+[2025-05-11 22:57:11] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de pago único. - Context: {"lookup_key":"one_payment"}
+[2025-05-11 22:57:11] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"one_payment","context":"pago único"}
+[2025-05-11 22:57:12] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"one_payment","price_id":"price_1RLNYIP71JLI6sb99HofbYd0"}
+[2025-05-11 22:57:12] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para pago único. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-11 22:57:12] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Sesión de pago único creada. - Context: {"session_id":"cs_test_a1NGnSw0tVPTVzOLKUJYj8YCZcwYbCWXPIBFuXWKbaPKQD3Laygjqk63cu","price_id":"price_1RLNYIP71JLI6sb99HofbYd0"}
+[2025-05-11 22:57:12] [EVENT] create_payment_session.php: Sesión de pago único creada. - Context: {"session_id":"cs_test_a1NGnSw0tVPTVzOLKUJYj8YCZcwYbCWXPIBFuXWKbaPKQD3Laygjqk63cu"}
+[2025-05-11 22:57:22] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 22:57:22] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:06:31] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:06:31] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:06:33] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:06:33] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:06:41] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:06:41] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:07:19] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:07:19] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:07:24] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:07:24] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:07:38] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:07:38] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:07:49] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:07:49] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:08:38] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:08:38] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:08:49] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:08:49] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:08:51] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:08:51] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:09:14] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:09:14] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:09:21] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:09:21] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:09:21] [EVENT] Endpoint create_payment_session.php: Solicitud recibida.
+[2025-05-11 23:09:21] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-11 23:09:21] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-11 23:09:21] [EVENT] create_payment_session.php: Llamando a createOneTimePaymentSession. - Context: {"lookup_key":"one_payment"}
+[2025-05-11 23:09:21] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de pago único. - Context: {"lookup_key":"one_payment"}
+[2025-05-11 23:09:21] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"one_payment","context":"pago único"}
+[2025-05-11 23:09:21] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"one_payment","price_id":"price_1RLNYIP71JLI6sb99HofbYd0"}
+[2025-05-11 23:09:21] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para pago único. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-11 23:09:22] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Sesión de pago único creada. - Context: {"session_id":"cs_test_a1M54d8jxXa1ii0F5nl98GugMADB2OllRqFfnBGzLfrhOOCnyTtU0xtUdr","price_id":"price_1RLNYIP71JLI6sb99HofbYd0"}
+[2025-05-11 23:09:22] [EVENT] create_payment_session.php: Sesión de pago único creada. - Context: {"session_id":"cs_test_a1M54d8jxXa1ii0F5nl98GugMADB2OllRqFfnBGzLfrhOOCnyTtU0xtUdr"}
+[2025-05-11 23:09:28] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:09:28] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:11:54] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:11:54] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:12:02] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:12:02] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:12:04] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:12:04] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:12:05] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:12:05] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:12:07] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:12:07] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:12:08] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:12:08] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:12:10] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:12:10] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:39:39] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:39:39] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:39:41] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:39:41] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:40:25] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:40:25] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:44:53] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:44:53] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:49:11] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:49:11] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:51:58] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:51:58] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:51:59] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:51:59] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:51:59] [EVENT] Bootstrap: StripeInvoiceController instanciado.
+[2025-05-11 23:51:59] [EVENT] API Invoices: Solicitud para listar todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-11 23:51:59] [EVENT] App\Controller\Impl\StripeInvoiceControllerImpl: Solicitando todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-11 23:56:01] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:56:01] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:56:01] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:56:01] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:56:01] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:56:01] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:56:01] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:56:01] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:56:01] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RNjiuP71JLI6sb9wfTe9HDO","event_type":"product.created"}
+[2025-05-11 23:56:01] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RNjiuP71JLI6sb9wfTe9HDO","event_type":"product.created"}
+[2025-05-11 23:56:01] [EVENT] StripeWebhookService: No se encontró estrategia aplicable (payload logueado en unhandled_stripe_events.log). - Context: {"event_id":"evt_1RNjiuP71JLI6sb9wfTe9HDO","event_type":"product.created"}
+[2025-05-11 23:56:01] [EVENT] StripeWebhookController: No se encontró estrategia aplicable. - Context: {"event_type":null,"event_id":"evt_1RNjiuP71JLI6sb9wfTe9HDO"}
+[2025-05-11 23:56:04] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:56:04] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:56:04] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:56:04] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:56:04] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:56:04] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:56:04] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:56:04] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:56:04] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RNjiwP71JLI6sb92cRhJt3q","event_type":"price.created"}
+[2025-05-11 23:56:04] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RNjiwP71JLI6sb92cRhJt3q","event_type":"price.created"}
+[2025-05-11 23:56:04] [EVENT] StripeWebhookService: No se encontró estrategia aplicable (payload logueado en unhandled_stripe_events.log). - Context: {"event_id":"evt_1RNjiwP71JLI6sb92cRhJt3q","event_type":"price.created"}
+[2025-05-11 23:56:04] [EVENT] StripeWebhookController: No se encontró estrategia aplicable. - Context: {"event_type":null,"event_id":"evt_1RNjiwP71JLI6sb92cRhJt3q"}
+[2025-05-11 23:56:15] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:56:15] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:56:15] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:56:15] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:56:15] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:56:15] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:56:15] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:56:15] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:56:15] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90x1Wa3t1","event_type":"charge.succeeded"}
+[2025-05-11 23:56:15] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90x1Wa3t1","event_type":"charge.succeeded"}
+[2025-05-11 23:56:15] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_3RNjj7P71JLI6sb90x1Wa3t1","event_type":"charge.succeeded","strategy_class":"App\\Strategy\\Impl\\ChargeSucceededStrategyImpl"}
+[2025-05-11 23:56:15] [EVENT] App\Strategy\Impl\ChargeSucceededStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90x1Wa3t1","event_type":"charge.succeeded"}
+[2025-05-11 23:56:15] [EVENT] App\Strategy\Impl\ChargeSucceededStrategyImpl: Charge DTO mapeado. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90x1Wa3t1","charge_id":"ch_3RNjj7P71JLI6sb90JWLTalj","pi_id":"pi_3RNjj7P71JLI6sb90UYrxGVt","receipt_url":"https://pay.stripe.com/receipts/payment/CAcaFwoVYWNjdF8xUkhKNjFQNzFKTEk2c2I5KJ7yhMEGMgaNwnbjic86LBa_fF3YKDm8rkMai9KVRmo4N_faZiiHGp_yuFsHRt8g15g6PaclU78FYT9p"}
+[2025-05-11 23:56:15] [EVENT] App\Strategy\Impl\ChargeSucceededStrategyImpl: No se encontró transacción asociada al Payment Intent del Charge. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90x1Wa3t1","pi_id":"pi_3RNjj7P71JLI6sb90UYrxGVt","charge_id":"ch_3RNjj7P71JLI6sb90JWLTalj"}
+[2025-05-11 23:56:15] [EVENT] App\Strategy\Impl\ChargeSucceededStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90x1Wa3t1","charge_id":"ch_3RNjj7P71JLI6sb90JWLTalj"}
+[2025-05-11 23:56:15] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90x1Wa3t1","strategy_class":"App\\Strategy\\Impl\\ChargeSucceededStrategyImpl"}
+[2025-05-11 23:56:15] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90x1Wa3t1"}
+[2025-05-11 23:56:16] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:56:16] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:56:16] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:56:16] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:56:16] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:56:16] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:56:16] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:56:16] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:56:16] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90WTgKXLk","event_type":"payment_intent.succeeded"}
+[2025-05-11 23:56:16] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90WTgKXLk","event_type":"payment_intent.succeeded"}
+[2025-05-11 23:56:16] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_3RNjj7P71JLI6sb90WTgKXLk","event_type":"payment_intent.succeeded","strategy_class":"App\\Strategy\\Impl\\PaymentIntentSucceededStrategyImpl"}
+[2025-05-11 23:56:16] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90WTgKXLk","event_type":"payment_intent.succeeded"}
+[2025-05-11 23:56:16] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: DTO mapeado. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90WTgKXLk","pi_id":"pi_3RNjj7P71JLI6sb90UYrxGVt"}
+[2025-05-11 23:56:16] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: Intentando obtener Charge. - Context: {"charge_id":"ch_3RNjj7P71JLI6sb90JWLTalj"}
+[2025-05-11 23:56:19] [EVENT] TransactionModelFactory: Preparando TransactionsModel desde PaymentIntentDTO. - Context: {"pi_id":"pi_3RNjj7P71JLI6sb90UYrxGVt"}
+[2025-05-11 23:56:19] [EVENT] TransactionModelFactory: TransactionsModel (sin ID local aún) preparado desde PaymentIntentDTO. - Context: {"pi_id":"pi_3RNjj7P71JLI6sb90UYrxGVt"}
+[2025-05-11 23:56:19] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: Transacción creada. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90WTgKXLk","pi_id":"pi_3RNjj7P71JLI6sb90UYrxGVt","transaction_id_local":3}
+[2025-05-11 23:56:19] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90WTgKXLk"}
+[2025-05-11 23:56:19] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90WTgKXLk","strategy_class":"App\\Strategy\\Impl\\PaymentIntentSucceededStrategyImpl"}
+[2025-05-11 23:56:19] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90WTgKXLk"}
+[2025-05-11 23:56:19] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:56:19] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:56:19] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:56:19] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:56:19] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:56:19] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:56:19] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:56:19] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:56:19] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90E2oNAAa","event_type":"payment_intent.created"}
+[2025-05-11 23:56:19] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_3RNjj7P71JLI6sb90E2oNAAa","event_type":"payment_intent.created"}
+[2025-05-11 23:56:19] [EVENT] StripeWebhookService: No se encontró estrategia aplicable (payload logueado en unhandled_stripe_events.log). - Context: {"event_id":"evt_3RNjj7P71JLI6sb90E2oNAAa","event_type":"payment_intent.created"}
+[2025-05-11 23:56:19] [EVENT] StripeWebhookController: No se encontró estrategia aplicable. - Context: {"event_type":null,"event_id":"evt_3RNjj7P71JLI6sb90E2oNAAa"}
+[2025-05-11 23:56:19] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:56:19] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:56:19] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:56:19] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:56:19] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:56:19] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:56:19] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:56:19] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:56:19] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RNjj8P71JLI6sb9cA3ogspc","event_type":"checkout.session.completed"}
+[2025-05-11 23:56:19] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RNjj8P71JLI6sb9cA3ogspc","event_type":"checkout.session.completed"}
+[2025-05-11 23:56:19] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_1RNjj8P71JLI6sb9cA3ogspc","event_type":"checkout.session.completed","strategy_class":"App\\Strategy\\Impl\\CheckoutSessionCompletedStrategyImpl"}
+[2025-05-11 23:56:19] [EVENT] App\Strategy\Impl\CheckoutSessionCompletedStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_1RNjj8P71JLI6sb9cA3ogspc","event_type":"checkout.session.completed"}
+[2025-05-11 23:56:19] [EVENT] App\Strategy\Impl\CheckoutSessionCompletedStrategyImpl: DTO CheckoutSession mapeado. - Context: {"event_id":"evt_1RNjj8P71JLI6sb9cA3ogspc","cs_id":"cs_test_a1fFxfwtlBhwMIMrnPAAWPcocdIiflD1JfP3tyALi3y26mtjam6R7gI8dQ","mode":"payment","customer_id_stripe":null,"customer_email":"stripe@example.com","payment_intent_id":"pi_3RNjj7P71JLI6sb90UYrxGVt","subscription_id":null}
+[2025-05-11 23:56:19] [EVENT] App\Strategy\Impl\CheckoutSessionCompletedStrategyImpl: Transacción ya existente para PI de Checkout (pago único). - Context: {"pi_id":"pi_3RNjj7P71JLI6sb90UYrxGVt","local_tx_id":3}
+[2025-05-11 23:56:19] [EVENT] App\Strategy\Impl\CheckoutSessionCompletedStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_1RNjj8P71JLI6sb9cA3ogspc","cs_id":"cs_test_a1fFxfwtlBhwMIMrnPAAWPcocdIiflD1JfP3tyALi3y26mtjam6R7gI8dQ"}
+[2025-05-11 23:56:19] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_1RNjj8P71JLI6sb9cA3ogspc","strategy_class":"App\\Strategy\\Impl\\CheckoutSessionCompletedStrategyImpl"}
+[2025-05-11 23:56:19] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_1RNjj8P71JLI6sb9cA3ogspc"}
+[2025-05-11 23:56:19] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:56:19] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:56:19] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:56:19] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:56:19] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:56:19] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:56:19] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:56:19] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:56:19] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_3RNjj7P71JLI6sb906tLgA0N","event_type":"charge.updated"}
+[2025-05-11 23:56:19] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_3RNjj7P71JLI6sb906tLgA0N","event_type":"charge.updated"}
+[2025-05-11 23:56:19] [EVENT] StripeWebhookService: No se encontró estrategia aplicable (payload logueado en unhandled_stripe_events.log). - Context: {"event_id":"evt_3RNjj7P71JLI6sb906tLgA0N","event_type":"charge.updated"}
+[2025-05-11 23:56:19] [EVENT] StripeWebhookController: No se encontró estrategia aplicable. - Context: {"event_type":null,"event_id":"evt_3RNjj7P71JLI6sb906tLgA0N"}
+[2025-05-11 23:56:19] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:56:19] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:56:19] [EVENT] Bootstrap: StripeInvoiceController instanciado.
+[2025-05-11 23:56:19] [EVENT] API Invoices: Solicitud para listar todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-11 23:56:19] [EVENT] App\Controller\Impl\StripeInvoiceControllerImpl: Solicitando todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-11 23:56:47] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:56:47] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:56:49] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:56:49] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:56:51] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:56:51] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:56:52] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:56:52] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:56:55] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:56:55] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:56:55] [EVENT] Endpoint create_subscription_session.php: Solicitud recibida.
+[2025-05-11 23:56:55] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-11 23:56:55] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-11 23:56:55] [EVENT] create_subscription_session.php: Llamando a createSubscriptionSession. - Context: {"lookup_key":"monthly_subscriptions"}
+[2025-05-11 23:56:55] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de suscripción. - Context: {"lookup_key":"monthly_subscriptions"}
+[2025-05-11 23:56:55] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"monthly_subscriptions","context":"suscripción"}
+[2025-05-11 23:56:58] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"monthly_subscriptions","price_id":"price_1RLNcyP71JLI6sb92qc9ywRx"}
+[2025-05-11 23:56:58] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para suscripción. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-11 23:56:59] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Sesión de suscripción creada. - Context: {"session_id":"cs_test_a1QrrVk4u8f08hjyZMUnzNw0VUa0TO9eyGXTiYFmUysSKfU89dsivJ8yEU","price_id":"price_1RLNcyP71JLI6sb92qc9ywRx"}
+[2025-05-11 23:56:59] [EVENT] create_subscription_session.php: Sesión de suscripción creada. - Context: {"session_id":"cs_test_a1QrrVk4u8f08hjyZMUnzNw0VUa0TO9eyGXTiYFmUysSKfU89dsivJ8yEU"}
+[2025-05-11 23:57:34] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_3RNjkNP71JLI6sb91iv582cC","event_type":"charge.succeeded"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_3RNjkNP71JLI6sb91iv582cC","event_type":"charge.succeeded"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_3RNjkNP71JLI6sb91iv582cC","event_type":"charge.succeeded","strategy_class":"App\\Strategy\\Impl\\ChargeSucceededStrategyImpl"}
+[2025-05-11 23:57:34] [EVENT] App\Strategy\Impl\ChargeSucceededStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_3RNjkNP71JLI6sb91iv582cC","event_type":"charge.succeeded"}
+[2025-05-11 23:57:34] [EVENT] App\Strategy\Impl\ChargeSucceededStrategyImpl: Charge DTO mapeado. - Context: {"event_id":"evt_3RNjkNP71JLI6sb91iv582cC","charge_id":"ch_3RNjkNP71JLI6sb91k7xuWAh","pi_id":"pi_3RNjkNP71JLI6sb91UGL7vlz","receipt_url":"https://pay.stripe.com/receipts/invoices/CAcaFwoVYWNjdF8xUkhKNjFQNzFKTEk2c2I5KO3yhMEGMga0-QWdzso6LBYBpyvZgoJA6AdiZ-qGiYDAwykTHoAtTHmUI22yD8cG0A1Flc-cBy7rMr2r?s=ap"}
+[2025-05-11 23:57:34] [EVENT] App\Strategy\Impl\ChargeSucceededStrategyImpl: No se encontró transacción asociada al Payment Intent del Charge. - Context: {"event_id":"evt_3RNjkNP71JLI6sb91iv582cC","pi_id":"pi_3RNjkNP71JLI6sb91UGL7vlz","charge_id":"ch_3RNjkNP71JLI6sb91k7xuWAh"}
+[2025-05-11 23:57:34] [EVENT] App\Strategy\Impl\ChargeSucceededStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_3RNjkNP71JLI6sb91iv582cC","charge_id":"ch_3RNjkNP71JLI6sb91k7xuWAh"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_3RNjkNP71JLI6sb91iv582cC","strategy_class":"App\\Strategy\\Impl\\ChargeSucceededStrategyImpl"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_3RNjkNP71JLI6sb91iv582cC"}
+[2025-05-11 23:57:34] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9HPG6k62g","event_type":"payment_method.attached"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9HPG6k62g","event_type":"payment_method.attached"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: No se encontró estrategia aplicable (payload logueado en unhandled_stripe_events.log). - Context: {"event_id":"evt_1RNjkPP71JLI6sb9HPG6k62g","event_type":"payment_method.attached"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: No se encontró estrategia aplicable. - Context: {"event_type":null,"event_id":"evt_1RNjkPP71JLI6sb9HPG6k62g"}
+[2025-05-11 23:57:34] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9IM6MoM8j","event_type":"customer.created"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9IM6MoM8j","event_type":"customer.created"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_1RNjkPP71JLI6sb9IM6MoM8j","event_type":"customer.created","strategy_class":"App\\Strategy\\Impl\\CustomerCreatedOrUpdatedStrategyImpl"}
+[2025-05-11 23:57:34] [EVENT] App\Strategy\Impl\CustomerCreatedOrUpdatedStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9IM6MoM8j","event_type":"customer.created"}
+[2025-05-11 23:57:34] [EVENT] App\Strategy\Impl\CustomerCreatedOrUpdatedStrategyImpl: Customer DTO mapeado. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9IM6MoM8j","customer_id":"cus_SIKPeBnslqQEOY","email":"testParaCapturarCliente@test.com","name":"Antonio de Triana"}
+[2025-05-11 23:57:34] [EVENT] App\Strategy\Impl\CustomerCreatedOrUpdatedStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9IM6MoM8j","customer_id":"cus_SIKPeBnslqQEOY"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9IM6MoM8j","strategy_class":"App\\Strategy\\Impl\\CustomerCreatedOrUpdatedStrategyImpl"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9IM6MoM8j"}
+[2025-05-11 23:57:34] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9A8Sp3qkv","event_type":"checkout.session.completed"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9A8Sp3qkv","event_type":"checkout.session.completed"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_1RNjkPP71JLI6sb9A8Sp3qkv","event_type":"checkout.session.completed","strategy_class":"App\\Strategy\\Impl\\CheckoutSessionCompletedStrategyImpl"}
+[2025-05-11 23:57:34] [EVENT] App\Strategy\Impl\CheckoutSessionCompletedStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9A8Sp3qkv","event_type":"checkout.session.completed"}
+[2025-05-11 23:57:34] [EVENT] App\Strategy\Impl\CheckoutSessionCompletedStrategyImpl: DTO CheckoutSession mapeado. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9A8Sp3qkv","cs_id":"cs_test_a1QrrVk4u8f08hjyZMUnzNw0VUa0TO9eyGXTiYFmUysSKfU89dsivJ8yEU","mode":"subscription","customer_id_stripe":"cus_SIKPeBnslqQEOY","customer_email":"testParaCapturarCliente@test.com","payment_intent_id":null,"subscription_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9"}
+[2025-05-11 23:57:34] [EVENT] App\Strategy\Impl\CheckoutSessionCompletedStrategyImpl: Suscripción de Checkout aún no en BD (se esperará a customer.subscription.created). - Context: {"sub_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9","email_from_cs":"testParaCapturarCliente@test.com"}
+[2025-05-11 23:57:34] [EVENT] App\Strategy\Impl\CheckoutSessionCompletedStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9A8Sp3qkv","cs_id":"cs_test_a1QrrVk4u8f08hjyZMUnzNw0VUa0TO9eyGXTiYFmUysSKfU89dsivJ8yEU"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9A8Sp3qkv","strategy_class":"App\\Strategy\\Impl\\CheckoutSessionCompletedStrategyImpl"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9A8Sp3qkv"}
+[2025-05-11 23:57:34] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:57:34] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9VpujTelo","event_type":"customer.updated"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9VpujTelo","event_type":"customer.updated"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_1RNjkPP71JLI6sb9VpujTelo","event_type":"customer.updated","strategy_class":"App\\Strategy\\Impl\\CustomerCreatedOrUpdatedStrategyImpl"}
+[2025-05-11 23:57:34] [EVENT] App\Strategy\Impl\CustomerCreatedOrUpdatedStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9VpujTelo","event_type":"customer.updated"}
+[2025-05-11 23:57:34] [EVENT] App\Strategy\Impl\CustomerCreatedOrUpdatedStrategyImpl: Customer DTO mapeado. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9VpujTelo","customer_id":"cus_SIKPeBnslqQEOY","email":"testParaCapturarCliente@test.com","name":"Antonio de Triana"}
+[2025-05-11 23:57:34] [EVENT] App\Strategy\Impl\CustomerCreatedOrUpdatedStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9VpujTelo","customer_id":"cus_SIKPeBnslqQEOY"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9VpujTelo","strategy_class":"App\\Strategy\\Impl\\CustomerCreatedOrUpdatedStrategyImpl"}
+[2025-05-11 23:57:34] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9VpujTelo"}
+[2025-05-11 23:57:35] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:57:35] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:57:35] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:57:35] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:57:35] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:57:35] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:57:35] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:57:35] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:57:35] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_3RNjkNP71JLI6sb9152K2fsN","event_type":"payment_intent.succeeded"}
+[2025-05-11 23:57:35] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_3RNjkNP71JLI6sb9152K2fsN","event_type":"payment_intent.succeeded"}
+[2025-05-11 23:57:35] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_3RNjkNP71JLI6sb9152K2fsN","event_type":"payment_intent.succeeded","strategy_class":"App\\Strategy\\Impl\\PaymentIntentSucceededStrategyImpl"}
+[2025-05-11 23:57:35] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_3RNjkNP71JLI6sb9152K2fsN","event_type":"payment_intent.succeeded"}
+[2025-05-11 23:57:35] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: DTO mapeado. - Context: {"event_id":"evt_3RNjkNP71JLI6sb9152K2fsN","pi_id":"pi_3RNjkNP71JLI6sb91UGL7vlz"}
+[2025-05-11 23:57:35] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: Intentando obtener Charge. - Context: {"charge_id":"ch_3RNjkNP71JLI6sb91k7xuWAh"}
+[2025-05-11 23:57:40] [EVENT] TransactionModelFactory: Preparando TransactionsModel desde PaymentIntentDTO. - Context: {"pi_id":"pi_3RNjkNP71JLI6sb91UGL7vlz"}
+[2025-05-11 23:57:40] [EVENT] TransactionModelFactory: TransactionsModel (sin ID local aún) preparado desde PaymentIntentDTO. - Context: {"pi_id":"pi_3RNjkNP71JLI6sb91UGL7vlz"}
+[2025-05-11 23:57:40] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: Transacción creada. - Context: {"event_id":"evt_3RNjkNP71JLI6sb9152K2fsN","pi_id":"pi_3RNjkNP71JLI6sb91UGL7vlz","transaction_id_local":4}
+[2025-05-11 23:57:40] [EVENT] App\Strategy\Impl\PaymentIntentSucceededStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_3RNjkNP71JLI6sb9152K2fsN"}
+[2025-05-11 23:57:40] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_3RNjkNP71JLI6sb9152K2fsN","strategy_class":"App\\Strategy\\Impl\\PaymentIntentSucceededStrategyImpl"}
+[2025-05-11 23:57:40] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_3RNjkNP71JLI6sb9152K2fsN"}
+[2025-05-11 23:57:40] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:57:40] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:57:40] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:57:40] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:57:40] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:57:40] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:57:40] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:57:40] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:57:40] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9uTdVCMVo","event_type":"customer.subscription.created"}
+[2025-05-11 23:57:40] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9uTdVCMVo","event_type":"customer.subscription.created"}
+[2025-05-11 23:57:40] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_1RNjkPP71JLI6sb9uTdVCMVo","event_type":"customer.subscription.created","strategy_class":"App\\Strategy\\Impl\\SubscriptionCreatedStrategyImpl"}
+[2025-05-11 23:57:40] [EVENT] App\Strategy\Impl\SubscriptionCreatedStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9uTdVCMVo","event_type":"customer.subscription.created"}
+[2025-05-11 23:57:40] [EVENT] SubscriptionMapper DEBUG: Objeto payload recibido. - Context: {"class":"Stripe\\Subscription","json_representation_snippet":"{\n    \"id\": \"sub_1RNjkOP71JLI6sb9mTdeYaA9\",\n    \"object\": \"subscription\",\n    \"application\": null,\n    \"application_fee_percent\": null,\n    \"automatic_tax\": {\n        \"disabled_reason\": null,\n        \"enabled\": false,\n        \"liability\": null\n    },\n    \"billing_cycle_anchor\": 1747007851,\n    \"billing_cycle_anchor_config\": null,\n    \"cancel_at\": null,\n    \"cancel_at_period_end\": false,\n    \"canceled_at\": null,\n    \"cancellation_details\": {\n        \"comment\": null,\n        \"feedback\": null,\n        \"reason\": null\n    },\n    \"collection_method\": \"charge_automatically\",\n    \"created\": 1747007851,\n    \"currency\": \"eur\",\n    \"customer\": \"cus_SIKPeBnslqQEOY\",\n    \"days_until_due\": null,\n    \"default_payment_method\": \"pm_1RNjkLP71JLI6sb9PU0wKh0e\",\n    \"default_source\": null,\n    \"default_tax_rates\": [],\n    \"description\": null,\n    \"discounts\": [],\n    \"ended_at\": null,\n    \"invoice_settings\": {\n        \"account_tax_ids\": null,\n        \"issuer\": {\n            \"type\": \"self\"\n        }\n    },\n"}
+[2025-05-11 23:57:40] [EVENT] SubscriptionMapper: Usando 'start_date' como fallback para 'current_period_start'. - Context: {"sub_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9"}
+[2025-05-11 23:57:40] [EVENT] SubscriptionMapper: Usando 'items.data[0].current_period_end' como fallback. - Context: {"sub_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9"}
+[2025-05-11 23:57:40] [EVENT] App\Strategy\Impl\SubscriptionCreatedStrategyImpl: Subscription DTO mapeado. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9uTdVCMVo","sub_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9","customer_id":"cus_SIKPeBnslqQEOY","status":"active"}
+[2025-05-11 23:57:40] [EVENT] App\Strategy\Impl\SubscriptionCreatedStrategyImpl: Intentando obtener Customer para email. - Context: {"customer_id":"cus_SIKPeBnslqQEOY"}
+[2025-05-11 23:57:42] [EVENT] SubscriptionModelFactory: Creando SubscriptionsModel desde SubscriptionDTO. - Context: {"sub_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9"}
+[2025-05-11 23:57:42] [EVENT] SubscriptionModelFactory: SubscriptionsModel creado exitosamente. - Context: {"sub_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9"}
+[2025-05-11 23:57:42] [EVENT] App\Strategy\Impl\SubscriptionCreatedStrategyImpl: Nueva suscripción creada y guardada. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9uTdVCMVo","sub_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9"}
+[2025-05-11 23:57:42] [EVENT] App\Strategy\Impl\SubscriptionCreatedStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9uTdVCMVo","sub_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9uTdVCMVo","strategy_class":"App\\Strategy\\Impl\\SubscriptionCreatedStrategyImpl"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_1RNjkPP71JLI6sb9uTdVCMVo"}
+[2025-05-11 23:57:42] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_3RNjkNP71JLI6sb91X0xlpvF","event_type":"payment_intent.created"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_3RNjkNP71JLI6sb91X0xlpvF","event_type":"payment_intent.created"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookService: No se encontró estrategia aplicable (payload logueado en unhandled_stripe_events.log). - Context: {"event_id":"evt_3RNjkNP71JLI6sb91X0xlpvF","event_type":"payment_intent.created"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookController: No se encontró estrategia aplicable. - Context: {"event_type":null,"event_id":"evt_3RNjkNP71JLI6sb91X0xlpvF"}
+[2025-05-11 23:57:42] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RNjkQP71JLI6sb9q4lHV6sw","event_type":"invoice.created"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RNjkQP71JLI6sb9q4lHV6sw","event_type":"invoice.created"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookService: No se encontró estrategia aplicable (payload logueado en unhandled_stripe_events.log). - Context: {"event_id":"evt_1RNjkQP71JLI6sb9q4lHV6sw","event_type":"invoice.created"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookController: No se encontró estrategia aplicable. - Context: {"event_type":null,"event_id":"evt_1RNjkQP71JLI6sb9q4lHV6sw"}
+[2025-05-11 23:57:42] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RNjkQP71JLI6sb9k5UqwZoF","event_type":"invoice.finalized"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RNjkQP71JLI6sb9k5UqwZoF","event_type":"invoice.finalized"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookService: No se encontró estrategia aplicable (payload logueado en unhandled_stripe_events.log). - Context: {"event_id":"evt_1RNjkQP71JLI6sb9k5UqwZoF","event_type":"invoice.finalized"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookController: No se encontró estrategia aplicable. - Context: {"event_type":null,"event_id":"evt_1RNjkQP71JLI6sb9k5UqwZoF"}
+[2025-05-11 23:57:42] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: StripeWebhookService instanciado.
+[2025-05-11 23:57:42] [EVENT] Bootstrap: StripeWebhookController instanciado.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookController: Webhook recibido.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
+[2025-05-11 23:57:42] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RNjkQP71JLI6sb9mQicz15f","event_type":"invoice.paid"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RNjkQP71JLI6sb9mQicz15f","event_type":"invoice.paid"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_1RNjkQP71JLI6sb9mQicz15f","event_type":"invoice.paid","strategy_class":"App\\Strategy\\Impl\\InvoicePaidStrategyImpl"}
+[2025-05-11 23:57:42] [EVENT] App\Strategy\Impl\InvoicePaidStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_1RNjkQP71JLI6sb9mQicz15f","event_type":"invoice.paid"}
+[2025-05-11 23:57:42] [EVENT] InvoiceMapper DEBUG: Objeto payload recibido. - Context: {"class":"Stripe\\Invoice","json_representation_snippet":"{\n    \"id\": \"in_1RNjkOP71JLI6sb9lv6CDhez\",\n    \"object\": \"invoice\",\n    \"account_country\": \"ES\",\n    \"account_name\": \"Stripe Lab App\",\n    \"account_tax_ids\": null,\n    \"amount_due\": 300,\n    \"amount_overpaid\": 0,\n    \"amount_paid\": 300,\n    \"amount_remaining\": 0,\n    \"amount_shipping\": 0,\n    \"application\": null,\n    \"attempt_count\": 0,\n    \"attempted\": true,\n    \"auto_advance\": false,\n    \"automatic_tax\": {\n        \"disabled_reason\": null,\n        \"enabled\": false,\n        \"liability\": null,\n  "}
+[2025-05-11 23:57:42] [EVENT] InvoiceMapper: subscription_id obtenido de lines.data[0].parent.subscription_item_details.subscription - Context: {"invoice_id":"in_1RNjkOP71JLI6sb9lv6CDhez"}
+[2025-05-11 23:57:42] [EVENT] App\Strategy\Impl\InvoicePaidStrategyImpl: Invoice DTO mapeado. - Context: {"event_id":"evt_1RNjkQP71JLI6sb9mQicz15f","invoice_id":"in_1RNjkOP71JLI6sb9lv6CDhez","subscription_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9","amount_paid":300}
+[2025-05-11 23:57:42] [EVENT] TransactionModelFactory: Preparando TransactionsModel desde InvoiceDTO. - Context: {"invoice_id":"in_1RNjkOP71JLI6sb9lv6CDhez"}
+[2025-05-11 23:57:42] [EVENT] TransactionModelFactory: TransactionsModel (sin ID local aún) preparado desde InvoiceDTO. - Context: {"invoice_id":"in_1RNjkOP71JLI6sb9lv6CDhez"}
+[2025-05-11 23:57:42] [EVENT] App\Strategy\Impl\InvoicePaidStrategyImpl: Transacción creada para Invoice pagada. - Context: {"event_id":"evt_1RNjkQP71JLI6sb9mQicz15f","invoice_id":"in_1RNjkOP71JLI6sb9lv6CDhez","transaction_id_local":5}
+[2025-05-11 23:57:42] [EVENT] App\Strategy\Impl\InvoicePaidStrategyImpl: latest_transaction_id actualizado en la suscripción. - Context: {"event_id":"evt_1RNjkQP71JLI6sb9mQicz15f","subscription_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9","latest_transaction_id":5}
+[2025-05-11 23:57:42] [EVENT] App\Strategy\Impl\InvoicePaidStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_1RNjkQP71JLI6sb9mQicz15f","invoice_id":"in_1RNjkOP71JLI6sb9lv6CDhez"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_1RNjkQP71JLI6sb9mQicz15f","strategy_class":"App\\Strategy\\Impl\\InvoicePaidStrategyImpl"}
+[2025-05-11 23:57:42] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_1RNjkQP71JLI6sb9mQicz15f"}
+[2025-05-11 23:57:50] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:57:50] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:57:52] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:57:52] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:57:52] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:57:52] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:57:52] [EVENT] Bootstrap: StripeInvoiceController instanciado.
+[2025-05-11 23:57:52] [EVENT] API Invoices: Solicitud para listar todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-11 23:57:52] [EVENT] App\Controller\Impl\StripeInvoiceControllerImpl: Solicitando todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-11 23:59:29] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:59:29] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-11 23:59:29] [EVENT] Bootstrap: StripeInvoiceController instanciado.
+[2025-05-11 23:59:29] [EVENT] API Invoices: Solicitud para facturas del cliente. - Context: {"customer_id":"Antonio de Triana","page":1,"limit":10}
+[2025-05-11 23:59:29] [EVENT] App\Controller\Impl\StripeInvoiceControllerImpl: Solicitando facturas para cliente. - Context: {"stripe_customer_id":"Antonio de Triana","page":1,"limit":10}
+[2025-05-11 23:59:40] [EVENT] Bootstrap: .env cargado.
+[2025-05-11 23:59:40] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:08:05] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:08:05] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:08:07] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:08:07] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:08:09] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:08:09] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:08:11] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:08:11] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:08:13] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:08:13] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:08:18] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:08:18] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:08:57] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:08:57] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:08:58] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:08:58] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:08:59] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:08:59] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:09:00] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:09:00] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:09:00] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:09:00] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:09:00] [EVENT] Bootstrap: StripeInvoiceController instanciado.
+[2025-05-12 00:09:00] [EVENT] API Invoices: Solicitud para listar todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:09:00] [EVENT] App\Controller\Impl\StripeInvoiceControllerImpl: Solicitando todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:09:35] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:09:35] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:09:38] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:09:38] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:09:39] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:09:39] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:09:41] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:09:41] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:09:43] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:09:43] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:09:44] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:09:44] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:09:46] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:09:46] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:09:47] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:09:47] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:09:49] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:09:49] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:09:55] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:09:55] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:09:58] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:09:58] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:09:59] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:09:59] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:10:10] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:10:10] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:10:11] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:10:11] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:10:14] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:10:14] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:10:19] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:10:19] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:10:20] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:10:20] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:11:03] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:11:03] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:11:11] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:11:11] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:11:13] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:11:13] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:11:14] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:11:14] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:11:16] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:11:16] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:11:45] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:11:45] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:11:47] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:11:47] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:11:48] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:11:48] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:11:48] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:11:48] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:11:48] [EVENT] Bootstrap: StripeInvoiceController instanciado.
+[2025-05-12 00:11:48] [EVENT] API Invoices: Solicitud para listar todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:11:48] [EVENT] App\Controller\Impl\StripeInvoiceControllerImpl: Solicitando todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:13:11] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:11] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:11] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:11] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:11] [EVENT] Bootstrap: StripeInvoiceController instanciado.
+[2025-05-12 00:13:11] [EVENT] API Invoices: Solicitud para listar todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:13:11] [EVENT] App\Controller\Impl\StripeInvoiceControllerImpl: Solicitando todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:13:14] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:14] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:15] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:15] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:17] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:17] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:18] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:18] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:18] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:18] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:18] [EVENT] Bootstrap: StripeInvoiceController instanciado.
+[2025-05-12 00:13:18] [EVENT] API Invoices: Solicitud para listar todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:13:18] [EVENT] App\Controller\Impl\StripeInvoiceControllerImpl: Solicitando todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:13:21] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:21] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:22] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:22] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:24] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:24] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:24] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:24] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:24] [EVENT] Bootstrap: StripeInvoiceController instanciado.
+[2025-05-12 00:13:24] [EVENT] API Invoices: Solicitud para listar todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:13:24] [EVENT] App\Controller\Impl\StripeInvoiceControllerImpl: Solicitando todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:13:25] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:25] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:26] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:26] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:28] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:28] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:28] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:28] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:29] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:29] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:29] [EVENT] Bootstrap: StripeInvoiceController instanciado.
+[2025-05-12 00:13:29] [EVENT] API Invoices: Solicitud para listar todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:13:29] [EVENT] App\Controller\Impl\StripeInvoiceControllerImpl: Solicitando todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:13:31] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:31] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:34] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:34] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:34] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:34] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:34] [EVENT] Bootstrap: StripeInvoiceController instanciado.
+[2025-05-12 00:13:34] [EVENT] API Invoices: Solicitud para listar todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:13:34] [EVENT] App\Controller\Impl\StripeInvoiceControllerImpl: Solicitando todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:13:54] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:54] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:54] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:54] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:54] [EVENT] Bootstrap: StripeInvoiceController instanciado.
+[2025-05-12 00:13:54] [EVENT] API Invoices: Solicitud para listar todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:13:54] [EVENT] App\Controller\Impl\StripeInvoiceControllerImpl: Solicitando todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:13:56] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:56] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:58] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:58] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:13:59] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:13:59] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:35] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:35] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:36] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:36] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:37] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:37] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:39] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:39] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:40] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:40] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:40] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:40] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:40] [EVENT] Bootstrap: StripeInvoiceController instanciado.
+[2025-05-12 00:14:40] [EVENT] API Invoices: Solicitud para listar todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:14:40] [EVENT] App\Controller\Impl\StripeInvoiceControllerImpl: Solicitando todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:14:41] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:41] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:43] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:43] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:44] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:44] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:45] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:45] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:46] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:46] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:46] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:46] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:48] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:48] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:48] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:48] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-12 00:14:48] [EVENT] Bootstrap: StripeInvoiceController instanciado.
+[2025-05-12 00:14:48] [EVENT] API Invoices: Solicitud para listar todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:14:48] [EVENT] App\Controller\Impl\StripeInvoiceControllerImpl: Solicitando todas las facturas. - Context: {"page":1,"limit":10}
+[2025-05-12 00:14:51] [EVENT] Bootstrap: .env cargado.
+[2025-05-12 00:14:51] [EVENT] Bootstrap: Inicializado. Constantes definidas.
