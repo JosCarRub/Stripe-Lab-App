@@ -148,4 +148,32 @@ class SubscriptionRepositoryImpl implements SubscriptionRepositoryInterface
             createdAtLocal: new DateTimeImmutable($row['created_at_local'])
         );
     }
+
+    public function countByStripeCustomerId(string $stripeCustomerId): int
+    {
+        $sql = "SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id";
+        DatabaseLogger::query($sql, ['stripe_customer_id' => $stripeCustomerId]);
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':stripe_customer_id', $stripeCustomerId);
+            $stmt->execute();
+            return (int)$stmt->fetchColumn();
+        } catch (PDOException $e) {
+            DatabaseLogger::error("Error al contar suscripciones por Customer ID: " . $e->getMessage(), ['sql' => $sql]);
+            throw new \App\Commons\Exceptions\DatabaseException("Error al contar suscripciones por Customer ID: " . $e->getMessage(), (int)$e->getCode(), $e);
+        }
+    }
+
+    public function countAll(): int
+    {
+        $sql = "SELECT COUNT(*) FROM StripeSubscriptions";
+        DatabaseLogger::query($sql);
+        try {
+            $stmt = $this->pdo->query($sql); // Query simple, no necesita prepare si no hay parámetros
+            return (int)$stmt->fetchColumn();
+        } catch (PDOException $e) {
+            DatabaseLogger::error("Error al contar todas las suscripciones: " . $e->getMessage(), ['sql' => $sql]);
+            throw new \App\Commons\Exceptions\DatabaseException("Error al contar todas las suscripciones: " . $e->getMessage(), (int)$e->getCode(), $e);
+        }
+    }
 }

@@ -29,7 +29,6 @@ class InvoiceMapper
             'json_representation_snippet' => substr(json_encode($stripePayloadInvoice, JSON_PRETTY_PRINT), 0, 500)
         ]);
 
-        // Comprobación de tipo de objeto
         if (!isset($stripePayloadInvoice->object) || $stripePayloadInvoice->object !== 'invoice') {
             ErrorLogger::log("InvoiceMapper: Se esperaba un objeto 'invoice'.", [
                 'received_object_type' => $stripePayloadInvoice->object ?? 'unknown'
@@ -40,9 +39,8 @@ class InvoiceMapper
             );
         }
 
-        // Validar campos esenciales
         $id = $stripePayloadInvoice->id ?? null;
-        $amountPaid = $stripePayloadInvoice->amount_paid ?? null; // Para invoice.paid, amount_paid es crucial
+        $amountPaid = $stripePayloadInvoice->amount_paid ?? null;
         $currency = $stripePayloadInvoice->currency ?? null;
         $status = $stripePayloadInvoice->status ?? null;
         $createdTimestamp = $stripePayloadInvoice->created ?? null;
@@ -64,15 +62,13 @@ class InvoiceMapper
             );
         }
 
-        $objectType = $stripePayloadInvoice->object; // Ya sabemos que es 'invoice'
+        $objectType = $stripePayloadInvoice->object;
 
         $rawCustomer = $stripePayloadInvoice->customer ?? null;
         $customerId = is_string($rawCustomer) ? $rawCustomer : ($rawCustomer->id ?? null);
-
         $customerEmail = $stripePayloadInvoice->customer_email ?? null;
         $customerName = $stripePayloadInvoice->customer_name ?? null;
 
-        // Lógica mejorada para obtener subscriptionId
         $subscriptionId = null;
         if (isset($stripePayloadInvoice->subscription)) {
             if (is_string($stripePayloadInvoice->subscription)) {
@@ -81,35 +77,26 @@ class InvoiceMapper
                 $subscriptionId = $stripePayloadInvoice->subscription->id;
             }
         }
-        // Fallbacks si no está en el nivel raíz
-        if ($subscriptionId === null) {
+        if ($subscriptionId === null) { // Fallbacks adicionales
             if (isset($stripePayloadInvoice->lines->data[0]->subscription) && is_string($stripePayloadInvoice->lines->data[0]->subscription)) {
                 $subscriptionId = $stripePayloadInvoice->lines->data[0]->subscription;
-                EventLogger::log("InvoiceMapper: subscription_id obtenido de lines.data[0].subscription", ['invoice_id' => $id], '[DEBUG]');
             } elseif (isset($stripePayloadInvoice->lines->data[0]->parent->subscription_item_details->subscription) && is_string($stripePayloadInvoice->lines->data[0]->parent->subscription_item_details->subscription)) {
                 $subscriptionId = $stripePayloadInvoice->lines->data[0]->parent->subscription_item_details->subscription;
-                EventLogger::log("InvoiceMapper: subscription_id obtenido de lines.data[0].parent.subscription_item_details.subscription", ['invoice_id' => $id], '[DEBUG]');
             } elseif (isset($stripePayloadInvoice->parent->subscription_details->subscription) && is_string($stripePayloadInvoice->parent->subscription_details->subscription)) {
                 $subscriptionId = $stripePayloadInvoice->parent->subscription_details->subscription;
-                EventLogger::log("InvoiceMapper: subscription_id obtenido de parent.subscription_details.subscription", ['invoice_id' => $id], '[DEBUG]');
             }
         }
-
-
         if ($subscriptionId === null && isset($stripePayloadInvoice->billing_reason) &&
-            ($stripePayloadInvoice->billing_reason === 'subscription_create' || $stripePayloadInvoice->billing_reason === 'subscription_cycle')) {
+            in_array($stripePayloadInvoice->billing_reason, ['subscription_create', 'subscription_cycle', 'subscription_update'])) {
             EventLogger::log("InvoiceMapper: No se pudo determinar subscription_id para una factura de suscripción.", [
-                'invoice_id' => $id,
-                'billing_reason' => $stripePayloadInvoice->billing_reason
+                'invoice_id' => $id, 'billing_reason' => $stripePayloadInvoice->billing_reason
             ], '[WARNING]');
         }
 
         $rawPaymentIntent = $stripePayloadInvoice->payment_intent ?? null;
         $paymentIntentId = is_string($rawPaymentIntent) ? $rawPaymentIntent : ($rawPaymentIntent->id ?? null);
-
         $rawCharge = $stripePayloadInvoice->charge ?? null;
         $chargeId = is_string($rawCharge) ? $rawCharge : ($rawCharge->id ?? null);
-
         $amountDue = $stripePayloadInvoice->amount_due ?? 0;
         $hostedInvoiceUrl = $stripePayloadInvoice->hosted_invoice_url ?? null;
         $invoicePdf = $stripePayloadInvoice->invoice_pdf ?? null;
@@ -125,8 +112,8 @@ class InvoiceMapper
             subscriptionId: $subscriptionId,
             paymentIntentId: $paymentIntentId,
             chargeId: $chargeId,
-            amountPaid: (int)$amountPaid, // Asegurar int
-            amountDue: (int)$amountDue,   // Asegurar int
+            amountPaid: (int)$amountPaid,
+            amountDue: (int)$amountDue,
             currency: $currency,
             status: $status,
             hostedInvoiceUrl: $hostedInvoiceUrl,

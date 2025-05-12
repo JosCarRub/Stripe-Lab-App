@@ -49,11 +49,11 @@ require_once PROJECT_ROOT . '/vendor/autoload.php';
             <a href="single-payment.php" class="nav-item"><div class="nav-icon"><i class="fas fa-credit-card"></i></div><span class="nav-label">Pago Único</span></a>
             <a href="subscriptions-payment.php" class="nav-item"><div class="nav-icon"><i class="fas fa-sync-alt"></i></div><span class="nav-label">Pagar Suscripción</span></a>
             <a href="invoices.php" class="nav-item active"><div class="nav-icon"><i class="fas fa-file-invoice-dollar"></i></div><span class="nav-label">Facturas</span></a>
-            <a href="subscriptions.html" class="nav-item">
+            <a href="view-subscriptions.php" class="nav-item">
                 <div class="nav-icon"><i class="fas fa-users"></i></div>
                 <span class="nav-label">Gestionar Suscripciones</span>
             </a>            <div class="nav-separator"><span>Administración</span></div>
-            <a href="#" class="nav-item" onclick="alert('Panel no implementado'); return false;"><div class="nav-icon"><i class="fas fa-tachometer-alt"></i></div><span class="nav-label">Panel de Control</span></a>
+            <a href="admin/panel.php" class="nav-item"><div class="nav-icon"><i class="fas fa-tachometer-alt"></i></div><span class="nav-label">Panel de Control</span></a>
             <a href="#" class="nav-item" onclick="alert('Logs no implementados'); return false;"><div class="nav-icon"><i class="fas fa-list-alt"></i></div><span class="nav-label">Logs del Sistema</span></a>
             <a href="#" class="nav-item" onclick="alert('Docs no implementados'); return false;"><div class="nav-icon"><i class="fas fa-book"></i></div><span class="nav-label">Documentación</span></a>
         </nav>

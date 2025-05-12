@@ -45,33 +45,34 @@ class SubscriptionMapper
         $createdTimestamp = $stripePayloadSubscription->created ?? null;
 
         if ($id === null || $customerId === null || $status === null || $createdTimestamp === null) {
-            ErrorLogger::log("SubscriptionMapper: Faltan campos esenciales (id, customer, status, created) en payload de subscription.", [
+            ErrorLogger::log("SubscriptionMapper: Faltan campos esenciales (id, customer, status, created).", [
                 'id' => $id, 'customer' => $customerId, 'status' => $status, 'created' => $createdTimestamp,
                 'payload_class_debug' => get_class($stripePayloadSubscription)
             ], '[ERROR]');
             throw new InvalidWebhookPayloadException(
-                "Payload de subscription incompleto, faltan campos esenciales (id, customer, status, created).",
+                "Payload de subscription incompleto (id, customer, status, created).",
                 'subscription'
             );
         }
 
+        // Priorizar periodos del nivel raíz si existen, sino de items.data[0]
         $currentPeriodStartTimestamp = $stripePayloadSubscription->current_period_start ?? null;
         $currentPeriodEndTimestamp = $stripePayloadSubscription->current_period_end ?? null;
         $items = $stripePayloadSubscription->items ?? null;
 
-        if ($status === 'active') {
-            if ($currentPeriodStartTimestamp === null && isset($stripePayloadSubscription->start_date)) {
-                $currentPeriodStartTimestamp = $stripePayloadSubscription->start_date;
-                EventLogger::log("SubscriptionMapper: Usando 'start_date' como fallback para 'current_period_start'.", ['sub_id' => $id], '[INFO]');
-            } elseif ($currentPeriodStartTimestamp === null && $items && isset($items->data[0]->current_period_start)) {
-                $currentPeriodStartTimestamp = $items->data[0]->current_period_start;
-                EventLogger::log("SubscriptionMapper: Usando 'items.data[0].current_period_start' como fallback.", ['sub_id' => $id], '[INFO]');
-            }
+        if ($currentPeriodStartTimestamp === null && isset($stripePayloadSubscription->start_date)) {
+            // start_date es un buen fallback para current_period_start si la suscripción está activa
+            // y current_period_start no está directamente en el payload raíz.
+            $currentPeriodStartTimestamp = $stripePayloadSubscription->start_date;
+            EventLogger::log("SubscriptionMapper: Usando 'start_date' como 'current_period_start'.", ['sub_id' => $id], '[INFO]');
+        } elseif ($currentPeriodStartTimestamp === null && $items && isset($items->data[0]->current_period_start)) {
+            $currentPeriodStartTimestamp = $items->data[0]->current_period_start;
+            EventLogger::log("SubscriptionMapper: Usando 'items.data[0].current_period_start'.", ['sub_id' => $id], '[INFO]');
+        }
 
-            if ($currentPeriodEndTimestamp === null && $items && isset($items->data[0]->current_period_end)) {
-                $currentPeriodEndTimestamp = $items->data[0]->current_period_end;
-                EventLogger::log("SubscriptionMapper: Usando 'items.data[0].current_period_end' como fallback.", ['sub_id' => $id], '[INFO]');
-            }
+        if ($currentPeriodEndTimestamp === null && $items && isset($items->data[0]->current_period_end)) {
+            $currentPeriodEndTimestamp = $items->data[0]->current_period_end;
+            EventLogger::log("SubscriptionMapper: Usando 'items.data[0].current_period_end'.", ['sub_id' => $id], '[INFO]');
         }
 
         $objectType = $stripePayloadSubscription->object;
@@ -87,14 +88,14 @@ class SubscriptionMapper
         if ($items && isset($items->data[0]->price)) {
             $priceObject = $items->data[0]->price;
             $priceId = $priceObject->id ?? null;
-            $priceType = $priceObject->type ?? null;
-            $priceInterval = $priceObject->recurring->interval ?? null;
-        } elseif (isset($stripePayloadSubscription->plan)) {
+            $priceType = $priceObject->type ?? null; // 'recurring' o 'one_time'
+            $priceInterval = $priceObject->recurring->interval ?? null; // Solo existe si type es 'recurring'
+        } elseif (isset($stripePayloadSubscription->plan)) { // Fallback para 'plan' obsoleto
             EventLogger::log("SubscriptionMapper: Usando 'plan' obsoleto.", ['subscription_id' => $id], '[INFO]');
             $planObject = $stripePayloadSubscription->plan;
             $priceId = $planObject->id ?? null;
             $priceInterval = $planObject->interval ?? null;
-            $priceType = 'recurring';
+            $priceType = 'recurring'; // Los planes antiguos siempre eran recurrentes
         }
 
         if ($priceId === null) {

@@ -34,4 +34,7 @@ interface SubscriptionRepositoryInterface
      */
     public function findByStripeCustomerId(string $stripeCustomerId): array;
 
+    public function countByStripeCustomerId(string $stripeCustomerId): int;
+    public function countAll(): int;
+
 }

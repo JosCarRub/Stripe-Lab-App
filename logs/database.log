@@ -1,71 +1,9 @@
-[2025-05-11 17:44:28] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNdvLP71JLI6sb901OkJR7A"}
-[2025-05-11 17:44:29] [DB_QUERY] INSERT INTO StripeTransactions (
-                        stripe_customer_id, customer_email, customer_name, transaction_type,
-                        stripe_payment_intent_id, stripe_invoice_id, stripe_subscription_id, stripe_charge_id,
-                        amount, currency, status, description, document_url, pdf_url,
-                        period_start, period_end, transaction_date_stripe, created_at_local
-                    ) VALUES (
-                        :stripe_customer_id, :customer_email, :customer_name, :transaction_type,
-                        :stripe_payment_intent_id, :stripe_invoice_id, :stripe_subscription_id, :stripe_charge_id,
-                        :amount, :currency, :status, :description, :document_url, :pdf_url,
-                        :period_start, :period_end, :transaction_date_stripe, :created_at_local
-                    ) - Params: {"stripe_customer_id":null}
-[2025-05-11 17:44:29] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNdvLP71JLI6sb901OkJR7A"}
-[2025-05-11 17:44:29] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNdvLP71JLI6sb901OkJR7A"}
-[2025-05-11 17:44:29] [DB_QUERY] UPDATE StripeTransactions SET
-                        stripe_customer_id = :stripe_customer_id, customer_email = :customer_email, customer_name = :customer_name,
-                        transaction_type = :transaction_type, stripe_payment_intent_id = :stripe_payment_intent_id,
-                        stripe_invoice_id = :stripe_invoice_id, stripe_subscription_id = :stripe_subscription_id,
-                        stripe_charge_id = :stripe_charge_id, amount = :amount, currency = :currency, status = :status,
-                        description = :description, document_url = :document_url, pdf_url = :pdf_url,
-                        period_start = :period_start, period_end = :period_end,
-                        transaction_date_stripe = :transaction_date_stripe
-                        -- created_at_local no se actualiza usualmente
-                    WHERE transaction_id = :transaction_id - Params: {"transaction_id":2}
-[2025-05-11 23:51:59] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
-                customer_name, customer_email, transaction_type, amount, currency, status, 
-                description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
-                ORDER BY transaction_date_stripe DESC
-                LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
-[2025-05-11 23:51:59] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
-[2025-05-11 23:56:15] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNjj7P71JLI6sb90UYrxGVt"}
-[2025-05-11 23:56:16] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNjj7P71JLI6sb90UYrxGVt"}
-[2025-05-11 23:56:19] [DB_QUERY] INSERT INTO StripeTransactions (
-                        stripe_customer_id, customer_email, customer_name, transaction_type,
-                        stripe_payment_intent_id, stripe_invoice_id, stripe_subscription_id, stripe_charge_id,
-                        amount, currency, status, description, document_url, pdf_url,
-                        period_start, period_end, transaction_date_stripe, created_at_local
-                    ) VALUES (
-                        :stripe_customer_id, :customer_email, :customer_name, :transaction_type,
-                        :stripe_payment_intent_id, :stripe_invoice_id, :stripe_subscription_id, :stripe_charge_id,
-                        :amount, :currency, :status, :description, :document_url, :pdf_url,
-                        :period_start, :period_end, :transaction_date_stripe, :created_at_local
-                    ) - Params: {"stripe_customer_id":null}
-[2025-05-11 23:56:19] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNjj7P71JLI6sb90UYrxGVt"}
-[2025-05-11 23:56:19] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
-                customer_name, customer_email, transaction_type, amount, currency, status, 
-                description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
-                ORDER BY transaction_date_stripe DESC
-                LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
-[2025-05-11 23:56:19] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
-[2025-05-11 23:57:34] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNjkNP71JLI6sb91UGL7vlz"}
-[2025-05-11 23:57:34] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SIKPeBnslqQEOY"}
-[2025-05-11 23:57:34] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9"}
-[2025-05-11 23:57:34] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SIKPeBnslqQEOY"}
-[2025-05-11 23:57:35] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNjkNP71JLI6sb91UGL7vlz"}
-[2025-05-11 23:57:40] [DB_QUERY] INSERT INTO StripeTransactions (
-                        stripe_customer_id, customer_email, customer_name, transaction_type,
-                        stripe_payment_intent_id, stripe_invoice_id, stripe_subscription_id, stripe_charge_id,
-                        amount, currency, status, description, document_url, pdf_url,
-                        period_start, period_end, transaction_date_stripe, created_at_local
-                    ) VALUES (
-                        :stripe_customer_id, :customer_email, :customer_name, :transaction_type,
-                        :stripe_payment_intent_id, :stripe_invoice_id, :stripe_subscription_id, :stripe_charge_id,
-                        :amount, :currency, :status, :description, :document_url, :pdf_url,
-                        :period_start, :period_end, :transaction_date_stripe, :created_at_local
-                    ) - Params: {"stripe_customer_id":"cus_SIKPeBnslqQEOY"}
-[2025-05-11 23:57:40] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9"}
-[2025-05-11 23:57:42] [DB_QUERY] INSERT INTO StripeSubscriptions (
+[2025-05-12 08:23:47] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNreHP71JLI6sb90yE8nXj4"}
+[2025-05-12 08:23:47] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SISZdSpKAhoMO6"}
+[2025-05-12 08:23:47] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNreIP71JLI6sb9RTCameZY"}
+[2025-05-12 08:23:48] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SISZdSpKAhoMO6"}
+[2025-05-12 08:23:48] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNreIP71JLI6sb9RTCameZY"}
+[2025-05-12 08:23:48] [DB_QUERY] INSERT INTO StripeSubscriptions (
                     subscription_id, stripe_customer_id, customer_email, status, stripe_price_id,
                     `interval`, current_period_start, current_period_end, cancel_at_period_end,
                     canceled_at, ended_at, latest_transaction_id, created_at_stripe, created_at_local
@@ -87,9 +25,9 @@
                     ended_at = VALUES(ended_at),
                     latest_transaction_id = VALUES(latest_transaction_id)
                     -- created_at_stripe y created_at_local no se actualizan en un UPDATE
-                 - Params: {"subscription_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9","status":"active"}
-[2025-05-11 23:57:42] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_invoice_id = :invoice_id - Params: {"invoice_id":"in_1RNjkOP71JLI6sb9lv6CDhez"}
-[2025-05-11 23:57:42] [DB_QUERY] INSERT INTO StripeTransactions (
+                 - Params: {"subscription_id":"sub_1RNreIP71JLI6sb9RTCameZY","status":"active"}
+[2025-05-12 08:23:48] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNreHP71JLI6sb90yE8nXj4"}
+[2025-05-12 08:23:48] [DB_QUERY] INSERT INTO StripeTransactions (
                         stripe_customer_id, customer_email, customer_name, transaction_type,
                         stripe_payment_intent_id, stripe_invoice_id, stripe_subscription_id, stripe_charge_id,
                         amount, currency, status, description, document_url, pdf_url,
@@ -99,9 +37,21 @@
                         :stripe_payment_intent_id, :stripe_invoice_id, :stripe_subscription_id, :stripe_charge_id,
                         :amount, :currency, :status, :description, :document_url, :pdf_url,
                         :period_start, :period_end, :transaction_date_stripe, :created_at_local
-                    ) - Params: {"stripe_customer_id":"cus_SIKPeBnslqQEOY"}
-[2025-05-11 23:57:42] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9"}
-[2025-05-11 23:57:42] [DB_QUERY] INSERT INTO StripeSubscriptions (
+                    ) - Params: {"stripe_customer_id":"cus_SISZdSpKAhoMO6"}
+[2025-05-12 08:23:49] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_invoice_id = :invoice_id - Params: {"invoice_id":"in_1RNreIP71JLI6sb9iurajFt1"}
+[2025-05-12 08:23:49] [DB_QUERY] INSERT INTO StripeTransactions (
+                        stripe_customer_id, customer_email, customer_name, transaction_type,
+                        stripe_payment_intent_id, stripe_invoice_id, stripe_subscription_id, stripe_charge_id,
+                        amount, currency, status, description, document_url, pdf_url,
+                        period_start, period_end, transaction_date_stripe, created_at_local
+                    ) VALUES (
+                        :stripe_customer_id, :customer_email, :customer_name, :transaction_type,
+                        :stripe_payment_intent_id, :stripe_invoice_id, :stripe_subscription_id, :stripe_charge_id,
+                        :amount, :currency, :status, :description, :document_url, :pdf_url,
+                        :period_start, :period_end, :transaction_date_stripe, :created_at_local
+                    ) - Params: {"stripe_customer_id":"cus_SISZdSpKAhoMO6"}
+[2025-05-12 08:23:49] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNreIP71JLI6sb9RTCameZY"}
+[2025-05-12 08:23:49] [DB_QUERY] INSERT INTO StripeSubscriptions (
                     subscription_id, stripe_customer_id, customer_email, status, stripe_price_id,
                     `interval`, current_period_start, current_period_end, cancel_at_period_end,
                     canceled_at, ended_at, latest_transaction_id, created_at_stripe, created_at_local
@@ -123,77 +73,486 @@
                     ended_at = VALUES(ended_at),
                     latest_transaction_id = VALUES(latest_transaction_id)
                     -- created_at_stripe y created_at_local no se actualizan en un UPDATE
-                 - Params: {"subscription_id":"sub_1RNjkOP71JLI6sb9mTdeYaA9","status":"active"}
-[2025-05-11 23:57:52] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+                 - Params: {"subscription_id":"sub_1RNreIP71JLI6sb9RTCameZY","status":"active"}
+[2025-05-12 08:23:51] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
                 customer_name, customer_email, transaction_type, amount, currency, status, 
                 description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
                 ORDER BY transaction_date_stripe DESC
                 LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
-[2025-05-11 23:57:52] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
-[2025-05-11 23:59:29] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+[2025-05-12 08:23:51] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 08:29:47] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+                customer_name, customer_email, transaction_type, amount, currency, status, 
+                description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
+                ORDER BY transaction_date_stripe DESC
+                LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
+[2025-05-12 08:29:47] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 08:30:15] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNrkXP71JLI6sb91HEXVcW8"}
+[2025-05-12 08:30:15] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 08:30:15] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 08:30:15] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNrkYP71JLI6sb9biepRIx8"}
+[2025-05-12 08:30:15] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNrkYP71JLI6sb9biepRIx8"}
+[2025-05-12 08:30:15] [DB_QUERY] INSERT INTO StripeSubscriptions (
+                    subscription_id, stripe_customer_id, customer_email, status, stripe_price_id,
+                    `interval`, current_period_start, current_period_end, cancel_at_period_end,
+                    canceled_at, ended_at, latest_transaction_id, created_at_stripe, created_at_local
+                ) VALUES (
+                    :subscription_id, :stripe_customer_id, :customer_email, :status, :stripe_price_id,
+                    :interval, :current_period_start, :current_period_end, :cancel_at_period_end,
+                    :canceled_at, :ended_at, :latest_transaction_id, :created_at_stripe, :created_at_local
+                )
+                ON DUPLICATE KEY UPDATE
+                    stripe_customer_id = VALUES(stripe_customer_id),
+                    customer_email = VALUES(customer_email),
+                    status = VALUES(status),
+                    stripe_price_id = VALUES(stripe_price_id),
+                    `interval` = VALUES(`interval`),
+                    current_period_start = VALUES(current_period_start),
+                    current_period_end = VALUES(current_period_end),
+                    cancel_at_period_end = VALUES(cancel_at_period_end),
+                    canceled_at = VALUES(canceled_at),
+                    ended_at = VALUES(ended_at),
+                    latest_transaction_id = VALUES(latest_transaction_id)
+                    -- created_at_stripe y created_at_local no se actualizan en un UPDATE
+                 - Params: {"subscription_id":"sub_1RNrkYP71JLI6sb9biepRIx8","status":"active"}
+[2025-05-12 08:30:15] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNrkXP71JLI6sb91HEXVcW8"}
+[2025-05-12 08:30:16] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_invoice_id = :invoice_id - Params: {"invoice_id":"in_1RNrkYP71JLI6sb9es83cZcr"}
+[2025-05-12 08:30:16] [DB_QUERY] INSERT INTO StripeTransactions (
+                        stripe_customer_id, customer_email, customer_name, transaction_type,
+                        stripe_payment_intent_id, stripe_invoice_id, stripe_subscription_id, stripe_charge_id,
+                        amount, currency, status, description, document_url, pdf_url,
+                        period_start, period_end, transaction_date_stripe, created_at_local
+                    ) VALUES (
+                        :stripe_customer_id, :customer_email, :customer_name, :transaction_type,
+                        :stripe_payment_intent_id, :stripe_invoice_id, :stripe_subscription_id, :stripe_charge_id,
+                        :amount, :currency, :status, :description, :document_url, :pdf_url,
+                        :period_start, :period_end, :transaction_date_stripe, :created_at_local
+                    ) - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 08:30:16] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNrkYP71JLI6sb9biepRIx8"}
+[2025-05-12 08:30:16] [DB_QUERY] INSERT INTO StripeSubscriptions (
+                    subscription_id, stripe_customer_id, customer_email, status, stripe_price_id,
+                    `interval`, current_period_start, current_period_end, cancel_at_period_end,
+                    canceled_at, ended_at, latest_transaction_id, created_at_stripe, created_at_local
+                ) VALUES (
+                    :subscription_id, :stripe_customer_id, :customer_email, :status, :stripe_price_id,
+                    :interval, :current_period_start, :current_period_end, :cancel_at_period_end,
+                    :canceled_at, :ended_at, :latest_transaction_id, :created_at_stripe, :created_at_local
+                )
+                ON DUPLICATE KEY UPDATE
+                    stripe_customer_id = VALUES(stripe_customer_id),
+                    customer_email = VALUES(customer_email),
+                    status = VALUES(status),
+                    stripe_price_id = VALUES(stripe_price_id),
+                    `interval` = VALUES(`interval`),
+                    current_period_start = VALUES(current_period_start),
+                    current_period_end = VALUES(current_period_end),
+                    cancel_at_period_end = VALUES(cancel_at_period_end),
+                    canceled_at = VALUES(canceled_at),
+                    ended_at = VALUES(ended_at),
+                    latest_transaction_id = VALUES(latest_transaction_id)
+                    -- created_at_stripe y created_at_local no se actualizan en un UPDATE
+                 - Params: {"subscription_id":"sub_1RNrkYP71JLI6sb9biepRIx8","status":"active"}
+[2025-05-12 08:30:18] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+                customer_name, customer_email, transaction_type, amount, currency, status, 
+                description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
+                ORDER BY transaction_date_stripe DESC
+                LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
+[2025-05-12 08:30:18] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 10:57:19] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+                customer_name, customer_email, transaction_type, amount, currency, status, 
+                description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
+                ORDER BY transaction_date_stripe DESC
+                LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
+[2025-05-12 10:57:19] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 11:04:23] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+                customer_name, customer_email, transaction_type, amount, currency, status, 
+                description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
+                ORDER BY transaction_date_stripe DESC
+                LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
+[2025-05-12 11:04:23] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 11:04:24] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+                customer_name, customer_email, transaction_type, amount, currency, status, 
+                description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
+                ORDER BY transaction_date_stripe DESC
+                LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
+[2025-05-12 11:04:24] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 11:04:39] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+                customer_name, customer_email, transaction_type, amount, currency, status, 
+                description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
+                ORDER BY transaction_date_stripe DESC
+                LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
+[2025-05-12 11:04:39] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 11:14:21] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+                customer_name, customer_email, transaction_type, amount, currency, status, 
+                description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
+                ORDER BY transaction_date_stripe DESC
+                LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
+[2025-05-12 11:14:21] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 11:14:34] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
                 customer_name, customer_email, transaction_type, amount, currency, status, 
                 description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
                 WHERE stripe_customer_id = :stripe_customer_id 
                 ORDER BY transaction_date_stripe DESC
-                LIMIT :limit OFFSET :offset - Params: {"stripe_customer_id":"Antonio de Triana","limit":10,"offset":0}
-[2025-05-11 23:59:29] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"Antonio de Triana"}
-[2025-05-12 00:09:00] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+                LIMIT :limit OFFSET :offset - Params: {"stripe_customer_id":"cus_SIRaAp9qqCpqyh","limit":10,"offset":0}
+[2025-05-12 11:14:34] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SIRaAp9qqCpqyh"}
+[2025-05-12 11:15:12] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
                 customer_name, customer_email, transaction_type, amount, currency, status, 
                 description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
                 ORDER BY transaction_date_stripe DESC
                 LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
-[2025-05-12 00:09:00] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
-[2025-05-12 00:11:48] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+[2025-05-12 11:15:12] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 11:15:18] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+                customer_name, customer_email, transaction_type, amount, currency, status, 
+                description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
+                WHERE stripe_customer_id = :stripe_customer_id 
+                ORDER BY transaction_date_stripe DESC
+                LIMIT :limit OFFSET :offset - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI","limit":10,"offset":0}
+[2025-05-12 11:15:18] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:21:19] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:21:26] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
                 customer_name, customer_email, transaction_type, amount, currency, status, 
                 description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
                 ORDER BY transaction_date_stripe DESC
                 LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
-[2025-05-12 00:11:48] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
-[2025-05-12 00:13:11] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+[2025-05-12 11:21:26] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 11:21:36] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:21:42] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:21:46] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:21:54] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:23:53] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:24:33] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:25:09] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:25:10] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:25:10] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:25:10] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:34:24] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:34:24] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:34:37] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:34:37] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:34:40] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:34:40] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:37:32] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:37:32] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:37:34] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:37:34] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:37:42] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:37:42] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:37:43] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:37:43] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:37:45] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:37:45] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:40:26] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:40:26] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:42:45] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:42:45] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:42:51] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:42:51] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:43:59] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:43:59] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:49:03] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:49:03] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:49:06] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:49:06] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:54:39] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:54:39] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:54:45] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:54:45] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:54:48] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNrkYP71JLI6sb9biepRIx8"}
+[2025-05-12 11:54:48] [DB_QUERY] INSERT INTO StripeSubscriptions (
+                    subscription_id, stripe_customer_id, customer_email, status, stripe_price_id,
+                    `interval`, current_period_start, current_period_end, cancel_at_period_end,
+                    canceled_at, ended_at, latest_transaction_id, created_at_stripe, created_at_local
+                ) VALUES (
+                    :subscription_id, :stripe_customer_id, :customer_email, :status, :stripe_price_id,
+                    :interval, :current_period_start, :current_period_end, :cancel_at_period_end,
+                    :canceled_at, :ended_at, :latest_transaction_id, :created_at_stripe, :created_at_local
+                )
+                ON DUPLICATE KEY UPDATE
+                    stripe_customer_id = VALUES(stripe_customer_id),
+                    customer_email = VALUES(customer_email),
+                    status = VALUES(status),
+                    stripe_price_id = VALUES(stripe_price_id),
+                    `interval` = VALUES(`interval`),
+                    current_period_start = VALUES(current_period_start),
+                    current_period_end = VALUES(current_period_end),
+                    cancel_at_period_end = VALUES(cancel_at_period_end),
+                    canceled_at = VALUES(canceled_at),
+                    ended_at = VALUES(ended_at),
+                    latest_transaction_id = VALUES(latest_transaction_id)
+                    -- created_at_stripe y created_at_local no se actualizan en un UPDATE
+                 - Params: {"subscription_id":"sub_1RNrkYP71JLI6sb9biepRIx8","status":"canceled"}
+[2025-05-12 11:54:50] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:54:50] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 11:54:57] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 11:54:57] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:25:54] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNvQbP71JLI6sb90MxifI17"}
+[2025-05-12 12:25:54] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNvQbP71JLI6sb90MxifI17"}
+[2025-05-12 12:25:55] [DB_QUERY] INSERT INTO StripeTransactions (
+                        stripe_customer_id, customer_email, customer_name, transaction_type,
+                        stripe_payment_intent_id, stripe_invoice_id, stripe_subscription_id, stripe_charge_id,
+                        amount, currency, status, description, document_url, pdf_url,
+                        period_start, period_end, transaction_date_stripe, created_at_local
+                    ) VALUES (
+                        :stripe_customer_id, :customer_email, :customer_name, :transaction_type,
+                        :stripe_payment_intent_id, :stripe_invoice_id, :stripe_subscription_id, :stripe_charge_id,
+                        :amount, :currency, :status, :description, :document_url, :pdf_url,
+                        :period_start, :period_end, :transaction_date_stripe, :created_at_local
+                    ) - Params: {"stripe_customer_id":null}
+[2025-05-12 12:25:55] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNvQbP71JLI6sb90MxifI17"}
+[2025-05-12 12:26:11] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
                 customer_name, customer_email, transaction_type, amount, currency, status, 
                 description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
                 ORDER BY transaction_date_stripe DESC
                 LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
-[2025-05-12 00:13:11] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
-[2025-05-12 00:13:18] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+[2025-05-12 12:26:11] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 12:26:19] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:26:19] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:26:23] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
                 customer_name, customer_email, transaction_type, amount, currency, status, 
                 description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
                 ORDER BY transaction_date_stripe DESC
                 LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
-[2025-05-12 00:13:18] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
-[2025-05-12 00:13:24] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+[2025-05-12 12:26:23] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 12:26:40] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:26:40] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:26:44] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 12:26:44] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 12:26:48] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:26:48] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:27:13] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNvRqP71JLI6sb91eHAJAGa"}
+[2025-05-12 12:27:13] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNvRsP71JLI6sb9FJb2TSLH"}
+[2025-05-12 12:27:13] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SIWUEA79HZF5Gx"}
+[2025-05-12 12:27:13] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SIWUEA79HZF5Gx"}
+[2025-05-12 12:27:13] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNvRsP71JLI6sb9FJb2TSLH"}
+[2025-05-12 12:27:14] [DB_QUERY] INSERT INTO StripeSubscriptions (
+                    subscription_id, stripe_customer_id, customer_email, status, stripe_price_id,
+                    `interval`, current_period_start, current_period_end, cancel_at_period_end,
+                    canceled_at, ended_at, latest_transaction_id, created_at_stripe, created_at_local
+                ) VALUES (
+                    :subscription_id, :stripe_customer_id, :customer_email, :status, :stripe_price_id,
+                    :interval, :current_period_start, :current_period_end, :cancel_at_period_end,
+                    :canceled_at, :ended_at, :latest_transaction_id, :created_at_stripe, :created_at_local
+                )
+                ON DUPLICATE KEY UPDATE
+                    stripe_customer_id = VALUES(stripe_customer_id),
+                    customer_email = VALUES(customer_email),
+                    status = VALUES(status),
+                    stripe_price_id = VALUES(stripe_price_id),
+                    `interval` = VALUES(`interval`),
+                    current_period_start = VALUES(current_period_start),
+                    current_period_end = VALUES(current_period_end),
+                    cancel_at_period_end = VALUES(cancel_at_period_end),
+                    canceled_at = VALUES(canceled_at),
+                    ended_at = VALUES(ended_at),
+                    latest_transaction_id = VALUES(latest_transaction_id)
+                    -- created_at_stripe y created_at_local no se actualizan en un UPDATE
+                 - Params: {"subscription_id":"sub_1RNvRsP71JLI6sb9FJb2TSLH","status":"active"}
+[2025-05-12 12:27:14] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNvRqP71JLI6sb91eHAJAGa"}
+[2025-05-12 12:27:14] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_invoice_id = :invoice_id - Params: {"invoice_id":"in_1RNvRsP71JLI6sb9HuI7Pvxm"}
+[2025-05-12 12:27:14] [DB_QUERY] INSERT INTO StripeTransactions (
+                        stripe_customer_id, customer_email, customer_name, transaction_type,
+                        stripe_payment_intent_id, stripe_invoice_id, stripe_subscription_id, stripe_charge_id,
+                        amount, currency, status, description, document_url, pdf_url,
+                        period_start, period_end, transaction_date_stripe, created_at_local
+                    ) VALUES (
+                        :stripe_customer_id, :customer_email, :customer_name, :transaction_type,
+                        :stripe_payment_intent_id, :stripe_invoice_id, :stripe_subscription_id, :stripe_charge_id,
+                        :amount, :currency, :status, :description, :document_url, :pdf_url,
+                        :period_start, :period_end, :transaction_date_stripe, :created_at_local
+                    ) - Params: {"stripe_customer_id":"cus_SIWUEA79HZF5Gx"}
+[2025-05-12 12:27:14] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNvRsP71JLI6sb9FJb2TSLH"}
+[2025-05-12 12:27:14] [DB_QUERY] INSERT INTO StripeSubscriptions (
+                    subscription_id, stripe_customer_id, customer_email, status, stripe_price_id,
+                    `interval`, current_period_start, current_period_end, cancel_at_period_end,
+                    canceled_at, ended_at, latest_transaction_id, created_at_stripe, created_at_local
+                ) VALUES (
+                    :subscription_id, :stripe_customer_id, :customer_email, :status, :stripe_price_id,
+                    :interval, :current_period_start, :current_period_end, :cancel_at_period_end,
+                    :canceled_at, :ended_at, :latest_transaction_id, :created_at_stripe, :created_at_local
+                )
+                ON DUPLICATE KEY UPDATE
+                    stripe_customer_id = VALUES(stripe_customer_id),
+                    customer_email = VALUES(customer_email),
+                    status = VALUES(status),
+                    stripe_price_id = VALUES(stripe_price_id),
+                    `interval` = VALUES(`interval`),
+                    current_period_start = VALUES(current_period_start),
+                    current_period_end = VALUES(current_period_end),
+                    cancel_at_period_end = VALUES(cancel_at_period_end),
+                    canceled_at = VALUES(canceled_at),
+                    ended_at = VALUES(ended_at),
+                    latest_transaction_id = VALUES(latest_transaction_id)
+                    -- created_at_stripe y created_at_local no se actualizan en un UPDATE
+                 - Params: {"subscription_id":"sub_1RNvRsP71JLI6sb9FJb2TSLH","status":"active"}
+[2025-05-12 12:27:17] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
                 customer_name, customer_email, transaction_type, amount, currency, status, 
                 description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
                 ORDER BY transaction_date_stripe DESC
                 LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
-[2025-05-12 00:13:24] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
-[2025-05-12 00:13:29] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+[2025-05-12 12:27:17] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 12:27:44] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:27:44] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:27:47] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 12:27:47] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SISfOyNxYKxVFI"}
+[2025-05-12 12:28:06] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:28:06] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:28:27] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:28:27] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:28:31] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SIWUEA79HZF5Gx"}
+[2025-05-12 12:28:31] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SIWUEA79HZF5Gx"}
+[2025-05-12 12:28:48] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNvRsP71JLI6sb9FJb2TSLH"}
+[2025-05-12 12:28:48] [DB_QUERY] INSERT INTO StripeSubscriptions (
+                    subscription_id, stripe_customer_id, customer_email, status, stripe_price_id,
+                    `interval`, current_period_start, current_period_end, cancel_at_period_end,
+                    canceled_at, ended_at, latest_transaction_id, created_at_stripe, created_at_local
+                ) VALUES (
+                    :subscription_id, :stripe_customer_id, :customer_email, :status, :stripe_price_id,
+                    :interval, :current_period_start, :current_period_end, :cancel_at_period_end,
+                    :canceled_at, :ended_at, :latest_transaction_id, :created_at_stripe, :created_at_local
+                )
+                ON DUPLICATE KEY UPDATE
+                    stripe_customer_id = VALUES(stripe_customer_id),
+                    customer_email = VALUES(customer_email),
+                    status = VALUES(status),
+                    stripe_price_id = VALUES(stripe_price_id),
+                    `interval` = VALUES(`interval`),
+                    current_period_start = VALUES(current_period_start),
+                    current_period_end = VALUES(current_period_end),
+                    cancel_at_period_end = VALUES(cancel_at_period_end),
+                    canceled_at = VALUES(canceled_at),
+                    ended_at = VALUES(ended_at),
+                    latest_transaction_id = VALUES(latest_transaction_id)
+                    -- created_at_stripe y created_at_local no se actualizan en un UPDATE
+                 - Params: {"subscription_id":"sub_1RNvRsP71JLI6sb9FJb2TSLH","status":"canceled"}
+[2025-05-12 12:28:50] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SIWUEA79HZF5Gx"}
+[2025-05-12 12:28:50] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SIWUEA79HZF5Gx"}
+[2025-05-12 12:30:57] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:30:57] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:41:34] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNvflP71JLI6sb90NqqZg0S"}
+[2025-05-12 12:41:34] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNvflP71JLI6sb90NqqZg0S"}
+[2025-05-12 12:41:34] [DB_QUERY] INSERT INTO StripeTransactions (
+                        stripe_customer_id, customer_email, customer_name, transaction_type,
+                        stripe_payment_intent_id, stripe_invoice_id, stripe_subscription_id, stripe_charge_id,
+                        amount, currency, status, description, document_url, pdf_url,
+                        period_start, period_end, transaction_date_stripe, created_at_local
+                    ) VALUES (
+                        :stripe_customer_id, :customer_email, :customer_name, :transaction_type,
+                        :stripe_payment_intent_id, :stripe_invoice_id, :stripe_subscription_id, :stripe_charge_id,
+                        :amount, :currency, :status, :description, :document_url, :pdf_url,
+                        :period_start, :period_end, :transaction_date_stripe, :created_at_local
+                    ) - Params: {"stripe_customer_id":null}
+[2025-05-12 12:41:35] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNvflP71JLI6sb90NqqZg0S"}
+[2025-05-12 12:41:39] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
                 customer_name, customer_email, transaction_type, amount, currency, status, 
                 description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
                 ORDER BY transaction_date_stripe DESC
                 LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
-[2025-05-12 00:13:29] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
-[2025-05-12 00:13:34] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+[2025-05-12 12:41:39] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 12:42:14] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNvgNP71JLI6sb91elEvsvj"}
+[2025-05-12 12:42:14] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNvgPP71JLI6sb9xZKJnhLg"}
+[2025-05-12 12:42:14] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SIWj6O1s3AdCZp"}
+[2025-05-12 12:42:14] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SIWj6O1s3AdCZp"}
+[2025-05-12 12:42:14] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNvgPP71JLI6sb9xZKJnhLg"}
+[2025-05-12 12:42:14] [DB_QUERY] INSERT INTO StripeSubscriptions (
+                    subscription_id, stripe_customer_id, customer_email, status, stripe_price_id,
+                    `interval`, current_period_start, current_period_end, cancel_at_period_end,
+                    canceled_at, ended_at, latest_transaction_id, created_at_stripe, created_at_local
+                ) VALUES (
+                    :subscription_id, :stripe_customer_id, :customer_email, :status, :stripe_price_id,
+                    :interval, :current_period_start, :current_period_end, :cancel_at_period_end,
+                    :canceled_at, :ended_at, :latest_transaction_id, :created_at_stripe, :created_at_local
+                )
+                ON DUPLICATE KEY UPDATE
+                    stripe_customer_id = VALUES(stripe_customer_id),
+                    customer_email = VALUES(customer_email),
+                    status = VALUES(status),
+                    stripe_price_id = VALUES(stripe_price_id),
+                    `interval` = VALUES(`interval`),
+                    current_period_start = VALUES(current_period_start),
+                    current_period_end = VALUES(current_period_end),
+                    cancel_at_period_end = VALUES(cancel_at_period_end),
+                    canceled_at = VALUES(canceled_at),
+                    ended_at = VALUES(ended_at),
+                    latest_transaction_id = VALUES(latest_transaction_id)
+                    -- created_at_stripe y created_at_local no se actualizan en un UPDATE
+                 - Params: {"subscription_id":"sub_1RNvgPP71JLI6sb9xZKJnhLg","status":"active"}
+[2025-05-12 12:42:14] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_payment_intent_id = :payment_intent_id - Params: {"payment_intent_id":"pi_3RNvgNP71JLI6sb91elEvsvj"}
+[2025-05-12 12:42:15] [DB_QUERY] SELECT * FROM StripeTransactions WHERE stripe_invoice_id = :invoice_id - Params: {"invoice_id":"in_1RNvgPP71JLI6sb9lq9nGbL0"}
+[2025-05-12 12:42:15] [DB_QUERY] INSERT INTO StripeTransactions (
+                        stripe_customer_id, customer_email, customer_name, transaction_type,
+                        stripe_payment_intent_id, stripe_invoice_id, stripe_subscription_id, stripe_charge_id,
+                        amount, currency, status, description, document_url, pdf_url,
+                        period_start, period_end, transaction_date_stripe, created_at_local
+                    ) VALUES (
+                        :stripe_customer_id, :customer_email, :customer_name, :transaction_type,
+                        :stripe_payment_intent_id, :stripe_invoice_id, :stripe_subscription_id, :stripe_charge_id,
+                        :amount, :currency, :status, :description, :document_url, :pdf_url,
+                        :period_start, :period_end, :transaction_date_stripe, :created_at_local
+                    ) - Params: {"stripe_customer_id":"cus_SIWj6O1s3AdCZp"}
+[2025-05-12 12:42:15] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNvgPP71JLI6sb9xZKJnhLg"}
+[2025-05-12 12:42:15] [DB_QUERY] INSERT INTO StripeSubscriptions (
+                    subscription_id, stripe_customer_id, customer_email, status, stripe_price_id,
+                    `interval`, current_period_start, current_period_end, cancel_at_period_end,
+                    canceled_at, ended_at, latest_transaction_id, created_at_stripe, created_at_local
+                ) VALUES (
+                    :subscription_id, :stripe_customer_id, :customer_email, :status, :stripe_price_id,
+                    :interval, :current_period_start, :current_period_end, :cancel_at_period_end,
+                    :canceled_at, :ended_at, :latest_transaction_id, :created_at_stripe, :created_at_local
+                )
+                ON DUPLICATE KEY UPDATE
+                    stripe_customer_id = VALUES(stripe_customer_id),
+                    customer_email = VALUES(customer_email),
+                    status = VALUES(status),
+                    stripe_price_id = VALUES(stripe_price_id),
+                    `interval` = VALUES(`interval`),
+                    current_period_start = VALUES(current_period_start),
+                    current_period_end = VALUES(current_period_end),
+                    cancel_at_period_end = VALUES(cancel_at_period_end),
+                    canceled_at = VALUES(canceled_at),
+                    ended_at = VALUES(ended_at),
+                    latest_transaction_id = VALUES(latest_transaction_id)
+                    -- created_at_stripe y created_at_local no se actualizan en un UPDATE
+                 - Params: {"subscription_id":"sub_1RNvgPP71JLI6sb9xZKJnhLg","status":"active"}
+[2025-05-12 12:42:17] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
                 customer_name, customer_email, transaction_type, amount, currency, status, 
                 description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
                 ORDER BY transaction_date_stripe DESC
                 LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
-[2025-05-12 00:13:34] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
-[2025-05-12 00:13:54] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
+[2025-05-12 12:42:17] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 12:42:26] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:42:26] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:42:29] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
                 customer_name, customer_email, transaction_type, amount, currency, status, 
                 description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
                 ORDER BY transaction_date_stripe DESC
                 LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
-[2025-05-12 00:13:54] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
-[2025-05-12 00:14:40] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
-                customer_name, customer_email, transaction_type, amount, currency, status, 
-                description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
-                ORDER BY transaction_date_stripe DESC
-                LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
-[2025-05-12 00:14:40] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
-[2025-05-12 00:14:48] [DB_QUERY] SELECT transaction_id, stripe_invoice_id, stripe_payment_intent_id, stripe_customer_id, 
-                customer_name, customer_email, transaction_type, amount, currency, status, 
-                description, document_url, pdf_url, transaction_date_stripe, created_at_local FROM StripeTransactions 
-                ORDER BY transaction_date_stripe DESC
-                LIMIT :limit OFFSET :offset - Params: {"limit":10,"offset":0}
-[2025-05-12 00:14:48] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 12:42:29] [DB_QUERY] SELECT COUNT(*) FROM StripeTransactions
+[2025-05-12 12:42:49] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:42:49] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_xxxxxxxxxxxxxx"}
+[2025-05-12 12:42:52] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SIWj6O1s3AdCZp"}
+[2025-05-12 12:42:52] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SIWj6O1s3AdCZp"}
+[2025-05-12 12:42:57] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE subscription_id = :subscription_id - Params: {"subscription_id":"sub_1RNvgPP71JLI6sb9xZKJnhLg"}
+[2025-05-12 12:42:57] [DB_QUERY] INSERT INTO StripeSubscriptions (
+                    subscription_id, stripe_customer_id, customer_email, status, stripe_price_id,
+                    `interval`, current_period_start, current_period_end, cancel_at_period_end,
+                    canceled_at, ended_at, latest_transaction_id, created_at_stripe, created_at_local
+                ) VALUES (
+                    :subscription_id, :stripe_customer_id, :customer_email, :status, :stripe_price_id,
+                    :interval, :current_period_start, :current_period_end, :cancel_at_period_end,
+                    :canceled_at, :ended_at, :latest_transaction_id, :created_at_stripe, :created_at_local
+                )
+                ON DUPLICATE KEY UPDATE
+                    stripe_customer_id = VALUES(stripe_customer_id),
+                    customer_email = VALUES(customer_email),
+                    status = VALUES(status),
+                    stripe_price_id = VALUES(stripe_price_id),
+                    `interval` = VALUES(`interval`),
+                    current_period_start = VALUES(current_period_start),
+                    current_period_end = VALUES(current_period_end),
+                    cancel_at_period_end = VALUES(cancel_at_period_end),
+                    canceled_at = VALUES(canceled_at),
+                    ended_at = VALUES(ended_at),
+                    latest_transaction_id = VALUES(latest_transaction_id)
+                    -- created_at_stripe y created_at_local no se actualizan en un UPDATE
+                 - Params: {"subscription_id":"sub_1RNvgPP71JLI6sb9xZKJnhLg","status":"canceled"}
+[2025-05-12 12:43:00] [DB_QUERY] SELECT * FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id ORDER BY created_at_stripe DESC - Params: {"stripe_customer_id":"cus_SIWj6O1s3AdCZp"}
+[2025-05-12 12:43:00] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions WHERE stripe_customer_id = :stripe_customer_id - Params: {"stripe_customer_id":"cus_SIWj6O1s3AdCZp"}

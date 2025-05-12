@@ -1,0 +1,432 @@
+/* ======= Estilos específicos para la página de Mis Suscripciones ======= */
+
+/* Sección de cabecera */
+.subscriptions-header-section {
+    margin-bottom: 2.5rem;
+}
+
+.section-title-highlight {
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+}
+
+/* Pestañas de navegación de suscripciones */
+.subscriptions-tabs {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+    background-color: var(--bg-subtle);
+    border-radius: var(--border-radius-pill);
+    padding: 0.5rem;
+    width: fit-content;
+    position: relative;
+}
+
+.subscriptions-tab {
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--border-radius-pill);
+    font-weight: 600;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    transition: all var(--transition-normal);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.subscriptions-tab i {
+    font-size: 1rem;
+}
+
+.subscriptions-tab.active {
+    color: var(--white);
+    background: var(--gradient-primary);
+    box-shadow: 0 3px 8px rgba(var(--primary-rgb), 0.3);
+}
+
+/* Paneles de contenido */
+.subscriptions-content-section {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.subscriptions-content-section.active {
+    display: block;
+}
+
+/* Caja de búsqueda y filtros */
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-input);
+    border-radius: var(--border-radius-pill);
+    padding: 0.5rem 1rem;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid var(--border-input);
+    transition: all var(--transition-normal);
+}
+
+.search-box:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.15);
+}
+
+.search-icon {
+    color: var(--text-tertiary);
+    margin-right: 0.75rem;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    background: none;
+    color: var(--text-primary);
+    outline: none;
+    font-size: 0.95rem;
+}
+
+.search-input::placeholder {
+    color: var(--text-tertiary);
+}
+
+/* Tarjeta principal */
+.card {
+    background-color: var(--bg-raised);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-subtle);
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+}
+
+/* Tabla de datos */
+.table-container {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.data-table th,
+.data-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.data-table th {
+    background-color: var(--bg-subtle);
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-align: left;
+    font-size: 0.9rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.data-table th:first-child {
+    border-top-left-radius: var(--border-radius-md);
+}
+
+.data-table th:last-child {
+    border-top-right-radius: var(--border-radius-md);
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tr:hover td {
+    background-color: rgba(var(--primary-rgb), 0.03);
+}
+
+/* Estados de suscripción */
+.subscription-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--border-radius-pill);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-active {
+    background-color: rgba(var(--success), 0.1);
+    color: var(--success);
+}
+
+.status-canceled {
+    background-color: rgba(var(--danger), 0.1);
+    color: var(--danger);
+}
+
+.status-trialing {
+    background-color: rgba(var(--info), 0.1);
+    color: var(--info);
+}
+
+.status-past_due {
+    background-color: rgba(var(--warning), 0.1);
+    color: var(--warning);
+}
+
+/* Botones de acción */
+.actions-cell {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-subtle);
+    color: var(--text-secondary);
+    border: none;
+    transition: all var(--transition-normal);
+    font-size: 0.85rem;
+}
+
+.action-btn:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.action-btn.cancel-btn:hover {
+    background-color: var(--danger);
+}
+
+.action-btn.info-btn:hover {
+    background-color: var(--info);
+}
+
+/* Spinner de carga */
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--bg-surface-rgb), 0.7);
+    z-index: 20;
+}
+
+/* Estado vacío */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.empty-icon {
+    font-size: 3rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.empty-title {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.empty-message {
+    color: var(--text-secondary);
+    max-width: 450px;
+}
+
+/* Paginación */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.pagination-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-subtle);
+    color: var(--text-secondary);
+    border: none;
+    transition: all var(--transition-normal);
+    font-size: 0.85rem;
+}
+
+.pagination-btn:hover {
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+}
+
+.pagination-btn.active {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.pagination-info {
+    display: flex;
+    align-items: center;
+    color: var(--text-tertiary);
+    font-size: 0.85rem;
+    margin-left: 1rem;
+}
+
+/* Período de suscripción */
+.subscription-period {
+    display: flex;
+    flex-direction: column;
+}
+
+.period-date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.period-date-start {
+    margin-bottom: 0.25rem;
+}
+
+/* Identificador de cliente */
+#test-customer-id {
+    color: var(--primary);
+    background-color: rgba(var(--primary-rgb), 0.08);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-monospace);
+    font-size: 0.9rem;
+}
+
+/* Botón de refrescar */
+#refresh-my-subscriptions-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-subtle);
+    color: var(--text-secondary);
+    border: none;
+    transition: all var(--transition-normal);
+}
+
+#refresh-my-subscriptions-btn:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+/* Título del panel de suscripciones de cliente */
+#customer-subscriptions-title {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-subtle);
+    margin: 0;
+}
+
+#current-customer-id-subs-display {
+    color: var(--primary);
+    font-family: var(--font-monospace);
+    font-size: 0.9rem;
+}
+
+/* Adaptación a pantallas más pequeñas */
+@media (max-width: 992px) {
+    .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .search-box {
+        max-width: 100%;
+    }
+
+    .subscriptions-tabs {
+        width: 100%;
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .data-table th,
+    .data-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .subscription-status {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .action-btn {
+        width: 30px;
+        height: 30px;
+    }
+
+    .subscriptions-tab {
+        padding: 0.5rem 1rem;
+    }
+
+    .subscriptions-tab span {
+        display: none;
+    }
+
+    .subscriptions-tab i {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .actions-cell {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .empty-state {
+        padding: 2rem 1rem;
+    }
+
+    .empty-icon {
+        font-size: 2.5rem;
+    }
+
+    .empty-title {
+        font-size: 1.25rem;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

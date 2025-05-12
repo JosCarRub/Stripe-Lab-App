@@ -1,15 +1,10 @@
 <?php
 declare(strict_types=1);
 
-// Temporalmente para depurar:
-// error_reporting(E_ALL);
-// ini_set('display_errors', '1');
 
 if (!defined('PROJECT_ROOT')) {
-    // SI api-invoices.php está en public/api/
+
     define('PROJECT_ROOT', dirname(__DIR__, 2));
-    // SI api-invoices.php está en public/v1/api/
-    // define('PROJECT_ROOT', dirname(__DIR__, 3)); // <-- ESTO PARECE INCORRECTO si es public/api/
 }
 require_once PROJECT_ROOT . '/vendor/autoload.php';
 
@@ -40,6 +35,7 @@ if (!$invoiceController) {
 }
 
 $action = $_GET['action'] ?? 'list_all';
+EventLogger::log("API Invoices: Endpoint alcanzado con acción: " . $action);
 $customerId = $_GET['customer_id'] ?? null;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 10;

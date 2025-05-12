@@ -5,6 +5,9 @@ namespace config;
 
 // --- Vendor ---
 
+use App\Controller\Impl\StripeSubscriptionControllerImpl;
+use App\Controller\StripeSubscriptionControllerInterface;
+use App\Service\StripeSubscriptionManagementServiceInterface;
 use Dotenv\Dotenv;
 use PDO;
 use Stripe\StripeClient;
@@ -51,6 +54,9 @@ use App\Service\Impl\StripeCheckoutSessionServiceImpl;
 use App\Service\Impl\StripeWebhookServiceImpl;
 use App\Service\StripeCheckoutServiceInterface;
 use App\Service\StripeWebhookServiceInterface;
+use App\Service\Impl\StripeSubscriptionManagementServiceImpl;
+
+
 
 // Strategies
 use App\Strategy\Impl\CheckoutSessionCompletedStrategyImpl;
@@ -93,6 +99,9 @@ class Bootstrap
     private static ?StripeWebhookControllerInterface $stripeWebhookController = null;
     private static ?InvoiceRepositoryInterface $invoiceRepository = null; // Nueva
     private static ?StripeInvoiceControllerInterface $stripeInvoiceController = null; // Nueva
+    private static ?StripeSubscriptionManagementServiceInterface $stripeSubscriptionManagementService = null;
+    private static ?StripeSubscriptionControllerInterface $stripeSubscriptionController = null;
+
 
 
     public static function initialize(string $projectRootPath): void
@@ -221,6 +230,19 @@ class Bootstrap
         return self::$invoiceRepository ??= new InvoiceRepositoryImpl(self::getPdo());
     }
 
+    public static function getStripeSubscriptionManagementService(): ?StripeSubscriptionManagementServiceInterface {
+        if (self::$stripeSubscriptionManagementService === null) {
+            $stripeClient = self::getGlobalStripeClient();
+            if (!$stripeClient) {
+                ErrorLogger::log("Bootstrap: StripeClient no disponible para StripeSubscriptionManagementService.", [], '[CRITICAL_SERVICE_UNAVAILABLE]');
+                return null;
+            }
+            self::$stripeSubscriptionManagementService = new StripeSubscriptionManagementServiceImpl($stripeClient);
+            EventLogger::log("Bootstrap: StripeSubscriptionManagementService instanciado.");
+        }
+        return self::$stripeSubscriptionManagementService;
+    }
+
     // --- STRIPE CLIENT (Global, para estrategias que lo necesiten) ---
     private static function getGlobalStripeClient(): ?StripeClient {
         if (self::$stripeClientGlobal === null) {
@@ -286,6 +308,10 @@ class Bootstrap
     }
 
     // --- SERVICES ---
+
+    /**
+     * @throws ConfigurationException
+     */
     private static function getStripeWebhookService(): ?StripeWebhookServiceInterface {
         if (self::$stripeWebhookService === null) {
             $webhookSecret = defined('STRIPE_WEBHOOK_SECRET') ? STRIPE_WEBHOOK_SECRET : ($_ENV['STRIPE_WEBHOOK_SECRET'] ?? null);
@@ -301,6 +327,9 @@ class Bootstrap
         return self::$stripeWebhookService;
     }
 
+    /**
+     * @throws ConfigurationException
+     */
     public static function getStripeCheckoutService(): ?StripeCheckoutServiceInterface {
         if (self::$stripeCheckoutService === null) {
             $apiKey = defined('STRIPE_SECRET_KEY') ? STRIPE_SECRET_KEY : ($_ENV['STRIPE_SECRET_KEY'] ?? null);
@@ -314,7 +343,7 @@ class Bootstrap
                 ErrorLogger::log("Bootstrap: APP_DOMAIN no configurado o inválido para CheckoutService.", ['app_domain' => $appDomain ?? 'indefinido'], '[CRITICAL_CONFIG]');
                 return null;
             }
-            // StripeCheckoutSessionServiceImpl ahora espera la clave secreta y el appDomain
+
             self::$stripeCheckoutService = new StripeCheckoutSessionServiceImpl(
                 $apiKey,
                 $appDomain
@@ -349,5 +378,27 @@ class Bootstrap
             EventLogger::log("Bootstrap: StripeInvoiceController instanciado.");
         }
         return self::$stripeInvoiceController;
+    }
+
+    // --- GETTER PÚBLICO PARA StripeSubscriptionController ---
+    public static function getStripeSubscriptionController(): ?StripeSubscriptionControllerInterface {
+        if (self::$stripeSubscriptionController === null) {
+            $subscriptionRepo = self::getSubscriptionRepository();
+            $subscriptionMgmtService = self::getStripeSubscriptionManagementService();
+
+            if (!$subscriptionRepo || !$subscriptionMgmtService) {
+                ErrorLogger::log("Bootstrap: Dependencias no disponibles para StripeSubscriptionController.", [
+                    'repo_available' => (bool)$subscriptionRepo,
+                    'mgmt_service_available' => (bool)$subscriptionMgmtService
+                ], '[CRITICAL]');
+                return null;
+            }
+            self::$stripeSubscriptionController = new StripeSubscriptionControllerImpl(
+                $subscriptionRepo,
+                $subscriptionMgmtService
+            );
+            EventLogger::log("Bootstrap: StripeSubscriptionController instanciado.");
+        }
+        return self::$stripeSubscriptionController;
     }
 }

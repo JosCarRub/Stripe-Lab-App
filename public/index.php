@@ -82,7 +82,7 @@ use App\Commons\Enums\StripeProductsTypeEnum;
                 <span class="nav-label">Facturas</span>
             </a>
 
-            <a href="subscriptions.html" class="nav-item">
+            <a href="view-subscriptions.php" class="nav-item">
                 <div class="nav-icon"><i class="fas fa-users"></i></div>
                 <span class="nav-label">Gestionar Suscripciones</span>
             </a>
@@ -91,7 +91,7 @@ use App\Commons\Enums\StripeProductsTypeEnum;
                 <span>Administración</span>
             </div>
 
-            <a href="admin/panel.html" class="nav-item">
+            <a href="admin/panel.php" class="nav-item">
                 <div class="nav-icon"><i class="fas fa-tachometer-alt"></i></div>
                 <span class="nav-label">Panel de Control</span>
             </a>
