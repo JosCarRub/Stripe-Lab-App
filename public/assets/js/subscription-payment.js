@@ -1,13 +1,6 @@
 // public/assets/js/subscription-page.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    // STRIPE_PUBLISHABLE_KEY es una constante PHP definida por config/Bootstrap.php
-    // y debe ser accesible globalmente en el scope de este script (ej. a través de una variable global de JS)
-    // o pasada como un atributo de datos en algún elemento del DOM.
-    // Para este ejemplo, asumiremos que está disponible como una variable global de JS
-    // que se establece en el <script> tag en el HTML.
-    // En el HTML: <script> const STRIPE_KEY = '<?= STRIPE_PUBLISHABLE_KEY ?>'; </script>
-    // O directamente: const stripe = Stripe('<?= STRIPE_PUBLISHABLE_KEY ?>');
 
     if (typeof STRIPE_PUBLISHABLE_KEY === 'undefined') {
         console.error('Stripe public key no está definida. Asegúrate de que la constante STRIPE_PUBLISHABLE_KEY esté disponible para JavaScript.');
