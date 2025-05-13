@@ -261,7 +261,7 @@
                     <div id="que-son-webhooks" class="subsection">
                         <h4>2.1. ¿Qué son los Webhooks y por qué son cruciales?</h4>
                         <p>
-                            Los webhooks son notificaciones <strong>HTTP POST que Stripe envía a tu servidor cuando ocurren eventos</strong> en tu cuenta. Funcionan como un sistema de "notificaciones push" para tu aplicación, permitiendo la comunicación asíncrona entre Stripe y tu backend.
+                            Los webhooks son notificaciones <strong>HTTP POST que Stripe envía a tu servidor cuando ocurren eventos</strong> en tu cuenta. Funcionan como un sistema de "notificaciones push" para la aplicación, permitiendo la comunicación asíncrona entre Stripe y el backend.
                         </p>
 
                         <div class="row mb-4">
@@ -362,17 +362,9 @@
                                 </p>
 
                                 <div class="alert alert-info">
-                                    <i class="fas fa-lock"></i> <strong>Requisito:</strong> Tu servidor debe tener un certificado SSL válido. Stripe no enviará eventos a endpoints sin HTTPS en producción.
+                                    <i class="fas fa-lock"></i> <strong>Requisito:</strong> El servidor debe tener un certificado SSL válido. Stripe no enviará eventos a endpoints sin HTTPS en producción.
                                 </div>
 
-                                <p>
-                                    Durante el desarrollo, puedes utilizar herramientas como:
-                                </p>
-                                <ul>
-                                    <li><strong>Stripe CLI:</strong> Para reenviar eventos a localhost sin necesidad de HTTPS.</li>
-                                    <li><strong>ngrok:</strong> Para crear un túnel HTTPS hacia tu servidor local.</li>
-                                    <li><strong>Certificados autofirmados:</strong> Solo para entornos de desarrollo local.</li>
-                                </ul>
                             </div>
                         </div>
 
@@ -436,7 +428,7 @@
                                 <ol>
                                     <li>
                                         <strong>Implementa idempotencia:</strong>
-                                        <p>Diseña tu código para manejar el mismo evento múltiples veces sin efectos secundarios indeseados. Utiliza el ID del evento como identificador único.</p>
+                                        <p>Es muy importante diseñar el código con capacidad para manejar el mismo evento múltiples veces sin efectos secundarios indeseados. Debemos utilizar el ID del evento como identificador único.</p>
                                     </li>
                                     <li>
                                         <strong>Respuesta rápida:</strong>
@@ -457,7 +449,7 @@
                                 </ol>
 
                                 <div class="alert alert-success">
-                                    <i class="fas fa-check-circle"></i> <strong>Consejo:</strong> En StripeLabApp, utilizamos una arquitectura basada en el patrón Strategy para procesar diferentes tipos de eventos, permitiendo un código organizado y mantenible.
+                                    <i class="fas fa-check-circle"></i> <strong>Consejo:</strong> En StripeLabApp, se ha utilizado una arquitectura basada en el <strong>patrón Strategy</strong> para procesar diferentes tipos de eventos, permitiendo un código organizado y mantenible.
                                 </div>
                             </div>
                         </div>
@@ -481,31 +473,31 @@
                             <div class="card-body">
                                 <div class="code-snippet">
                                         <pre><code class="language-json">
-{
-  "id": "evt_1OabCdEFghIJklMN",  // Identificador único del evento
-  "object": "event",
-  "api_version": "2023-10-16",   // Versión de la API usada
-  "created": 1643043046,         // Timestamp Unix de creación
-  "data": {
-    "object": {
-      // El objeto afectado por este evento (payment_intent, subscription, etc.)
-      "id": "pi_1OabCdEFghIJklMN",
-      "object": "payment_intent",
-      // ... resto de propiedades del objeto
-    },
-    "previous_attributes": {
-      // Solo presente en eventos de actualización
-      // Contiene los valores anteriores de los atributos modificados
-      "status": "requires_payment_method"
-    }
-  },
-  "livemode": false,             // false para el entorno de prueba, true para producción
-  "pending_webhooks": 2,         // Número de webhooks pendientes para este evento
-  "request": {
-    "id": "req_1OabCdEFghIJklMN", // ID de la solicitud que generó el evento
-    "idempotency_key": "key123"   // Clave de idempotencia si se proporcionó
-  },
-  "type": "payment_intent.succeeded" // Tipo de evento
+                                            {
+                                              "id": "evt_1OabCdEFghIJklMN",  // Identificador único del evento
+                                              "object": "event",
+                                              "api_version": "2023-10-16",   // Versión de la API usada
+                                              "created": 1643043046,         // Timestamp Unix de creación
+                                              "data": {
+                                                "object": {
+                                                  // El objeto afectado por este evento (payment_intent, subscription, etc.)
+                                                  "id": "pi_1OabCdEFghIJklMN",
+                                                  "object": "payment_intent",
+                                                  // ... resto de propiedades del objeto
+                                                },
+                                                "previous_attributes": {
+                                                  // Solo presente en eventos de actualización
+                                                  // Contiene los valores anteriores de los atributos modificados
+                                                  "status": "requires_payment_method"
+                                                }
+                                              },
+                                              "livemode": false,             // false para el entorno de prueba, true para producción
+                                              "pending_webhooks": 2,         // Número de webhooks pendientes para este evento
+                                              "request": {
+                                                "id": "req_1OabCdEFghIJklMN", // ID de la solicitud que generó el evento
+                                                "idempotency_key": "key123"   // Clave de idempotencia si se proporcionó
+                                              },
+                                              "type": "payment_intent.succeeded" // Tipo de evento
 }
                                         </code></pre>
                                 </div>
@@ -514,7 +506,7 @@
                                     <h5>Campos clave:</h5>
                                     <ul>
                                         <li>
-                                            <strong><code>id</code>:</strong> Identificador único del evento (comienza con <code>evt_</code>). Úsalo para implementar la idempotencia y evitar procesamiento duplicado.
+                                            <strong><code>id</code>:</strong> Identificador único del evento (comienza con <code>evt_</code>). Se usa para implementar la idempotencia y evitar procesamiento duplicado.
                                         </li>
                                         <li>
                                             <strong><code>type</code>:</strong> Especifica qué ha ocurrido. Estructura: <code>resource.event</code>, por ejemplo, <code>payment_intent.succeeded</code> indica que un PaymentIntent ha tenido éxito.
@@ -534,14 +526,14 @@
                         </div>
 
                         <div class="alert alert-info">
-                            <i class="fas fa-lightbulb"></i> <strong>Consejo de implementación:</strong> En StripeLabApp, mapeamos estos eventos a DTOs específicos (Data Transfer Objects) para facilitar su procesamiento en nuestra arquitectura por capas.
+                            <i class="fas fa-lightbulb"></i> <strong>Consejo de implementación:</strong> En StripeLabApp, se mapean estos eventos a DTOs específicos para facilitar su procesamiento en la arquitectura por capas en la que está basada la aplicación.
                         </div>
                     </div>
 
                     <div id="categorias-eventos" class="subsection">
                         <h4>3.2. Categorías Principales de Eventos</h4>
                         <p>
-                            Stripe genera más de 100 tipos de eventos diferentes, agrupados en categorías según el recurso afectado. Aquí están las categorías más relevantes para StripeLabApp:
+                            Stripe genera muchísimos eventos diferentes, agrupados en categorías según el recurso afectado. Aquí están las categorías más relevantes para StripeLabApp y para nuestro proposito futuro en ILIAS:
                         </p>
 
                         <div class="table-responsive mb-4">
@@ -596,18 +588,18 @@
                         </div>
 
                         <div class="alert alert-warning">
-                            <i class="fas fa-info-circle"></i> <strong>Nota:</strong> Esta tabla muestra solo las categorías más comunes. Stripe puede añadir nuevos tipos de eventos en cualquier momento, por lo que es recomendable diseñar tu sistema para manejar eventos desconocidos de manera elegante.
+                            <i class="fas fa-info-circle"></i> <strong>Nota:</strong> Esta tabla muestra solo las categorías más comunes. Stripe puede añadir nuevos tipos de eventos en cualquier momento, por lo que es recomendable diseñar el sistema para manejar eventos desconocidos de manera elegante.
                         </div>
 
                         <p>
-                            En StripeLabApp, nos enfocamos principalmente en los eventos relacionados con pagos únicos (<code>payment_intent</code>, <code>charge</code>) y suscripciones (<code>customer.subscription</code>, <code>invoice</code>), ya que estos son fundamentales para mantener el estado de las transacciones y suscripciones de los usuarios.
+                            Durante el desarrollo de StripeLabApp, me he enfocado principalmente en los eventos relacionados con pagos únicos (<code>payment_intent</code>, <code>charge</code>) y suscripciones (<code>customer.subscription</code>, <code>invoice</code>), ya que estos son fundamentales para mantener el estado de las transacciones y suscripciones de los usuarios.
                         </p>
                     </div>
 
                     <div id="eventos-detallados" class="subsection">
                         <h4>3.3. Eventos Detallados</h4>
                         <p>
-                            A continuación, analizamos en detalle los eventos más importantes que se manejan en StripeLabApp, agrupados por funcionalidad. Entender estos eventos y sus payloads es esencial para implementar correctamente las estrategias de procesamiento.
+                            A continuación, analizamos en detalle los eventos más importantes que se manejan en la aplicación de prueba encomendada, agrupados por funcionalidad. Entender estos eventos y sus payloads es esencial para implementar correctamente las estrategias de procesamiento.
                         </p>
 
                         <!-- Checkout Events -->
@@ -745,14 +737,14 @@
                                     </div>
 
                                     <div class="mt-3 alert alert-info">
-                                        <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Utilizamos este evento para crear registros de transacciones, activar suscripciones y enviar confirmaciones por correo electrónico al usuario.
+                                        <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Se ha utilizado este evento para crear registros de transacciones y activar suscripciones.
                                     </div>
                                 </div>
                                 <!-- checkout.session.expired -->
                                 <div class="event-details">
                                     <h5><code>checkout.session.expired</code></h5>
                                     <div class="alert alert-warning">
-                                        <i class="fas fa-clock"></i> <strong>Descripción:</strong> Se dispara cuando una sesión de Checkout expira antes de que el cliente complete el pago. Por defecto, las sesiones expiran después de 24 horas.
+                                        <i class="fas fa-clock"></i> <strong>Descripción:</strong> Se dispara cuando una sesión de Checkout expira antes de que el cliente complete el pago.
                                     </div>
                                     <p>
                                         Este evento es útil para:
@@ -766,98 +758,98 @@
                                     <p><strong>Payload de Ejemplo:</strong></p>
                                     <div class="code-snippet">
                                             <pre><code class="language-json">
-{
-    "id": "cs_test_a1M54d8jxXa1ii0F5nl98GugMADB2OllRqFfnBGzLfrhOOCnyTtU0xtUdr",
-    "object": "checkout.session",
-    "adaptive_pricing": {
-        "enabled": true
-    },
-    "after_expiration": null,
-    "allow_promotion_codes": null,
-    "amount_subtotal": 1000,
-    "amount_total": 1000,
-    "automatic_tax": {
-        "enabled": false,
-        "liability": null,
-        "provider": null,
-        "status": null
-    },
-    "billing_address_collection": null,
-    "cancel_url": "http://localhost:8000/public/cancel.html",
-    "client_reference_id": null,
-    "client_secret": null,
-    "collected_information": null,
-    "consent": null,
-    "consent_collection": null,
-    "created": 1747004962,
-    "currency": "eur",
-    "currency_conversion": null,
-    "custom_fields": [],
-    "custom_text": {
-        "after_submit": null,
-        "shipping_address": null,
-        "submit": null,
-        "terms_of_service_acceptance": null
-    },
-    "customer": null,
-    "customer_creation": "if_required",
-    "customer_details": null,
-    "customer_email": null,
-    "discounts": [],
-    "expires_at": 1747091362,
-    "invoice": null,
-    "invoice_creation": {
-        "enabled": false,
-        "invoice_data": {
-            "account_tax_ids": null,
-            "custom_fields": null,
-            "description": null,
-            "footer": null,
-            "issuer": null,
-            "metadata": [],
-            "rendering_options": null
-        }
-    },
-    "livemode": false,
-    "locale": null,
-    "metadata": [],
-    "mode": "payment",
-    "payment_intent": null,
-    "payment_link": null,
-    "payment_method_collection": "if_required",
-    "payment_method_configuration_details": null,
-    "payment_method_options": {
-        "card": {
-            "request_three_d_secure": "automatic"
-        }
-    },
-    "payment_method_types": [
-        "card"
-    ],
-    "payment_status": "unpaid",
-    "permissions": null,
-    "phone_number_collection": {
-        "enabled": false
-    },
-    "recovered_from": null,
-    "saved_payment_method_options": null,
-    "setup_intent": null,
-    "shipping_address_collection": null,
-    "shipping_cost": null,
-    "shipping_options": [],
-    "status": "expired",
-    "submit_type": null,
-    "subscription": null,
-    "success_url": "http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}",
-    "total_details": {
-        "amount_discount": 0,
-        "amount_shipping": 0,
-        "amount_tax": 0
-    },
-    "ui_mode": "hosted",
-    "url": null,
-    "wallet_options": null
-}
+                                            {
+                                                "id": "cs_test_a1M54d8jxXa1ii0F5nl98GugMADB2OllRqFfnBGzLfrhOOCnyTtU0xtUdr",
+                                                "object": "checkout.session",
+                                                "adaptive_pricing": {
+                                                    "enabled": true
+                                                },
+                                                "after_expiration": null,
+                                                "allow_promotion_codes": null,
+                                                "amount_subtotal": 1000,
+                                                "amount_total": 1000,
+                                                "automatic_tax": {
+                                                    "enabled": false,
+                                                    "liability": null,
+                                                    "provider": null,
+                                                    "status": null
+                                                },
+                                                "billing_address_collection": null,
+                                                "cancel_url": "http://localhost:8000/public/cancel.html",
+                                                "client_reference_id": null,
+                                                "client_secret": null,
+                                                "collected_information": null,
+                                                "consent": null,
+                                                "consent_collection": null,
+                                                "created": 1747004962,
+                                                "currency": "eur",
+                                                "currency_conversion": null,
+                                                "custom_fields": [],
+                                                "custom_text": {
+                                                    "after_submit": null,
+                                                    "shipping_address": null,
+                                                    "submit": null,
+                                                    "terms_of_service_acceptance": null
+                                                },
+                                                "customer": null,
+                                                "customer_creation": "if_required",
+                                                "customer_details": null,
+                                                "customer_email": null,
+                                                "discounts": [],
+                                                "expires_at": 1747091362,
+                                                "invoice": null,
+                                                "invoice_creation": {
+                                                    "enabled": false,
+                                                    "invoice_data": {
+                                                        "account_tax_ids": null,
+                                                        "custom_fields": null,
+                                                        "description": null,
+                                                        "footer": null,
+                                                        "issuer": null,
+                                                        "metadata": [],
+                                                        "rendering_options": null
+                                                    }
+                                                },
+                                                "livemode": false,
+                                                "locale": null,
+                                                "metadata": [],
+                                                "mode": "payment",
+                                                "payment_intent": null,
+                                                "payment_link": null,
+                                                "payment_method_collection": "if_required",
+                                                "payment_method_configuration_details": null,
+                                                "payment_method_options": {
+                                                    "card": {
+                                                        "request_three_d_secure": "automatic"
+                                                    }
+                                                },
+                                                "payment_method_types": [
+                                                    "card"
+                                                ],
+                                                "payment_status": "unpaid",
+                                                "permissions": null,
+                                                "phone_number_collection": {
+                                                    "enabled": false
+                                                },
+                                                "recovered_from": null,
+                                                "saved_payment_method_options": null,
+                                                "setup_intent": null,
+                                                "shipping_address_collection": null,
+                                                "shipping_cost": null,
+                                                "shipping_options": [],
+                                                "status": "expired",
+                                                "submit_type": null,
+                                                "subscription": null,
+                                                "success_url": "http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}",
+                                                "total_details": {
+                                                    "amount_discount": 0,
+                                                    "amount_shipping": 0,
+                                                    "amount_tax": 0
+                                                },
+                                                "ui_mode": "hosted",
+                                                "url": null,
+                                                "wallet_options": null
+                                            }
                                             </code></pre>
                                     </div>
                                 </div>
@@ -887,54 +879,53 @@
                                         <li>Información de contacto (email, nombre, teléfono)</li>
                                         <li>Dirección de facturación</li>
                                         <li>Configuración de facturación predeterminada</li>
-                                        <li>Preferencias de localización</li>
                                     </ul>
 
                                     <p><strong>Payload de Ejemplo:</strong></p>
                                     <div class="code-snippet">
                                             <pre><code class="language-json">
-{
-    "id": "cus_SIgjYjt5FKHVKG",
-    "object": "customer",
-    "address": {
-        "city": null,
-        "country": "ES",
-        "line1": null,
-        "line2": null,
-        "postal_code": null,
-        "state": null
-    },
-    "balance": 0,
-    "created": 1747090919,
-    "currency": null,
-    "default_source": null,
-    "delinquent": false,
-    "description": null,
-    "discount": null,
-    "email": "TEST@TEST.COM",
-    "invoice_prefix": "4ERGRE3J",
-    "invoice_settings": {
-        "custom_fields": null,
-        "default_payment_method": null,
-        "footer": null,
-        "rendering_options": null
-    },
-    "livemode": false,
-    "metadata": [],
-    "name": "suscripcion mensual",
-    "phone": null,
-    "preferred_locales": [
-        "es-ES"
-    ],
-    "shipping": null,
-    "tax_exempt": "none",
-    "test_clock": null
-}
+                                                {
+                                                    "id": "cus_SIgjYjt5FKHVKG",
+                                                    "object": "customer",
+                                                    "address": {
+                                                        "city": null,
+                                                        "country": "ES",
+                                                        "line1": null,
+                                                        "line2": null,
+                                                        "postal_code": null,
+                                                        "state": null
+                                                    },
+                                                    "balance": 0,
+                                                    "created": 1747090919,
+                                                    "currency": null,
+                                                    "default_source": null,
+                                                    "delinquent": false,
+                                                    "description": null,
+                                                    "discount": null,
+                                                    "email": "TEST@TEST.COM",
+                                                    "invoice_prefix": "4ERGRE3J",
+                                                    "invoice_settings": {
+                                                        "custom_fields": null,
+                                                        "default_payment_method": null,
+                                                        "footer": null,
+                                                        "rendering_options": null
+                                                    },
+                                                    "livemode": false,
+                                                    "metadata": [],
+                                                    "name": "suscripcion mensual",
+                                                    "phone": null,
+                                                    "preferred_locales": [
+                                                        "es-ES"
+                                                    ],
+                                                    "shipping": null,
+                                                    "tax_exempt": "none",
+                                                    "test_clock": null
+                                                }
                                             </code></pre>
                                     </div>
 
                                     <div class="mt-3 alert alert-info">
-                                        <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Sincronizamos los datos del cliente con nuestra base de datos para mantener la coherencia entre nuestro sistema y Stripe.
+                                        <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Importante para sincronizar los datos del cliente con nuestra base de datos para mantener así la coherencia entre nuestro sistema y Stripe.
                                     </div>
                                 </div>
 
@@ -945,49 +936,49 @@
                                         <i class="fas fa-user-edit"></i> <strong>Descripción:</strong> Se dispara cuando se actualiza cualquier información del cliente. Los cambios pueden incluir detalles de contacto, métodos de pago predeterminados o metadatos.
                                     </div>
                                     <p>
-                                        Este evento es particularmente útil para mantener sincronizada la información del cliente entre Stripe y tu base de datos. El payload incluye tanto los datos actualizados como el campo <code>previous_attributes</code> en el evento principal, que contiene los valores anteriores de los campos modificados.
+                                        Este evento es particularmente útil para mantener sincronizada la información del cliente entre Stripe y la base de datos. El payload incluye tanto los datos actualizados como el campo <code>previous_attributes</code> en el evento principal, que contiene los valores anteriores de los campos modificados.
                                     </p>
 
                                     <p><strong>Payload de Ejemplo:</strong></p>
                                     <div class="code-snippet">
                                             <pre><code class="language-json">
-{
-    "id": "cus_SIgjYjt5FKHVKG",
-    "object": "customer",
-    "address": {
-        "city": null,
-        "country": "ES",
-        "line1": null,
-        "line2": null,
-        "postal_code": null,
-        "state": null
-    },
-    "balance": 0,
-    "created": 1747090919,
-    "currency": "eur",
-    "default_source": null,
-    "delinquent": false,
-    "description": null,
-    "discount": null,
-    "email": "TEST@TEST.COM",
-    "invoice_prefix": "4ERGRE3J",
-    "invoice_settings": {
-        "custom_fields": null,
-        "default_payment_method": null,
-        "footer": null,
-        "rendering_options": null
-    },
-    "livemode": false,
-    "metadata": [],
-    "name": "suscripcion mensual",
-    "phone": null,
-    "preferred_locales": [
-        "es-ES"
-    ],
-    "shipping": null,
-    "tax_exempt": "none",
-    "test_clock": null
-}
+                                                {
+                                                    "id": "cus_SIgjYjt5FKHVKG",
+                                                    "object": "customer",
+                                                    "address": {
+                                                        "city": null,
+                                                        "country": "ES",
+                                                        "line1": null,
+                                                        "line2": null,
+                                                        "postal_code": null,
+                                                        "state": null
+                                                    },
+                                                    "balance": 0,
+                                                    "created": 1747090919,
+                                                    "currency": "eur",
+                                                    "default_source": null,
+                                                    "delinquent": false,
+                                                    "description": null,
+                                                    "discount": null,
+                                                    "email": "TEST@TEST.COM",
+                                                    "invoice_prefix": "4ERGRE3J",
+                                                    "invoice_settings": {
+                                                        "custom_fields": null,
+                                                        "default_payment_method": null,
+                                                        "footer": null,
+                                                        "rendering_options": null
+                                                    },
+                                                    "livemode": false,
+                                                    "metadata": [],
+                                                    "name": "suscripcion mensual",
+                                                    "phone": null,
+                                                    "preferred_locales": [
+                                                        "es-ES"
+                                                    ],
+                                                    "shipping": null,
+                                                    "tax_exempt": "none",
+                                                    "test_clock": null
+                                                }
                                             </code></pre>
                                     </div>
                                 </div>
@@ -996,7 +987,7 @@
                                 <div class="event-details">
                                     <h5><code>customer.deleted</code></h5>
                                     <div class="alert alert-warning">
-                                        <i class="fas fa-user-slash"></i> <strong>Descripción:</strong> Se dispara cuando se elimina un cliente de Stripe. En StripeLabApp, utilizamos este evento para marcar al cliente como inactivo en nuestra base de datos, sin eliminar su historial por razones de auditoría.
+                                        <i class="fas fa-user-slash"></i> <strong>Descripción:</strong> Se dispara cuando se elimina un cliente de Stripe. En StripeLab, se ha utilizado este evento para marcar al cliente como inactivo en nuestra base de datos, sin eliminar su registro completamente.
                                     </div>
                                 </div>
                             </div>
@@ -1016,68 +1007,68 @@
                                 <div class="event-details mb-4">
                                     <h5><code>payment_intent.created</code></h5>
                                     <div class="alert alert-secondary">
-                                        <i class="fas fa-info-circle"></i> <strong>Descripción:</strong> Se dispara cuando se crea un nuevo PaymentIntent. En StripeLabApp no procesamos activamente este evento, ya que representa solo el inicio del proceso de pago.
+                                        <i class="fas fa-info-circle"></i> <strong>Descripción:</strong> Se dispara cuando se crea un nuevo PaymentIntent. En StripeLabApp no se procesa este evento, ya que representa solo el inicio del proceso de pago.
                                     </div>
 
                                     <p><strong>Payload de Ejemplo:</strong></p>
                                     <div class="code-snippet">
                                             <pre><code class="language-json">
-{
-    "id": "pi_3RO5MBP71JLI6sb90nUSzhE7",
-    "object": "payment_intent",
-    "amount": 300,
-    "amount_capturable": 0,
-    "amount_details": {
-        "tip": []
-    },
-    "amount_received": 0,
-    "application": null,
-    "application_fee_amount": null,
-    "automatic_payment_methods": null,
-    "canceled_at": null,
-    "cancellation_reason": null,
-    "capture_method": "automatic",
-    "client_secret": "pi_3RO5MBP71JLI6sb90nUSzhE7_secret_vAWdJSFnikd4n7snnVLBXMDgW",
-    "confirmation_method": "automatic",
-    "created": 1747090919,
-    "currency": "eur",
-    "customer": "cus_SIgjYjt5FKHVKG",
-    "description": "Subscription creation",
-    "last_payment_error": null,
-    "latest_charge": null,
-    "livemode": false,
-    "metadata": [],
-    "next_action": null,
-    "on_behalf_of": null,
-    "payment_method": null,
-    "payment_method_configuration_details": null,
-    "payment_method_options": {
-        "card": {
-            "installments": null,
-            "mandate_options": null,
-            "network": null,
-            "request_three_d_secure": "automatic"
-        },
-        "link": {
-            "persistent_token": null
-        }
-    },
-    "payment_method_types": [
-        "card",
-        "link"
-    ],
-    "processing": null,
-    "receipt_email": null,
-    "review": null,
-    "setup_future_usage": "off_session",
-    "shipping": null,
-    "source": null,
-    "statement_descriptor": null,
-    "statement_descriptor_suffix": null,
-    "status": "requires_payment_method",
-    "transfer_data": null,
-    "transfer_group": null
-}
+                                                {
+                                                    "id": "pi_3RO5MBP71JLI6sb90nUSzhE7",
+                                                    "object": "payment_intent",
+                                                    "amount": 300,
+                                                    "amount_capturable": 0,
+                                                    "amount_details": {
+                                                        "tip": []
+                                                    },
+                                                    "amount_received": 0,
+                                                    "application": null,
+                                                    "application_fee_amount": null,
+                                                    "automatic_payment_methods": null,
+                                                    "canceled_at": null,
+                                                    "cancellation_reason": null,
+                                                    "capture_method": "automatic",
+                                                    "client_secret": "pi_3RO5MBP71JLI6sb90nUSzhE7_secret_vAWdJSFnikd4n7snnVLBXMDgW",
+                                                    "confirmation_method": "automatic",
+                                                    "created": 1747090919,
+                                                    "currency": "eur",
+                                                    "customer": "cus_SIgjYjt5FKHVKG",
+                                                    "description": "Subscription creation",
+                                                    "last_payment_error": null,
+                                                    "latest_charge": null,
+                                                    "livemode": false,
+                                                    "metadata": [],
+                                                    "next_action": null,
+                                                    "on_behalf_of": null,
+                                                    "payment_method": null,
+                                                    "payment_method_configuration_details": null,
+                                                    "payment_method_options": {
+                                                        "card": {
+                                                            "installments": null,
+                                                            "mandate_options": null,
+                                                            "network": null,
+                                                            "request_three_d_secure": "automatic"
+                                                        },
+                                                        "link": {
+                                                            "persistent_token": null
+                                                        }
+                                                    },
+                                                    "payment_method_types": [
+                                                        "card",
+                                                        "link"
+                                                    ],
+                                                    "processing": null,
+                                                    "receipt_email": null,
+                                                    "review": null,
+                                                    "setup_future_usage": "off_session",
+                                                    "shipping": null,
+                                                    "source": null,
+                                                    "statement_descriptor": null,
+                                                    "statement_descriptor_suffix": null,
+                                                    "status": "requires_payment_method",
+                                                    "transfer_data": null,
+                                                    "transfer_group": null
+                                                }
                                             </code></pre>
                                     </div>
                                 </div>
@@ -1086,7 +1077,7 @@
                                 <div class="event-details mb-4">
                                     <h5><code>payment_intent.succeeded</code></h5>
                                     <div class="alert alert-success">
-                                        <i class="fas fa-check-circle"></i> <strong>Descripción:</strong> Se dispara cuando un pago se completa con éxito. Este es uno de los eventos más importantes para confirmar que una transacción ha sido procesada correctamente.
+                                        <i class="fas fa-check-circle"></i> <strong>Descripción:</strong> Se dispara cuando un pago se completa con éxito. Este es <strong>uno de los eventos más importantes</strong> para confirmar que una transacción ha sido procesada correctamente.
                                     </div>
                                     <p>
                                         El payload contiene toda la información sobre el pago exitoso, incluyendo:
@@ -1101,58 +1092,58 @@
                                     <p><strong>Payload de Ejemplo (pago único):</strong></p>
                                     <div class="code-snippet">
                                             <pre><code class="language-json">
-{
-    "id": "pi_3RO5KdP71JLI6sb91XFQkshR",
-    "object": "payment_intent",
-    "amount": 1000,
-    "amount_capturable": 0,
-    "amount_details": {
-        "tip": []
-    },
-    "amount_received": 1000,
-    "application": null,
-    "application_fee_amount": null,
-    "automatic_payment_methods": null,
-    "canceled_at": null,
-    "cancellation_reason": null,
-    "capture_method": "automatic_async",
-    "client_secret": "pi_3RO5KdP71JLI6sb91XFQkshR_secret_w5q9oPR0tmbNlYeULXUekzEYt",
-    "confirmation_method": "automatic",
-    "created": 1747090823,
-    "currency": "eur",
-    "customer": null,
-    "description": null,
-    "last_payment_error": null,
-    "latest_charge": "ch_3RO5KdP71JLI6sb91oRRGx4P",
-    "livemode": false,
-    "metadata": [],
-    "next_action": null,
-    "on_behalf_of": null,
-    "payment_method": "pm_1RO5KcP71JLI6sb9DAN632WU",
-    "payment_method_configuration_details": null,
-    "payment_method_options": {
-        "card": {
-            "installments": null,
-            "mandate_options": null,
-            "network": null,
-            "request_three_d_secure": "automatic"
-        }
-    },
-    "payment_method_types": [
-        "card"
-    ],
-    "processing": null,
-    "receipt_email": null,
-    "review": null,
-    "setup_future_usage": null,
-    "shipping": null,
-    "source": null,
-    "statement_descriptor": null,
-    "statement_descriptor_suffix": null,
-    "status": "succeeded",
-    "transfer_data": null,
-    "transfer_group": null
-}
+                                                {
+                                                    "id": "pi_3RO5KdP71JLI6sb91XFQkshR",
+                                                    "object": "payment_intent",
+                                                    "amount": 1000,
+                                                    "amount_capturable": 0,
+                                                    "amount_details": {
+                                                        "tip": []
+                                                    },
+                                                    "amount_received": 1000,
+                                                    "application": null,
+                                                    "application_fee_amount": null,
+                                                    "automatic_payment_methods": null,
+                                                    "canceled_at": null,
+                                                    "cancellation_reason": null,
+                                                    "capture_method": "automatic_async",
+                                                    "client_secret": "pi_3RO5KdP71JLI6sb91XFQkshR_secret_w5q9oPR0tmbNlYeULXUekzEYt",
+                                                    "confirmation_method": "automatic",
+                                                    "created": 1747090823,
+                                                    "currency": "eur",
+                                                    "customer": null,
+                                                    "description": null,
+                                                    "last_payment_error": null,
+                                                    "latest_charge": "ch_3RO5KdP71JLI6sb91oRRGx4P",
+                                                    "livemode": false,
+                                                    "metadata": [],
+                                                    "next_action": null,
+                                                    "on_behalf_of": null,
+                                                    "payment_method": "pm_1RO5KcP71JLI6sb9DAN632WU",
+                                                    "payment_method_configuration_details": null,
+                                                    "payment_method_options": {
+                                                        "card": {
+                                                            "installments": null,
+                                                            "mandate_options": null,
+                                                            "network": null,
+                                                            "request_three_d_secure": "automatic"
+                                                        }
+                                                    },
+                                                    "payment_method_types": [
+                                                        "card"
+                                                    ],
+                                                    "processing": null,
+                                                    "receipt_email": null,
+                                                    "review": null,
+                                                    "setup_future_usage": null,
+                                                    "shipping": null,
+                                                    "source": null,
+                                                    "statement_descriptor": null,
+                                                    "statement_descriptor_suffix": null,
+                                                    "status": "succeeded",
+                                                    "transfer_data": null,
+                                                    "transfer_group": null
+                                                }
                                             </code></pre>
                                     </div>
 
@@ -1216,7 +1207,7 @@
                                     </div>
 
                                     <div class="mt-3 alert alert-info">
-                                        <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Usamos este evento para registrar transacciones exitosas, actualizar el estado de las órdenes y desencadenar la entrega de productos o servicios.
+                                        <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Se usa este evento para registrar transacciones exitosas. Es el desencadenante que nos indicará que hay que darle acceso a un usuario a un curso.
                                     </div>
                                 </div>
 
@@ -1224,7 +1215,7 @@
                                 <div class="event-details mb-4">
                                     <h5><code>payment_intent.payment_failed</code></h5>
                                     <div class="alert alert-danger">
-                                        <i class="fas fa-exclamation-circle"></i> <strong>Descripción:</strong> Se dispara cuando un intento de pago falla por cualquier motivo (tarjeta rechazada, fondos insuficientes, error de autenticación, etc.). En StripeLabApp, utilizamos este evento para notificar a los usuarios y ofrecerles alternativas para completar su pago.
+                                        <i class="fas fa-exclamation-circle"></i> <strong>Descripción:</strong> Se dispara cuando un intento de pago falla por cualquier motivo (tarjeta rechazada, fondos insuficientes, error de autenticación, etc.). En StripeLabApp no se maneja.
                                     </div>
                                 </div>
 
@@ -1232,138 +1223,138 @@
                                 <div class="event-details mb-4">
                                     <h5><code>charge.succeeded</code></h5>
                                     <div class="alert alert-success">
-                                        <i class="fas fa-credit-card"></i> <strong>Descripción:</strong> Se dispara cuando un cargo a una tarjeta o método de pago se procesa correctamente. Aunque está estrechamente relacionado con <code>payment_intent.succeeded</code>, este evento proporciona información adicional específica del cargo.
+                                        <i class="fas fa-credit-card"></i> <strong>Descripción:</strong> Se dispara cuando un cargo a una tarjeta o método de pago se procesa correctamente. Está estrechamente relacionado con <code>payment_intent.succeeded</code>, este evento proporciona información adicional específica del cargo.
                                     </div>
                                     <p>
                                         La importancia de este evento reside en que contiene detalles adicionales como:
                                     </p>
                                     <ul>
-                                        <li>El <code>receipt_url</code> (URL del recibo) que puedes proporcionar a tus clientes</li>
+                                        <li>El <code>receipt_url</code> (URL del recibo) <strong>CRUCIAL PARA NOSOTROS</strong></li>
                                         <li>Detalles específicos del método de pago (últimos 4 dígitos, marca, país de emisión)</li>
-                                        <li>Resultados de verificaciones de seguridad (CVC, dirección)</li>
+                                        <li>Resultados de verificaciones de seguridad (CVC, dirección...)</li>
                                         <li>Información detallada sobre el procesamiento del pago</li>
                                     </ul>
 
                                     <p><strong>Payload de Ejemplo:</strong></p>
                                     <div class="code-snippet">
                                             <pre><code class="language-json">
-{
-    "id": "ch_3RO5KdP71JLI6sb91oRRGx4P",
-    "object": "charge",
-    "amount": 1000,
-    "amount_captured": 1000,
-    "amount_refunded": 0,
-    "application": null,
-    "application_fee": null,
-    "application_fee_amount": null,
-    "balance_transaction": null,
-    "billing_details": {
-        "address": {
-            "city": null,
-            "country": "ES",
-            "line1": null,
-            "line2": null,
-            "postal_code": null,
-            "state": null
-        },
-        "email": "jccataluna@ddd.com",
-        "name": "Pago unico",
-        "phone": null,
-        "tax_id": null
-    },
-    "calculated_statement_descriptor": "Stripe",
-    "captured": true,
-    "created": 1747090823,
-    "currency": "eur",
-    "customer": null,
-    "description": null,
-    "destination": null,
-    "dispute": null,
-    "disputed": false,
-    "failure_balance_transaction": null,
-    "failure_code": null,
-    "failure_message": null,
-    "fraud_details": [],
-    "livemode": false,
-    "metadata": [],
-    "on_behalf_of": null,
-    "order": null,
-    "outcome": {
-        "advice_code": null,
-        "network_advice_code": null,
-        "network_decline_code": null,
-        "network_status": "approved_by_network",
-        "reason": null,
-        "risk_level": "normal",
-        "risk_score": 33,
-        "seller_message": "Payment complete.",
-        "type": "authorized"
-    },
-    "paid": true,
-    "payment_intent": "pi_3RO5KdP71JLI6sb91XFQkshR",
-    "payment_method": "pm_1RO5KcP71JLI6sb9DAN632WU",
-    "payment_method_details": {
-        "card": {
-            "amount_authorized": 1000,
-            "authorization_code": null,
-            "brand": "visa",
-            "checks": {
-                "address_line1_check": null,
-                "address_postal_code_check": null,
-                "cvc_check": "pass"
-            },
-            "country": "US",
-            "exp_month": 2,
-            "exp_year": 2026,
-            "extended_authorization": {
-                "status": "disabled"
-            },
-            "fingerprint": "H2RjQOzJ2vMTHb1p",
-            "funding": "credit",
-            "incremental_authorization": {
-                "status": "unavailable"
-            },
-            "installments": null,
-            "last4": "4242",
-            "mandate": null,
-            "multicapture": {
-                "status": "unavailable"
-            },
-            "network": "visa",
-            "network_token": {
-                "used": false
-            },
-            "network_transaction_id": "725082106817912",
-            "overcapture": {
-                "maximum_amount_capturable": 1000,
-                "status": "unavailable"
-            },
-            "regulated_status": "unregulated",
-            "three_d_secure": null,
-            "wallet": null
-        },
-        "type": "card"
-    },
-    "radar_options": [],
-    "receipt_email": null,
-    "receipt_number": null,
-    "receipt_url": "https://pay.stripe.com/receipts/payment/CAcaFwoVYWNjdF8xUkhKNjFQNzFKTEk2c2I5KIj7icEGMgZeDpPk1pQ6LBaNV8plHjPjyBGcptjwO_J4m04Rts0jrS-KR4rCdXiuo6L8ogY29dtVIBzV",
-    "refunded": false,
-    "review": null,
-    "shipping": null,
-    "source": null,
-    "source_transfer": null,
-    "statement_descriptor": null,
-    "statement_descriptor_suffix": null,
-    "status": "succeeded",
-    "transfer_data": null,
-    "transfer_group": null
-}
+                                                {
+                                                    "id": "ch_3RO5KdP71JLI6sb91oRRGx4P",
+                                                    "object": "charge",
+                                                    "amount": 1000,
+                                                    "amount_captured": 1000,
+                                                    "amount_refunded": 0,
+                                                    "application": null,
+                                                    "application_fee": null,
+                                                    "application_fee_amount": null,
+                                                    "balance_transaction": null,
+                                                    "billing_details": {
+                                                        "address": {
+                                                            "city": null,
+                                                            "country": "ES",
+                                                            "line1": null,
+                                                            "line2": null,
+                                                            "postal_code": null,
+                                                            "state": null
+                                                        },
+                                                        "email": "jccataluna@ddd.com",
+                                                        "name": "Pago unico",
+                                                        "phone": null,
+                                                        "tax_id": null
+                                                    },
+                                                    "calculated_statement_descriptor": "Stripe",
+                                                    "captured": true,
+                                                    "created": 1747090823,
+                                                    "currency": "eur",
+                                                    "customer": null,
+                                                    "description": null,
+                                                    "destination": null,
+                                                    "dispute": null,
+                                                    "disputed": false,
+                                                    "failure_balance_transaction": null,
+                                                    "failure_code": null,
+                                                    "failure_message": null,
+                                                    "fraud_details": [],
+                                                    "livemode": false,
+                                                    "metadata": [],
+                                                    "on_behalf_of": null,
+                                                    "order": null,
+                                                    "outcome": {
+                                                        "advice_code": null,
+                                                        "network_advice_code": null,
+                                                        "network_decline_code": null,
+                                                        "network_status": "approved_by_network",
+                                                        "reason": null,
+                                                        "risk_level": "normal",
+                                                        "risk_score": 33,
+                                                        "seller_message": "Payment complete.",
+                                                        "type": "authorized"
+                                                    },
+                                                    "paid": true,
+                                                    "payment_intent": "pi_3RO5KdP71JLI6sb91XFQkshR",
+                                                    "payment_method": "pm_1RO5KcP71JLI6sb9DAN632WU",
+                                                    "payment_method_details": {
+                                                        "card": {
+                                                            "amount_authorized": 1000,
+                                                            "authorization_code": null,
+                                                            "brand": "visa",
+                                                            "checks": {
+                                                                "address_line1_check": null,
+                                                                "address_postal_code_check": null,
+                                                                "cvc_check": "pass"
+                                                            },
+                                                            "country": "US",
+                                                            "exp_month": 2,
+                                                            "exp_year": 2026,
+                                                            "extended_authorization": {
+                                                                "status": "disabled"
+                                                            },
+                                                            "fingerprint": "H2RjQOzJ2vMTHb1p",
+                                                            "funding": "credit",
+                                                            "incremental_authorization": {
+                                                                "status": "unavailable"
+                                                            },
+                                                            "installments": null,
+                                                            "last4": "4242",
+                                                            "mandate": null,
+                                                            "multicapture": {
+                                                                "status": "unavailable"
+                                                            },
+                                                            "network": "visa",
+                                                            "network_token": {
+                                                                "used": false
+                                                            },
+                                                            "network_transaction_id": "725082106817912",
+                                                            "overcapture": {
+                                                                "maximum_amount_capturable": 1000,
+                                                                "status": "unavailable"
+                                                            },
+                                                            "regulated_status": "unregulated",
+                                                            "three_d_secure": null,
+                                                            "wallet": null
+                                                        },
+                                                        "type": "card"
+                                                    },
+                                                    "radar_options": [],
+                                                    "receipt_email": null,
+                                                    "receipt_number": null,
+                                                    "receipt_url": "https://pay.stripe.com/receipts/payment/CAcaFwoVYWNjdF8xUkhKNjFQNzFKTEk2c2I5KIj7icEGMgZeDpPk1pQ6LBaNV8plHjPjyBGcptjwO_J4m04Rts0jrS-KR4rCdXiuo6L8ogY29dtVIBzV",
+                                                    "refunded": false,
+                                                    "review": null,
+                                                    "shipping": null,
+                                                    "source": null,
+                                                    "source_transfer": null,
+                                                    "statement_descriptor": null,
+                                                    "statement_descriptor_suffix": null,
+                                                    "status": "succeeded",
+                                                    "transfer_data": null,
+                                                    "transfer_group": null
+                                                }
                                             </code></pre>
                                     </div>
 
                                     <div class="mt-3 alert alert-info">
-                                        <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Extraemos y almacenamos el <code>receipt_url</code> para proporcionarlo a nuestros usuarios, y registramos los detalles del método de pago para análisis y servicio al cliente.
+                                        <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> El motivo principal es el campo <code>receipt_url</code> ya que nos permite proporcionarle al usuario la factura.
                                     </div>
                                 </div>
 
@@ -1381,17 +1372,10 @@
                             </div>
                         </div>
 
-                        <div class="alert alert-info mb-4">
-                            <i class="fas fa-cogs"></i> <strong>Estrategia de implementación en StripeLabApp:</strong> Utilizamos el patrón Strategy para manejar diferentes tipos de eventos, con una clase de estrategia dedicada para cada tipo de evento importante. Esto nos permite mantener un código limpio y modular, donde cada estrategia tiene una única responsabilidad: procesar su tipo específico de evento.
-                        </div>
-
                         <div class="alert alert-warning">
                             <i class="fas fa-exclamation-circle"></i> <strong>Consideraciones importantes:</strong>
                             <ul>
-                                <li>Los eventos pueden llegar en cualquier orden, por lo que tu implementación debe ser robusta ante eventos fuera de secuencia.</li>
-                                <li>Implementa idempotencia para garantizar que el procesamiento repetido del mismo evento no cause problemas.</li>
-                                <li>Siempre verifica la firma del webhook antes de procesar cualquier evento.</li>
-                                <li>Responde rápidamente con un código 200 al recibir el evento, incluso si el procesamiento continúa en segundo plano.</li>
+                                <li>Los eventos pueden llegar en cualquier orden, por lo que la implementación debe ser robusta ante eventos fuera de secuencia.</li>
                             </ul>
                         </div>
                     </div>
@@ -1410,7 +1394,7 @@
                         <div class="event-details mb-4">
                             <h5><code>invoice.created</code></h5>
                             <div class="alert alert-secondary">
-                                <i class="fas fa-info-circle"></i> <strong>Descripción:</strong> Se dispara cuando se crea una nueva factura, generalmente como resultado de la creación de una suscripción o cuando se aproxima la fecha de renovación. En StripeLabApp no procesamos activamente este evento, ya que normalmente esperamos a que la factura sea pagada.
+                                <i class="fas fa-info-circle"></i> <strong>Descripción:</strong> Se dispara cuando se crea una nueva factura, generalmente como resultado de la creación de una suscripción o cuando se aproxima la fecha de renovación. En StripeLabApp no se procesa este evento, ya que se le ha dado más importancia al evento <code>invoice.paid</code>, el cual se describirá a continuación.
                             </div>
 
                             <p><strong>Payload de Ejemplo:</strong></p>
@@ -1590,14 +1574,14 @@
                         <div class="event-details mb-4">
                             <h5><code>invoice.paid</code></h5>
                             <div class="alert alert-success">
-                                <i class="fas fa-file-invoice-dollar"></i> <strong>Descripción:</strong> Se dispara cuando se paga una factura con éxito. Este evento es crucial para confirmar pagos recurrentes de suscripciones y actualizar el estado de las suscripciones en tu sistema.
+                                <i class="fas fa-file-invoice-dollar"></i> <strong>Descripción:</strong> Se dispara cuando se paga una factura con éxito. Este <strong>evento es crucial</strong> para confirmar pagos recurrentes de suscripciones y actualizar el estado de las suscripciones en el sistema.
                             </div>
                             <p>
                                 El payload contiene toda la información sobre la factura pagada, incluyendo:
                             </p>
                             <ul>
                                 <li>Detalles de los elementos facturados (<code>lines</code>)</li>
-                                <li>Enlaces a la factura en línea y PDF (<code>hosted_invoice_url</code>, <code>invoice_pdf</code>)</li>
+                                <li>Enlaces a la <strong>factura en línea y PDF</strong> (<code>hosted_invoice_url</code>, <code>invoice_pdf</code>)</li>
                                 <li>Información del periodo facturado (<code>period_start</code>, <code>period_end</code>)</li>
                                 <li>Información del cliente y suscripción asociada</li>
                             </ul>
@@ -1775,7 +1759,7 @@
                             </div>
 
                             <div class="mt-3 alert alert-info">
-                                <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Utilizamos este evento para actualizar los registros de pago, enviar recibos a los clientes, y extender el período de acceso a servicios en suscripciones.
+                                <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Se ha utilizado este evento para actualizar los registros de pago y poder visualizar los recibos de los clientes.
                             </div>
                         </div>
 
@@ -1801,7 +1785,7 @@
                     </div>
                     <div class="card-body">
                         <p>
-                            Los eventos de suscripciones son fundamentales para gestionar el ciclo de vida de las suscripciones en tu aplicación, desde la creación hasta la cancelación.
+                            Los eventos de suscripciones son fundamentales para gestionar el ciclo de vida de las suscripciones, desde la creación hasta la cancelación.
                         </p>
 
                         <!-- customer.subscription.created -->
@@ -1994,7 +1978,7 @@
                             </div>
 
                             <div class="mt-3 alert alert-info">
-                                <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Utilizamos este evento para crear un nuevo registro de suscripción en nuestra base de datos, y activar el acceso del usuario a las funcionalidades de suscripción.
+                                <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Se ha utlizado este evento para crear un nuevo registro de suscripción en nuestra base de datos.
                             </div>
                         </div>
 
@@ -2187,7 +2171,7 @@
                             </div>
 
                             <div class="mt-3 alert alert-info">
-                                <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Este evento desencadena actualizaciones en nuestros registros de suscripción, ajustes en los permisos de usuario, y si es necesario, envía notificaciones sobre cambios en el estado de la suscripción.
+                                <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Este evento desencadena actualizaciones en nuestros registros de suscripción, concretamente se ha utilizado para indicarnos de manera ficticia que cancela la suscripción que actualmente disfruta al final del periodo de la misma.
                             </div>
                         </div>
 
@@ -2379,7 +2363,7 @@
                             </div>
 
                             <div class="mt-3 alert alert-info">
-                                <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Este evento desencadena la actualización de estado de suscripción en nuestra base de datos, revoca el acceso a funcionalidades premium, y notifica al usuario sobre la cancelación efectiva.
+                                <i class="fas fa-lightbulb"></i> <strong>Implementación en StripeLabApp:</strong> Este evento desencadena la actualización de estado de suscripción en nuestra base de datos. A diferencia del anterior este evento provoca la cancelación inmediata de la suscripción.
                             </div>
                         </div>
 
@@ -2409,7 +2393,7 @@
                                 <li><code>product.created</code> y <code>product.updated</code>: Se disparan cuando se crea o actualiza un producto en Stripe.</li>
                                 <li><code>price.created</code> y <code>price.updated</code>: Se disparan cuando se crea o actualiza un precio en Stripe.</li>
                             </ul>
-                            <p>En StripeLabApp, no procesamos activamente estos eventos, ya que nuestros productos y precios se configuran manualmente o mediante scripts de despliegue. Sin embargo, podrían ser útiles para sincronizar catálogos de productos entre Stripe y sistemas de gestión de inventarios o CRM.</p>
+                            <p>En StripeLabApp, no se procesan estos eventos, ya que nuestros "productos" y precios se han configurado manualmente en el dashboard de Stripe. Sin embargo, supongo deberemos utilizarlos para que los clientes puedan crear productos desde ILIAS sin salir de la plataforma.</p>
                         </div>
                     </div>
                 </div>
@@ -2418,15 +2402,11 @@
     <div id="orden-eventos" class="subsection">
         <h4>3.4. Orden de los Eventos y Flujos Comunes</h4>
         <p>
-            Stripe envía eventos en el orden en que ocurren en su sistema, pero debido a la naturaleza asíncrona de los webhooks, es importante diseñar tu aplicación para manejar eventos que puedan llegar en cualquier orden o incluso duplicados.
+            Stripe envía eventos en el orden en que ocurren en su sistema, pero debido a la naturaleza asíncrona de los webhooks, es importante diseñar el futuro plugin con capacidad para manejar eventos que puedan llegar en cualquier orden o incluso duplicados.
         </p>
 
-        <div class="alert alert-warning mb-4">
-            <i class="fas fa-exclamation-triangle"></i> <strong>Importante:</strong> Nunca asumas un orden específico de eventos. Diseña tu sistema para ser resiliente ante eventos fuera de secuencia o duplicados, y siempre implementa la idempotencia en tus manejadores de eventos.
-        </div>
-
         <p>
-            A continuación, se muestran los flujos de eventos más comunes en Stripe, pero recuerda que estos diagramas representan el orden <em>habitual</em>, no garantizado.
+            A continuación, se muestran los flujos de eventos más comunes en Stripe, pero... <strong>IMPORTANTE!</strong> estos diagramas representan el orden <em>habitual</em>, pero pueden llegar de otro modo.
         </p>
 
         <!-- Flujo de Nueva Suscripción -->
@@ -2505,9 +2485,6 @@ sequenceDiagram
             </div>
         </div>
 
-        <div class="alert alert-success">
-            <i class="fas fa-check-circle"></i> <strong>Mejor práctica:</strong> Al diseñar tu sistema de manejo de webhooks, enfócate en la <em>idempotencia</em> y en el <em>estado final deseado</em> en lugar de depender de un orden específico de eventos. Esto garantizará que tu aplicación sea robusta ante posibles retrasos o reintentos en la entrega de eventos.
-        </div>
     </div>
     </section>
 
@@ -2549,22 +2526,19 @@ sequenceDiagram
                                 <li><strong>Desarrollo local:</strong> Prueba webhooks sin exponer tu localhost a internet ni configurar túneles.</li>
                                 <li><strong>Ciclo de retroalimentación rápido:</strong> Observa inmediatamente cómo tu aplicación maneja los eventos.</li>
                                 <li><strong>Simulación completa:</strong> Prueba flujos completos desde el pago hasta el webhook sin procesar pagos reales.</li>
-                                <li><strong>Automatización:</strong> Integra Stripe CLI en scripts y pipelines de CI/CD.</li>
-                                <li><strong>Documentación interactiva:</strong> Explora la API y sus respuestas en tiempo real.</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Aquí termina la sección anterior -->
+
             <p>
-                <strong>Instalación:</strong> Stripe CLI está disponible para Windows, macOS y Linux. La instalación es sencilla:
+                <strong>Instalación:</strong>La instalación es sencilla:
             </p>
             <ul>
                 <li><strong>macOS (con Homebrew):</strong> <code>brew install stripe/stripe-cli/stripe</code></li>
                 <li><strong>Windows (con scoop):</strong> <code>scoop bucket add stripe https://github.com/stripe/scoop-stripe-cli.git</code> seguido de <code>scoop install stripe</code></li>
-                <li><strong>Linux:</strong> Descarga el binario desde <a href="https://github.com/stripe/stripe-cli/releases" target="_blank">GitHub</a></li>
             </ul>
 
             <div class="alert alert-info">
@@ -2575,7 +2549,7 @@ sequenceDiagram
         <div id="configuracion-stripecli" class="subsection">
             <h4>4.2. Configuración y Autenticación</h4>
             <p>
-                Antes de poder utilizar Stripe CLI, necesitas autenticarte con tu cuenta de Stripe. Este proceso es seguro y permite a la CLI acceder a tu cuenta con los permisos adecuados.
+                Antes de poder utilizar Stripe CLI, necesitas autenticarte con tu cuenta de Stripe.
             </p>
 
             <div class="card mb-4">
@@ -2605,13 +2579,13 @@ sequenceDiagram
                     </ol>
 
                     <div class="alert alert-warning">
-                        <i class="fas fa-lock"></i> <strong>Seguridad:</strong> La autenticación genera un par de claves API restringidas que se almacenan localmente. Estas claves tienen permisos limitados y expiran después de 90 días, por lo que deberás volver a ejecutar <code>stripe login</code> periódicamente.
+                        <i class="fas fa-lock"></i> <strong>Seguridad:</strong> La autenticación genera un par de claves API restringidas que se almacenan localmente. Estas claves tienen permisos limitados y expiran después de 90 días, por lo que deberemos volver a ejecutar <code>stripe login</code> periódicamente.
                     </div>
                 </div>
             </div>
 
             <p>
-                <strong>Configuración del modo (test/live):</strong> Por defecto, Stripe CLI opera en modo de prueba (<code>test</code>). Puedes cambiar explícitamente el modo con los modificadores <code>--test</code> o <code>--live</code> en cualquier comando, o configurar el modo predeterminado:
+                <strong>Configuración del modo (test/live):</strong> Por defecto, Stripe CLI opera en modo de prueba (<code>test</code>). Se puede cambiar el modo con los modificadores <code>--test</code> o <code>--live</code> en cualquier comando, o configurar el modo predeterminado:
             </p>
 
             <div class="code-snippet">
@@ -2640,7 +2614,7 @@ stripe config list</code></pre>
                 <div class="card-body">
                     <p>El comando básico para iniciar el reenvío es:</p>
                     <div class="code-snippet">
-                        <pre><code class="language-bash">stripe listen --forward-to http://localhost:8000/v1/webhook.php</code></pre>
+                        <pre><code class="language-bash">stripe listen --forward-to http://localhost:8000/public/v1/webhook.php</code></pre>
                     </div>
 
                     <p>
@@ -2672,7 +2646,7 @@ stripe config list</code></pre>
                 </div>
                 <div class="card-body">
                     <p>
-                        Stripe CLI también te permite simular eventos de webhook sin necesidad de realizar acciones reales en el panel de control. Esto es extremadamente útil para probar cómo tu aplicación maneja diferentes escenarios sin procesar pagos de prueba.
+                        Stripe CLI también te permite simular eventos de webhook sin necesidad de realizar acciones reales en el panel de control. Esto es extremadamente útil para probar cómo la aplicación maneja diferentes escenarios sin procesar pagos de prueba.
                     </p>
 
                     <p><strong>Comando para activar eventos:</strong></p>
@@ -2687,11 +2661,11 @@ stripe trigger invoice.payment_failed</code></pre>
                     </div>
 
                     <p>
-                        Al combinar <code>stripe listen</code> en una terminal y <code>stripe trigger</code> en otra, puedes simular todo el flujo de webhooks para probar tu implementación.
+                        Al combinar <code>stripe listen</code> en una terminal y <code>stripe trigger</code> en otra, podemos simular todo el flujo de webhooks para probar nuestra futura implementación.
                     </p>
 
                     <div class="alert alert-info">
-                        <i class="fas fa-lightbulb"></i> <strong>Consejo:</strong> Puedes personalizar el payload del evento con el modificador <code>--add</code>. Por ejemplo: <code>stripe trigger payment_intent.succeeded --add "payment_intent:amount=2000"</code>.
+                        <i class="fas fa-lightbulb"></i> <strong>Consejo:</strong> Podemos personalizar el payload del evento con el modificador <code>--add</code>. Por ejemplo: <code>stripe trigger payment_intent.succeeded --add "payment_intent:amount=2000"</code>.
                     </div>
                 </div>
             </div>
@@ -2704,7 +2678,7 @@ stripe trigger invoice.payment_failed</code></pre>
         <div id="comandos-utiles" class="subsection">
             <h4>4.4. Otros Comandos Útiles para el Desarrollo</h4>
             <p>
-                Además del reenvío de webhooks, Stripe CLI ofrece una amplia gama de comandos que pueden facilitar el desarrollo y las pruebas de tu integración.
+                Además del reenvío de webhooks, Stripe CLI ofrece una amplia gama de comandos que pueden facilitar el desarrollo y las pruebas.
             </p>
 
             <div class="table-responsive mb-4">
@@ -2770,18 +2744,17 @@ stripe trigger invoice.payment_failed</code></pre>
             </div>
 
             <p>
-                En StripeLabApp, utilizamos Stripe CLI principalmente para:
+                En StripeLabApp, se ha utilizado Stripe CLI principalmente para:
             </p>
             <ul>
                 <li>Reenviar webhooks durante el desarrollo con <code>stripe listen</code>.</li>
                 <li>Probar diferentes escenarios de evento con <code>stripe trigger</code>.</li>
-                <li>Verificar el estado de las suscripciones y transacciones con <code>stripe get</code>.</li>
-                <li>Monitorear logs para depurar problemas con <code>stripe logs tail</code>.</li>
+                <li>Monitorear logs para depurar problemas con <code>stripe listen --forward-to localhost:8000/public/v1/webhook.php --log-level=debug</code><strong>(FUNDAMENTAL)</strong></li>
             </ul>
         </div>
 
         <div class="alert alert-success">
-            <i class="fas fa-graduation-cap"></i> <strong>Resumen:</strong> Stripe CLI es una herramienta indispensable para los desarrolladores que trabajan con Stripe. Simplifica significativamente el desarrollo local, las pruebas de integración y la depuración, especialmente para webhooks. En StripeLabApp, se ha convertido en una parte esencial de nuestro flujo de trabajo de desarrollo.
+            <i class="fas fa-graduation-cap"></i> <strong>Resumen:</strong> Stripe CLI es una herramienta indispensable para los desarrolladores que trabajan con Stripe. Simplifica significativamente el desarrollo local, las pruebas de integración y la depuración, especialmente para webhooks.
         </div>
     </section>
     </section>
@@ -2790,7 +2763,7 @@ stripe trigger invoice.payment_failed</code></pre>
     <section id="parte2" class="mb-5">
         <h2>PARTE II: Arquitectura de StripeLabApp</h2>
         <p class="lead">
-            Esta sección explora la arquitectura, configuración y funcionamiento interno de StripeLabApp, nuestra aplicación de demostración para integraciones con Stripe.
+            Esta sección explora la arquitectura, configuración y funcionamiento interno de StripeLabApp, aplicación de demostración para integraciones con Stripe.
         </p>
 
         <!-- Sección 5 -->
@@ -2800,7 +2773,7 @@ stripe trigger invoice.payment_failed</code></pre>
             <div id="objetivos-proyecto" class="subsection">
                 <h4>5.1. Objetivos del Proyecto</h4>
                 <p>
-                    StripeLabApp nació como un proyecto con múltiples propósitos, enfocados en demostrar las mejores prácticas para integraciones de pago con Stripe:
+                    Proyecto con vistas a comprender más a fondo como trabaja la API de Stripe y así poder obtener información para aplicarla luego a nuestro verdadero campo de trabajo.
                 </p>
 
                 <div class="card mb-4">
@@ -2810,7 +2783,7 @@ stripe trigger invoice.payment_failed</code></pre>
                     <div class="card-body">
                         <ul>
                             <li>
-                                <strong>Entorno de aprendizaje:</strong> Proporcionar un ejemplo funcional y bien documentado para desarrolladores que buscan implementar pagos en sus aplicaciones.
+                                <strong>Entorno de aprendizaje:</strong> Proporcionar un ejemplo funcional y bien documentado para nuestros desarrolladores y así poder implementar pagos en nuestro plugin.
                             </li>
                             <li>
                                 <strong>Demostración de integración completa:</strong> Mostrar cómo implementar correctamente tanto pagos únicos como suscripciones, cubriendo todo el ciclo de vida de las transacciones.
@@ -2822,19 +2795,13 @@ stripe trigger invoice.payment_failed</code></pre>
                                 <strong>Arquitectura modular y extensible:</strong> Presentar una estructura de código que sea fácil de entender, mantener y ampliar con nuevas funcionalidades.
                             </li>
                             <li>
-                                <strong>Referencia de implementación segura:</strong> Demostrar cómo manejar secretos, verificar firmas de webhook y seguir las recomendaciones de seguridad de Stripe.
+                                <strong>Referencia de implementación segura:</strong> Demostrar cómo manejar secretos, verificar firmas de webhook y seguir las recomendaciones de seguridad de dadas en la tarea.
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <p>
-                    A diferencia de los ejemplos simplificados que se encuentran comúnmente en la documentación, StripeLabApp se ha diseñado como una aplicación más completa que aborda desafíos reales que los desarrolladores enfrentan al implementar sistemas de pago, como la persistencia de datos, la gestión de errores y el manejo de diferentes tipos de eventos.
-                </p>
 
-                <div class="alert alert-info">
-                    <i class="fas fa-lightbulb"></i> <strong>Nota:</strong> StripeLabApp no pretende ser una solución lista para producción, sino un recurso educativo y un punto de partida para adaptarse a los requisitos específicos de cada proyecto.
-                </div>
             </div>
 
             <div id="funcionalidades-implementadas" class="subsection">
@@ -2847,16 +2814,17 @@ stripe trigger invoice.payment_failed</code></pre>
                     <div class="col-md-6 mb-3">
                         <div class="card h-100">
                             <div class="card-header bg-success text-white">
-                                <strong>Pagos Únicos</strong>
+                                <strong>Pagos Únicos y Suscripciones</strong>
                             </div>
                             <div class="card-body">
                                 <ul>
-                                    <li>Página de producto con opciones de pago único</li>
-                                    <li>Integración con Stripe Checkout para procesamiento seguro de pagos</li>
-                                    <li>Manejo de eventos <code>checkout.session.completed</code> y <code>payment_intent.succeeded</code></li>
-                                    <li>Registro de transacciones en base de datos</li>
-                                    <li>Visualización del historial de pagos</li>
+                                    <li>Páginas para pago único y para suscripciones</li>
+                                    <li>Integración con Stripe para procesamiento seguro de pagos</li>
+                                    <li>Manejo de eventos <code>checkout.session.completed</code> y <code>payment_intent.succeeded</code> para pagos únicos</li>
+                                    <li>Procesamiento de eventos de suscripción (<code>customer.subscription.created</code>, <code>invoice.paid</code>, etc.)</li>
                                     <li>Acceso a recibos generados por Stripe</li>
+                                    <li>Visualización de suscripciones activas y su estado</li>
+                                    <li>Cancelación de suscripciones (inmediata o al final del periodo)</li>
                                 </ul>
                             </div>
                         </div>
@@ -2865,21 +2833,22 @@ stripe trigger invoice.payment_failed</code></pre>
                     <div class="col-md-6 mb-3">
                         <div class="card h-100">
                             <div class="card-header bg-primary text-white">
-                                <strong>Suscripciones</strong>
+                                <strong>Eventos manejados</strong>
                             </div>
                             <div class="card-body">
                                 <ul>
-                                    <li>Planes de suscripción mensual y anual</li>
-                                    <li>Checkout de suscripción con creación automática de clientes</li>
-                                    <li>Procesamiento de eventos de suscripción (<code>customer.subscription.created</code>, <code>invoice.paid</code>, etc.)</li>
-                                    <li>Gestión del ciclo de vida de las suscripciones</li>
-                                    <li>Visualización de suscripciones activas y su estado</li>
-                                    <li>Cancelación de suscripciones (inmediata o al final del periodo)</li>
+                                    <li>Eventos de Chekout<code>checkout.session.completed</code></li>
+                                    <li>Eventos de Customer<code>customer.created</code><code>customer.updated</code></li>
+                                    <li>Eventos de Payment Intent<code>payment_intent.succeeded</code></li>
+                                    <li>Eventos de Charge<code>charge.succeeded</code></li>
+                                    <li>Eventos de Suscripción<code>customer.subscription.created</code>, <code>customer.subscription.updated</code> y <code>customer.subscription.deleted</code></li>
+                                    <li>Eventos de Factura<code>invoice.paid</code></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
+
 
                 <div class="row mb-4">
                     <div class="col-md-6 mb-3">
@@ -2941,12 +2910,13 @@ StripeLabApp/
 │
 ├── config/
 │   ├── Bootstrap.php
+    ├──config.php
 │   └── DatabaseConnection.php
 │
 ├── database/
-│   └── tables.txt
+│   └── docker/docker-compose.yml
 │
-├── logs/
+├── logs/(...)
 │
 ├── public/
 │   ├── index.php
@@ -2954,46 +2924,62 @@ StripeLabApp/
 │   ├── subscriptions-payment.php
 │   ├── view-subscriptions.php
 │   ├── invoices.php
-│   ├── assets/
+│   ├── assets/(...)
+    │── api/
+│   │      ├── api-invoices.php
+│   │      ├── api-subscriptions.php
+│   │      └── api-manage-subscription.php
 │   └── v1/
 │       ├── create_payment_session.php
 │       ├── create_subscription_session.php
 │       ├── webhook.php
-│       └── api/
-│           ├── api-invoices.php
-│           ├── api-subscriptions.php
-│           └── api-manage-subscription.php
+│
 │
 ├── src/
 │   ├── Controller/
-│   │   ├── StripeWebhookController.php
-│   │   └── DisplayController.php
+    │   │       └──Impl/(...)
+│   │   ├── StripeWebhookControllerInterface.php
+        ├──StripeSubscriptionControllerInterface.php
+│   │   └── StripeInvoiceControllerInterface.php
 │   │
 │   ├── Service/
-│   │   ├── StripeCheckoutSessionService.php
-│   │   ├── StripeWebhookService.php
-│   │   ├── StripeEventProcessorService.php
-│   │   ├── DisplayService.php
-│   │   └── StripeSubscriptionManagementService.php
+│   │   │     └──Impl/(...)
+│   │   ├── StripeWebhookServiceInterface.php
+│   │   ├── StripeCheckoutSessionServiceInterface.php
+│   │   └── StripeSubscriptionManagementServiceInterface.php
+│   │
 │   │
 │   ├── Strategy/
-│   │   ├── StripeEventStrategyInterface.php
-│   │   ├── DefaultStripeEventStrategy.php
-│   │   ├── CheckoutSessionCompletedStrategy.php
-│   │   ├── PaymentIntentSucceededStrategy.php
-│   │   ├── InvoicePaidStrategy.php
-│   │   └── ... [otras estrategias]
+│   │   │└─────Impl/
+│   │   │          ├── StripeEventStrategyInterfaceImpl.php
+│   │   │          ├── SubscriptionCreatedStrategyImpl.php
+│   │   │          ├── SubscriptionDeletedStrategyImpl.php
+│   │   │          ├── SubscriptionUpdatedStrategyImpl.php
+│   │   │          ├── CheckoutSessionCompletedStrategyImpl.php
+│   │   │          ├── PaymentIntentSucceededStrategyImpl.php
+│   │   │          ├── CustomerCreatedOrUpdatedStrategyImpl
+│   │   │          ├── InvoicePaidStrategyImpl.php
+│   │   │          └── ChargeSucceededStrategyImpl.php
+│   │   │
+│   │   └──── StripeWebhookStrategyInterface.php
 │   │
 │   ├── Repository/
-│   │   ├── TransactionRepository.php
-│   │   └── SubscriptionRepository.php
+│   │   │       └─────Impl/(...)
+│   │   ├── TransactionRepositoryInterface.php
+│   │   ├── InvoiceRepositoryInterface.php
+│   │   └── SubscriptionRepositoryInterface.php
 │   │
 │   ├── Mappers/
-│   │   ├── TransactionMapper.php
-│   │   └── SubscriptionMapper.php
+│   │        ├── ChargeMapper.php
+│   │        ├── CheckoutSessionMapper.php
+│   │        ├── CustomerMapper.php
+│   │        ├──  InvoiceMapper.php
+│   │        ├── PaymentIntentMapper.php
+│   │        └── SubscriptionMapper.php
 │   │
 │   ├── Factories/
-│   │   └── StripeEventStrategyFactory.php
+│   │   ├── TransactionModelFactory.php
+│   │   └── SubscriptionModelFactory.php
 │   │
 │   ├── Models/
 │   │   ├── TransactionsModel.php
@@ -3042,7 +3028,7 @@ StripeLabApp/
                 </ul>
 
                 <div class="alert alert-success">
-                    <i class="fas fa-check-circle"></i> <strong>Ventajas de esta estructura:</strong> Proporciona una clara separación de responsabilidades, facilita las pruebas unitarias, y permite que la aplicación sea fácilmente extensible con nuevas funcionalidades o adaptaciones.
+                    <i class="fas fa-check-circle"></i> <strong>Ventajas de esta estructura:</strong> Proporciona una clara separación de responsabilidades, facilita el testeo al momento de ocurrir los errores, y además permite que la aplicación sea fácilmente extensible con nuevas funcionalidades o con vistas a una futura adaptación a ILIAS.
                 </div>
             </div>
         </section>
@@ -3065,18 +3051,13 @@ StripeLabApp/
                             </div>
                             <div class="card-body">
                                 <ul>
-                                    <li><strong>PHP 8.1 o superior</strong> con las siguientes extensiones:
-                                        <ul>
-                                            <li>PDO y PDO_MySQL</li>
-                                            <li>cURL</li>
-                                            <li>JSON</li>
-                                            <li>mbstring</li>
-                                        </ul>
-                                    </li>
+                                    <li><strong>PHP 8.0.0 o superior</strong> con las siguientes extensiones:
+
                                     <li><strong>Composer</strong> para gestión de dependencias</li>
-                                    <li><strong>MySQL 5.7 o superior</strong> o MariaDB 10.3+</li>
-                                    <li><strong>Stripe CLI</strong> para pruebas de webhook (opcional pero recomendado)</li>
-                                    <li><strong>Servidor web</strong> (Apache, Nginx) o servidor PHP integrado</li>
+                                    <li><strong> BBDD MYSQL</strong> </li>
+                                    <li><strong>Stripe CLI</strong> para pruebas de webhook</li>
+                                    <li><strong>Servidor web</strong> (Apache, Nginx) o servidor PHP embedido tal y como trae PhpStorm</li>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -3127,7 +3108,7 @@ StripeLabApp/
                     <div class="card-body">
                         <p>Clona el repositorio de StripeLabApp desde GitHub:</p>
                         <div class="code-snippet">
-                        <pre><code class="language-bash">git clone https://github.com/yourusername/StripeLabApp.git
+                        <pre><code class="language-bash">git clone https://github.com/JosCarRub/StripeLabApp.git
 cd StripeLabApp</code></pre>
                         </div>
                     </div>
@@ -3197,30 +3178,59 @@ LOG_LEVEL=debug  # debug, info, warning, error</code></pre>
                         <strong>Paso 4: Configurar la base de datos</strong>
                     </div>
                     <div class="card-body">
-                        <p><strong>Opción A: Configuración manual</strong></p>
+                        <p><strong> Docker (recomendado para desarrollo)</strong></p>
                         <ol>
-                            <li>Crea una base de datos MySQL:
+                            <li>Si tienes Docker instalado, puedes usar el siguiente comando estando dentro del directorio donde tienes el archivo docker-compose.yml alojado en el proyecto en: databae/docker/docker-compose.yml(Debes sacarlo del directorio raíz del proyecto para levantar el compose):
                                 <div class="code-snippet">
-                                    <pre><code class="language-sql">CREATE DATABASE stripelabapp CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</code></pre>
+                                    <pre><code class="language-bash">docker-compose up -d</code></pre>
+                                    <p>Para entrar en el contenedor: </p>
+                                    <pre><code class="language-bash">docker exec -it stripe_mysql bash</code></pre>
+                                    <p>Introduce la contraseña: </p>
+                                    <pre><code class="language-bash">mysql -u test_user -p</code></pre>
                                 </div>
                             </li>
-                            <li>Crea las tablas necesarias ejecutando el script SQL que se encuentra en <code>database/tables.txt</code>:
+                            <li>Ejecuta el script SQL para crear las tablas proporcionado en database/docker/tables.txt
                                 <div class="code-snippet">
-                                    <pre><code class="language-bash">mysql -u tu_usuario -p stripelabapp < database/tables.txt</code></pre>
-                                </div>
-                            </li>
-                        </ol>
+                                    <pre><code class="language-bash">
+                                        CREATE TABLE `StripeTransactions` (
+                                            `transaction_id` BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                                            `stripe_customer_id` VARCHAR(50) NULL,
+                                            `customer_email` VARCHAR(255) NULL,
+                                            `customer_name` VARCHAR(255) NULL,
+                                            `transaction_type` ENUM('one_time_receipt', 'subscription_invoice') NOT NULL,
+                                            `stripe_payment_intent_id` VARCHAR(50) UNIQUE NULL,
+                                            `stripe_invoice_id` VARCHAR(50) UNIQUE NULL,
+                                            `stripe_subscription_id` VARCHAR(50) NULL,
+                                            `stripe_charge_id` VARCHAR(50) UNIQUE NULL,
+                                            `amount` INT NOT NULL,
+                                            `currency` VARCHAR(3) NOT NULL,
+                                            `status` VARCHAR(50) NOT NULL,
+                                            `description` VARCHAR(255) NULL,
+                                            `document_url` VARCHAR(255) NULL,
+                                            `pdf_url` VARCHAR(255) NULL,
+                                            `period_start` TIMESTAMP NULL,
+                                            `period_end` TIMESTAMP NULL,
+                                            `transaction_date_stripe` TIMESTAMP NOT NULL,
+                                            `created_at_local` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                                        );
 
-                        <p><strong>Opción B: Usando Docker (recomendado para desarrollo)</strong></p>
-                        <ol>
-                            <li>Si tienes Docker instalado, puedes usar el siguiente comando para iniciar un contenedor MySQL:
-                                <div class="code-snippet">
-                                    <pre><code class="language-bash">docker run --name stripelabapp-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=stripelabapp -p 3306:3306 -d mysql:8.0</code></pre>
-                                </div>
-                            </li>
-                            <li>Ejecuta el script SQL para crear las tablas:
-                                <div class="code-snippet">
-                                    <pre><code class="language-bash">docker exec -i stripelabapp-mysql mysql -uroot -proot stripelabapp < database/tables.txt</code></pre>
+                                        CREATE TABLE `StripeSubscriptions` (
+                                            `subscription_id` VARCHAR(50) PRIMARY KEY,
+                                            `stripe_customer_id` VARCHAR(50) NOT NULL,
+                                            `customer_email` VARCHAR(255) NULL,
+                                            `status` VARCHAR(50) NOT NULL,
+                                            `stripe_price_id` VARCHAR(50) NOT NULL,
+                                            `interval` VARCHAR(20) NULL,
+                                            `current_period_start` TIMESTAMP NULL,
+                                            `current_period_end` TIMESTAMP NULL,
+                                            `cancel_at_period_end` BOOLEAN DEFAULT FALSE,
+                                            `canceled_at` TIMESTAMP NULL,
+                                            `ended_at` TIMESTAMP NULL,
+                                            `latest_transaction_id` BIGINT UNSIGNED NULL,
+                                            `created_at_stripe` TIMESTAMP NOT NULL,
+                                            `created_at_local` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                                        );
+                                    </code></pre>
                                 </div>
                             </li>
                         </ol>
@@ -3234,7 +3244,7 @@ LOG_LEVEL=debug  # debug, info, warning, error</code></pre>
                     <div class="card-body">
                         <p>Para desarrollo local, puedes utilizar el servidor web incorporado de PHP:</p>
                         <div class="code-snippet">
-                        <pre><code class="language-bash">cd public
+                        <pre><code class="language-bash">
 php -S localhost:8000</code></pre>
                         </div>
                         <p>Ahora puedes acceder a la aplicación en <a href="http://localhost:8000" target="_blank">http://localhost:8000</a></p>
@@ -3277,7 +3287,7 @@ php -S localhost:8000</code></pre>
                             <li>Asegúrate de tener Stripe CLI instalado y autenticado (como se explicó en la sección 4).</li>
                             <li>Inicia el reenvío de webhooks a tu servidor local:
                                 <div class="code-snippet">
-                                    <pre><code class="language-bash">stripe listen --forward-to http://localhost:8000/v1/webhook.php</code></pre>
+                                    <pre><code class="language-bash">stripe listen --forward-to http://localhost:8000/public/v1/webhook.php</code></pre>
                                 </div>
                             </li>
                             <li>Stripe CLI generará un signing secret que deberás copiar y agregar a tu archivo <code>.env</code>:
@@ -3292,47 +3302,6 @@ php -S localhost:8000</code></pre>
                     </div>
                 </div>
 
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <strong>Opción 2: Configuración para producción o servidor público</strong>
-                    </div>
-                    <div class="card-body">
-                        <p>Para un entorno de producción, necesitarás configurar un endpoint de webhook en el panel de Stripe:</p>
-                        <ol>
-                            <li>Asegúrate de que tu servidor sea accesible desde internet con una URL pública (HTTPS es obligatorio para producción).</li>
-                            <li>Ve al <a href="https://dashboard.stripe.com/webhooks" target="_blank">Panel de Webhooks de Stripe</a>.</li>
-                            <li>Haz clic en "Añadir endpoint" y configura:
-                                <ul>
-                                    <li><strong>URL del endpoint:</strong> La URL completa a tu endpoint de webhook (ej: <code>https://tudominio.com/v1/webhook.php</code>)</li>
-                                    <li><strong>Versión:</strong> Selecciona la versión más reciente de la API.</li>
-                                    <li><strong>Eventos a escuchar:</strong> Selecciona al menos estos eventos:
-                                        <ul>
-                                            <li><code>checkout.session.completed</code></li>
-                                            <li><code>payment_intent.succeeded</code></li>
-                                            <li><code>charge.succeeded</code></li>
-                                            <li><code>invoice.paid</code></li>
-                                            <li><code>customer.subscription.created</code></li>
-                                            <li><code>customer.subscription.updated</code></li>
-                                            <li><code>customer.subscription.deleted</code></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>Una vez creado, Stripe te mostrará un signing secret que debes copiar y agregar a tu archivo <code>.env</code>:
-                                <div class="code-snippet">
-                                    <pre><code class="language-plaintext">STRIPE_WEBHOOK_SECRET=whsec_...</code></pre>
-                                </div>
-                            </li>
-                        </ol>
-                        <div class="alert alert-warning mt-3">
-                            <i class="fas fa-exclamation-triangle"></i> <strong>Importante:</strong> El signing secret es diferente para cada endpoint de webhook. Asegúrate de usar el correcto según el entorno (desarrollo o producción).
-                        </div>
-                    </div>
-                </div>
-
-                <div class="alert alert-info">
-                    <i class="fas fa-lightbulb"></i> <strong>Recomendación:</strong> Durante el desarrollo, es más fácil y rápido utilizar Stripe CLI para webhooks. Para pruebas más avanzadas o cuando necesites comprobar el funcionamiento en un entorno similar a producción, puedes usar servicios como ngrok para exponer temporalmente tu servidor local a internet.
-                </div>
 
                 <p>
                     Con estos pasos, StripeLabApp estará configurado y listo para procesar pagos y suscripciones con Stripe. La aplicación recibirá eventos a través del endpoint de webhook y los procesará según las estrategias implementadas.

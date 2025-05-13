@@ -110,7 +110,7 @@ La relación entre ambas tablas se establece mediante el campo `latest_transacti
 ### 1. Clonar el Repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/StripeLabApp.git
+git clone https://github.com/JosCarRub/StripeLabApp.git
 cd StripeLabApp
 ```
 
