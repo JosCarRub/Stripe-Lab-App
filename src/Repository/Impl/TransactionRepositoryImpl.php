@@ -21,12 +21,12 @@ class TransactionRepositoryImpl implements TransactionRepositoryInterface
 
     public function save(TransactionsModel $transaction): void
     {
-        // Formatear fechas para la base de datos (YYYY-MM-DD HH:MM:SS)
+        // formateo de fechas para la base de datos
         $periodStartDb = $transaction->getPeriodStart() ? $transaction->getPeriodStart()->format('Y-m-d H:i:s') : null;
         $periodEndDb = $transaction->getPeriodEnd() ? $transaction->getPeriodEnd()->format('Y-m-d H:i:s') : null;
         $transactionDateStripeDb = $transaction->getTransactionDateStripe()->format('Y-m-d H:i:s');
-        // createdAtLocal usualmente tiene un DEFAULT CURRENT_TIMESTAMP en la BD,
-        // pero si queremos ser explícitos o si el modelo lo gestiona:
+        // createdAtLocal tiene un DEFAULT CURRENT_TIMESTAMP en la BDD
+
         $createdAtLocalDb = $transaction->getCreatedAtLocal()->format('Y-m-d H:i:s');
 
 
@@ -42,10 +42,12 @@ class TransactionRepositoryImpl implements TransactionRepositoryInterface
                         :amount, :currency, :status, :description, :document_url, :pdf_url,
                         :period_start, :period_end, :transaction_date_stripe, :created_at_local
                     )";
+
             DatabaseLogger::query($sql, [
                 'stripe_customer_id' => $transaction->getStripeCustomerId(),
-                // ... (otros para log)
+
             ]);
+
             try {
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->execute([
@@ -72,15 +74,19 @@ class TransactionRepositoryImpl implements TransactionRepositoryInterface
                 if ($lastId) {
                     $transaction->setTransactionId((int)$lastId);
                 } else {
-                    // Esto no debería ocurrir con AUTO_INCREMENT si la inserción fue exitosa
+
                     ErrorLogger::log("PdoTransactionRepository: lastInsertId() no devolvió un ID después del INSERT.", [], '[CRITICAL]');
                     throw new DatabaseException("No se pudo obtener el ID de la transacción después de la inserción.");
                 }
+
             } catch (PDOException $e) {
+
                 DatabaseLogger::error("Error al insertar transacción: " . $e->getMessage(), ['sql' => $sql]);
                 throw new DatabaseException("Error al guardar la transacción: " . $e->getMessage(), (int)$e->getCode(), $e);
             }
+
         } else { //  UPDATE
+
             $sql = "UPDATE StripeTransactions SET
                         stripe_customer_id = :stripe_customer_id, customer_email = :customer_email, customer_name = :customer_name,
                         transaction_type = :transaction_type, stripe_payment_intent_id = :stripe_payment_intent_id,
@@ -92,7 +98,9 @@ class TransactionRepositoryImpl implements TransactionRepositoryInterface
                         -- created_at_local no se actualiza usualmente
                     WHERE transaction_id = :transaction_id";
             DatabaseLogger::query($sql, ['transaction_id' => $transaction->getTransactionId() /* ... */]);
+
             try {
+
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->execute([
                     ':stripe_customer_id' => $transaction->getStripeCustomerId(),
@@ -114,7 +122,9 @@ class TransactionRepositoryImpl implements TransactionRepositoryInterface
                     ':transaction_date_stripe' => $transactionDateStripeDb,
                     ':transaction_id' => $transaction->getTransactionId()
                 ]);
+
             } catch (PDOException $e) {
+
                 DatabaseLogger::error("Error al actualizar transacción: " . $e->getMessage(), ['sql' => $sql]);
                 throw new DatabaseException("Error al actualizar la transacción: " . $e->getMessage(), (int)$e->getCode(), $e);
             }
@@ -197,7 +207,7 @@ class TransactionRepositoryImpl implements TransactionRepositoryInterface
         if ($transactionType === null) {
             ErrorLogger::log("Tipo de transacción desconocido desde BD.", ['value' => $row['transaction_type'], 'id' => $row['transaction_id']], '[WARNING]');
             // Decide un fallback o lanza una excepción más específica si es un estado inválido que no debería estar en la BD
-            $transactionType = TransactionTypeEnum::ONE_TIME_RECEIPT; // Ejemplo de fallback, no ideal
+            $transactionType = TransactionTypeEnum::ONE_TIME_RECEIPT; // Ejemplo de fallback,
         }
 
         return new TransactionsModel(

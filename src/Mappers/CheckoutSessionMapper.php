@@ -19,7 +19,7 @@ class CheckoutSessionMapper
      */
     public function mapToDTO(object $stripePayloadCheckoutSession): CheckoutSessionCompletedDTO
     {
-        // Validaciones básicas de que los campos esperados existen
+        // Validaciones de que los campos esperados existen
         if (!isset(
             $stripePayloadCheckoutSession->id,
             $stripePayloadCheckoutSession->object,

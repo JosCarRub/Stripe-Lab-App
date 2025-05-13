@@ -139,6 +139,10 @@ Ahora, basándonos en estos flujos y los payloads que has proporcionado, podemos
 
 Sección Propuesta para la Documentación Web: "Flujos de Eventos y Mapeo de Datos"
 
+
+
+
+
 Introducción:
 StripeLabApp procesa varios webhooks de Stripe para mantener su base de datos local sincronizada con los eventos que ocurren en Stripe. Esta sección detalla los flujos de eventos clave para pagos únicos y suscripciones, y cómo los datos de los payloads de Stripe se mapean a las tablas StripeTransactions y StripeSubscriptions.
 

@@ -53,7 +53,7 @@ class PaymentIntentMapper
         $objectType = $stripePayloadPaymentIntent->object;
         $amount = $stripePayloadPaymentIntent->amount;
         // amount_received podría no estar presente si el PI no está 'succeeded' aún,
-        // pero para 'payment_intent.succeeded' debería estar.
+        // pero para 'payment_intent.succeeded' debe estar.
         $amountReceived = $stripePayloadPaymentIntent->amount_received ?? $amount; // Fallback a amount si no está
         $currency = $stripePayloadPaymentIntent->currency;
         $rawCustomer = $stripePayloadPaymentIntent->customer ?? null;

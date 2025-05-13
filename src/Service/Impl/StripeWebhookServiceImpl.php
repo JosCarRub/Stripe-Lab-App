@@ -32,14 +32,18 @@ class StripeWebhookServiceImpl implements StripeWebhookServiceInterface
     public function __construct(string $stripeWebhookSecret, iterable $strategies)
     {
         if (empty($stripeWebhookSecret)) {
+
             throw new ConfigurationException("Stripe webhook secret no está configurado.");
         }
         $this->stripeWebhookSecret = $stripeWebhookSecret;
 
         foreach ($strategies as $strategy) {
+
             if ($strategy instanceof StripeWebhookStrategyInterface) {
                 $this->strategies[] = $strategy;
+
             } else {
+
                 ErrorLogger::log("StripeWebhookServiceImpl: Se intentó registrar un objeto que no es StripeWebhookStrategyInterface.", [
                     'object_class' => get_class($strategy)
                 ], '[CONFIG_ERROR]');

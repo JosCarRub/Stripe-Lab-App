@@ -107,7 +107,7 @@ class TransactionModelFactory
         $model = new TransactionsModel(
             transactionTypeEnum: TransactionTypeEnum::ONE_TIME_RECEIPT,
             amount: $csDTO->amountTotal ?? 0,
-            currency: $csDTO->currency ?? 'usd', // Deberían estar presentes
+            currency: $csDTO->currency ?? 'eur', // Deberían estar presentes
             status: $csDTO->paymentStatus, // "paid"
             transactionDateStripe: $transactionDate,
             stripeCustomerId: $csDTO->customerId,
@@ -116,9 +116,9 @@ class TransactionModelFactory
             stripePaymentIntentId: $csDTO->paymentIntentId,
             stripeInvoiceId: null,
             stripeSubscriptionId: null,
-            stripeChargeId: null, // Se necesitaría del evento de cargo
+            stripeChargeId: null, // Se necesita del evento de cargo
             description: "Pago vía Checkout Session " . $csDTO->id,
-            documentUrl: null, // Se necesitaría del evento de cargo/PI
+            documentUrl: null, // Se necesita de evento de cargo o del PaymentIntent
             pdfUrl: null,
             periodStart: null,
             periodEnd: null

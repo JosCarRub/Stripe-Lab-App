@@ -55,7 +55,7 @@ class SubscriptionMapper
             );
         }
 
-        // Priorizar periodos del nivel raíz si existen, sino de items.data[0]
+
         $currentPeriodStartTimestamp = $stripePayloadSubscription->current_period_start ?? null;
         $currentPeriodEndTimestamp = $stripePayloadSubscription->current_period_end ?? null;
         $items = $stripePayloadSubscription->items ?? null;
@@ -89,7 +89,7 @@ class SubscriptionMapper
             $priceObject = $items->data[0]->price;
             $priceId = $priceObject->id ?? null;
             $priceType = $priceObject->type ?? null; // 'recurring' o 'one_time'
-            $priceInterval = $priceObject->recurring->interval ?? null; // Solo existe si type es 'recurring'
+            $priceInterval = $priceObject->recurring->interval ?? null;
         } elseif (isset($stripePayloadSubscription->plan)) { // Fallback para 'plan' obsoleto
             EventLogger::log("SubscriptionMapper: Usando 'plan' obsoleto.", ['subscription_id' => $id], '[INFO]');
             $planObject = $stripePayloadSubscription->plan;

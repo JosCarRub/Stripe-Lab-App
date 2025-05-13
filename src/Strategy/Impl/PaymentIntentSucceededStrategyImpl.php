@@ -60,7 +60,7 @@ class PaymentIntentSucceededStrategyImpl implements StripeWebhookStrategyInterfa
         EventLogger::log(self::class . ": PaymentIntent DTO mapeado.", [
             'pi_id' => $piDTO->id,
             'description' => $piDTO->description,
-            'invoice_id_in_pi_dto' => $piDTO->invoiceId // Aunque sabemos que puede ser null
+            'invoice_id_in_pi_dto' => $piDTO->invoiceId
         ]);
 
         // 1. Buscar si ya existe una transacción para este PaymentIntent ID

@@ -70,15 +70,15 @@ class SubscriptionCreatedStrategyImpl implements StripeWebhookStrategyInterface
             'status' => $subDTO->status
         ]);
 
-        // Verificar si la suscripción ya existe (idempotencia)
+        // Verificar si la suscripción ya existe
         $existingSubscription = $this->subscriptionRepository->findById($subDTO->id);
         if ($existingSubscription) {
             EventLogger::log(self::class . ": Suscripción ya existe.", [
                 'event_id' => $eventId,
                 'sub_id' => $subDTO->id
             ]);
-            // Podríamos querer actualizarla si el estado o algo más es diferente,
-            // pero `customer.subscription.updated` se encargaría de eso.
+            //  si el estado o algo más es diferente `customer.subscription.updated`
+            // se encargaría de actualizarlo
             return;
         }
 

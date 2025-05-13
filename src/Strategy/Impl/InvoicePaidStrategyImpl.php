@@ -55,7 +55,7 @@ class InvoicePaidStrategyImpl implements StripeWebhookStrategyInterface
             'amount_paid' => $invoiceDTO->amountPaid
         ]);
 
-        // Verificar si ya existe una transacción para esta factura (idempotencia)
+        // Verificar si ya existe una transacción para esta factura
         $existingTransaction = $this->transactionRepository->findByInvoiceId($invoiceDTO->id);
         if ($existingTransaction) {
             EventLogger::log(self::class . ": Transacción ya existe para esta Invoice.", [

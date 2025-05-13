@@ -22,6 +22,7 @@ class StripeInvoiceControllerImpl implements StripeInvoiceControllerInterface
         $offset = ($page - 1) * $limit;
 
         try {
+
             $invoicesData = $this->invoiceRepository->findAll($limit, $offset);
             $totalInvoices = $this->invoiceRepository->countAll();
 
@@ -36,11 +37,13 @@ class StripeInvoiceControllerImpl implements StripeInvoiceControllerInterface
             ];
         } catch (\App\Commons\Exceptions\DatabaseException $e) {
             ErrorLogger::exception($e, ['page' => $page, 'limit' => $limit]);
-            // En un API real, devolverías un error JSON con código 500.
-            // Por ahora, devolvemos un array vacío con error.
+
             return ['error' => 'Error al obtener facturas.', 'data' => [], 'pagination' => []];
-        } catch (\Throwable $e) { // Captura genérica
+
+        } catch (\Throwable $e) {
+
             ErrorLogger::exception($e, ['page' => $page, 'limit' => $limit]);
+
             return ['error' => 'Error inesperado.', 'data' => [], 'pagination' => []];
         }
     }
@@ -93,8 +96,8 @@ class StripeInvoiceControllerImpl implements StripeInvoiceControllerInterface
     {
         $formatted = [];
         foreach ($invoicesData as $invoice) {
-            $formattedInvoice = $invoice; // Copiar todos los campos
-            // Formatear monto (de centavos a formato legible)
+            $formattedInvoice = $invoice;
+
             if (isset($invoice['amount']) && isset($invoice['currency'])) {
                 $formattedInvoice['amount_display'] = number_format($invoice['amount'] / 100, 2, ',', '.') . ' ' . strtoupper($invoice['currency']);
             }

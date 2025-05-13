@@ -41,7 +41,9 @@ class StripeSubscriptionControllerImpl implements StripeSubscriptionControllerIn
                 ]
             ];
         } catch (\Throwable $e) {
+
             ErrorLogger::exception($e, ['page' => $page, 'limit' => $limit]);
+
             return ['error' => 'Error al obtener suscripciones.', 'data' => [], 'pagination' => []];
         }
     }
@@ -51,11 +53,16 @@ class StripeSubscriptionControllerImpl implements StripeSubscriptionControllerIn
         EventLogger::log(self::class . ": Solicitando suscripciones para cliente.", [
             'stripe_customer_id' => $stripeCustomerId, 'page' => $page, 'limit' => $limit
         ]);
+
         if (empty($stripeCustomerId)) {
+
             return ['error' => 'ID de cliente no proporcionado.', 'data' => [], 'pagination' => []];
         }
+
         if ($page < 1) $page = 1;
+
         if ($limit < 1) $limit = 10;
+
         $offset = ($page - 1) * $limit;
 
         try {
@@ -73,7 +80,9 @@ class StripeSubscriptionControllerImpl implements StripeSubscriptionControllerIn
                 ]
             ];
         } catch (\Throwable $e) {
+
             ErrorLogger::exception($e, ['stripe_customer_id' => $stripeCustomerId, 'page' => $page, 'limit' => $limit]);
+
             return ['error' => 'Error al obtener suscripciones del cliente.', 'data' => [], 'pagination' => []];
         }
     }
@@ -82,13 +91,18 @@ class StripeSubscriptionControllerImpl implements StripeSubscriptionControllerIn
     {
         EventLogger::log(self::class . ": Solicitando detalles de suscripción.", ['subscription_id' => $subscriptionId]);
         if (empty($subscriptionId)) {
+
             return null;
         }
         try {
             $subscription = $this->subscriptionRepository->findById($subscriptionId);
+
             return $subscription ? $this->formatSubscriptionForDisplay($subscription) : null;
+
         } catch (\Throwable $e) {
+
             ErrorLogger::exception($e, ['subscription_id' => $subscriptionId]);
+
             return null;
         }
     }
@@ -109,6 +123,7 @@ class StripeSubscriptionControllerImpl implements StripeSubscriptionControllerIn
         }
 
         try {
+
             $stripeSubscriptionObject = null;
             $message = '';
 
@@ -132,8 +147,8 @@ class StripeSubscriptionControllerImpl implements StripeSubscriptionControllerIn
                     return ['success' => false, 'message' => "Acción '{$action}' no reconocida."];
             }
 
-            // El estado en nuestra BD se actualizará vía webhook.
-            // Devolvemos el estado actual de Stripe como referencia.
+            // El estado en nuestra BD se actualiza vía webhook.
+            // se devuelve el estado actual de Stripe como referencia.
             return [
                 'success' => true,
                 'message' => $message,
@@ -160,7 +175,7 @@ class StripeSubscriptionControllerImpl implements StripeSubscriptionControllerIn
 
     private function formatSubscriptionForDisplay(SubscriptionsModel $subscription): array
     {
-        // ... (tu método formatSubscriptionForDisplay existente se mantiene igual)
+
         $dateFormat = 'd/m/Y H:i';
         return [
             'subscription_id' => $subscription->getSubscriptionId(),

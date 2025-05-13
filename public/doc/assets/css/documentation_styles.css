@@ -1,0 +1,295 @@
+/* assets/css/documentation_styles.css */
+
+:root {
+    --bs-primary: #00d4b1; /* Mintish */
+    --bs-primary-rgb: 0, 212, 177;
+    --bs-secondary: #ffbc44; /* Amarillo/Naranja */
+    --bs-secondary-rgb: 255, 188, 68;
+    --bs-accent: #8a5cf7; /* Púrpura */
+    --bs-accent-rgb: 138, 92, 247;
+
+    --bs-body-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --bs-body-color: #212529; /* Casi negro para texto principal */
+    --bs-body-bg: #ffffff; /* Fondo blanco */
+    --bs-link-color: var(--bs-primary);
+    --bs-link-hover-color: #00a98d; /* Un poco más oscuro que primary */
+
+    --text-muted-light: #6c757d;
+    --border-color-light: #dee2e6;
+    --code-bg-light: #f8f9fa;
+    --code-color-light: #d63384; /* Color rosa de Bootstrap para código */
+    --sidebar-bg: #f8f9fa;
+    --sidebar-link-color: #495057;
+    --sidebar-link-active-color: var(--bs-primary);
+    --sidebar-link-hover-color: var(--bs-primary);
+    --sidebar-border-color: var(--border-color-light);
+
+    --box-shadow-sm: 0 .125rem .25rem rgba(0, 0, 0, .075);
+    --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
+/* Tipografía general */
+body {
+    font-family: var(--bs-body-font-family);
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    line-height: 1.6;
+    font-size: 1rem; /* 16px base */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600; /* Semibold para encabezados */
+    color: #343a40; /* Un gris oscuro para encabezados */
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    font-size: 2.25rem; /* 36px */
+    border-bottom: 2px solid var(--border-color-light);
+    padding-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 1.875rem; /* 30px */
+    border-bottom: 1px solid var(--border-color-light);
+    padding-bottom: 0.4em;
+}
+
+h3 {
+    font-size: 1.5rem; /* 24px */
+}
+
+h4 {
+    font-size: 1.25rem; /* 20px */
+    color: #495057; /* Ligeramente más claro para sub-encabezados */
+}
+
+h5 {
+    font-size: 1.1rem; /* 17.6px */
+    color: var(--bs-primary);
+}
+
+h6 {
+    font-size: 1rem; /* 16px */
+    font-weight: 700; /* Más bold para nombres de eventos */
+    color: var(--bs-accent);
+}
+
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: var(--bs-link-color);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+    color: var(--bs-link-hover-color);
+    text-decoration: underline;
+}
+
+hr {
+    border-top: 1px solid var(--border-color-light);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Estructura Principal */
+.main-content {
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+}
+
+/* Barra Lateral */
+.sidebar {
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border-color);
+    box-shadow: var(--box-shadow-sm);
+}
+
+.sidebar .nav-link {
+    font-weight: 500;
+    color: var(--sidebar-link-color);
+    padding: 0.5rem 1rem;
+    border-left: 3px solid transparent; /* Para el indicador activo */
+    transition: background-color 0.2s ease, border-left-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar .nav-link:hover {
+    color: var(--sidebar-link-hover-color);
+    background-color: #e9ecef;
+    text-decoration: none;
+}
+
+.sidebar .nav-link.active {
+    color: var(--sidebar-link-active-color);
+    font-weight: 700; /* Bold para activo */
+    border-left-color: var(--sidebar-link-active-color);
+    background-color: #e0f8f3; /* Un fondo muy sutil para activo */
+}
+
+.sidebar .nav-link .feather { /* Si usas iconos Feather */
+    margin-right: 4px;
+    color: #727272;
+}
+
+.sidebar .nav-link.active .feather {
+    color: inherit;
+}
+
+.sidebar-heading {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: .05rem;
+    font-weight: 600;
+    color: var(--text-muted-light);
+}
+
+.sidebar .nav-item ul.nav-link { /* Estilos para sub-menús si se añaden */
+    padding-left: 2rem;
+}
+
+/* Código y Preformateado */
+code, .stripe-object-prefix {
+    font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.875em; /* Ligeramente más pequeño que el texto normal */
+    color: var(--code-color-light);
+    background-color: var(--code-bg-light);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    word-wrap: break-word;
+}
+
+pre {
+    background-color: #282c34; /* Fondo oscuro para bloques de código */
+    color: #abb2bf; /* Texto claro para bloques de código */
+    padding: 1em;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.9em;
+    line-height: 1.45;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--box-shadow-sm);
+}
+
+pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+    font-size: inherit; /* Heredar tamaño de pre */
+}
+
+/* Comentarios dentro de pre (si StripePayloadLogger añade comentarios) */
+pre code .comment {
+    color: #5c6370; /* Gris para comentarios */
+    font-style: italic;
+}
+
+/* JSON highlighting (básico, puedes expandir con JS o usar una librería) */
+pre code .json .string { color: #98c379; } /* Verde para strings */
+pre code .json .number { color: #d19a66; } /* Naranja para números */
+pre code .json .boolean { color: #56b6c2; } /* Cian para booleanos */
+pre code .json .null { color: #c678dd; } /* Púrpura para null */
+pre code .json .key { color: #e06c75; } /* Rojo claro para keys */
+
+
+/* Listas */
+ul, ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+ul li, ol li {
+    margin-bottom: 0.5rem;
+}
+
+/* Tablas (Bootstrap ya las estiliza bien, pero puedes añadir aquí) */
+.table {
+    margin-bottom: 1.5rem;
+}
+
+/* Diagramas Mermaid */
+.mermaid {
+    background-color: #fff;
+    border: 1px solid var(--border-color-light);
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center; /* Centra el SVG si es más pequeño que el div */
+    box-shadow: var(--box-shadow-sm);
+    overflow-x: auto; /* Para diagramas anchos en pantallas pequeñas */
+}
+
+/* Detalles de Eventos (para agrupar descripción y payload) */
+.event-detail {
+    border-left: 3px solid var(--bs-accent);
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+    background-color: #fdf9ff; /* Un fondo muy sutil para detalles de evento */
+    padding: 1rem 1.5rem;
+    border-radius: 0 6px 6px 0;
+}
+
+.event-detail h6 {
+    margin-top: 0; /* Resetear margen superior para el primer encabezado dentro del detalle */
+}
+
+/* Acordeones para Estrategias */
+.accordion-item {
+    border: 1px solid var(--border-color-light);
+    margin-bottom: 0.5rem; /* Espacio entre items del acordeón */
+    border-radius: 0.375rem; /* Bootstrap's default rounded */
+}
+.accordion-button {
+    font-weight: 600;
+    color: #343a40;
+    background-color: #f8f9fa; /* Ligeramente diferente del fondo del cuerpo */
+}
+.accordion-button:not(.collapsed) {
+    color: var(--bs-body-bg); /* Texto blanco cuando está activo */
+    background-color: var(--bs-primary); /* Usar color primario para el botón activo */
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
+}
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); /* Flecha blanca para activo */
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), .25); /* Sombra de foco con color primario */
+    border-color: var(--bs-primary);
+}
+
+.accordion-body {
+    background-color: #fff; /* Fondo blanco para el contenido del acordeón */
+    padding: 1.25rem;
+}
+.accordion-body ul {
+    margin-top: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    body {
+        padding-top: 0; /* Remover padding si la navbar lateral se colapsa */
+    }
+    .sidebar {
+        position: static; /* Cambiar a estático en móviles */
+        height: auto;
+        box-shadow: none;
+        border-right: none;
+        border-bottom: 1px solid var(--sidebar-border-color);
+    }
+    .main-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.375rem; }
+}

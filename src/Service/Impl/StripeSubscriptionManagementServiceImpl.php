@@ -34,8 +34,11 @@ class StripeSubscriptionManagementServiceImpl implements StripeSubscriptionManag
             ]);
             return $stripeSubscriptionObject;
         } catch (ApiErrorException $e) {
+
             ErrorLogger::exception($e, ['subscription_id' => $subscriptionId, 'operation' => __METHOD__]);
+
             if ($e->getStripeCode() === 'resource_missing') {
+
                 throw new NotFoundException("Suscripción {$subscriptionId} no encontrada en Stripe para cancelar.", 0, $e);
             }
             throw $e;
@@ -55,10 +58,14 @@ class StripeSubscriptionManagementServiceImpl implements StripeSubscriptionManag
             ]);
             return $stripeSubscriptionObject;
         } catch (ApiErrorException $e) {
+
             ErrorLogger::exception($e, ['subscription_id' => $subscriptionId, 'operation' => __METHOD__]);
+
             if ($e->getStripeCode() === 'resource_missing') {
+
                 throw new NotFoundException("Suscripción {$subscriptionId} no encontrada en Stripe para programar cancelación.", 0, $e);
             }
+
             throw $e;
         }
     }

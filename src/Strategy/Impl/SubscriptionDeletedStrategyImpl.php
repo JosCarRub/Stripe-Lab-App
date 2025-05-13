@@ -86,7 +86,7 @@ class SubscriptionDeletedStrategyImpl implements StripeWebhookStrategyInterface
 
         // El DTO (y el payload de Stripe) debería tener `canceled_at` o `ended_at` relleno.
         // El `updateFromSubscriptionDTO` del factory ya se encarga de estos.
-        // Si `canceled_at` no está en el payload pero `ended_at` sí, podemos usar `ended_at`.
+        // Si `canceled_at` no está en el payload pero `ended_at` sí, se puede usar `ended_at`.
         // O si `ended_at` está y `canceled_at` no, `ended_at` toma precedencia para marcar el final.
         if ($subDTO->endedAtTimestamp && !$updatedSubscriptionModel->getEndedAt()) {
             $updatedSubscriptionModel->setEndedAt(SubscriptionsModel::createDateTimeFromStripeTimestamp($subDTO->endedAtTimestamp));
@@ -106,6 +106,7 @@ class SubscriptionDeletedStrategyImpl implements StripeWebhookStrategyInterface
 
 
         try {
+
             $this->subscriptionRepository->save($updatedSubscriptionModel);
             EventLogger::log(self::class . ": Suscripción marcada como eliminada/cancelada y guardada.", [
                 'event_id' => $eventId,

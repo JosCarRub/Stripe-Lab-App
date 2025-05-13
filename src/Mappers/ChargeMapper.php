@@ -52,7 +52,7 @@ class ChargeMapper
         $id = $stripePayloadCharge->id;
         $objectType = $stripePayloadCharge->object;
         $amount = $stripePayloadCharge->amount;
-        $amountCaptured = $stripePayloadCharge->amount_captured ?? $amount; // Si no está captured, puede ser amount
+        $amountCaptured = $stripePayloadCharge->amount_captured ?? $amount;
         $currency = $stripePayloadCharge->currency;
 
         $rawCustomer = $stripePayloadCharge->customer ?? null;

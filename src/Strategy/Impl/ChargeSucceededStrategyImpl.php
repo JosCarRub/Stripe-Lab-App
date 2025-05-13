@@ -66,7 +66,7 @@ class ChargeSucceededStrategyImpl implements StripeWebhookStrategyInterface
                 $transaction->setDocumentUrl($chargeDTO->receiptUrl);
                 $updated = true;
             }
-            // Actualizar charge_id si no estaba o es diferente (asegurar consistencia)
+            // Actualizar charge_id si no estaba o es diferente
             if ($transaction->getStripeChargeId() !== $chargeDTO->id) {
                 $transaction->setStripeChargeId($chargeDTO->id);
                 $updated = true;

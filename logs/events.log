@@ -1,98 +1,20 @@
-[2025-05-12 23:08:47] [EVENT] Bootstrap: .env cargado.
-[2025-05-12 23:08:47] [EVENT] Bootstrap: Inicializado. Constantes definidas.
-[2025-05-12 23:08:47] [EVENT] Bootstrap: .env cargado.
-[2025-05-12 23:08:47] [EVENT] Bootstrap: Inicializado. Constantes definidas.
-[2025-05-12 23:08:47] [EVENT] Bootstrap: GlobalStripeClient instanciado.
-[2025-05-12 23:08:47] [EVENT] Bootstrap: StripeSubscriptionManagementService instanciado.
-[2025-05-12 23:08:47] [EVENT] Bootstrap: StripeSubscriptionController instanciado.
-[2025-05-12 23:08:47] [EVENT] API [api-subscriptions.php]: Solicitud para listar TODAS las suscripciones del sistema. - Context: {"page":1,"limit":5}
-[2025-05-12 23:08:47] [EVENT] App\Controller\Impl\StripeSubscriptionControllerImpl: Solicitando todas las suscripciones. - Context: {"page":1,"limit":5}
-[2025-05-12 23:09:09] [EVENT] Bootstrap: .env cargado.
-[2025-05-12 23:09:09] [EVENT] Bootstrap: Inicializado. Constantes definidas.
-[2025-05-12 23:09:09] [EVENT] Bootstrap: GlobalStripeClient instanciado.
-[2025-05-12 23:09:09] [EVENT] Bootstrap: StripeSubscriptionManagementService instanciado.
-[2025-05-12 23:09:09] [EVENT] API [api-manage-subscriptions.php]: Solicitud de gestión recibida. - Context: {"action":"cancel_now","subscription_id":"sub_1RO5QfP71JLI6sb9EKIosSQS"}
-[2025-05-12 23:09:09] [EVENT] App\Service\Impl\StripeSubscriptionManagementServiceImpl: Solicitando cancelación inmediata vía API. - Context: {"subscription_id":"sub_1RO5QfP71JLI6sb9EKIosSQS"}
-[2025-05-12 23:09:09] [EVENT] App\Service\Impl\StripeSubscriptionManagementServiceImpl: Suscripción cancelada inmediatamente (respuesta API). - Context: {"subscription_id":"sub_1RO5QfP71JLI6sb9EKIosSQS","api_status":"canceled"}
-[2025-05-12 23:09:09] [EVENT] Bootstrap: .env cargado.
-[2025-05-12 23:09:09] [EVENT] Bootstrap: Inicializado. Constantes definidas.
-[2025-05-12 23:09:09] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
-[2025-05-12 23:09:09] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
-[2025-05-12 23:09:09] [EVENT] Bootstrap: StripeWebhookService instanciado.
-[2025-05-12 23:09:09] [EVENT] Bootstrap: StripeWebhookController instanciado.
-[2025-05-12 23:09:09] [EVENT] StripeWebhookController: Webhook recibido.
-[2025-05-12 23:09:09] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
-[2025-05-12 23:09:09] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RO5T7P71JLI6sb99KZV8W0y","event_type":"customer.subscription.deleted"}
-[2025-05-12 23:09:09] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RO5T7P71JLI6sb99KZV8W0y","event_type":"customer.subscription.deleted"}
-[2025-05-12 23:09:09] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_1RO5T7P71JLI6sb99KZV8W0y","event_type":"customer.subscription.deleted","strategy_class":"App\\Strategy\\Impl\\SubscriptionDeletedStrategyImpl"}
-[2025-05-12 23:09:09] [EVENT] App\Strategy\Impl\SubscriptionDeletedStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_1RO5T7P71JLI6sb99KZV8W0y","event_type":"customer.subscription.deleted"}
-[2025-05-12 23:09:09] [EVENT] SubscriptionMapper DEBUG: Objeto payload recibido. - Context: {"class":"Stripe\\Subscription","json_representation_snippet":"{\n    \"id\": \"sub_1RO5QfP71JLI6sb9EKIosSQS\",\n    \"object\": \"subscription\",\n    \"application\": null,\n    \"application_fee_percent\": null,\n    \"automatic_tax\": {\n        \"disabled_reason\": null,\n        \"enabled\": false,\n        \"liability\": null\n    },\n    \"billing_cycle_anchor\": 1747091196,\n    \"billing_cycle_anchor_config\": null,\n    \"cancel_at\": null,\n    \"cancel_at_period_end\": false,\n    \"canceled_at\": 1747091349,\n    \"cancellation_details\": {\n        \"comment\": null,\n        \"feedback\": null,\n        \"reason\": \"cancellation_requested\"\n    },\n    \"collection_method\": \"charge_automatically\",\n    \"created\": 1747091196,\n    \"currency\": \"eur\",\n    \"customer\": \"cus_SIgoJvUF0ooe7U\",\n    \"days_until_due\": null,\n    \"default_payment_method\": \"pm_1RO5QdP71JLI6sb9E6WLHpfW\",\n    \"default_source\": null,\n    \"default_tax_rates\": [],\n    \"description\": null,\n    \"discounts\": [],\n    \"ended_at\": 1747091349,\n    \"invoice_settings\": {\n        \"account_tax_ids\": null,\n        \"issuer\": {\n            "}
-[2025-05-12 23:09:09] [EVENT] SubscriptionMapper: Usando 'start_date' como 'current_period_start'. - Context: {"sub_id":"sub_1RO5QfP71JLI6sb9EKIosSQS"}
-[2025-05-12 23:09:09] [EVENT] SubscriptionMapper: Usando 'items.data[0].current_period_end'. - Context: {"sub_id":"sub_1RO5QfP71JLI6sb9EKIosSQS"}
-[2025-05-12 23:09:09] [EVENT] App\Strategy\Impl\SubscriptionDeletedStrategyImpl: Subscription DTO mapeado para eliminación/cancelación. - Context: {"event_id":"evt_1RO5T7P71JLI6sb99KZV8W0y","sub_id":"sub_1RO5QfP71JLI6sb9EKIosSQS","status_from_payload":"canceled"}
-[2025-05-12 23:09:09] [EVENT] SubscriptionModelFactory: Actualizando SubscriptionsModel desde SubscriptionDTO. - Context: {"sub_id":"sub_1RO5QfP71JLI6sb9EKIosSQS","new_status":"canceled"}
-[2025-05-12 23:09:09] [EVENT] SubscriptionModelFactory: SubscriptionsModel actualizado. - Context: {"sub_id":"sub_1RO5QfP71JLI6sb9EKIosSQS"}
-[2025-05-12 23:09:09] [EVENT] App\Strategy\Impl\SubscriptionDeletedStrategyImpl: Suscripción marcada como eliminada/cancelada y guardada. - Context: {"event_id":"evt_1RO5T7P71JLI6sb99KZV8W0y","sub_id":"sub_1RO5QfP71JLI6sb9EKIosSQS","final_status":"canceled"}
-[2025-05-12 23:09:09] [EVENT] App\Strategy\Impl\SubscriptionDeletedStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_1RO5T7P71JLI6sb99KZV8W0y","sub_id":"sub_1RO5QfP71JLI6sb9EKIosSQS"}
-[2025-05-12 23:09:09] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_1RO5T7P71JLI6sb99KZV8W0y","strategy_class":"App\\Strategy\\Impl\\SubscriptionDeletedStrategyImpl"}
-[2025-05-12 23:09:09] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_1RO5T7P71JLI6sb99KZV8W0y"}
-[2025-05-12 23:09:11] [EVENT] Bootstrap: .env cargado.
-[2025-05-12 23:09:11] [EVENT] Bootstrap: Inicializado. Constantes definidas.
-[2025-05-12 23:09:11] [EVENT] Bootstrap: GlobalStripeClient instanciado.
-[2025-05-12 23:09:11] [EVENT] Bootstrap: StripeSubscriptionManagementService instanciado.
-[2025-05-12 23:09:11] [EVENT] Bootstrap: StripeSubscriptionController instanciado.
-[2025-05-12 23:09:11] [EVENT] API [api-subscriptions.php]: Solicitud para listar TODAS las suscripciones del sistema. - Context: {"page":1,"limit":5}
-[2025-05-12 23:09:11] [EVENT] App\Controller\Impl\StripeSubscriptionControllerImpl: Solicitando todas las suscripciones. - Context: {"page":1,"limit":5}
-[2025-05-12 23:09:20] [EVENT] Bootstrap: .env cargado.
-[2025-05-12 23:09:20] [EVENT] Bootstrap: Inicializado. Constantes definidas.
-[2025-05-12 23:09:20] [EVENT] Bootstrap: GlobalStripeClient instanciado.
-[2025-05-12 23:09:20] [EVENT] Bootstrap: StripeSubscriptionManagementService instanciado.
-[2025-05-12 23:09:20] [EVENT] API [api-manage-subscriptions.php]: Solicitud de gestión recibida. - Context: {"action":"cancel_at_period_end","subscription_id":"sub_1RO5PaP71JLI6sb9JeUmU3lZ"}
-[2025-05-12 23:09:20] [EVENT] App\Service\Impl\StripeSubscriptionManagementServiceImpl: Solicitando cancelación al final del periodo vía API. - Context: {"subscription_id":"sub_1RO5PaP71JLI6sb9JeUmU3lZ"}
-[2025-05-12 23:09:20] [EVENT] App\Service\Impl\StripeSubscriptionManagementServiceImpl: Suscripción configurada para cancelar al final del periodo (respuesta API). - Context: {"subscription_id":"sub_1RO5PaP71JLI6sb9JeUmU3lZ","api_cancel_at_period_end":true}
-[2025-05-12 23:09:20] [EVENT] Bootstrap: .env cargado.
-[2025-05-12 23:09:20] [EVENT] Bootstrap: Inicializado. Constantes definidas.
-[2025-05-12 23:09:20] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
-[2025-05-12 23:09:20] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
-[2025-05-12 23:09:20] [EVENT] Bootstrap: StripeWebhookService instanciado.
-[2025-05-12 23:09:20] [EVENT] Bootstrap: StripeWebhookController instanciado.
-[2025-05-12 23:09:20] [EVENT] StripeWebhookController: Webhook recibido.
-[2025-05-12 23:09:20] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
-[2025-05-12 23:09:20] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RO5TIP71JLI6sb9VAxuiPuw","event_type":"customer.subscription.updated"}
-[2025-05-12 23:09:20] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RO5TIP71JLI6sb9VAxuiPuw","event_type":"customer.subscription.updated"}
-[2025-05-12 23:09:20] [EVENT] StripeWebhookService: Estrategia encontrada, procesando... - Context: {"event_id":"evt_1RO5TIP71JLI6sb9VAxuiPuw","event_type":"customer.subscription.updated","strategy_class":"App\\Strategy\\Impl\\SubscriptionUpdatedStrategyImpl"}
-[2025-05-12 23:09:20] [EVENT] App\Strategy\Impl\SubscriptionUpdatedStrategyImpl: Iniciando procesamiento. - Context: {"event_id":"evt_1RO5TIP71JLI6sb9VAxuiPuw","event_type":"customer.subscription.updated"}
-[2025-05-12 23:09:20] [EVENT] SubscriptionMapper DEBUG: Objeto payload recibido. - Context: {"class":"Stripe\\Subscription","json_representation_snippet":"{\n    \"id\": \"sub_1RO5PaP71JLI6sb9JeUmU3lZ\",\n    \"object\": \"subscription\",\n    \"application\": null,\n    \"application_fee_percent\": null,\n    \"automatic_tax\": {\n        \"disabled_reason\": null,\n        \"enabled\": false,\n        \"liability\": null\n    },\n    \"billing_cycle_anchor\": 1747091129,\n    \"billing_cycle_anchor_config\": null,\n    \"cancel_at\": 1778627129,\n    \"cancel_at_period_end\": true,\n    \"canceled_at\": 1747091360,\n    \"cancellation_details\": {\n        \"comment\": null,\n        \"feedback\": null,\n        \"reason\": \"cancellation_requested\"\n    },\n    \"collection_method\": \"charge_automatically\",\n    \"created\": 1747091129,\n    \"currency\": \"eur\",\n    \"customer\": \"cus_SIgnD5ZnJtFkKF\",\n    \"days_until_due\": null,\n    \"default_payment_method\": \"pm_1RO5PYP71JLI6sb9WmxI8bzK\",\n    \"default_source\": null,\n    \"default_tax_rates\": [],\n    \"description\": null,\n    \"discounts\": [],\n    \"ended_at\": null,\n    \"invoice_settings\": {\n        \"account_tax_ids\": null,\n        \"issuer\": {\n            \""}
-[2025-05-12 23:09:20] [EVENT] SubscriptionMapper: Usando 'start_date' como 'current_period_start'. - Context: {"sub_id":"sub_1RO5PaP71JLI6sb9JeUmU3lZ"}
-[2025-05-12 23:09:20] [EVENT] SubscriptionMapper: Usando 'items.data[0].current_period_end'. - Context: {"sub_id":"sub_1RO5PaP71JLI6sb9JeUmU3lZ"}
-[2025-05-12 23:09:20] [EVENT] App\Strategy\Impl\SubscriptionUpdatedStrategyImpl: Subscription DTO mapeado para actualización. - Context: {"event_id":"evt_1RO5TIP71JLI6sb9VAxuiPuw","sub_id":"sub_1RO5PaP71JLI6sb9JeUmU3lZ","new_status":"active"}
-[2025-05-12 23:09:20] [EVENT] App\Strategy\Impl\SubscriptionUpdatedStrategyImpl: Verificando email del cliente desde API. - Context: {"customer_id":"cus_SIgnD5ZnJtFkKF"}
-[2025-05-12 23:09:21] [EVENT] SubscriptionModelFactory: Actualizando SubscriptionsModel desde SubscriptionDTO. - Context: {"sub_id":"sub_1RO5PaP71JLI6sb9JeUmU3lZ","new_status":"active"}
-[2025-05-12 23:09:21] [EVENT] SubscriptionModelFactory: SubscriptionsModel actualizado. - Context: {"sub_id":"sub_1RO5PaP71JLI6sb9JeUmU3lZ"}
-[2025-05-12 23:09:21] [EVENT] App\Strategy\Impl\SubscriptionUpdatedStrategyImpl: Suscripción actualizada y guardada. - Context: {"event_id":"evt_1RO5TIP71JLI6sb9VAxuiPuw","sub_id":"sub_1RO5PaP71JLI6sb9JeUmU3lZ"}
-[2025-05-12 23:09:21] [EVENT] App\Strategy\Impl\SubscriptionUpdatedStrategyImpl: Procesamiento completado. - Context: {"event_id":"evt_1RO5TIP71JLI6sb9VAxuiPuw","sub_id":"sub_1RO5PaP71JLI6sb9JeUmU3lZ"}
-[2025-05-12 23:09:21] [EVENT] StripeWebhookService: Estrategia procesada exitosamente. - Context: {"event_id":"evt_1RO5TIP71JLI6sb9VAxuiPuw","strategy_class":"App\\Strategy\\Impl\\SubscriptionUpdatedStrategyImpl"}
-[2025-05-12 23:09:21] [EVENT] StripeWebhookController: Webhook procesado exitosamente. - Context: {"event_id":"evt_1RO5TIP71JLI6sb9VAxuiPuw"}
-[2025-05-12 23:09:23] [EVENT] Bootstrap: .env cargado.
-[2025-05-12 23:09:23] [EVENT] Bootstrap: Inicializado. Constantes definidas.
-[2025-05-12 23:09:23] [EVENT] Bootstrap: Todas las estrategias (8) instanciadas.
-[2025-05-12 23:09:23] [EVENT] StripeWebhookServiceImpl inicializado con 8 estrategias.
-[2025-05-12 23:09:23] [EVENT] Bootstrap: StripeWebhookService instanciado.
-[2025-05-12 23:09:23] [EVENT] Bootstrap: StripeWebhookController instanciado.
-[2025-05-12 23:09:23] [EVENT] StripeWebhookController: Webhook recibido.
-[2025-05-12 23:09:23] [EVENT] StripeWebhookService: Intentando construir evento de Stripe.
-[2025-05-12 23:09:23] [EVENT] StripeWebhookController: Evento de Stripe construido y verificado. - Context: {"event_id":"evt_1RO5TKP71JLI6sb9IV9zNCwu","event_type":"checkout.session.expired"}
-[2025-05-12 23:09:23] [EVENT] StripeWebhookService: Buscando estrategia para procesar evento. - Context: {"event_id":"evt_1RO5TKP71JLI6sb9IV9zNCwu","event_type":"checkout.session.expired"}
-[2025-05-12 23:09:23] [EVENT] StripeWebhookService: No se encontró estrategia aplicable (payload logueado en unhandled_stripe_events.log). - Context: {"event_id":"evt_1RO5TKP71JLI6sb9IV9zNCwu","event_type":"checkout.session.expired"}
-[2025-05-12 23:09:23] [EVENT] StripeWebhookController: No se encontró estrategia aplicable. - Context: {"event_type":null,"event_id":"evt_1RO5TKP71JLI6sb9IV9zNCwu"}
-[2025-05-12 23:09:23] [EVENT] Bootstrap: .env cargado.
-[2025-05-12 23:09:23] [EVENT] Bootstrap: Inicializado. Constantes definidas.
-[2025-05-12 23:09:23] [EVENT] Bootstrap: GlobalStripeClient instanciado.
-[2025-05-12 23:09:23] [EVENT] Bootstrap: StripeSubscriptionManagementService instanciado.
-[2025-05-12 23:09:23] [EVENT] Bootstrap: StripeSubscriptionController instanciado.
-[2025-05-12 23:09:23] [EVENT] API [api-subscriptions.php]: Solicitud para listar TODAS las suscripciones del sistema. - Context: {"page":1,"limit":5}
-[2025-05-12 23:09:23] [EVENT] App\Controller\Impl\StripeSubscriptionControllerImpl: Solicitando todas las suscripciones. - Context: {"page":1,"limit":5}
-[2025-05-12 23:25:03] [EVENT] Bootstrap: .env cargado.
-[2025-05-12 23:25:03] [EVENT] Bootstrap: Inicializado. Constantes definidas.
-[2025-05-12 23:26:16] [EVENT] Bootstrap: .env cargado.
-[2025-05-12 23:26:16] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 08:25:24] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 08:25:24] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 08:25:24] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 08:25:24] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 08:25:27] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 08:25:27] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 08:25:29] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 08:25:29] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 08:25:29] [EVENT] Endpoint create_subscription_session.php: Solicitud recibida.
+[2025-05-13 08:25:29] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl inicializado con appDomainBase: http://localhost:8000/public
+[2025-05-13 08:25:29] [EVENT] Bootstrap: StripeCheckoutSessionService instanciado.
+[2025-05-13 08:25:29] [EVENT] create_subscription_session.php: Llamando a createSubscriptionSession. - Context: {"lookup_key":"annual_payment"}
+[2025-05-13 08:25:29] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Creando sesión de suscripción. - Context: {"lookup_key":"annual_payment"}
+[2025-05-13 08:25:29] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Buscando Price ID. - Context: {"lookup_key":"annual_payment","context":"suscripción"}
+[2025-05-13 08:25:30] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Price ID encontrado. - Context: {"lookup_key":"annual_payment","price_id":"price_1RLNsHP71JLI6sb9ez8HJsHt"}
+[2025-05-13 08:25:30] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: URLs para suscripción. - Context: {"success":"http://localhost:8000/public/success.html?session_id={CHECKOUT_SESSION_ID}","cancel":"http://localhost:8000/public/cancel.html"}
+[2025-05-13 08:25:30] [EVENT] App\Service\Impl\StripeCheckoutSessionServiceImpl: Sesión de suscripción creada. - Context: {"session_id":"cs_test_a15Bv1av2e2zsWg1WB7c8Hxv63wl4FHW1OakVPZ5fiTTKx9UU6W7t1ZfTw","price_id":"price_1RLNsHP71JLI6sb9ez8HJsHt"}
+[2025-05-13 08:25:30] [EVENT] create_subscription_session.php: Sesión de suscripción creada. - Context: {"session_id":"cs_test_a15Bv1av2e2zsWg1WB7c8Hxv63wl4FHW1OakVPZ5fiTTKx9UU6W7t1ZfTw"}
+[2025-05-13 08:47:51] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 08:47:51] [EVENT] Bootstrap: Inicializado. Constantes definidas.

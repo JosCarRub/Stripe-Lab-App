@@ -66,12 +66,19 @@ class CheckoutSessionCompletedStrategyImpl implements StripeWebhookStrategyInter
         ]);
 
         if ($csDTO->mode === 'payment' && $csDTO->paymentStatus === 'paid') {
+
             if ($csDTO->paymentIntentId) {
+
                 $existingTransaction = $this->transactionRepository->findByPaymentIntentId($csDTO->paymentIntentId);
+
                 if (!$existingTransaction) {
+
                     $transaction = $this->transactionFactory->createFromCheckoutSessionDTO($csDTO);
+
                     if ($transaction) {
+
                         $this->transactionRepository->save($transaction);
+
                         EventLogger::log(self::class . ": Transacción preliminar creada para pago único vía Checkout.", [
                             'event_id' => $eventId, 'cs_id' => $csDTO->id,
                             'local_transaction_id' => $transaction->getTransactionId(),
@@ -81,26 +88,35 @@ class CheckoutSessionCompletedStrategyImpl implements StripeWebhookStrategyInter
                 } else {
                     EventLogger::log(self::class . ": Transacción ya existente para PI de Checkout (pago único).", ['pi_id' => $csDTO->paymentIntentId, 'local_tx_id' => $existingTransaction->getTransactionId()]);
                 }
+
             } else {
+
                 EventLogger::log(self::class . ": CS modo pago pero sin paymentIntentId.", ['cs_id' => $csDTO->id], '[INFO]');
             }
 
         } elseif ($csDTO->mode === 'subscription') {
             if ($csDTO->subscriptionId && $csDTO->customerEmail && $csDTO->customerId) {
                 $subscription = $this->subscriptionRepository->findById($csDTO->subscriptionId);
+
                 if ($subscription) {
+
                     $emailChanged = ($subscription->getCustomerEmail() === null && $csDTO->customerEmail !== null) ||
                         ($subscription->getCustomerEmail() !== null && $subscription->getCustomerEmail() !== $csDTO->customerEmail);
 
                     if ($emailChanged) {
+
                         $subscription->setCustomerEmail($csDTO->customerEmail);
+
                         if ($subscription->getStripeCustomerId() !== $csDTO->customerId) {
                             ErrorLogger::log(self::class.": Discrepancia Customer ID en suscripción.", ['sub_id' => $csDTO->subscriptionId], '[WARNING]');
                         }
+
                         $this->subscriptionRepository->save($subscription);
                         EventLogger::log(self::class . ": Email del cliente actualizado en suscripción desde Checkout.", ['sub_id' => $csDTO->subscriptionId]);
                     }
+
                 } else {
+
                     EventLogger::log(self::class . ": Suscripción de Checkout aún no en BD (se esperará a customer.subscription.created).", [
                         'sub_id' => $csDTO->subscriptionId, 'email_from_cs' => $csDTO->customerEmail
                     ]);

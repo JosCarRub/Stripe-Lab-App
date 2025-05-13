@@ -25,7 +25,7 @@ class StripeCheckoutSessionServiceImpl implements StripeCheckoutServiceInterface
         if (empty($stripeSecretKey)) {
             throw new ConfigurationException("Stripe secret key no proporcionada a StripeCheckoutSessionService.");
         }
-        // No llamar a Stripe::setApiKey() globalmente, usar el cliente instanciado.
+        //  usar el cliente instanciado.
         $this->stripeClient = new StripeClient($stripeSecretKey);
 
         if (empty($appUrlBase) || !filter_var($appUrlBase, FILTER_VALIDATE_URL)) {
@@ -96,7 +96,7 @@ class StripeCheckoutSessionServiceImpl implements StripeCheckoutServiceInterface
         } catch (ApiErrorException $e) {
 
             ErrorLogger::exception($e, ['lookup_key' => $priceLookupKey, 'operation' => __METHOD__]);
-            throw $e; // Relanzar para que el script del endpoint la maneje
+            throw $e;
 
         } catch (ConfigurationException $e) {
 

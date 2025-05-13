@@ -81,7 +81,7 @@ class SubscriptionUpdatedStrategyImpl implements StripeWebhookStrategyInterface
         if ($this->stripeClient && $this->customerMapper && $subDTO->customerId) {
             // verificar si el email del cliente en Stripe ha cambiado.
             // El payload de subscription.updated no siempre incluye detalles del cliente actualizados.
-            // Una llamada a la API customers->retrieve es más fiable
+            // Una llamada a la API customers->retrieve es lo más fiable
             try {
 
                 EventLogger::log(self::class . ": Verificando email del cliente desde API.", ['customer_id' => $subDTO->customerId]);
@@ -107,7 +107,7 @@ class SubscriptionUpdatedStrategyImpl implements StripeWebhookStrategyInterface
         $updatedSubscriptionModel = $this->subscriptionFactory->updateFromSubscriptionDTO(
             $existingSubscription,
             $subDTO,
-            $customerEmail // Pasar el email (potencialmente actualizado)
+            $customerEmail
         );
 
         try {
