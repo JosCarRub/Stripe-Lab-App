@@ -1,0 +1,623 @@
+/* ===============================================
+   STRIPE LAB APP DOCUMENTATION STYLES
+   =============================================== */
+
+:root {
+    /* Color palette */
+    --mint: #00d4b1;
+    --primary: #00d4b1;
+    --primary-dark: #00a98d;
+    --primary-light: #4ddfca;
+    --primary-lighter: #e6f9f6;
+    --secondary: #ffbc44;
+    --secondary-dark: #f5a000;
+    --secondary-light: #ffd180;
+    --accent: #8a5cf7;
+    --accent-dark: #7347e6;
+    --accent-light: #b095fa;
+
+    /* Neutrals */
+    --dark: #333333;
+    --dark-gray: #555555;
+    --gray: #888888;
+    --light-gray: #cccccc;
+    --very-light-gray: #f0f0f0;
+    --white: #ffffff;
+
+    /* Semantic colors */
+    --success: #28a745;
+    --success-light: #d4edda;
+    --warning: #ffc107;
+    --warning-light: #fff3cd;
+    --danger: #dc3545;
+    --danger-light: #f8d7da;
+    --info: #17a2b8;
+    --info-light: #d1ecf1;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(145deg, var(--primary), var(--primary-dark));
+    --gradient-secondary: linear-gradient(145deg, var(--secondary), var(--secondary-dark));
+    --gradient-accent: linear-gradient(145deg, var(--accent), var(--accent-dark));
+    --gradient-success: linear-gradient(145deg, var(--success), #1fa67a);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
+
+    /* Borders */
+    --border-radius-sm: 0.25rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 0.75rem;
+    --border-width: 1px;
+    --border-color: #dee2e6;
+}
+
+/* ===============================================
+   General Styles
+   =============================================== */
+
+body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--dark);
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    padding-bottom: 3rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+    color: var(--dark);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    color: var(--primary-dark);
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--primary-dark);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-light);
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--dark);
+}
+
+h4 {
+    font-size: 1.25rem;
+    color: var(--dark-gray);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+p {
+    margin-bottom: 1.25rem;
+}
+
+code {
+    font-size: 0.875em;
+    color: var(--accent);
+    background-color: rgba(138, 92, 247, 0.1);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+pre {
+    margin: 1rem 0;
+    border-radius: var(--border-radius-md);
+    background-color: #282c34;
+    padding: 1em;
+    overflow: auto;
+}
+
+pre code {
+    color: #abb2bf;
+    background-color: transparent;
+    padding: 0;
+    font-size: 0.9em;
+    white-space: pre;
+}
+
+blockquote {
+    border-left: 4px solid var(--primary);
+    padding-left: 1rem;
+    margin-left: 0;
+    color: var(--dark-gray);
+    font-style: italic;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 2rem 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container-fluid {
+    padding-top: 1rem;
+}
+
+/* ===============================================
+   Sidebar Styles
+   =============================================== */
+
+.sidebar {
+    background-color: var(--white);
+    box-shadow: var(--shadow-sm);
+    padding: 0;
+    height: 100vh;
+    position: fixed;
+    overflow-y: auto;
+    z-index: 1000;
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    background: var(--gradient-primary);
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.sidebar-header h5 {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+    color: white;
+}
+
+.sidebar-header p {
+    margin-bottom: 0;
+    opacity: 0.8;
+}
+
+.nav-link {
+    padding: 0.75rem 1.5rem;
+    color: var(--dark-gray);
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+    background-color: var(--primary-lighter);
+}
+
+.nav-link.active {
+    color: var(--primary);
+    border-left-color: var(--primary);
+    background-color: var(--primary-lighter);
+    font-weight: 600;
+}
+
+.nav-link i {
+    width: 20px;
+    text-align: center;
+    margin-right: 0.5rem;
+}
+
+.sub-nav {
+    list-style: none;
+    padding-left: 2.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.sub-nav li {
+    margin-bottom: 0.25rem;
+}
+
+.sub-nav a {
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+    display: block;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius-sm);
+    transition: all 0.2s;
+}
+
+.sub-nav a:hover {
+    color: var(--primary);
+    background-color: var(--primary-lighter);
+    text-decoration: none;
+}
+
+/* ===============================================
+   Main Content Styles
+   =============================================== */
+
+main {
+    padding-top: 1.5rem;
+}
+
+.lead {
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--dark-gray);
+    margin-bottom: 2rem;
+}
+
+.subsection {
+    margin-bottom: 2.5rem;
+}
+
+/* ===============================================
+   Cards and Alerts
+   =============================================== */
+
+.card {
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: var(--border-width) solid var(--border-color);
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.alert {
+    border-radius: var(--border-radius-md);
+    border: none;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.alert-info {
+    background-color: var(--info-light);
+    color: var(--info);
+}
+
+.alert-success {
+    background-color: var(--success-light);
+    color: var(--success);
+}
+
+.alert-warning {
+    background-color: var(--warning-light);
+    color: #856404;
+}
+
+.alert-danger {
+    background-color: var(--danger-light);
+    color: var(--danger);
+}
+
+.alert-secondary {
+    background-color: var(--very-light-gray);
+    color: var(--dark-gray);
+}
+
+.alert i {
+    margin-right: 0.5rem;
+}
+
+/* ===============================================
+   Code Snippets
+   =============================================== */
+
+.code-snippet {
+    position: relative;
+    margin: 1rem 0;
+}
+
+.code-snippet pre {
+    margin: 0;
+    background-color: #f7f8fc;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.code-snippet pre code {
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
+    color: #abb2bf;
+    background: transparent;
+}
+
+/* ===============================================
+   Tables
+   =============================================== */
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: var(--border-width) solid var(--border-color);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.table-primary,
+.table-primary > th,
+.table-primary > td {
+    background-color: var(--primary-lighter);
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid var(--border-color);
+    background-color: #f8f9fa;
+    color: var(--dark-gray);
+    font-weight: 600;
+}
+
+/* ===============================================
+   Accordion Styles
+   =============================================== */
+
+.accordion-item {
+    border: var(--border-width) solid var(--border-color);
+    margin-bottom: 0.5rem;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+}
+
+.accordion-header {
+    margin: 0;
+}
+
+.accordion-button {
+    background-color: #f8f9fa;
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    color: var(--dark);
+    width: 100%;
+    text-align: left;
+    transition: all 0.2s;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--primary-lighter);
+    color: var(--primary-dark);
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: var(--border-color);
+}
+
+.accordion-body {
+    padding: 1.25rem;
+    background-color: var(--white);
+}
+
+/* ===============================================
+   Mermaid Diagrams
+   =============================================== */
+
+.mermaid-diagram {
+    text-align: center;
+    margin: 2rem 0;
+    overflow-x: auto;
+}
+
+.mermaid {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+}
+
+/* Make diagrams responsive */
+.mermaid svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===============================================
+   Responsive Adjustments
+   =============================================== */
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        position: static;
+        height: auto;
+        margin-bottom: 1.5rem;
+    }
+
+    main {
+        margin-left: 0;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* ===============================================
+   Print Styles
+   =============================================== */
+
+@media print {
+    .sidebar {
+        display: none;
+    }
+
+    main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .no-print {
+        display: none;
+    }
+
+    a {
+        text-decoration: underline;
+        color: var(--dark);
+    }
+
+    code, pre {
+        background-color: #f1f1f1 !important;
+        color: var(--dark) !important;
+        border: 1px solid #ddd;
+    }
+
+    .card, .alert {
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+    }
+}
+
+/* ===============================================
+   Custom Badge Styles
+   =============================================== */
+
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+    border-radius: 0.25rem;
+    font-size: 0.75em;
+}
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary) !important;
+}
+
+.bg-success {
+    background-color: var(--success) !important;
+}
+
+.bg-danger {
+    background-color: var(--danger) !important;
+}
+
+.bg-warning {
+    background-color: var(--warning) !important;
+}
+
+.bg-info {
+    background-color: var(--info) !important;
+}
+
+/* ===============================================
+   Utility Classes
+   =============================================== */
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.text-secondary {
+    color: var(--secondary) !important;
+}
+
+.text-accent {
+    color: var(--accent) !important;
+}
+
+.text-success {
+    color: var(--success) !important;
+}
+
+.text-danger {
+    color: var(--danger) !important;
+}
+
+.text-warning {
+    color: var(--warning) !important;
+}
+
+.text-info {
+    color: var(--info) !important;
+}
+
+.text-white {
+    color: white !important;
+}
+
+.bg-gradient-primary {
+    background: var(--gradient-primary);
+}
+
+.bg-gradient-secondary {
+    background: var(--gradient-secondary);
+}
+
+.bg-gradient-accent {
+    background: var(--gradient-accent);
+}
+
+/* Subtle hover effect for cards */
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+}
+
+/* Custom scrollbar for better UX */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gray);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-gray);
+}

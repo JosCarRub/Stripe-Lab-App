@@ -1,6 +1,6 @@
 # StripeLabApp
 
-## Una aplicación de prueba para integración con Stripe
+## Aplicación de prueba para la integración de pagos con Stripe
 
 StripeLabApp es una aplicación PHP diseñada para comprender el funcionamiento de la API de Stripe, tanto para pagos únicos como para suscripciones. Esta apliación de prueba ofrece funcionalidades completas de registro de transacciones, visualización de facturas y gestión de suscripciones.
 
@@ -9,10 +9,12 @@ StripeLabApp es una aplicación PHP diseñada para comprender el funcionamiento 
 ## Características
 
 ### Procesamiento de Pagos
+
 - **Pagos Únicos:** Implementación completa del flujo mediante Stripe Checkout
 - **Suscripciones:** Soporte para planes mensuales y anuales a través de Stripe Checkout
 
 ### Integración con Stripe
+
 - **Webhook Completo:** Procesamiento de eventos clave de Stripe:
   - Gestión de suscripciones (`customer.subscription.created`, `.updated`, `.deleted`)
   - Registro de pagos de facturas (`invoice.paid`)
@@ -22,14 +24,72 @@ StripeLabApp es una aplicación PHP diseñada para comprender el funcionamiento 
   - Confirmación de sesiones (`checkout.session.completed`)
 
 ### Gestión de Datos
+
 - **Persistencia:** Almacenamiento de transacciones y suscripciones en MySQL
 - **Visualización:** Listado de facturas y suscripciones con paginación y búsqueda
 - **Acceso a Documentos:** URLs directas a facturas alojadas en Stripe
 
 ### Características Técnicas
+
 - **Arquitectura en Capas:** Diseño `Controller → Service → Strategy → Mapper/Factory → Repository`
 - **Logging Detallado:** Archivos separados para eventos, errores, payloads y consultas
 - **Interfaz de Usuario:** Diseño responsivo con Bootstrap 5
+
+---
+
+## Esquema de la Base de Datos
+
+La aplicación utiliza dos tablas principales para almacenar la información de transacciones y suscripciones de Stripe:
+
+```mermaid
+erDiagram
+    StripeTransactions ||--o{ StripeSubscriptions : "latest_transaction_id"
+    
+    StripeTransactions {
+        BIGINT transaction_id PK
+        VARCHAR stripe_customer_id
+        VARCHAR customer_email
+        VARCHAR customer_name
+        ENUM transaction_type
+        VARCHAR stripe_payment_intent_id UK
+        VARCHAR stripe_invoice_id UK
+        VARCHAR stripe_subscription_id
+        VARCHAR stripe_charge_id UK
+        INT amount
+        VARCHAR currency
+        VARCHAR status
+        VARCHAR description
+        VARCHAR document_url
+        VARCHAR pdf_url
+        TIMESTAMP period_start
+        TIMESTAMP period_end
+        TIMESTAMP transaction_date_stripe
+        TIMESTAMP created_at_local
+    }
+    
+    StripeSubscriptions {
+        VARCHAR subscription_id PK
+        VARCHAR stripe_customer_id
+        VARCHAR customer_email
+        VARCHAR status
+        VARCHAR stripe_price_id
+        VARCHAR interval
+        TIMESTAMP current_period_start
+        TIMESTAMP current_period_end
+        BOOLEAN cancel_at_period_end
+        TIMESTAMP canceled_at
+        TIMESTAMP ended_at
+        BIGINT latest_transaction_id FK
+        TIMESTAMP created_at_stripe
+        TIMESTAMP created_at_local
+    }
+```
+
+- **StripeTransactions**: Almacena todas las transacciones de pago, tanto de pagos únicos como de facturas de suscripción.
+
+- **StripeSubscriptions**: Registra información sobre las suscripciones activas, canceladas o finalizadas.
+
+La relación entre ambas tablas se establece mediante el campo `latest_transaction_id` en la tabla de suscripciones, que hace referencia a la última transacción asociada.
 
 ---
 
@@ -50,7 +110,7 @@ StripeLabApp es una aplicación PHP diseñada para comprender el funcionamiento 
 ### 1. Clonar el Repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/StripeLabApp.git
+git clone https://github.com/JosCarRub/StripeLabApp.git
 cd StripeLabApp
 ```
 
@@ -129,11 +189,78 @@ stripe trigger payment_intent.succeeded
 ## Flujo de Funcionamiento
 
 1. **Selección de Plan:** El usuario elige entre pago único o suscripción
+
 2. **Creación de Sesión:** El frontend solicita una sesión de Checkout a los endpoints PHP
+
 3. **Redirección a Stripe:** El cliente completa el pago en la plataforma segura de Stripe
+
 4. **Procesamiento de Eventos:** Stripe envía webhooks que son procesados por estrategias específicas
+
 5. **Persistencia de Datos:** Las transacciones y suscripciones se registran en la base de datos
+
 6. **Visualización:** Los datos pueden verse en las páginas de administración
+
+
+
+**DIAGRAMA DE FLUJO DE LA LÓGICA EN SERVIDOR**
+
+
+
+```mermaid
+flowchart TD
+    StripeWebhookEvent[Evento Webhook de Stripe] -->|HTTP POST| A[public/v1/webhook.php]
+    A -->|Usa| B[config/Bootstrap]
+    B -->|Obtiene| C[StripeWebhookControllerImpl]
+    C -->| payload, signature| D[StripeWebhookServiceImpl  -constructEvent-]
+    D -- Devuelve Evento Stripe verificado --> C
+    C -->|2. Evento Stripe| E[StripeWebhookServiceImpl -processWebhookEvent-]
+    E -->|Loguea Payload| PL[StripePayloadLogger]
+    E -->|Itera y llama isApplicable| F{Selección de Estrategia}
+    
+    subgraph "Proceso de Estrategia Aplicable"
+        direction LR
+        G[Estrategia Específica]
+        G --> H[Mapper Específico]
+        H --> I[DTO Específico]
+        I --> J[Factory Específico]
+        J --> K[Entidad/Modelo]
+        K --> L[Repositorio Específico -save-]
+        L --> M[(Base de Datos MySQL)]
+    end
+
+    F -- Evento Aplicable --> G
+    F -- Evento No Aplicable --> UL[UnhandledStripeEventLogger]
+
+    %% Estilos
+    classDef default fill:#fff,stroke:#333,stroke-width:1.5px;
+    classDef api fill:#D6EAF8,stroke:#3498DB;
+    classDef config fill:#FADBD8,stroke:#E74C3C;
+    classDef controller fill:#E8DAEF,stroke:#8E44AD;
+    classDef service fill:#D5F5E3,stroke:#2ECC71;
+    classDef strategy fill:#FCF3CF,stroke:#F1C40F,font-style:italic;
+    classDef mapper fill:#FEF9E7,stroke:#F7DC6F;
+    classDef dto fill:#FDEBD0,stroke:#F5B041;
+    classDef factory fill:#EBDEF0,stroke:#A569BD;
+    classDef entity fill:#D6DBDF,stroke:#85929E;
+    classDef repository fill:#F4ECF7,stroke:#BB8FCE;
+    classDef database fill:#E5E8E8,stroke:#99A3A4,font-weight:bold;
+    classDef logger fill:#D0ECE7,stroke:#45B39D;
+    classDef decision fill:#fff,stroke:#333,shape:diamond;
+
+    class A api
+    class B config
+    class C controller
+    class D,E service
+    class F decision
+    class G strategy
+    class H mapper
+    class I dto
+    class J factory
+    class K entity
+    class L repository
+    class M database
+    class PL,UL logger
+```
 
 
 ---
@@ -177,20 +304,24 @@ Los archivos de log se generan en el directorio `logs/`:
 ## Solución de Problemas
 
 ### Webhook no recibido
+
 - Verifique que `stripe listen` esté en ejecución
 - Confirme que el secreto de webhook en `.env` sea correcto
 - Revise los logs de `stripe listen`
 
 ### Errores de base de datos
+
 - Verifique credenciales en `.env`
 - Asegúrese de que MySQL esté en ejecución
 - Confirme la creación correcta de las tablas
 
 ### Errores de clase no encontrada
+
 - Ejecute `composer dump-autoload`
 - Verifique namespaces y declaraciones `use`
 
 ### Errores de Stripe API
+
 - Compruebe que las claves API sean correctas
 - Verifique IDs o lookup keys de productos y precios
 

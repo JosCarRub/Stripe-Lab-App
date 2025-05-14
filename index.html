@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StripeLabApp - Sistema de Pagos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/assets/css/landing-page.css">
+</head>
+<body>
+<!-- Loading overlay -->
+<div id="app-loading-overlay">
+  <div class="spinner"></div>
+  <p class="loading-text">Cargando...</p>
+</div>
+
+<div class="landing-container">
+  <div class="landing-canvas">
+    <div class="canvas-shape shape-1"></div>
+    <div class="canvas-shape shape-2"></div>
+    <div class="canvas-shape shape-3"></div>
+    <div class="canvas-shape shape-4"></div>
+  </div>
+
+  <div class="landing-content">
+    <div class="brand-container">
+      <div class="app-brand">
+        <i class="fab fa-stripe app-logo"></i>
+        <span class="app-name">StripeLabApp</span>
+      </div>
+      <label class="theme-toggle" aria-label="Cambiar modo oscuro">
+        <input type="checkbox" id="theme-toggle-input">
+        <span class="theme-slider">
+                    <i class="fas fa-sun sun-icon"></i>
+                    <i class="fas fa-moon moon-icon"></i>
+                </span>
+      </label>
+    </div>
+
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-label">Plataforma de Pagos</div>
+        <h1 class="hero-title">
+          <span class="hero-title-highlight">StripeLabApp</span>
+          Sistema de Gestión de Pagos
+        </h1>
+        <p class="hero-subtitle">Plataforma de testeo para la gestión de pagos únicos y suscripciones con Stripe API, optimizada para máxima seguridad y facilidad de uso.</p>
+
+        <div class="hero-cta">
+          <a href="public/index.php" class="btn btn-primary">
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Entrar a la Aplicación</span>
+          </a>
+          <a href="public/doc/claude/documentation-index.html" class="btn btn-secondary">
+            <i class="fas fa-book"></i>
+            <span>Ver Documentación</span>
+          </a>
+        </div>
+
+        <div class="hero-cards">
+
+        </div>
+      </div>
+
+
+      <div class="hero-image">
+        <div class="card-visual">
+          <div class="card-chip"></div>
+          <div class="card-logo">
+            <i class="fab fa-stripe"></i>
+          </div>
+          <div class="card-number">•••• •••• •••• 4242</div>
+          <div class="card-details">
+            <div class="card-holder">STRIPELAB USER</div>
+            <div class="card-expiry">08/28</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stripe-cards-showcase">
+      <div class="section-header">
+        <h2 class="subsection-title">Tarjetas de Prueba de Stripe</h2>
+        <p class="subsection-subtitle">Usa estas tarjetas para simular diferentes escenarios de pago en el entorno de desarrollo</p>
+      </div>
+
+      <div class="cards-carousel">
+        <div class="cards-slider" id="cardsSlider">
+          <!-- Tarjeta de Pago Exitoso -->
+          <div class="credit-card success-card" data-card="4242424242424242">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="card-bg"></div>
+                <div class="card-chip"></div>
+                <div class="card-logo"><i class="fab fa-cc-visa"></i></div>
+                <div class="card-number">4242 4242 4242 4242</div>
+                <div class="card-details">
+                  <div class="card-holder">CLIENTE EJEMPLO</div>
+                  <div class="card-exp">CUALQUIER FECHA</div>
+                </div>
+                <div class="card-brand">Transacción Exitosa</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tarjeta de Pago Rechazado -->
+          <div class="credit-card decline-card" data-card="4000000000000002">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="card-bg"></div>
+                <div class="card-chip"></div>
+                <div class="card-logo"><i class="fab fa-cc-visa"></i></div>
+                <div class="card-number">4000 0000 0000 0002</div>
+                <div class="card-details">
+                  <div class="card-holder">CLIENTE EJEMPLO</div>
+                  <div class="card-exp">CUALQUIER FECHA</div>
+                </div>
+                <div class="card-brand">Pago Rechazado</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tarjeta de Fondos Insuficientes -->
+          <div class="credit-card insufficient-card" data-card="4000000000009995">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="card-bg"></div>
+                <div class="card-chip"></div>
+                <div class="card-logo"><i class="fab fa-cc-visa"></i></div>
+                <div class="card-number">4000 0000 0000 9995</div>
+                <div class="card-details">
+                  <div class="card-holder">CLIENTE EJEMPLO</div>
+                  <div class="card-exp">CUALQUIER FECHA</div>
+                </div>
+                <div class="card-brand">Fondos Insuficientes</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tarjeta 3D Secure -->
+          <div class="credit-card auth-card" data-card="4000002760003184">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="card-bg"></div>
+                <div class="card-chip"></div>
+                <div class="card-logo"><i class="fab fa-cc-visa"></i></div>
+                <div class="card-number">4000 0027 6000 3184</div>
+                <div class="card-details">
+                  <div class="card-holder">CLIENTE EJEMPLO</div>
+                  <div class="card-exp">CUALQUIER FECHA</div>
+                </div>
+                <div class="card-brand">3D Secure</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tarjeta Mastercard -->
+          <div class="credit-card mastercard-style" data-card="5555555555554444">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="card-bg"></div>
+                <div class="card-chip"></div>
+                <div class="card-logo"><i class="fab fa-cc-mastercard"></i></div>
+                <div class="card-number">5555 5555 5555 4444</div>
+                <div class="card-details">
+                  <div class="card-holder">CLIENTE EJEMPLO</div>
+                  <div class="card-exp">CUALQUIER FECHA</div>
+                </div>
+                <div class="card-brand">Transacción Exitosa</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tarjeta Amex -->
+          <div class="credit-card amex-style" data-card="378282246310005">
+            <div class="card-inner">
+              <div class="card-front">
+                <div class="card-bg"></div>
+                <div class="card-chip"></div>
+                <div class="card-logo"><i class="fab fa-cc-amex"></i></div>
+                <div class="card-number">3782 822463 10005</div>
+                <div class="card-details">
+                  <div class="card-holder">CLIENTE EJEMPLO</div>
+                  <div class="card-exp">CUALQUIER FECHA</div>
+                </div>
+                <div class="card-brand">American Express</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controles del carrusel -->
+        <div class="carousel-controls">
+          <button id="prevCard" class="carousel-control">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div class="carousel-indicators" id="carouselIndicators"></div>
+          <button id="nextCard" class="carousel-control">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="cards-note">
+        <div class="note-icon">
+          <i class="fas fa-info-circle"></i>
+        </div>
+        <p>Estas tarjetas de prueba funcionan en el entorno de desarrollo de Stripe. Para CVC usa cualquier número de 3 dígitos (4 para American Express) y cualquier fecha futura para la fecha de expiración.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="landing-footer">
+    <div class="footer-content">
+      <div class="footer-copyright">
+        © 2025 StripeLabApp. Todos los derechos reservados.
+      </div>
+      <div class="footer-links">
+        <a href="doc/documentation-index.html">Documentación</a>
+        <a href="doc/api.html">API</a>
+        <a href="doc/privacy.html">Privacidad</a>
+      </div>
+      <div class="app-version">v1.2.5</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Theme Toggle
+  const themeToggle = document.getElementById('theme-toggle-input');
+
+  // Check for saved theme preference or respect OS preference
+  const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (localStorage.getItem('dark-mode') === 'true' || (prefersDarkMode && !localStorage.getItem('dark-mode'))) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeToggle.checked = true;
+  }
+
+  // Theme switch event listener
+  themeToggle.addEventListener('change', function() {
+    if (this.checked) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('dark-mode', 'true');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('dark-mode', 'false');
+    }
+  });
+
+  // Cards carousel functionality
+  const slider = document.getElementById('cardsSlider');
+  const cards = slider.querySelectorAll('.credit-card');
+  const prevBtn = document.getElementById('prevCard');
+  const nextBtn = document.getElementById('nextCard');
+  const indicators = document.getElementById('carouselIndicators');
+
+  let currentIndex = 0;
+  let cardWidth = 0;
+  let visibleCards = 0;
+
+  // Create indicators
+  function createIndicators() {
+    indicators.innerHTML = '';
+    const totalIndicators = Math.ceil(cards.length / visibleCards);
+
+    for (let i = 0; i < totalIndicators; i++) {
+      const indicator = document.createElement('div');
+      indicator.classList.add('carousel-indicator');
+      if (i === 0) indicator.classList.add('active');
+      indicator.addEventListener('click', () => {
+        currentIndex = i * visibleCards;
+        updateCarousel();
+      });
+      indicators.appendChild(indicator);
+    }
+  }
+
+  // Calculate how many cards are visible and adjust layout
+  function calculateVisibleCards() {
+    const containerWidth = slider.parentElement.offsetWidth;
+    cardWidth = cards[0].offsetWidth + 20; // Card width + margin
+    visibleCards = Math.floor(containerWidth / cardWidth);
+    visibleCards = Math.max(1, Math.min(visibleCards, 3)); // Min 1, max 3 visible cards
+    createIndicators();
+  }
+
+  // Update carousel position
+  function updateCarousel() {
+    // Ensure currentIndex is within bounds
+    currentIndex = Math.max(0, Math.min(currentIndex, cards.length - visibleCards));
+
+    // Update slider position
+    slider.style.transform = `translateX(-${currentIndex * (cardWidth)}px)`;
+
+    // Update active indicator
+    const activeIndex = Math.floor(currentIndex / visibleCards);
+    document.querySelectorAll('.carousel-indicator').forEach((indicator, index) => {
+      indicator.classList.toggle('active', index === activeIndex);
+    });
+
+    // Enable/disable buttons
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= cards.length - visibleCards;
+  }
+
+  // Event listeners for buttons
+  prevBtn.addEventListener('click', () => {
+    currentIndex = Math.max(0, currentIndex - visibleCards);
+    updateCarousel();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = Math.min(cards.length - visibleCards, currentIndex + visibleCards);
+    updateCarousel();
+  });
+
+  // Cards hover effect
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.classList.add('card-hover');
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.classList.remove('card-hover');
+    });
+
+    // Copy card number on click
+    const cardNumber = card.querySelector('.card-number');
+    if (cardNumber) {
+      cardNumber.addEventListener('click', async () => {
+        const cardData = card.getAttribute('data-card');
+        try {
+          await navigator.clipboard.writeText(cardData);
+          cardNumber.classList.add('copied');
+          setTimeout(() => {
+            cardNumber.classList.remove('copied');
+          }, 1500);
+        } catch (err) {
+          console.error('Failed to copy card number', err);
+        }
+      });
+    }
+  });
+
+  // Initialize carousel on load and resize
+  window.addEventListener('load', () => {
+    calculateVisibleCards();
+    updateCarousel();
+    hideLoading();
+  });
+
+  window.addEventListener('resize', () => {
+    calculateVisibleCards();
+    updateCarousel();
+  });
+
+  // Loading overlay
+  const showLoading = () => {
+    document.getElementById('app-loading-overlay').style.display = 'flex';
+  };
+
+  const hideLoading = () => {
+    document.getElementById('app-loading-overlay').style.display = 'none';
+  };
+
+  // Add event listeners to buttons to show loading overlay
+  document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', showLoading);
+  });
+</script>
+</body>
+</html>
