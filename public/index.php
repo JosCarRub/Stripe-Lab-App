@@ -137,11 +137,11 @@ use App\Commons\Enums\StripeProductsTypeEnum;
                             <i class="fas fa-credit-card"></i>
                             <span>Realizar Pago</span>
                         </a>
-                        <a href="subscriptions.php" class="btn btn-secondary">
+                        <a href="view-subscriptions.php" class="btn btn-secondary">
                             <i class="fas fa-sync-alt"></i>
                             <span>Gestionar Suscripciones</span>
                         </a>
-                        <a href="doc/index.html" class="btn btn-outline">
+                        <a href="doc/claude/documentation-index.html" class="btn btn-outline">
                             <i class="fas fa-book"></i>
                             <span>Documentación</span>
                         </a>
@@ -153,7 +153,7 @@ use App\Commons\Enums\StripeProductsTypeEnum;
                                 <i class="fas fa-chart-line"></i>
                             </div>
                             <div class="stat-content">
-                                <div class="stat-value">99.9%</div>
+                                <div class="stat-value">Orientado a eventos</div>
                                 <div class="stat-label">Uptime</div>
                             </div>
                         </div>
@@ -163,20 +163,11 @@ use App\Commons\Enums\StripeProductsTypeEnum;
                                 <i class="fas fa-shield-alt"></i>
                             </div>
                             <div class="stat-content">
-                                <div class="stat-value">SSL</div>
-                                <div class="stat-label">Encriptado</div>
+                                <div class="stat-value">Weebhok Security</div>
+                                <div class="stat-label">Verificación de signature</div>
                             </div>
                         </div>
 
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-globe"></i>
-                            </div>
-                            <div class="stat-content">
-                                <div class="stat-value">160+</div>
-                                <div class="stat-label">Países</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 

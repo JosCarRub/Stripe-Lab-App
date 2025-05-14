@@ -468,3 +468,48 @@
 [2025-05-13 20:02:55] [EVENT] App\Controller\Impl\StripeSubscriptionControllerImpl: Solicitando todas las suscripciones. - Context: {"page":1,"limit":5}
 [2025-05-13 23:31:11] [EVENT] Bootstrap: .env cargado.
 [2025-05-13 23:31:11] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:42:19] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:42:19] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:45:16] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:45:16] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:45:58] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:45:58] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:46:10] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:46:10] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:46:27] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:46:27] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:47:29] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:47:29] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:48:13] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:48:13] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:48:23] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:48:23] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:49:14] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:49:14] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:49:17] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:49:17] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:54:04] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:54:04] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:54:43] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:54:43] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:54:47] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:54:47] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:54:47] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:54:47] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:54:47] [EVENT] Bootstrap: GlobalStripeClient instanciado.
+[2025-05-13 23:54:47] [EVENT] Bootstrap: StripeSubscriptionManagementService instanciado.
+[2025-05-13 23:54:47] [EVENT] Bootstrap: StripeSubscriptionController instanciado.
+[2025-05-13 23:54:47] [EVENT] API [api-subscriptions.php]: Solicitud para listar TODAS las suscripciones del sistema. - Context: {"page":1,"limit":5}
+[2025-05-13 23:54:47] [EVENT] App\Controller\Impl\StripeSubscriptionControllerImpl: Solicitando todas las suscripciones. - Context: {"page":1,"limit":5}
+[2025-05-13 23:54:48] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:54:48] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-13 23:55:49] [EVENT] Bootstrap: .env cargado.
+[2025-05-13 23:55:49] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-14 00:00:54] [EVENT] Bootstrap: .env cargado.
+[2025-05-14 00:00:54] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-14 00:01:57] [EVENT] Bootstrap: .env cargado.
+[2025-05-14 00:01:57] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-14 00:10:24] [EVENT] Bootstrap: .env cargado.
+[2025-05-14 00:10:24] [EVENT] Bootstrap: Inicializado. Constantes definidas.
+[2025-05-14 00:11:32] [EVENT] Bootstrap: .env cargado.
+[2025-05-14 00:11:32] [EVENT] Bootstrap: Inicializado. Constantes definidas.

@@ -157,3 +157,7 @@
                 ORDER BY created_at_stripe DESC
                 LIMIT :limit OFFSET :offset - Params: {"limit":5,"offset":0}
 [2025-05-13 20:02:55] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions
+[2025-05-13 23:54:47] [DB_QUERY] SELECT * FROM StripeSubscriptions 
+                ORDER BY created_at_stripe DESC
+                LIMIT :limit OFFSET :offset - Params: {"limit":5,"offset":0}
+[2025-05-13 23:54:47] [DB_QUERY] SELECT COUNT(*) FROM StripeSubscriptions
