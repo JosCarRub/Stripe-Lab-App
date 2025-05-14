@@ -252,8 +252,58 @@ Stripe envía eventos en orden, pero la entrega asíncrona requiere diseñar par
 *Importante: Los diagramas representan el orden habitual, pero pueden variar.*
 
 
+**Flujo de pago único**
+
+```mermaid
+        sequenceDiagram
+            participant User
+            participant FrontendApp as StripeLabApp Frontend
+            participant BackendApp as StripeLabApp Backend
+            participant Stripe
+            User->>FrontendApp: Selecciona Producto Pago Único
+            FrontendApp->>BackendApp: Solicita crear Checkout Session (via /v1/create_payment_session.php)
+            BackendApp->>Stripe: POST /v1/checkout/sessions
+            Stripe-->>BackendApp: Checkout Session ID
+            BackendApp-->>FrontendApp: Checkout Session ID
+            FrontendApp->>Stripe: redirectToCheckout(sessionId)
+            User->>Stripe: Completa Formulario de Pago
+            Stripe-->>User: Redirige a success_url
+            Stripe-->>BackendApp: Webhook: checkout.session.completed
+            Stripe-->>BackendApp: Webhook: payment_intent.succeeded
+            Stripe-->>BackendApp: Webhook: charge.succeeded
+            BackendApp->>BackendApp: Procesa eventos con Estrategias
+            BackendApp->>Database: Guarda Transacción
+```
+
+**Flujo de nueva suscripción**
+
+```mermaid
+        sequenceDiagram
+            participant User
+            participant FrontendApp as StripeLabApp Frontend
+            participant BackendApp as StripeLabApp Backend
+            participant Stripe
+            User->>FrontendApp: Selecciona Plan de Suscripción
+            FrontendApp->>BackendApp: Solicita crear Checkout Session (via /v1/create_subscription_session.php)
+            BackendApp->>Stripe: POST /v1/checkout/sessions
+            Stripe-->>BackendApp: Checkout Session ID
+            BackendApp-->>FrontendApp: Checkout Session ID
+            FrontendApp->>Stripe: redirectToCheckout(sessionId)
+            User->>Stripe: Completa Formulario de Pago
+            Stripe-->>User: Redirige a success_url
+            Stripe-->>BackendApp: Webhook: checkout.session.completed
+            Stripe-->>BackendApp: Webhook: customer.created (si nuevo)
+            Stripe-->>BackendApp: Webhook: payment_intent.succeeded (pago inicial)
+            Stripe-->>BackendApp: Webhook: invoice.paid (primera factura)
+            Stripe-->>BackendApp: Webhook: customer.subscription.created
+            BackendApp->>BackendApp: Procesa eventos con Estrategias
+            BackendApp->>Database: Guarda/Actualiza Suscripción y Transacción
+```
+
 
 *Consejo (Nueva Suscripción): En StripeLabApp, `checkout.session.completed` activa la suscripción, otros eventos actualizan y confirman.*
+
+
 *Consejo (Pago Único): `checkout.session.completed` registra la transacción, `charge.succeeded` añade `receipt_url`.*
 
 ### 4. Stripe CLI: Herramienta Esencial para Desarrollo y Pruebas
@@ -363,6 +413,145 @@ Objetivos principales:
 Estructura en capas: Interfaz de usuario (`public/`), Controladores, Servicios, Repositorios, Modelos/DTOs.
 *Ventajas: Separación de responsabilidades, testabilidad, extensibilidad.*
 
+        ```mermaid
+        graph TD
+        Root[StripeLabApp] --> Config[config/]
+        Root --> Database[database/]
+        Root --> Logs[logs/]
+        Root --> Public[public/]
+        Root --> Src[src/]
+        Root --> EnvFile[.env]
+        Root --> GitignoreFile[.gitignore]
+        Root --> ComposerFile[composer.json]
+        Root --> ReadmeFile[README.md]
+        Root --> IndexHtml[index.html]
+        
+            %% Config files
+            Config --> Bootstrap[Bootstrap.php]
+            Config --> ConfigFile[config.php]
+            Config --> DatabaseConnection[DatabaseConnection.php]
+            
+            %% Database files
+            Database --> Docker[docker/docker-compose.yml]
+            
+            %% Public directory structure
+            Public --> IndexPhp[index.php]
+            Public --> SinglePayment[single-payment.php]
+            Public --> SubscriptionsPayment[subscriptions-payment.php]
+            Public --> ViewSubscriptions[view-subscriptions.php]
+            Public --> Invoices[invoices.php]
+            Public --> Assets[assets/]
+            Public --> Api[api/]
+            Public --> V1[v1/]
+            
+            %% API endpoints
+            Api --> ApiInvoices[api-invoices.php]
+            Api --> ApiSubscriptions[api-subscriptions.php]
+            Api --> ApiManageSubscription[api-manage-subscription.php]
+            
+            %% V1 endpoints
+            V1 --> CreatePaymentSession[create_payment_session.php]
+            V1 --> CreateSubscriptionSession[create_subscription_session.php]
+            V1 --> Webhook[webhook.php]
+            
+            %% Source directory structure
+            Src --> Controllers[Controller/]
+            Src --> Services[Service/]
+            Src --> Strategies[Strategy/]
+            Src --> Repositories[Repository/]
+            Src --> Mappers[Mappers/]
+            Src --> Factories[Factories/]
+            Src --> Models[Models/]
+            Src --> DTOs[DTOs/]
+            Src --> Enums[Enums/]
+            Src --> Exceptions[Exceptions/]
+            Src --> Loggers[Logger/]
+            
+            %% Controllers
+            Controllers --> ControllerImpl[Impl/]
+            Controllers --> WebhookControllerInterface[StripeWebhookControllerInterface.php]
+            Controllers --> SubscriptionControllerInterface[StripeSubscriptionControllerInterface.php]
+            Controllers --> InvoiceControllerInterface[StripeInvoiceControllerInterface.php]
+            
+            %% Services
+            Services --> ServiceImpl[Impl/]
+            Services --> WebhookServiceInterface[StripeWebhookServiceInterface.php]
+            Services --> CheckoutServiceInterface[StripeCheckoutSessionServiceInterface.php]
+            Services --> SubscriptionManagementInterface[StripeSubscriptionManagementServiceInterface.php]
+            
+            %% Strategies
+            Strategies --> StrategyImpl[Impl/]
+            Strategies --> StrategyInterface[StripeWebhookStrategyInterface.php]
+            
+            %% Strategy implementations
+            StrategyImpl --> StripeEventStrategyInterfaceImpl[StripeEventStrategyInterfaceImpl.php]
+            StrategyImpl --> SubscriptionCreatedStrategyImpl[SubscriptionCreatedStrategyImpl.php]
+            StrategyImpl --> SubscriptionDeletedStrategyImpl[SubscriptionDeletedStrategyImpl.php]
+            StrategyImpl --> SubscriptionUpdatedStrategyImpl[SubscriptionUpdatedStrategyImpl.php]
+            StrategyImpl --> CheckoutSessionCompletedStrategyImpl[CheckoutSessionCompletedStrategyImpl.php]
+            StrategyImpl --> PaymentIntentSucceededStrategyImpl[PaymentIntentSucceededStrategyImpl.php]
+            StrategyImpl --> CustomerCreatedOrUpdatedStrategyImpl[CustomerCreatedOrUpdatedStrategyImpl]
+            StrategyImpl --> InvoicePaidStrategyImpl[InvoicePaidStrategyImpl.php]
+            StrategyImpl --> ChargeSucceededStrategyImpl[ChargeSucceededStrategyImpl.php]
+            
+            %% Repositories
+            Repositories --> RepositoryImpl[Impl/]
+            Repositories --> TransactionRepositoryInterface[TransactionRepositoryInterface.php]
+            Repositories --> InvoiceRepositoryInterface[InvoiceRepositoryInterface.php]
+            Repositories --> SubscriptionRepositoryInterface[SubscriptionRepositoryInterface.php]
+            
+            %% Mappers
+            Mappers --> ChargeMapper[ChargeMapper.php]
+            Mappers --> CheckoutSessionMapper[CheckoutSessionMapper.php]
+            Mappers --> CustomerMapper[CustomerMapper.php]
+            Mappers --> InvoiceMapper[InvoiceMapper.php]
+            Mappers --> PaymentIntentMapper[PaymentIntentMapper.php]
+            Mappers --> SubscriptionMapper[SubscriptionMapper.php]
+            
+            %% Factories
+            Factories --> TransactionModelFactory[TransactionModelFactory.php]
+            Factories --> SubscriptionModelFactory[SubscriptionModelFactory.php]
+            
+            %% Models
+            Models --> TransactionsModel[TransactionsModel.php]
+            Models --> SubscriptionsModel[SubscriptionsModel.php]
+            
+            %% DTOs
+            DTOs --> TransactionDTO[TransactionDTO.php]
+            DTOs --> SubscriptionDTO[SubscriptionDTO.php]
+            DTOs --> InvoiceDTO[InvoiceDTO.php]
+            
+            %% Enums
+            Enums --> StripeEventTypeEnum[StripeEventTypeEnum.php]
+            Enums --> TransactionTypeEnum[TransactionTypeEnum.php]
+            
+            %% Exceptions
+            Exceptions --> ConfigurationException[ConfigurationException.php]
+            Exceptions --> DatabaseException[DatabaseException.php]
+            Exceptions --> InvalidWebhookPayloadException[InvalidWebhookPayloadException.php]
+            Exceptions --> WebhookProcessingException[WebhookProcessingException.php]
+            
+            %% Loggers
+            Loggers --> EventLogger[EventLogger.php]
+            Loggers --> ErrorLogger[ErrorLogger.php]
+            Loggers --> DatabaseLogger[DatabaseLogger.php]
+            Loggers --> StripePayloadLogger[StripePayloadLogger.php]
+            Loggers --> UnhandledStripeEventLogger[UnhandledStripeEventLogger.php]
+            
+            %% Styling
+            classDef rootNode fill:#D5F5E3,stroke:#2ECC71,stroke-width:2px;
+            classDef directoryNode fill:#D6EAF8,stroke:#3498DB;
+            classDef fileNode fill:#FADBD8,stroke:#E74C3C;
+            classDef interfaceNode fill:#FCF3CF,stroke:#F39C12;
+            classDef implNode fill:#F5EEF8,stroke:#8E44AD;
+            
+            class Root rootNode;
+            class Config,Database,Logs,Public,Src,Api,V1,Controllers,Services,Strategies,Repositories,Mappers,Factories,Models,DTOs,Enums,Exceptions,Loggers,ControllerImpl,ServiceImpl,StrategyImpl,RepositoryImpl directoryNode;
+            class EnvFile,GitignoreFile,ComposerFile,ReadmeFile,Bootstrap,ConfigFile,DatabaseConnection,Docker,IndexPhp,SinglePayment,SubscriptionsPayment,ViewSubscriptions,Invoices,Assets,ApiInvoices,ApiSubscriptions,ApiManageSubscription,CreatePaymentSession,CreateSubscriptionSession,Webhook,IndexHtml fileNode;
+            class WebhookControllerInterface,SubscriptionControllerInterface,InvoiceControllerInterface,WebhookServiceInterface,CheckoutServiceInterface,SubscriptionManagementInterface,StrategyInterface,TransactionRepositoryInterface,InvoiceRepositoryInterface,SubscriptionRepositoryInterface interfaceNode;
+            class StripeEventStrategyInterfaceImpl,SubscriptionCreatedStrategyImpl,SubscriptionDeletedStrategyImpl,SubscriptionUpdatedStrategyImpl,CheckoutSessionCompletedStrategyImpl,PaymentIntentSucceededStrategyImpl,CustomerCreatedOrUpdatedStrategyImpl,InvoicePaidStrategyImpl,ChargeSucceededStrategyImpl implNode;
+    ```
+
 ### 6. Configuración y Puesta en Marcha de StripeLabApp
 
 #### 6.1. Requisitos Específicos de la Aplicación
@@ -397,6 +586,129 @@ Con estos pasos, StripeLabApp está lista para procesar pagos y webhooks.
 
 StripeLabApp sigue una arquitectura en capas.
 
+**Diagrama de componentes y flujo completo de la aplicación**
+
+                                    flowchart TD
+                                    %% Usuarios y Puntos de entrada
+                                    User([Usuario]):::user
+
+                                    %% Páginas de entrada
+                                    User -->|Accede| Index["/index.php"]:::frontend
+                                    Index -->|Selecciona| Single["/single-payment.php"]:::frontend
+                                    Index -->|Selecciona| Subscriptions["/subscriptions-payment.php"]:::frontend
+
+                                    %% Flujo de Pago Único
+                                    Single -->|onClick| SinglePaymentJS["subscription-payment.js\nfetch()"]:::frontend
+                                    SinglePaymentJS -->|POST| CreatePaymentSession["/v1/create_payment_session.php"]:::api
+
+                                    %% Flujo de Suscripción
+                                    Subscriptions -->|onClick| SubscriptionPaymentJS["subscription-payment.js\nfetch()"]:::frontend
+                                    SubscriptionPaymentJS -->|POST| CreateSubscriptionSession["/v1/create_subscription_session.php"]:::api
+
+                                    %% Servicios de Checkout
+                                    CreatePaymentSession -->|instancia| CheckoutService["StripeCheckoutSessionServiceImpl"]:::service
+                                    CreateSubscriptionSession -->|instancia| CheckoutService
+                                    CheckoutService -->|API call| StripeAPI[("Stripe API")]:::external
+
+                                    %% Redirección y Checkout de Stripe
+                                    StripeAPI -->|redirect_to| StripeCheckout["Stripe Checkout\nFormulario de Pago"]:::external
+                                    StripeCheckout -->|success_url| SuccessPage["/success.html"]:::frontend
+                                    StripeCheckout -->|cancel_url| CancelPage["/cancel.html"]:::frontend
+
+                                    %% Flujo de Webhook
+                                    StripeAPI -->|Envía eventos| WebhookEndpoint["/v1/webhook.php"]:::api
+                                    WebhookEndpoint -->|instancia| WebhookController["StripeWebhookControllerImpl"]:::controller
+                                    WebhookController -->|procesa| WebhookService["StripeWebhookServiceImpl"]:::service
+                                    WebhookService -->|verifica firma| StripeSig{{"¿Firma válida?"}}:::decision
+
+                                    %% Logging de Payloads
+                                    WebhookService -->|registra| PayloadLogger["StripePayloadLogger"]:::logger
+                                    StripeSig -->|No| ErrorLogger["ErrorLogger"]:::logger
+
+                                    %% Selección e implementación de estrategias
+                                    StripeSig -->|Sí| EventType{{"Tipo de evento"}}:::decision
+
+                                    %% Estrategias específicas
+                                    EventType -->|checkout.session.completed| CheckoutStrategy["CheckoutSessionCompletedStrategyImpl"]:::strategy
+                                    EventType -->|payment_intent.succeeded| PaymentIntentStrategy["PaymentIntentSucceededStrategyImpl"]:::strategy
+                                    EventType -->|charge.succeeded| ChargeStrategy["ChargeSucceededStrategyImpl"]:::strategy
+                                    EventType -->|customer.subscription.created| SubCreatedStrategy["SubscriptionCreatedStrategyImpl"]:::strategy
+                                    EventType -->|customer.subscription.updated| SubUpdatedStrategy["SubscriptionUpdatedStrategyImpl"]:::strategy
+                                    EventType -->|customer.subscription.deleted| SubDeletedStrategy["SubscriptionDeletedStrategyImpl"]:::strategy
+                                    EventType -->|invoice.paid| InvoicePaidStrategy["InvoicePaidStrategyImpl"]:::strategy
+                                    EventType -->|customer.created/updated| CustomerStrategy["CustomerCreatedOrUpdatedStrategyImpl"]:::strategy
+                                    EventType -->|otros| UnhandledLogger["UnhandledStripeEventLogger"]:::logger
+
+                                    %% Mapeo de datos
+                                    CheckoutStrategy -->|usa| CheckoutMapper["CheckoutSessionMapper"]:::mapper
+                                    PaymentIntentStrategy -->|usa| PaymentIntentMapper["PaymentIntentMapper"]:::mapper
+                                    ChargeStrategy -->|usa| ChargeMapper["ChargeMapper"]:::mapper
+                                    SubCreatedStrategy & SubUpdatedStrategy & SubDeletedStrategy -->|usa| SubscriptionMapper["SubscriptionMapper"]:::mapper
+                                    InvoicePaidStrategy -->|usa| InvoiceMapper["InvoiceMapper"]:::mapper
+                                    CustomerStrategy -->|usa| CustomerMapper["CustomerMapper"]:::mapper
+
+                                    %% DTOs
+                                    CheckoutMapper -->|crea| CheckoutDTO["CheckoutSessionCompletedDTO"]:::dto
+                                    PaymentIntentMapper -->|crea| PaymentIntentDTO["PaymentIntentDTO"]:::dto
+                                    ChargeMapper -->|crea| ChargeDTO["ChargeDTO"]:::dto
+                                    SubscriptionMapper -->|crea| SubscriptionDTO["SubscriptionDTO"]:::dto
+                                    InvoiceMapper -->|crea| InvoiceDTO["InvoiceDTO"]:::dto
+                                    CustomerMapper -->|crea| CustomerDTO["CustomerDTO"]:::dto
+
+                                    %% Factories y creación de modelos
+                                    PaymentIntentStrategy & ChargeStrategy & InvoicePaidStrategy -->|usa| TransactionFactory["TransactionModelFactory"]:::factory
+                                    SubCreatedStrategy & SubUpdatedStrategy & SubDeletedStrategy -->|usa| SubscriptionFactory["SubscriptionModelFactory"]:::factory
+
+                                    %% Modelos/Entidades
+                                    TransactionFactory -->|crea| TransactionModel["TransactionsModel"]:::entity
+                                    SubscriptionFactory -->|crea| SubscriptionModel["SubscriptionsModel"]:::entity
+
+                                    %% Repositorios
+                                    TransactionModel -->|persistido por| TransactionRepo["TransactionRepositoryImpl"]:::repository
+                                    SubscriptionModel -->|persistido por| SubscriptionRepo["SubscriptionRepositoryImpl"]:::repository
+                                    InvoiceDTO -->|consultado por| InvoiceRepo["InvoiceRepositoryImpl"]:::repository
+
+                                    %% Base de datos
+                                    TransactionRepo & SubscriptionRepo & InvoiceRepo -->|operaciones| Database[("Base de Datos\nMySQL")]:::database
+
+                                    %% Visualización de datos
+                                    User -->|Consulta| InvoicesPage["/invoices.php"]:::frontend
+                                    User -->|Consulta| SubscriptionsPage["/view-subscriptions.php"]:::frontend
+
+                                    %% APIs para consultas
+                                    InvoicesPage -->|fetch| ApiInvoices["/api/api-invoices.php"]:::api
+                                    SubscriptionsPage -->|fetch| ApiSubscriptions["/api/api-subscriptions.php"]:::api
+                                    SubscriptionsPage -->|administra| ApiManageSub["/api/api-manage-subscription.php"]:::api
+
+                                    %% Controladores para visualización
+                                    ApiInvoices -->|instancia| InvoiceController["StripeInvoiceControllerImpl"]:::controller
+                                    ApiSubscriptions & ApiManageSub -->|instancia| SubscriptionController["StripeSubscriptionControllerImpl"]:::controller
+
+                                    %% Servicios para gestión de suscripciones
+                                    SubscriptionController -->|usa| SubscriptionService["StripeSubscriptionManagementServiceImpl"]:::service
+                                    SubscriptionService -->|API call| StripeAPI
+
+                                    %% Panel de administración
+                                    User -->|Acceso admin| AdminPanel["/admin/panel.php"]:::frontend
+                                    AdminPanel -->|fetch| PanelApi["/admin/api/panel_api.php"]:::api
+
+                                    %% Definición de estilos
+                                    classDef user fill:#ECF0F1,stroke:#95A5A6,stroke-width:2px,color:#34495E,font-weight:bold;
+                                    classDef frontend fill:#D5F5E3,stroke:#2ECC71,stroke-width:2px,color:#27AE60;
+                                    classDef api fill:#D6EAF8,stroke:#3498DB,stroke-width:2px,color:#2980B9;
+                                    classDef controller fill:#E8DAEF,stroke:#8E44AD,stroke-width:2px,color:#8E44AD;
+                                    classDef service fill:#FADBD8,stroke:#E74C3C,stroke-width:2px,color:#C0392B;
+                                    classDef strategy fill:#FCF3CF,stroke:#F1C40F,stroke-width:2px,color:#F39C12;
+                                    classDef mapper fill:#FEF9E7,stroke:#F7DC6F,stroke-width:2px,color:#D4AC0D;
+                                    classDef dto fill:#FDEBD0,stroke:#F5B041,stroke-width:2px,color:#D35400;
+                                    classDef factory fill:#EBDEF0,stroke:#A569BD,stroke-width:2px,color:#8E44AD;
+                                    classDef entity fill:#D6DBDF,stroke:#85929E,stroke-width:2px,color:#2C3E50;
+                                    classDef repository fill:#F4ECF7,stroke:#BB8FCE,stroke-width:2px,color:#8E44AD;
+                                    classDef database fill:#E5E8E8,stroke:#99A3A4,stroke-width:2px,color:#2C3E50,font-weight:bold;
+                                    classDef external fill:#F2D7D5,stroke:#EC7063,stroke-width:2px,color:#CB4335;
+                                    classDef logger fill:#D0ECE7,stroke:#45B39D,stroke-width:2px,color:#16A085;
+                                    classDef decision fill:#F5EEF8,stroke:#AF7AC5,stroke-width:2px,color:#8E44AD,shape:diamond;
+
 #### 7.2.1 Capa Frontend
 Diseñada para ser intuitiva, usando HTML, CSS, JavaScript.
 **Componentes Frontend:**
@@ -405,9 +717,50 @@ Diseñada para ser intuitiva, usando HTML, CSS, JavaScript.
 *   `subscriptions-payment.php`: Para pagos de suscripciones.
 *   `invoices.php`: Visualizar facturas.
 *   `view-subscriptions.php`: Ver suscripciones.
-*   `admin/panel.php`: Visualizar tablas de BD.
+  *   `admin/panel.php`: Visualizar tablas de BD.
 
-    *Nota: Usa Bootstrap 5 y JavaScript para AJAX.*
+        **Diagrama Frontend**
+        ```mermaid
+      graph TD
+      %% Diagrama de componentes Frontend
+      User([Usuario]):::user
+
+                                      %% Páginas de entrada
+                                      User -->|Accede| Index["/index.php"]:::frontend
+                                      Index -->|Selecciona| Single["/single-payment.php"]:::frontend
+                                      Index -->|Selecciona| Subscriptions["/subscriptions-payment.php"]:::frontend
+
+                                      %% Flujo de Pago Único
+                                      Single -->|onClick| SinglePaymentJS["subscription-payment.js\nfetch()"]:::frontend
+                                      SinglePaymentJS -->|POST| CreatePaymentSession["/v1/create_payment_session.php"]:::api
+
+                                      %% Flujo de Suscripción
+                                      Subscriptions -->|onClick| SubscriptionPaymentJS["subscription-payment.js\nfetch()"]:::frontend
+                                      SubscriptionPaymentJS -->|POST| CreateSubscriptionSession["/v1/create_subscription_session.php"]:::api
+
+                                      %% Redirección y Checkout de Stripe
+                                      StripeAPI[("Stripe API")]:::external
+                                      StripeAPI -->|redirect_to| StripeCheckout["Stripe Checkout\nFormulario de Pago"]:::external
+                                      StripeCheckout -->|success_url| SuccessPage["/success.html"]:::frontend
+                                      StripeCheckout -->|cancel_url| CancelPage["/cancel.html"]:::frontend
+
+                                      %% Visualización de datos
+                                      User -->|Consulta| InvoicesPage["/invoices.php"]:::frontend
+                                      User -->|Consulta| SubscriptionsPage["/view-subscriptions.php"]:::frontend
+
+                                      %% APIs para consultas
+                                      InvoicesPage -->|fetch| ApiInvoices["/api/api-invoices.php"]:::api
+                                      SubscriptionsPage -->|fetch| ApiSubscriptions["/api/api-subscriptions.php"]:::api
+
+                                      %% Panel de administración
+                                      User -->|Acceso admin| AdminPanel["/admin/panel.php"]:::frontend
+
+                                      %% Definición de estilos
+                                      classDef user fill:#ECF0F1,stroke:#95A5A6,stroke-width:2px,color:#34495E,font-weight:bold;
+                                      classDef frontend fill:#D5F5E3,stroke:#2ECC71,stroke-width:2px,color:#27AE60;
+      ```
+
+
 
 #### 7.2.2 Capa Backend
 Robusta y escalable, gestiona lógica de negocio e interacción con API de Stripe. Dividida en Repository, Strategy, Factory para extensibilidad.
@@ -422,6 +775,67 @@ Robusta y escalable, gestiona lógica de negocio e interacción con API de Strip
 
     *Nota: El logger es crucial para entender flujos y depurar.*
 
+**Diagrama Backend**
+
+     ```mermaid
+            flowchart TD
+                                StripeWebhookEvent[Evento Webhook de Stripe] -->|HTTP POST| A[public/v1/webhook.php]
+                                A -->|Usa| B[config/Bootstrap]
+                                B -->|Obtiene| C[StripeWebhookControllerImpl]
+                                C -->| payload, signature| D[StripeWebhookServiceImpl  -constructEvent-]
+                                D -- Devuelve Evento Stripe verificado --> C
+                                C -->|2. Evento Stripe| E[StripeWebhookServiceImpl -processWebhookEvent-]
+                                E -->|Loguea Payload| PL[StripePayloadLogger]
+                                E -->|Itera y llama isApplicable| F{Selección de Estrategia}
+
+                                subgraph "Proceso de Estrategia Aplicable"
+                                    direction LR
+                                    G[Estrategia Específica]
+                                    G --> H[Mapper Específico]
+                                    H --> I[DTO Específico]
+                                    I --> J[Factory Específico]
+                                    J --> K[Entidad/Modelo]
+                                    K --> L[Repositorio Específico -save-]
+                                    L --> M[(Base de Datos MySQL)]
+                                end
+
+                                F -- Evento Aplicable --> G
+                                F -- Evento No Aplicable --> UL[UnhandledStripeEventLogger]
+
+                                %% Estilos
+                                classDef default fill:#fff,stroke:#333,stroke-width:1.5px;
+                                classDef api fill:#D6EAF8,stroke:#3498DB;
+                                classDef config fill:#FADBD8,stroke:#E74C3C;
+                                classDef controller fill:#E8DAEF,stroke:#8E44AD;
+                                classDef service fill:#D5F5E3,stroke:#2ECC71;
+                                classDef strategy fill:#FCF3CF,stroke:#F1C40F,font-style:italic;
+                                classDef mapper fill:#FEF9E7,stroke:#F7DC6F;
+                                classDef dto fill:#FDEBD0,stroke:#F5B041;
+                                classDef factory fill:#EBDEF0,stroke:#A569BD;
+                                classDef entity fill:#D6DBDF,stroke:#85929E;
+                                classDef repository fill:#F4ECF7,stroke:#BB8FCE;
+                                classDef database fill:#E5E8E8,stroke:#99A3A4,font-weight:bold;
+                                classDef logger fill:#D0ECE7,stroke:#45B39D;
+                                classDef decision fill:#fff,stroke:#333,shape:diamond;
+
+                                class A api
+                                class B config
+                                class C controller
+                                class D,E service
+                                class F decision
+                                class G strategy
+                                class H mapper
+                                class I dto
+                                class J factory
+                                class K entity
+                                class L repository
+                                class M database
+                                class PL,UL logger
+
+      ```
+
+    
+
 #### 7.2.3 Capa Base de Datos
 **Esquema de la Base de Datos**
 Dos tablas principales: `StripeTransactions` y `StripeSubscriptions`.
@@ -431,7 +845,7 @@ Dos tablas principales: `StripeTransactions` y `StripeSubscriptions`.
 
     *Nota: Mantener integridad referencial es importante.*
 
-#### 7.2. Capa Commons
+#### 7.3. Capa Commons
 Componentes fundamentales.
 **DTOs (Data Transfer Objects)**
 Objetos simples e inmutables para transferir datos parseados de payloads de Stripe desde Mappers a Factories/Strategies. Desacoplan lógica de negocio de la estructura de API de Stripe.
@@ -466,7 +880,7 @@ Sistema especializado para depuración y auditoría.
 *   `UnhandledStripeEventLogger`: Eventos Stripe sin estrategia.
     *Importancia: Crucial para auditar, detectar problemas, y reconciliación.*
 
-#### 7.3. Capa de Configuración (config/)
+#### 7.4. Capa de Configuración (config/)
 Infraestructura básica para inicializar y gestionar dependencias.
 **Bootstrap.php**
 Service Locator simple, inicialización (carga `.env`, constantes), instanciación perezosa de dependencias.
@@ -475,7 +889,7 @@ Service Locator simple, inicialización (carga `.env`, constantes), instanciaci�
 Singleton para conexión PDO a MySQL. Establece conexión, configura opciones PDO, provee instancia a repositorios, maneja errores de conexión.
 *Consideración: Para apps complejas, un DIC más sofisticado podría ser preferible.*
 
-#### 7.4. Capa de Presentación y Puntos de Entrada (public/)
+#### 7.5. Capa de Presentación y Puntos de Entrada (public/)
 Puntos de entrada: páginas web, endpoints API, endpoint webhook.
 **Páginas de Interfaz de Usuario**
 *   Inicio de pagos: `index.php`, `single-payment.php`, `subscriptions-payment.php`.
@@ -493,7 +907,7 @@ Puntos de entrada: páginas web, endpoints API, endpoint webhook.
 *   `api-manage-subscription.php`: Gestión de suscripciones (cancelación).
     *Arquitectura: Validar entrada, delegar a servicios, devolver JSON.*
 
-#### 7.5. Controladores (src/Controller/ e src/Controller/Impl/)
+#### 7.6. Controladores (src/Controller/ e src/Controller/Impl/)
 Coordinan flujo, reciben peticiones HTTP, delegan a servicios, devuelven respuestas.
 **StripeWebhookController**
 Punto de entrada para webhooks, verifica firma, delega a servicio.
@@ -512,7 +926,7 @@ Responsabilidades: Listar suscripciones, detalles, delegar a `SubscriptionReposi
 *Arquitectura: Basada en interfaces, sigue DIP de SOLID.*
 *Principios de Diseño: SOLID (DIP), separación de capas, uso de interfaces, patrón Controlador -> Servicio -> Repositorio.*
 
-#### 7.6. Servicios (src/Service/ e src/Service/Impl/)
+#### 7.7. Servicios (src/Service/ e src/Service/Impl/)
 Implementan lógica de negocio, coordinan operaciones, interactúan con APIs.
 **StripeWebhookService**
 Orquesta validación y procesamiento de webhooks, enruta a estrategia.
@@ -531,7 +945,7 @@ Funcionalidades: Interactúa con API Stripe (`subscriptions->cancel()`, `subscri
 *Principio de Responsabilidad Única: Enfocado en gestión de suscripciones existentes.*
 *Patrones y Principios: SRP, Strategy, DIP, Arquitectura por Capas, Facade.*
 
-#### 7.7. Estrategias (src/Strategy/)
+#### 7.8. Estrategias (src/Strategy/)
 Patrón Strategy para manejar eventos de webhook de forma modular.
 **Patrón Strategy en la Aplicación**
 ¿Por qué? Stripe tiene >100 tipos de eventos. Permite: encapsular lógica, añadir soporte sin modificar (Open/Closed), facilitar pruebas, código organizado.
@@ -548,7 +962,7 @@ Implementación: `StripeWebhookStrategyInterface` (`isApplicable()`, `process()`
 *   `InvoicePaidStrategyImpl`: Evento `invoice.paid`. Deps: `InvoiceMapper`, `TransactionModelFactory`, `TransactionRepository`, `SubscriptionRepository`. Lógica: Crea tx principal para facturas (subs), mapea a DTO, crea `TransactionsModel` tipo `SUBSCRIPTION_INVOICE`, actualiza `latest_transaction_id` en sub. *Importancia: Seguimiento financiero de subs.*
     *Patrones y Principios: Strategy, SRP, DI+DIP, Mapper/DTO, Factory, Repository, Chain of Responsibility (implícito), OCP.*
 
-#### 7.8. Mappers (src/Mappers/)
+#### 7.9. Mappers (src/Mappers/)
 Transforman payloads de Stripe a DTOs.
 **Rol principal:**
 *   Traducir `data.object` a DTO.
@@ -566,7 +980,7 @@ Transforman payloads de Stripe a DTOs.
     *Ventajas: Desacoplamiento, robustez a cambios API, validación centralizada, simplificación, manejo errores controlado.*
     *Mejoras implementadas: Lógica de acceso refinada, logging depuración, validación campos esenciales, extracción robusta de anidados.*
 
-#### 7.9. Factories (src/Factories/)
+#### 7.9.2 Factories (src/Factories/)
 Crean instancias de Entidades (Models) desde DTOs.
 **Rol principal:**
 *   Construir `TransactionsModel`, `SubscriptionsModel` desde DTOs.
@@ -619,13 +1033,216 @@ Abstraen capa de persistencia, separando lógica dominio de detalles BD.
 
 *Puntos clave: UI inicia -> `create_payment_session.php` -> Stripe Checkout -> Webhooks (`payment_intent.succeeded`, `charge.succeeded`) -> Estrategias -> BD.*
 
+```mermaid
+        sequenceDiagram
+        participant User as Usuario
+        participant Frontend as Frontend (single-payment.php)
+        participant CheckoutEndpoint as v1/create_payment_session.php
+        participant CheckoutService as StripeCheckoutSessionServiceImpl
+        participant Stripe as Stripe API
+        participant StripeCheckout as Stripe Checkout (Navegador)
+        participant WebhookEndpoint as v1/webhook.php
+        participant WebhookController as StripeWebhookControllerImpl
+        participant WebhookService as StripeWebhookServiceImpl
+        participant PIStrategy as PaymentIntentSucceededStrategyImpl
+        participant ChargeStrategy as ChargeSucceededStrategyImpl
+        participant Repository as TransactionRepositoryImpl
+        participant DB as Base de Datos
+        
+        User->>Frontend: 1. Selecciona Producto y Hace Clic en "Pagar"
+        Frontend->>CheckoutEndpoint: 2. Solicita sesión de pago (POST)
+        CheckoutEndpoint->>CheckoutService: 3. Llama a createPaymentSession()
+        CheckoutService->>Stripe: 4. Crea Checkout Session (API call)
+        Stripe-->>CheckoutService: 5. Devuelve Session ID
+        CheckoutService-->>CheckoutEndpoint: 6. Devuelve Session ID
+        CheckoutEndpoint-->>Frontend: 7. Devuelve Session ID (JSON)
+        Frontend->>StripeCheckout: 8. Redirecciona con sessionId
+        User->>StripeCheckout: 9. Completa formulario de pago
+        StripeCheckout->>Stripe: 10. Envía datos de pago
+        Stripe-->>StripeCheckout: 11. Confirma pago exitoso
+        StripeCheckout->>Frontend: 12. Redirecciona a success_url
+        
+        Note over Stripe,WebhookEndpoint: Proceso asíncrono
+        
+        Stripe->>WebhookEndpoint: 13a. Envía evento payment_intent.succeeded
+        WebhookEndpoint->>WebhookController: 14a. Pasa payload y firma
+        WebhookController->>WebhookService: 15a. Verifica firma y procesa evento
+        WebhookService->>PIStrategy: 16a. Delega a PaymentIntentSucceededStrategyImpl
+        PIStrategy->>Repository: 17a. Crea registro de transacción
+        Repository->>DB: 18a. INSERT en tabla StripeTransactions
+        Repository-->>PIStrategy: 19a. Confirma éxito
+        PIStrategy-->>WebhookService: 20a. Devuelve éxito
+        WebhookService-->>WebhookController: 21a. Devuelve éxito
+        WebhookController-->>WebhookEndpoint: 22a. Devuelve código 200
+        WebhookEndpoint-->>Stripe: 23a. Responde con código 200
+        
+        Stripe->>WebhookEndpoint: 13b. Envía evento charge.succeeded
+        WebhookEndpoint->>WebhookController: 14b. Pasa payload y firma
+        WebhookController->>WebhookService: 15b. Verifica firma y procesa evento
+        WebhookService->>ChargeStrategy: 16b. Delega a ChargeSucceededStrategyImpl
+        ChargeStrategy->>Repository: 17b. Busca transacción por stripe_transaction_id
+        Repository-->>ChargeStrategy: 18b. Devuelve modelo de transacción
+        ChargeStrategy->>ChargeStrategy: 19b. Añade receipt_url y detalles de pago
+        ChargeStrategy->>Repository: 20b. Actualiza la transacción
+        Repository->>DB: 21b. UPDATE en tabla StripeTransactions
+        Repository-->>ChargeStrategy: 22b. Confirma éxito
+        ChargeStrategy-->>WebhookService: 23b. Devuelve éxito
+        WebhookService-->>WebhookController: 24b. Devuelve éxito
+        WebhookController-->>WebhookEndpoint: 25b. Devuelve código 200
+        WebhookEndpoint-->>Stripe: 26b. Responde con código 200
+```
+
+
 #### 8.2. Flujo de Nueva Suscripción
 
 *Puntos clave: UI inicia -> `create_subscription_session.php` -> Stripe Checkout -> Webhooks (`checkout.session.completed`, `customer.subscription.created`, `invoice.paid`) -> Estrategias -> BD (`StripeSubscriptions`, `StripeTransactions`).*
 
+```mermaid
+        sequenceDiagram
+   participant User as Usuario
+   participant Frontend as Frontend (subscriptions-payment.php)
+   participant SubEndpoint as v1/create_subscription_session.php
+   participant CheckoutService as StripeCheckoutSessionServiceImpl
+   participant Stripe as Stripe API
+   participant StripeCheckout as Stripe Checkout (Navegador)
+   participant WebhookEndpoint as v1/webhook.php
+   participant WebhookController as StripeWebhookControllerImpl
+   participant WebhookService as StripeWebhookServiceImpl
+   participant CSStrategy as CheckoutSessionCompletedStrategyImpl
+   participant SubStrategy as SubscriptionCreatedStrategyImpl
+   participant IPStrategy as InvoicePaidStrategyImpl
+   participant SubRepo as SubscriptionRepositoryImpl
+   participant TransRepo as TransactionRepositoryImpl
+   participant DB as Base de Datos
+
+   User->>Frontend: 1. Selecciona Plan y Hace Clic en "Suscribirse"
+   Frontend->>SubEndpoint: 2. Solicita sesión de suscripción (POST)
+   SubEndpoint->>CheckoutService: 3. Llama a createSubscriptionSession()
+   CheckoutService->>Stripe: 4. Crea Checkout Session (API call)
+   Stripe-->>CheckoutService: 5. Devuelve Session ID
+   CheckoutService-->>SubEndpoint: 6. Devuelve Session ID
+   SubEndpoint-->>Frontend: 7. Devuelve Session ID (JSON)
+   Frontend->>StripeCheckout: 8. Redirecciona con sessionId
+   User->>StripeCheckout: 9. Completa formulario de pago
+   StripeCheckout->>Stripe: 10. Envía datos de pago
+   Stripe-->>StripeCheckout: 11. Confirma suscripción exitosa
+   StripeCheckout->>Frontend: 12. Redirecciona a success_url
+
+   Note over Stripe,WebhookEndpoint: Proceso asíncrono (múltiples eventos)
+
+   Stripe->>WebhookEndpoint: 13. Envía evento checkout.session.completed
+   WebhookEndpoint->>WebhookController: 14. Pasa payload y firma
+   WebhookController->>WebhookService: 15. Verifica firma y procesa evento
+   WebhookService->>CSStrategy: 16. Delega a CheckoutSessionCompletedStrategyImpl
+   CSStrategy->>CSStrategy: 17. Registra metadata de la sesión
+   CSStrategy-->>WebhookService: 18. Devuelve éxito
+   WebhookService-->>WebhookController: 19. Devuelve éxito
+   WebhookController-->>WebhookEndpoint: 20. Devuelve código 200
+   WebhookEndpoint-->>Stripe: 21. Responde con código 200
+
+   Stripe->>WebhookEndpoint: 22. Envía evento customer.subscription.created
+   WebhookEndpoint->>WebhookController: 23. Pasa payload y firma
+   WebhookController->>WebhookService: 24. Verifica firma y procesa evento
+   WebhookService->>SubStrategy: 25. Delega a SubscriptionCreatedStrategyImpl
+   SubStrategy->>SubRepo: 26. Crea registro de suscripción
+   SubRepo->>DB: 27. INSERT en tabla StripeSubscriptions
+   SubRepo-->>SubStrategy: 28. Confirma éxito
+   SubStrategy-->>WebhookService: 29. Devuelve éxito
+   WebhookService-->>WebhookController: 30. Devuelve éxito
+   WebhookController-->>WebhookEndpoint: 31. Devuelve código 200
+   WebhookEndpoint-->>Stripe: 32. Responde con código 200
+
+   Stripe->>WebhookEndpoint: 33. Envía evento invoice.paid
+   WebhookEndpoint->>WebhookController: 34. Pasa payload y firma
+   WebhookController->>WebhookService: 35. Verifica firma y procesa evento
+   WebhookService->>IPStrategy: 36. Delega a InvoicePaidStrategyImpl
+   IPStrategy->>TransRepo: 37. Crea registro de transacción de suscripción
+   TransRepo->>DB: 38. INSERT en tabla StripeTransactions
+   TransRepo-->>IPStrategy: 39. Confirma éxito y devuelve transaction_id
+   IPStrategy->>SubRepo: 40. Actualiza latest_transaction_id en suscripción
+   SubRepo->>DB: 41. UPDATE latest_transaction_id en StripeSubscriptions
+   SubRepo-->>IPStrategy: 42. Confirma éxito
+   IPStrategy-->>WebhookService: 43. Devuelve éxito
+   WebhookService-->>WebhookController: 44. Devuelve éxito
+   WebhookController-->>WebhookEndpoint: 45. Devuelve código 200
+   WebhookEndpoint-->>Stripe: 46. Responde con código 200
+```
+
+
 #### 8.3. Flujo de Cancelación de Suscripción
 
 *Puntos clave: UI -> `api-manage-subscription.php` -> `StripeSubscriptionManagementService` -> API Stripe -> Webhook (`customer.subscription.updated` o `.deleted`) -> Estrategia -> BD.*
+
+```mermaid
+sequenceDiagram
+participant User as Usuario
+participant Frontend as Frontend (subscriptions-payment.php)
+participant SubEndpoint as v1/create_subscription_session.php
+participant CheckoutService as StripeCheckoutSessionServiceImpl
+participant Stripe as Stripe API
+participant StripeCheckout as Stripe Checkout (Navegador)
+participant WebhookEndpoint as v1/webhook.php
+participant WebhookController as StripeWebhookControllerImpl
+participant WebhookService as StripeWebhookServiceImpl
+participant CSStrategy as CheckoutSessionCompletedStrategyImpl
+participant SubStrategy as SubscriptionCreatedStrategyImpl
+participant IPStrategy as InvoicePaidStrategyImpl
+participant SubRepo as SubscriptionRepositoryImpl
+participant TransRepo as TransactionRepositoryImpl
+participant DB as Base de Datos
+
+User->>Frontend: 1. Selecciona Plan y Hace Clic en "Suscribirse"
+Frontend->>SubEndpoint: 2. Solicita sesión de suscripción (POST)
+SubEndpoint->>CheckoutService: 3. Llama a createSubscriptionSession()
+CheckoutService->>Stripe: 4. Crea Checkout Session (API call)
+Stripe-->>CheckoutService: 5. Devuelve Session ID
+CheckoutService-->>SubEndpoint: 6. Devuelve Session ID
+SubEndpoint-->>Frontend: 7. Devuelve Session ID (JSON)
+Frontend->>StripeCheckout: 8. Redirecciona con sessionId
+User->>StripeCheckout: 9. Completa formulario de pago
+StripeCheckout->>Stripe: 10. Envía datos de pago
+Stripe-->>StripeCheckout: 11. Confirma suscripción exitosa
+StripeCheckout->>Frontend: 12. Redirecciona a success_url
+
+Note over Stripe,WebhookEndpoint: Proceso asíncrono (múltiples eventos)
+
+Stripe->>WebhookEndpoint: 13. Envía evento checkout.session.completed
+WebhookEndpoint->>WebhookController: 14. Pasa payload y firma
+WebhookController->>WebhookService: 15. Verifica firma y procesa evento
+WebhookService->>CSStrategy: 16. Delega a CheckoutSessionCompletedStrategyImpl
+CSStrategy->>CSStrategy: 17. Registra metadata de la sesión
+CSStrategy-->>WebhookService: 18. Devuelve éxito
+WebhookService-->>WebhookController: 19. Devuelve éxito
+WebhookController-->>WebhookEndpoint: 20. Devuelve código 200
+WebhookEndpoint-->>Stripe: 21. Responde con código 200
+
+Stripe->>WebhookEndpoint: 22. Envía evento customer.subscription.created
+WebhookEndpoint->>WebhookController: 23. Pasa payload y firma
+WebhookController->>WebhookService: 24. Verifica firma y procesa evento
+WebhookService->>SubStrategy: 25. Delega a SubscriptionCreatedStrategyImpl
+SubStrategy->>SubRepo: 26. Crea registro de suscripción
+SubRepo->>DB: 27. INSERT en tabla StripeSubscriptions
+SubRepo-->>SubStrategy: 28. Confirma éxito
+SubStrategy-->>WebhookService: 29. Devuelve éxito
+WebhookService-->>WebhookController: 30. Devuelve éxito
+WebhookController-->>WebhookEndpoint: 31. Devuelve código 200
+WebhookEndpoint-->>Stripe: 32. Responde con código 200
+
+Stripe->>WebhookEndpoint: 33. Envía evento invoice.paid
+WebhookEndpoint->>WebhookController: 34. Pasa payload y firma
+WebhookController->>WebhookService: 35. Verifica firma y procesa evento
+WebhookService->>IPStrategy: 36. Delega a InvoicePaidStrategyImpl
+IPStrategy->>TransRepo: 37. Crea registro de transacción de suscripción
+TransRepo->>DB: 38. INSERT en tabla StripeTransactions
+TransRepo-->>IPStrategy: 39. Confirma éxito y devuelve transaction_id
+IPStrategy->>SubRepo: 40. Actualiza latest_transaction_id en suscripción
+SubRepo->>DB: 41. UPDATE latest_transaction_id en StripeSubscriptions
+SubRepo-->>IPStrategy: 42. Confirma éxito
+IPStrategy-->>WebhookService: 43. Devuelve éxito
+WebhookService-->>WebhookController: 44. Devuelve éxito
+WebhookController-->>WebhookEndpoint: 45. Devuelve código 200
+WebhookEndpoint-->>Stripe: 46. Responde con código 200
+```
 
 ### 9. Visualización de Datos en StripeLabApp
 
