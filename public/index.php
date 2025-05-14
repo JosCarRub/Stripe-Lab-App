@@ -141,7 +141,7 @@ use App\Commons\Enums\StripeProductsTypeEnum;
                             <i class="fas fa-sync-alt"></i>
                             <span>Gestionar Suscripciones</span>
                         </a>
-                        <a href="doc/claude/documentation-index.html" class="btn btn-outline">
+                        <a href="doc/documentation-index.html" class="btn btn-outline">
                             <i class="fas fa-book"></i>
                             <span>Documentación</span>
                         </a>

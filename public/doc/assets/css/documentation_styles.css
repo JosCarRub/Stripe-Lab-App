@@ -1,295 +1,624 @@
-/* assets/css/documentation_styles.css */
+/* ===============================================
+   STRIPE LAB APP DOCUMENTATION STYLES
+   =============================================== */
 
 :root {
-    --bs-primary: #00d4b1; /* Mintish */
-    --bs-primary-rgb: 0, 212, 177;
-    --bs-secondary: #ffbc44; /* Amarillo/Naranja */
-    --bs-secondary-rgb: 255, 188, 68;
-    --bs-accent: #8a5cf7; /* Púrpura */
-    --bs-accent-rgb: 138, 92, 247;
+    /* Color palette */
+    --mint: #00d4b1;
+    --primary: #00d4b1;
+    --primary-dark: #00a98d;
+    --primary-light: #4ddfca;
+    --primary-lighter: #e6f9f6;
+    --secondary: #ffbc44;
+    --secondary-dark: #f5a000;
+    --secondary-light: #ffd180;
+    --accent: #8a5cf7;
+    --accent-dark: #7347e6;
+    --accent-light: #b095fa;
 
-    --bs-body-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    --bs-body-color: #212529; /* Casi negro para texto principal */
-    --bs-body-bg: #ffffff; /* Fondo blanco */
-    --bs-link-color: var(--bs-primary);
-    --bs-link-hover-color: #00a98d; /* Un poco más oscuro que primary */
+    /* Neutrals */
+    --dark: #333333;
+    --dark-gray: #555555;
+    --gray: #888888;
+    --light-gray: #cccccc;
+    --very-light-gray: #f0f0f0;
+    --white: #ffffff;
 
-    --text-muted-light: #6c757d;
-    --border-color-light: #dee2e6;
-    --code-bg-light: #f8f9fa;
-    --code-color-light: #d63384; /* Color rosa de Bootstrap para código */
-    --sidebar-bg: #f8f9fa;
-    --sidebar-link-color: #495057;
-    --sidebar-link-active-color: var(--bs-primary);
-    --sidebar-link-hover-color: var(--bs-primary);
-    --sidebar-border-color: var(--border-color-light);
+    /* Semantic colors */
+    --success: #28a745;
+    --success-light: #d4edda;
+    --warning: #ffc107;
+    --warning-light: #fff3cd;
+    --danger: #dc3545;
+    --danger-light: #f8d7da;
+    --info: #17a2b8;
+    --info-light: #d1ecf1;
 
-    --box-shadow-sm: 0 .125rem .25rem rgba(0, 0, 0, .075);
-    --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    /* Gradients */
+    --gradient-primary: linear-gradient(145deg, var(--primary), var(--primary-dark));
+    --gradient-secondary: linear-gradient(145deg, var(--secondary), var(--secondary-dark));
+    --gradient-accent: linear-gradient(145deg, var(--accent), var(--accent-dark));
+    --gradient-success: linear-gradient(145deg, var(--success), #1fa67a);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
+
+    /* Borders */
+    --border-radius-sm: 0.25rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 0.75rem;
+    --border-width: 1px;
+    --border-color: #dee2e6;
 }
 
-/* Tipografía general */
+/* ===============================================
+   General Styles
+   =============================================== */
+
 body {
-    font-family: var(--bs-body-font-family);
-    color: var(--bs-body-color);
-    background-color: var(--bs-body-bg);
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--dark);
     line-height: 1.6;
-    font-size: 1rem; /* 16px base */
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 600; /* Semibold para encabezados */
-    color: #343a40; /* Un gris oscuro para encabezados */
-    margin-top: 1.5em;
-    margin-bottom: 0.75em;
-}
-
-h1 {
-    font-size: 2.25rem; /* 36px */
-    border-bottom: 2px solid var(--border-color-light);
-    padding-bottom: 0.5em;
-}
-
-h2 {
-    font-size: 1.875rem; /* 30px */
-    border-bottom: 1px solid var(--border-color-light);
-    padding-bottom: 0.4em;
-}
-
-h3 {
-    font-size: 1.5rem; /* 24px */
-}
-
-h4 {
-    font-size: 1.25rem; /* 20px */
-    color: #495057; /* Ligeramente más claro para sub-encabezados */
-}
-
-h5 {
-    font-size: 1.1rem; /* 17.6px */
-    color: var(--bs-primary);
-}
-
-h6 {
-    font-size: 1rem; /* 16px */
-    font-weight: 700; /* Más bold para nombres de eventos */
-    color: var(--bs-accent);
-}
-
-
-p {
-    margin-bottom: 1em;
-}
-
-a {
-    color: var(--bs-link-color);
-    text-decoration: none;
-    transition: color 0.2s ease-in-out;
-}
-
-a:hover {
-    color: var(--bs-link-hover-color);
-    text-decoration: underline;
-}
-
-hr {
-    border-top: 1px solid var(--border-color-light);
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-/* Estructura Principal */
-.main-content {
-    padding-top: 1.5rem;
+    background-color: #f8f9fa;
     padding-bottom: 3rem;
 }
 
-/* Barra Lateral */
-.sidebar {
-    background-color: var(--sidebar-bg);
-    border-right: 1px solid var(--sidebar-border-color);
-    box-shadow: var(--box-shadow-sm);
-}
-
-.sidebar .nav-link {
-    font-weight: 500;
-    color: var(--sidebar-link-color);
-    padding: 0.5rem 1rem;
-    border-left: 3px solid transparent; /* Para el indicador activo */
-    transition: background-color 0.2s ease, border-left-color 0.2s ease, color 0.2s ease;
-}
-
-.sidebar .nav-link:hover {
-    color: var(--sidebar-link-hover-color);
-    background-color: #e9ecef;
-    text-decoration: none;
-}
-
-.sidebar .nav-link.active {
-    color: var(--sidebar-link-active-color);
-    font-weight: 700; /* Bold para activo */
-    border-left-color: var(--sidebar-link-active-color);
-    background-color: #e0f8f3; /* Un fondo muy sutil para activo */
-}
-
-.sidebar .nav-link .feather { /* Si usas iconos Feather */
-    margin-right: 4px;
-    color: #727272;
-}
-
-.sidebar .nav-link.active .feather {
-    color: inherit;
-}
-
-.sidebar-heading {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: .05rem;
+h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
-    color: var(--text-muted-light);
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+    color: var(--dark);
 }
 
-.sidebar .nav-item ul.nav-link { /* Estilos para sub-menús si se añaden */
-    padding-left: 2rem;
+h1 {
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    color: var(--primary-dark);
 }
 
-/* Código y Preformateado */
-code, .stripe-object-prefix {
-    font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 0.875em; /* Ligeramente más pequeño que el texto normal */
-    color: var(--code-color-light);
-    background-color: var(--code-bg-light);
+h2 {
+    font-size: 2rem;
+    color: var(--primary-dark);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-light);
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--dark);
+}
+
+h4 {
+    font-size: 1.25rem;
+    color: var(--dark-gray);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+p {
+    margin-bottom: 1.25rem;
+}
+
+code {
+    font-size: 0.875em;
+    color: var(--accent);
+    background-color: rgba(138, 92, 247, 0.1);
     padding: 0.2em 0.4em;
-    border-radius: 3px;
-    word-wrap: break-word;
+    border-radius: 0.25rem;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 pre {
-    background-color: #282c34; /* Fondo oscuro para bloques de código */
-    color: #abb2bf; /* Texto claro para bloques de código */
+    margin: 1rem 0;
+    border-radius: var(--border-radius-md);
+    background-color: #282c34;
     padding: 1em;
-    border-radius: 6px;
-    overflow-x: auto;
-    font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 0.9em;
-    line-height: 1.45;
-    margin-bottom: 1.5rem;
-    box-shadow: var(--box-shadow-sm);
+    overflow: auto;
 }
 
 pre code {
+    color: #abb2bf;
     background-color: transparent;
-    color: inherit;
     padding: 0;
-    font-size: inherit; /* Heredar tamaño de pre */
+    font-size: 0.9em;
+    white-space: pre;
 }
 
-/* Comentarios dentro de pre (si StripePayloadLogger añade comentarios) */
-pre code .comment {
-    color: #5c6370; /* Gris para comentarios */
+blockquote {
+    border-left: 4px solid var(--primary);
+    padding-left: 1rem;
+    margin-left: 0;
+    color: var(--dark-gray);
     font-style: italic;
 }
 
-/* JSON highlighting (básico, puedes expandir con JS o usar una librería) */
-pre code .json .string { color: #98c379; } /* Verde para strings */
-pre code .json .number { color: #d19a66; } /* Naranja para números */
-pre code .json .boolean { color: #56b6c2; } /* Cian para booleanos */
-pre code .json .null { color: #c678dd; } /* Púrpura para null */
-pre code .json .key { color: #e06c75; } /* Rojo claro para keys */
+hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 2rem 0;
+}
 
+img {
+    max-width: 100%;
+    height: auto;
+}
 
-/* Listas */
-ul, ol {
-    padding-left: 1.5rem;
+.container-fluid {
+    padding-top: 1rem;
+}
+
+/* ===============================================
+   Sidebar Styles
+   =============================================== */
+
+.sidebar {
+    background-color: var(--white);
+    box-shadow: var(--shadow-sm);
+    padding: 0;
+    height: 100vh;
+    position: fixed;
+    overflow-y: auto;
+    z-index: 1000;
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    background: var(--gradient-primary);
+    color: white;
     margin-bottom: 1rem;
 }
 
-ul li, ol li {
+.sidebar-header h5 {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+    color: white;
+}
+
+.sidebar-header p {
+    margin-bottom: 0;
+    opacity: 0.8;
+}
+
+.nav-link {
+    padding: 0.75rem 1.5rem;
+    color: var(--dark-gray);
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+    background-color: var(--primary-lighter);
+}
+
+.nav-link.active {
+    color: var(--primary);
+    border-left-color: var(--primary);
+    background-color: var(--primary-lighter);
+    font-weight: 600;
+}
+
+.nav-link i {
+    width: 20px;
+    text-align: center;
+    margin-right: 0.5rem;
+}
+
+.sub-nav {
+    list-style: none;
+    padding-left: 2.25rem;
     margin-bottom: 0.5rem;
 }
 
-/* Tablas (Bootstrap ya las estiliza bien, pero puedes añadir aquí) */
-.table {
+.sub-nav li {
+    margin-bottom: 0.25rem;
+}
+
+.sub-nav a {
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+    display: block;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius-sm);
+    transition: all 0.2s;
+}
+
+.sub-nav a:hover {
+    color: var(--primary);
+    background-color: var(--primary-lighter);
+    text-decoration: none;
+}
+
+/* ===============================================
+   Main Content Styles
+   =============================================== */
+
+main {
+    padding-top: 1.5rem;
+}
+
+.lead {
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--dark-gray);
+    margin-bottom: 2rem;
+}
+
+.subsection {
+    margin-bottom: 2.5rem;
+}
+
+/* ===============================================
+   Cards and Alerts
+   =============================================== */
+
+.card {
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
     margin-bottom: 1.5rem;
+    overflow: hidden;
 }
 
-/* Diagramas Mermaid */
-.mermaid {
-    background-color: #fff;
-    border: 1px solid var(--border-color-light);
-    border-radius: 6px;
-    padding: 20px;
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
-    text-align: center; /* Centra el SVG si es más pequeño que el div */
-    box-shadow: var(--box-shadow-sm);
-    overflow-x: auto; /* Para diagramas anchos en pantallas pequeñas */
-}
-
-/* Detalles de Eventos (para agrupar descripción y payload) */
-.event-detail {
-    border-left: 3px solid var(--bs-accent);
-    padding-left: 1.5rem;
-    margin-bottom: 2rem;
-    background-color: #fdf9ff; /* Un fondo muy sutil para detalles de evento */
-    padding: 1rem 1.5rem;
-    border-radius: 0 6px 6px 0;
-}
-
-.event-detail h6 {
-    margin-top: 0; /* Resetear margen superior para el primer encabezado dentro del detalle */
-}
-
-/* Acordeones para Estrategias */
-.accordion-item {
-    border: 1px solid var(--border-color-light);
-    margin-bottom: 0.5rem; /* Espacio entre items del acordeón */
-    border-radius: 0.375rem; /* Bootstrap's default rounded */
-}
-.accordion-button {
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: var(--border-width) solid var(--border-color);
+    padding: 1rem 1.25rem;
     font-weight: 600;
-    color: #343a40;
-    background-color: #f8f9fa; /* Ligeramente diferente del fondo del cuerpo */
 }
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.alert {
+    border-radius: var(--border-radius-md);
+    border: none;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.alert-info {
+    background-color: var(--info-light);
+    color: var(--info);
+}
+
+.alert-success {
+    background-color: var(--success-light);
+    color: var(--success);
+}
+
+.alert-warning {
+    background-color: var(--warning-light);
+    color: #856404;
+}
+
+.alert-danger {
+    background-color: var(--danger-light);
+    color: var(--danger);
+}
+
+.alert-secondary {
+    background-color: var(--very-light-gray);
+    color: var(--dark-gray);
+}
+
+.alert i {
+    margin-right: 0.5rem;
+}
+
+/* ===============================================
+   Code Snippets
+   =============================================== */
+
+.code-snippet {
+    position: relative;
+    margin: 1rem 0;
+}
+
+.code-snippet pre {
+    margin: 0;
+    background-color: #f7f8fc;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+}
+
+.code-snippet pre code {
+    display: block;
+    overflow-x: auto;
+    padding: 1em;
+    color: #abb2bf;
+    background: transparent;
+}
+
+/* ===============================================
+   Tables
+   =============================================== */
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: var(--border-width) solid var(--border-color);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.table-primary,
+.table-primary > th,
+.table-primary > td {
+    background-color: var(--primary-lighter);
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid var(--border-color);
+    background-color: #f8f9fa;
+    color: var(--dark-gray);
+    font-weight: 600;
+}
+
+/* ===============================================
+   Accordion Styles
+   =============================================== */
+
+.accordion-item {
+    border: var(--border-width) solid var(--border-color);
+    margin-bottom: 0.5rem;
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+}
+
+.accordion-header {
+    margin: 0;
+}
+
+.accordion-button {
+    background-color: #f8f9fa;
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    color: var(--dark);
+    width: 100%;
+    text-align: left;
+    transition: all 0.2s;
+}
+
 .accordion-button:not(.collapsed) {
-    color: var(--bs-body-bg); /* Texto blanco cuando está activo */
-    background-color: var(--bs-primary); /* Usar color primario para el botón activo */
-    box-shadow: inset 0 -1px 0 rgba(0,0,0,.125);
-}
-.accordion-button:not(.collapsed)::after {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); /* Flecha blanca para activo */
+    background-color: var(--primary-lighter);
+    color: var(--primary-dark);
 }
 
 .accordion-button:focus {
-    box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), .25); /* Sombra de foco con color primario */
-    border-color: var(--bs-primary);
+    box-shadow: none;
+    border-color: var(--border-color);
 }
 
 .accordion-body {
-    background-color: #fff; /* Fondo blanco para el contenido del acordeón */
     padding: 1.25rem;
-}
-.accordion-body ul {
-    margin-top: 0.5rem;
+    background-color: var(--white);
 }
 
-/* Responsive adjustments */
+/* ===============================================
+   Mermaid Diagrams
+   =============================================== */
+
+.mermaid-diagram {
+    text-align: center;
+    margin: 2rem 0;
+    overflow-x: auto;
+}
+
+.mermaid {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    background-color: #f8f9fa;
+}
+
+/* Make diagrams responsive */
+.mermaid svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===============================================
+   Responsive Adjustments
+   =============================================== */
+
 @media (max-width: 767.98px) {
-    body {
-        padding-top: 0; /* Remover padding si la navbar lateral se colapsa */
-    }
     .sidebar {
-        position: static; /* Cambiar a estático en móviles */
+        position: static;
         height: auto;
-        box-shadow: none;
-        border-right: none;
-        border-bottom: 1px solid var(--sidebar-border-color);
+        margin-bottom: 1.5rem;
     }
-    .main-content {
-        padding-left: 1rem;
-        padding-right: 1rem;
+
+    main {
+        margin-left: 0;
     }
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.75rem; }
-    h3 { font-size: 1.375rem; }
+
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* ===============================================
+   Print Styles
+   =============================================== */
+
+@media print {
+    .sidebar {
+        display: none;
+    }
+
+    main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .no-print {
+        display: none;
+    }
+
+    a {
+        text-decoration: underline;
+        color: var(--dark);
+    }
+
+    code, pre {
+        background-color: #f1f1f1 !important;
+        color: var(--dark) !important;
+        border: 1px solid #ddd;
+    }
+
+    .card, .alert {
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+    }
+}
+
+/* ===============================================
+   Custom Badge Styles
+   =============================================== */
+
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+    border-radius: 0.25rem;
+    font-size: 0.75em;
+}
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary) !important;
+}
+
+.bg-success {
+    background-color: var(--success) !important;
+}
+
+.bg-danger {
+    background-color: var(--danger) !important;
+}
+
+.bg-warning {
+    background-color: var(--warning) !important;
+}
+
+.bg-info {
+    background-color: var(--info) !important;
+}
+
+/* ===============================================
+   Utility Classes
+   =============================================== */
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.text-secondary {
+    color: var(--secondary) !important;
+}
+
+.text-accent {
+    color: var(--accent) !important;
+}
+
+.text-success {
+    color: var(--success) !important;
+}
+
+.text-danger {
+    color: var(--danger) !important;
+}
+
+.text-warning {
+    color: var(--warning) !important;
+}
+
+.text-info {
+    color: var(--info) !important;
+}
+
+.text-white {
+    color: white !important;
+}
+
+.bg-gradient-primary {
+    background: var(--gradient-primary);
+}
+
+.bg-gradient-secondary {
+    background: var(--gradient-secondary);
+}
+
+.bg-gradient-accent {
+    background: var(--gradient-accent);
+}
+
+/* Subtle hover effect for cards */
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+}
+
+/* Custom scrollbar for better UX */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gray);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-gray);
 }
