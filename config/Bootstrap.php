@@ -114,28 +114,24 @@ class Bootstrap
             if (file_exists($projectRootPath . '/.env')) {
                 $dotenv = Dotenv::createImmutable($projectRootPath);
                 $dotenv->load();
-                // Opcional: Requerir variables esenciales para toda la app
-                // $dotenv->required(['STRIPE_SECRET_KEY', 'STRIPE_WEBHOOK_SECRET', 'APP_DOMAIN', 'DB_HOST', /* ... */]);
+
                 EventLogger::log("Bootstrap: .env cargado.");
             } else {
                 EventLogger::log("Bootstrap: .env file not found at {$projectRootPath}. Relying on server environment variables.", [], '[INFO]');
             }
         } catch (\Throwable $e) { // Captura cualquier error de Dotenv
             ErrorLogger::log("Bootstrap: Error al intentar cargar .env: " . $e->getMessage(), ['exception' => get_class($e)], '[CRITICAL_CONFIG]');
-            // Dependiendo de la criticidad, podrías querer detener la app aquí
-            // die("Error crítico: No se pudieron cargar las variables de entorno.");
+
         }
 
-        // Definir constantes globales de configuración desde $_ENV
-        // Es importante que Dotenv se haya cargado antes de esto.
+
         define('STRIPE_PUBLISHABLE_KEY', $_ENV['STRIPE_PUBLISHABLE_KEY'] ?? '');
         define('STRIPE_SECRET_KEY', $_ENV['STRIPE_SECRET_KEY'] ?? '');
         define('STRIPE_WEBHOOK_SECRET', $_ENV['STRIPE_WEBHOOK_SECRET'] ?? '');
-        define('APP_DOMAIN', $_ENV['APP_DOMAIN'] ?? 'http://localhost:8000'); // Ajusta tu puerto por defecto
+        define('APP_DOMAIN', $_ENV['APP_DOMAIN'] ?? 'http://localhost:8000');
 
         EventLogger::log("Bootstrap: Inicializado. Constantes definidas.");
 
-        // Definir los planes para la vista
         self::$displayablePlans = [
             StripeProductsTypeEnum::MONTHLY_SUBSCRIPTION->value => [
                 'name' => 'Suscripción Mensual',
@@ -176,17 +172,14 @@ class Bootstrap
     public static function getDisplayPlans(): array
     {
         if (!self::$initialized) {
-            // Esto no debería ocurrir si initialize() se llama primero desde los scripts de entrada.
             ErrorLogger::log("Bootstrap: getDisplayPlans() llamado antes de initialize().", [], '[WARNING]');
-            // Podrías forzar la inicialización aquí, pero es mejor asegurar el orden de llamada.
         }
         return self::$displayablePlans;
     }
 
     private static function getPdo(): PDO
     {
-        // DatabaseConnection::getInstance() se encarga de cargar .env si es necesario
-        // y de la lógica de conexión.
+
         return self::$pdo ??= DatabaseConnection::getInstance();
     }
 

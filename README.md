@@ -6,6 +6,68 @@ StripeLabApp es una aplicación PHP diseñada para comprender el funcionamiento 
 
 ---
 
+## IMPORTANTE
+
+### Si no se cumplen estos requisitos la aplicación no funcionará
+
+### Prerrequisitos
+
+Para ejecutar esta aplicación de pagos localmente, necesitarás:
+
+1. **Cuenta de Stripe**
+  - Crear una cuenta en [Stripe Dashboard](https://dashboard.stripe.com/)
+  - Acceder a las claves de API en el panel de desarrolladores
+
+2. **Variables de entorno requeridas**
+
+   Configura las siguientes variables en tu archivo `.env` o directamente en tu sistema:
+
+   ```bash
+   STRIPE_SECRET_KEY=sk_test_your_secret_key_here
+   STRIPE_PUBLISHABLE_KEY=pk_test_your_publishable_key_here
+   STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret_here
+   ```
+
+### Configuración de Webhooks de Stripe
+
+1. **Crear endpoint de webhook en Stripe Dashboard:**
+  - Ve a **Developers > Webhooks** en tu dashboard de Stripe
+  - Haz clic en "Add endpoint"
+  - Usa la URL: `http://localhost:8000/public/v1/webhook.php`
+  - Selecciona los eventos que necesites (ej: `payment_intent.succeeded`, `payment_intent.payment_failed`)
+  - Copia el **Signing secret** que aparece después de crear el webhook
+
+2. **Configurar el webhook secret:**
+  - El `STRIPE_WEBHOOK_SECRET` debe ser el signing secret obtenido del paso anterior
+  - Este secreto es necesario para verificar que los webhooks provienen realmente de Stripe
+
+### Ejecución del Servidor
+
+Para iniciar la aplicación:
+
+```bash
+# Iniciar servidor PHP embebido en puerto 8000
+php -S localhost:8000
+```
+
+**Importante:** El servidor debe ejecutarse exactamente en el puerto 8000 para que coincida con la URL del webhook configurada en Stripe (`localhost:8000/public/v1/webhook.php`).
+
+### Verificación de la Configuración
+
+Una vez configurado todo:
+
+1. La aplicación estará disponible en `http://localhost:8000`
+2. Los webhooks de Stripe se recibirán en `http://localhost:8000/public/v1/webhook.php`
+3. Puedes probar los pagos usando las [tarjetas de prueba de Stripe](https://stripe.com/docs/testing#cards)
+
+### Troubleshooting
+
+- **Webhooks no funcionan:** Verifica que el `STRIPE_WEBHOOK_SECRET` sea correcto y que el servidor esté corriendo en puerto 8000
+- **Errores de autenticación:** Asegúrate de usar las claves correctas (test keys para desarrollo)
+- **CORS issues:** El servidor debe estar corriendo en el puerto especificado para evitar problemas de origen cruzado
+
+---
+
 ## Características
 
 ### Procesamiento de Pagos
@@ -166,7 +228,7 @@ docker-compose up -d
 ### 5. Iniciar el Servidor
 
 ```bash
-php -S localhost:8000 -t public
+php -S localhost:8000
 ```
 
 ### 6. Configurar Webhook de Stripe

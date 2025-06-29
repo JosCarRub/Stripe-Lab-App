@@ -1,20 +1,16 @@
 <?php
 declare(strict_types=1);
 
-// 1. Definir PROJECT_ROOT
 if (!defined('PROJECT_ROOT')) {
     define('PROJECT_ROOT', dirname(__DIR__, 2));
 }
 
-// 2. Cargar Autoloader
 require_once PROJECT_ROOT . '/vendor/autoload.php';
 
-// 3. Inicializar Bootstrap (esto carga .env, define constantes, etc.)
 \config\Bootstrap::initialize(PROJECT_ROOT);
 
-// Usar los loggers de la aplicación
 use App\Commons\Loggers\ErrorLogger;
-use App\Commons\Loggers\EventLogger; // Para logs de eventos si es necesario
+use App\Commons\Loggers\EventLogger;
 
 header('Content-Type: application/json');
 
