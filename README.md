@@ -72,7 +72,8 @@ Para ejecutar esta aplicación de pagos localmente, necesitarás:
 
 4. **Configurar Base de datos**
 - Para facilitar el uso de la aplicación se ha facilitado un archivo docker-compose.yml que levanta una base de datos con las tablas necesarias.
-```bash
+
+    ```bash
     cd database/docker/
     docker-compose up --build -d
     ```
