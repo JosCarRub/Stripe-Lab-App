@@ -159,8 +159,7 @@ function getTableRelationships($pdo, $dbName) {
         // Manejar error silenciosamente
     }
 
-    // Relaciones definidas manualmente (no detectadas a través de claves foráneas)
-    // Para las tablas de nuestro esquema
+
     $manualRelationships = [
         [
             'from' => 'StripeSubscriptions',
@@ -240,21 +239,9 @@ $frontendDataJson = json_encode($frontendData);
                 </a>
             </div>
 
-            <label class="theme-toggle" aria-label="Cambiar modo oscuro">
-                <input type="checkbox" id="theme-toggle-input">
-                <span class="theme-slider">
-                        <i class="fas fa-sun sun-icon"></i>
-                        <i class="fas fa-moon moon-icon"></i>
-                    </span>
-            </label>
+            
         </div>
 
-        <div class="sidebar-search">
-            <div class="search-container">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" id="search-input" placeholder="Buscar tablas...">
-            </div>
-        </div>
 
         <div class="nav-separator">
             <span>Tablas de la Base de Datos</span>
@@ -567,8 +554,6 @@ $frontendDataJson = json_encode($frontendData);
                     © <span id="current-year"></span> StripeLabApp. Todos los derechos reservados.
                 </div>
                 <div class="footer-links">
-                    <a href="../doc/index.html">Documentación</a>
-                    <a href="../doc/api.html">API</a>
                     <a href="../index.php">Volver al Inicio</a>
                 </div>
             </div>

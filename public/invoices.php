@@ -11,7 +11,7 @@ require_once PROJECT_ROOT . '/vendor/autoload.php';
 
 ?>
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,13 +41,7 @@ require_once PROJECT_ROOT . '/vendor/autoload.php';
                 <span class="app-name">StripeLabApp</span>
             </div>
 
-            <label class="theme-toggle" aria-label="Cambiar modo oscuro">
-                <input type="checkbox" id="theme-toggle-input">
-                <span class="theme-slider">
-                    <i class="fas fa-sun sun-icon"></i>
-                    <i class="fas fa-moon moon-icon"></i>
-                </span>
-            </label>
+            
         </div>
 
         <div class="nav-separator">
@@ -203,8 +197,12 @@ require_once PROJECT_ROOT . '/vendor/autoload.php';
         </div>
         <footer class="app-footer">
             <div class="footer-content">
-                <div class="footer-copyright">© <span id="current-year"></span> StripeLabApp. Todos los derechos reservados.</div>
-                <div class="footer-links"><a href="#">Documentación</a><a href="#">API</a><a href="#">Privacidad</a></div>
+                <div class="footer-copyright">
+                    © <?= date('Y') ?> StripeLabApp. JosCarRub.
+                </div>
+                <div class="footer-links">
+                <a href="doc/documentation-index.html">Documentación</a>
+                </div>
             </div>
         </footer>
     </main>

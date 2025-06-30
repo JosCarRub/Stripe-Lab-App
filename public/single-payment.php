@@ -23,7 +23,7 @@ $oneTimePlanData = $plans[$oneTimePlanKey] ?? [
 ];
 ?>
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,13 +49,7 @@ $oneTimePlanData = $plans[$oneTimePlanKey] ?? [
                 <span class="app-name">StripeLabApp</span>
             </div>
 
-            <label class="theme-toggle" aria-label="Cambiar modo oscuro">
-                <input type="checkbox" id="theme-toggle-input">
-                <span class="theme-slider">
-                    <i class="fas fa-sun sun-icon"></i>
-                    <i class="fas fa-moon moon-icon"></i>
-                </span>
-            </label>
+            
         </div>
 
         <div class="nav-separator">
@@ -264,12 +258,10 @@ $oneTimePlanData = $plans[$oneTimePlanKey] ?? [
         <footer class="app-footer">
             <div class="footer-content">
                 <div class="footer-copyright">
-                    © <span id="current-year"></span> StripeLabApp. Todos los derechos reservados.
+                    © <?= date('Y') ?> StripeLabApp. JosCarRub.
                 </div>
                 <div class="footer-links">
-                    <a href="doc/index.html">Documentación</a>
-                    <a href="doc/api.html">API</a>
-                    <a href="doc/privacy.html">Privacidad</a>
+                <a href="doc/documentation-index.html">Documentación</a>
                 </div>
             </div>
         </footer>

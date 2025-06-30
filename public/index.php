@@ -15,7 +15,7 @@ $plans = \config\Bootstrap::getDisplayPlans();
 use App\Commons\Enums\StripeProductsTypeEnum;
 ?>
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,13 +46,7 @@ use App\Commons\Enums\StripeProductsTypeEnum;
                 <span class="app-name">StripeLabApp</span>
             </div>
 
-            <label class="theme-toggle" aria-label="Cambiar modo oscuro">
-                <input type="checkbox" id="theme-toggle-input">
-                <span class="theme-slider">
-                    <i class="fas fa-sun sun-icon"></i>
-                    <i class="fas fa-moon moon-icon"></i>
-                </span>
-            </label>
+            
         </div>
 
         <div class="nav-separator">
