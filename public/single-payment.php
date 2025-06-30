@@ -302,7 +302,6 @@ $oneTimePlanData = $plans[$oneTimePlanKey] ?? [
     }
 
     // Establecer año actual
-    document.getElementById('current-year').textContent = new Date().getFullYear();
 
     // Toggle sidebar
     document.getElementById('sidebar-toggle').addEventListener('click', function() {

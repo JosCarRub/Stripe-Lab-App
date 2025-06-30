@@ -4,21 +4,15 @@ if (!defined('PROJECT_ROOT')) {
     define('PROJECT_ROOT', __DIR__ . '/..');
 }
 
-// 2. Cargar el autoloader de Composer
 require_once PROJECT_ROOT . '/vendor/autoload.php';
 
-// 3. Inicializar la aplicación a través de Bootstrap
 \config\Bootstrap::initialize(PROJECT_ROOT);
 
-// 4. Obtener los planes para la vista desde Bootstrap
 $allPlans = \config\Bootstrap::getDisplayPlans();
 
-// La constante STRIPE_PUBLISHABLE_KEY es definida por Bootstrap::initialize()
 
-// Importar el Enum para usarlo
 use App\Commons\Enums\StripeProductsTypeEnum;
 
-// 5. Filtrar solo los planes de suscripción
 $subscriptionPlans = array_filter($allPlans, function($key) {
     return $key !== StripeProductsTypeEnum::ONE_PAYMENT->value;
 }, ARRAY_FILTER_USE_KEY);
@@ -314,8 +308,7 @@ $subscriptionPlans = array_filter($allPlans, function($key) {
         const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
         const loadingOverlay = document.getElementById('app-loading-overlay');
 
-        // Establecer el año actual para el copyright
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+
 
         function showLoading() {
             if (loadingOverlay) loadingOverlay.style.display = 'flex';

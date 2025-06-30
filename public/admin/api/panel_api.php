@@ -1,271 +1,109 @@
 <?php
-// Configuración de la base de datos
-$dbConfig = [
-    'host' => '127.0.0.1',
-    'port' => 3307,
-    'database' => 'stripe_lab',
-    'username' => 'test_user',
-    'password' => 'password'
-];
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-// Función para conectar a la base de datos
-function connectDB($config) {
-    try {
-        $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['database']};charset=utf8mb4";
-        $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => false,
-        ];
-
-        $pdo = new PDO($dsn, $config['username'], $config['password'], $options);
-
-        return [
-            'success' => true,
-            'connection' => $pdo
-        ];
-    } catch (PDOException $e) {
-        return [
-            'success' => false,
-            'error' => $e->getMessage()
-        ];
-    }
+if (!defined('PROJECT_ROOT')) {
+    define('PROJECT_ROOT', dirname(__DIR__, 3));
 }
 
-// Función para obtener la estructura de una tabla
-function getTableStructure($pdo, $tableName) {
-    try {
-        // Primero, verificar si la tabla existe
-        $stmt = $pdo->prepare("
-            SELECT COUNT(*) as table_exists 
-            FROM information_schema.TABLES 
-            WHERE TABLE_SCHEMA = :dbName 
-            AND TABLE_NAME = :tableName
-        ");
+require_once PROJECT_ROOT . '/vendor/autoload.php';
+\config\Bootstrap::initialize(PROJECT_ROOT);
 
-        $dbName = $pdo->query("SELECT DATABASE()")->fetchColumn();
-        $stmt->bindParam(':dbName', $dbName);
-        $stmt->bindParam(':tableName', $tableName);
-        $stmt->execute();
+header('Content-Type: application/json');
 
-        $result = $stmt->fetch();
-        if ((int)$result['table_exists'] === 0) {
-            return [
-                'success' => false,
-                'error' => "La tabla '$tableName' no existe en la base de datos."
-            ];
-        }
-
-        // La tabla existe, obtener su estructura
-        $stmt = $pdo->prepare("DESCRIBE `" . $tableName . "`");
-        $stmt->execute();
-        $structure = $stmt->fetchAll();
-
-        return [
-            'success' => true,
-            'structure' => $structure
-        ];
-    } catch (PDOException $e) {
-        return [
-            'success' => false,
-            'error' => $e->getMessage()
-        ];
-    }
-}
-
-// Verificar la acción solicitada
-$action = isset($_GET['action']) ? $_GET['action'] : '';
+$action = $_GET['action'] ?? '';
 $response = ['success' => false, 'error' => 'Acción no válida'];
 
-switch ($action) {
-    case 'get_table_structure':
-        // Verificar el parámetro de tabla
-        if (!isset($_GET['table']) || trim($_GET['table']) === '') {
-            $response = ['success' => false, 'error' => 'Nombre de tabla no proporcionado'];
-            break;
-        }
+try {
+    $pdo = \config\DatabaseConnection::getInstance();
+    $dbName = $_ENV['DB_DATABASE'];
 
-        $tableName = $_GET['table'];
-        $dbConnection = connectDB($dbConfig);
+    switch ($action) {
+        case 'get_initial_data':
+            $tables = $pdo->query("SHOW TABLES")->fetchAll(PDO::FETCH_COLUMN);
 
-        if (!$dbConnection['success']) {
-            $response = ['success' => false, 'error' => $dbConnection['error']];
-            break;
-        }
+            $paymentsCount = $pdo->query("SHOW TABLES LIKE 'StripeTransactions'")->rowCount() > 0 ? (int)$pdo->query("SELECT COUNT(*) FROM StripeTransactions")->fetchColumn() : 0;
+            $subscriptionsCount = $pdo->query("SHOW TABLES LIKE 'StripeSubscriptions'")->rowCount() > 0 ? (int)$pdo->query("SELECT COUNT(*) FROM StripeSubscriptions")->fetchColumn() : 0;
 
-        $pdo = $dbConnection['connection'];
-        $result = getTableStructure($pdo, $tableName);
-
-        if ($result['success']) {
+            $stats = [
+                'tables' => count($tables),
+                'fields' => (int)$pdo->query("SELECT COUNT(*) FROM information_schema.columns WHERE table_schema = '{$dbName}'")->fetchColumn(),
+                'payments' => $paymentsCount,
+                'subscriptions' => $subscriptionsCount
+            ];
+            $dbConfig = [
+                'host' => $_ENV['DB_HOST'],
+                'port' => $_ENV['DB_PORT'],
+                'database' => $_ENV['DB_DATABASE'],
+                'username' => $_ENV['DB_USERNAME']
+            ];
             $response = [
                 'success' => true,
-                'structure' => $result['structure']
+                'connectionStatus' => 'connected',
+                'dbConfig' => $dbConfig,
+                'tables' => $tables,
+                'stats' => $stats,
+                'relationships' => []
             ];
-        } else {
-            $response = [
-                'success' => false,
-                'error' => $result['error']
-            ];
-        }
-        break;
-
-    case 'get_table_data':
-        // Verificar parámetros
-        if (!isset($_GET['table']) || trim($_GET['table']) === '') {
-            $response = ['success' => false, 'error' => 'Nombre de tabla no proporcionado'];
             break;
-        }
 
-        $tableName = $_GET['table'];
-        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        $perPage = 10;
-
-        $dbConnection = connectDB($dbConfig);
-
-        if (!$dbConnection['success']) {
-            $response = ['success' => false, 'error' => $dbConnection['error']];
-            break;
-        }
-
-        try {
-            $pdo = $dbConnection['connection'];
-
-            // Primero verificamos si la tabla existe
-            $dbName = $pdo->query("SELECT DATABASE()")->fetchColumn();
-            $tableExistsStmt = $pdo->prepare("
-                SELECT COUNT(*) as table_exists 
-                FROM information_schema.TABLES 
-                WHERE TABLE_SCHEMA = :dbName 
-                AND TABLE_NAME = :tableName
-            ");
-            $tableExistsStmt->bindParam(':dbName', $dbName);
-            $tableExistsStmt->bindParam(':tableName', $tableName);
-            $tableExistsStmt->execute();
-
-            $result = $tableExistsStmt->fetch();
-            if ((int)$result['table_exists'] === 0) {
-                $response = [
-                    'success' => false,
-                    'error' => "La tabla '$tableName' no existe en la base de datos."
-                ];
+        case 'get_table_structure':
+            if (!isset($_GET['table']) || trim($_GET['table']) === '') {
+                $response = ['success' => false, 'error' => 'Nombre de tabla no proporcionado'];
                 break;
             }
+            $tableName = $_GET['table'];
+            $stmt = $pdo->prepare("DESCRIBE `" . $tableName . "`");
+            $stmt->execute();
+            $structure = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $response = ['success' => true, 'structure' => $structure];
+            break;
 
-            // Obtener el total de registros
+        case 'get_table_data':
+            if (!isset($_GET['table']) || trim($_GET['table']) === '') {
+                $response = ['success' => false, 'error' => 'Nombre de tabla no proporcionado'];
+                break;
+            }
+            $tableName = $_GET['table'];
+            $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $perPage = 10;
+
             $countStmt = $pdo->prepare("SELECT COUNT(*) as total FROM `" . $tableName . "`");
             $countStmt->execute();
-            $countRow = $countStmt->fetch();
-            $total = (int)$countRow['total'];
+            $total = (int)$countStmt->fetchColumn();
             $pages = ceil($total / $perPage);
-
-            // Calcular el offset
             $offset = ($page - 1) * $perPage;
 
-            // Obtener los datos
             $dataStmt = $pdo->prepare("SELECT * FROM `" . $tableName . "` LIMIT :offset, :limit");
             $dataStmt->bindParam(':offset', $offset, PDO::PARAM_INT);
             $dataStmt->bindParam(':limit', $perPage, PDO::PARAM_INT);
             $dataStmt->execute();
 
-            // Obtener los nombres de las columnas
             $columns = [];
-            $columnsCount = $dataStmt->columnCount();
-            for ($i = 0; $i < $columnsCount; $i++) {
+            for ($i = 0; $i < $dataStmt->columnCount(); $i++) {
                 $columnMeta = $dataStmt->getColumnMeta($i);
                 $columns[] = $columnMeta['name'];
             }
-
-            // Obtener los datos
-            $rows = $dataStmt->fetchAll();
-
+            $rows = $dataStmt->fetchAll(PDO::FETCH_ASSOC);
             $response = [
                 'success' => true,
-                'data' => [
-                    'columns' => $columns,
-                    'rows' => $rows,
-                    'total' => $total,
-                    'pages' => $pages
-                ]
+                'data' => ['columns' => $columns, 'rows' => $rows, 'total' => $total, 'pages' => $pages]
             ];
-        } catch (PDOException $e) {
-            $response = [
-                'success' => false,
-                'error' => $e->getMessage()
-            ];
-        }
-        break;
-
-    case 'get_tables':
-        $dbConnection = connectDB($dbConfig);
-
-        if (!$dbConnection['success']) {
-            $response = ['success' => false, 'error' => $dbConnection['error']];
             break;
-        }
 
-        try {
-            $pdo = $dbConnection['connection'];
-            $tables = [];
-            $result = $pdo->query("SHOW TABLES");
-
-            while ($row = $result->fetch(PDO::FETCH_NUM)) {
-                $tables[] = $row[0];
-            }
-
-            $response = [
-                'success' => true,
-                'tables' => $tables
-            ];
-        } catch (PDOException $e) {
-            $response = [
-                'success' => false,
-                'error' => $e->getMessage()
-            ];
-        }
-        break;
-
-    case 'test_connection':
-        $dbConnection = connectDB($dbConfig);
-        $response = [
-            'success' => $dbConnection['success'],
-            'error' => $dbConnection['success'] ? '' : $dbConnection['error']
-        ];
-        break;
-
-    case 'update_connection':
-        // Verificar los parámetros
-        if (!isset($_POST['host']) || !isset($_POST['port']) || !isset($_POST['database']) ||
-            !isset($_POST['username']) || !isset($_POST['password'])) {
-            $response = ['success' => false, 'error' => 'Parámetros incompletos'];
+        default:
+            $response = ['success' => false, 'error' => "Acción desconocida: $action"];
             break;
-        }
+    }
 
-        $newConfig = [
-            'host' => $_POST['host'],
-            'port' => (int)$_POST['port'],
-            'database' => $_POST['database'],
-            'username' => $_POST['username'],
-            'password' => $_POST['password']
-        ];
-
-
-        $testConnection = connectDB($newConfig);
-
-        if (!$testConnection['success']) {
-            $response = ['success' => false, 'error' => $testConnection['error']];
-            break;
-        }
-
-
-        $response = ['success' => true];
-        break;
-
-    default:
-        $response = ['success' => false, 'error' => "Acción desconocida: $action"];
-        break;
+} catch (\PDOException $e) {
+    http_response_code(500);
+    $response = ['success' => false, 'error' => 'Error de base de datos: ' . $e->getMessage()];
+} catch (\Throwable $e) {
+    http_response_code(500);
+    $response = ['success' => false, 'error' => 'Error inesperado en el servidor: ' . $e->getMessage()];
 }
 
-// Devolver la respuesta como JSON
-header('Content-Type: application/json');
 echo json_encode($response);
 ?>

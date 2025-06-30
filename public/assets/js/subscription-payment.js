@@ -1,5 +1,3 @@
-// public/assets/js/subscription-page.js
-
 document.addEventListener('DOMContentLoaded', () => {
 
     if (typeof STRIPE_PUBLISHABLE_KEY === 'undefined') {
@@ -17,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (loadingOverlay) loadingOverlay.style.display = 'none';
     }
 
-    // Theme Toggle Logic (igual que en single-payment)
     const themeToggleInput = document.getElementById('theme-toggle-input');
     if (themeToggleInput) {
         const storedTheme = localStorage.getItem('theme');
@@ -41,10 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!lookupKey) {
             console.warn("Botón de suscripción deshabilitado: falta data-lookup.", button);
             button.disabled = true;
-            // Podrías querer cambiar el texto del botón también
+
             const span = button.querySelector('span');
             if (span) span.textContent = 'No Disponible';
-            return; // Saltar este botón
+            return; 
         }
 
         button.addEventListener('click', async (event) => {

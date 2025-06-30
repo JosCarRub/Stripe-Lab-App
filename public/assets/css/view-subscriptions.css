@@ -124,6 +124,10 @@
     border-spacing: 0;
 }
 
+[data-theme="dark"] .data-table td {
+    color: var(--text-secondary);
+}
+
 .data-table th,
 .data-table td {
     padding: 1rem;
