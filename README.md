@@ -2,7 +2,7 @@
 
 ## Aplicación de prueba para la integración de pagos con Stripe
 
-StripeLabApp es una aplicación PHP diseñada para comprender el funcionamiento de la API de Stripe, tanto para pagos únicos como para suscripciones. Esta apliación de prueba ofrece funcionalidades completas de registro de transacciones, visualización de facturas y gestión de suscripciones.
+StripeLabApp es una aplicación PHP diseñada para comprender el funcionamiento de la API de Stripe, tanto para pagos únicos como para suscripciones. Esta aplicación de prueba ofrece funcionalidades completas de registro de transacciones, visualización de facturas y gestión de suscripciones.
 
 ---
 

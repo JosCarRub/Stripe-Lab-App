@@ -17,7 +17,9 @@ require_once PROJECT_ROOT . '/vendor/autoload.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver Suscripciones - StripeLabApp</title>
+    <link rel="icon" type="image/svg+xml" href="image/favicon.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,20 +37,74 @@ require_once PROJECT_ROOT . '/vendor/autoload.php';
     <!-- Sidebar -->
     <aside class="app-sidebar">
         <div class="sidebar-top">
-            <div class="app-brand"><i class="fab fa-stripe app-logo"></i><span class="app-name">StripeLabApp</span></div>
-            <label class="theme-toggle" aria-label="Cambiar modo oscuro"><input type="checkbox" id="theme-toggle-input"><span class="theme-slider"><i class="fas fa-sun sun-icon"></i><i class="fas fa-moon moon-icon"></i></span></label>
+            <div class="app-brand">
+                <i class="fab fa-stripe app-logo"></i>
+                <span class="app-name">StripeLabApp</span>
+            </div>
+
+            <label class="theme-toggle" aria-label="Cambiar modo oscuro">
+                <input type="checkbox" id="theme-toggle-input">
+                <span class="theme-slider">
+                    <i class="fas fa-sun sun-icon"></i>
+                    <i class="fas fa-moon moon-icon"></i>
+                </span>
+            </label>
         </div>
-        <div class="nav-separator"><span>Navegación</span></div>
+
+        <div class="nav-separator">
+            <span>Navegación</span>
+        </div>
+
         <nav class="sidebar-nav">
-            <a href="index.php" class="nav-item"><div class="nav-icon"><i class="fas fa-home"></i></div><span class="nav-label">Inicio</span></a>
-            <a href="single-payment.php" class="nav-item"><div class="nav-icon"><i class="fas fa-credit-card"></i></div><span class="nav-label">Pago Único</span></a>
-            <a href="subscriptions-payment.php" class="nav-item"><div class="nav-icon"><i class="fas fa-sync-alt"></i></div><span class="nav-label">Suscribirse</span></a>
-            <a href="invoices.php" class="nav-item"><div class="nav-icon"><i class="fas fa-file-invoice-dollar"></i></div><span class="nav-label">Facturas</span></a>
-            <a href="view-subscriptions.php" class="nav-item active"><div class="nav-icon"><i class="fas fa-user-check"></i></div><span class="nav-label">Suscripciones</span></a>
-            <div class="nav-separator"><span>Administración</span></div>
-            <a href="admin/panel.php" class="nav-item""><div class="nav-icon"><i class="fas fa-tachometer-alt"></i></div><span class="nav-label">Panel de Control</span></a>
+            <a href="index.php" class="nav-item active">
+                <div class="nav-icon"><i class="fas fa-home"></i></div>
+                <span class="nav-label">Inicio</span>
+            </a>
+
+            <a href="single-payment.php" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-credit-card"></i></div>
+                <span class="nav-label">Pago Único</span>
+            </a>
+
+            <a href="subscriptions-payment.php" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-sync-alt"></i></div>
+                <span class="nav-label">Pagar Suscripción</span>
+            </a>
+
+            <a href="invoices.php" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                <span class="nav-label">Facturas</span>
+            </a>
+
+            <a href="view-subscriptions.php" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-users"></i></div>
+                <span class="nav-label">Gestionar Suscripciones</span>
+            </a>
+
+            <div class="nav-separator">
+                <span>Administración</span>
+            </div>
+
+            <a href="admin/panel.php" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-tachometer-alt"></i></div>
+                <span class="nav-label">Panel de Control</span>
+            </a>
+
+
+            <a href="doc/documentation-index.html" class="nav-item">
+                <div class="nav-icon"><i class="fas fa-book"></i></div>
+                <span class="nav-label">Documentación</span>
+            </a>
         </nav>
-        <div class="sidebar-footer"><div class="app-version">v0.1.0</div><button class="sidebar-toggle" id="sidebar-toggle"><i class="fas fa-chevron-left"></i></button></div>
+
+        <div class="sidebar-footer">
+            <a href="https://github.com/JosCarRub" target="_blank" rel="noopener noreferrer" class="github-link">
+                <i class="bi bi-github"></i>
+            </a>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
     </aside>
 
     <main class="app-main">

@@ -8,7 +8,6 @@ $dbConfig = [
     'password' => 'password'
 ];
 
-// Función para conectar a la base de datos usando PDO
 function connectDB($config) {
     try {
         $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['database']};charset=utf8mb4";
@@ -32,7 +31,7 @@ function connectDB($config) {
     }
 }
 
-// Función para obtener todas las tablas de la base de datos
+// todas las tablas de base de datos
 function getTables($pdo) {
     $tables = [];
     try {
@@ -46,7 +45,7 @@ function getTables($pdo) {
     return $tables;
 }
 
-// Función para obtener estadísticas de la base de datos
+// estadísticas base de datos
 function getDBStats($pdo, $dbName) {
     $stats = [
         'tables' => 0,
@@ -60,7 +59,7 @@ function getDBStats($pdo, $dbName) {
         $tablesResult = $pdo->query("SHOW TABLES");
         $stats['tables'] = $tablesResult->rowCount();
 
-        // Contar campos de todas las tablas
+        // Contar campos 
         $fieldsStmt = $pdo->prepare("
             SELECT COUNT(*) as total_fields
             FROM information_schema.columns
@@ -71,9 +70,8 @@ function getDBStats($pdo, $dbName) {
         $row = $fieldsStmt->fetch();
         $stats['fields'] = (int)$row['total_fields'];
 
-        // Contar pagos (transacciones)
+
         try {
-            // Primero verificamos si la tabla existe
             $tableExistsStmt = $pdo->prepare("
                 SELECT COUNT(*) as table_exists 
                 FROM information_schema.TABLES 
@@ -93,12 +91,12 @@ function getDBStats($pdo, $dbName) {
                 $stats['payments'] = (int)$row['total_payments'];
             }
         } catch (PDOException $e) {
-            // La tabla puede no existir, mantener el valor predeterminado
+
         }
 
         // Contar suscripciones
         try {
-            // Primero verificamos si la tabla existe
+            
             $tableExistsStmt = $pdo->prepare("
                 SELECT COUNT(*) as table_exists 
                 FROM information_schema.TABLES 
@@ -118,7 +116,6 @@ function getDBStats($pdo, $dbName) {
                 $stats['subscriptions'] = (int)$row['total_subs'];
             }
         } catch (PDOException $e) {
-            // La tabla puede no existir, mantener el valor predeterminado
         }
     } catch (PDOException $e) {
         // Manejar error silenciosamente
@@ -221,6 +218,8 @@ $frontendDataJson = json_encode($frontendData);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administración - StripeLabApp</title>
+
+    <link rel="icon" type="image/svg+xml" href="../image/favicon.svg">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -457,7 +456,7 @@ $frontendDataJson = json_encode($frontendData);
                             </tr>
                             </thead>
                             <tbody>
-                            <!-- Los campos se cargarán dinámicamente -->
+                            <!--campos -->
                             </tbody>
                         </table>
                     </div>
@@ -487,10 +486,10 @@ $frontendDataJson = json_encode($frontendData);
                     <div class="table-container">
                         <table id="data-table" class="data-table">
                             <thead>
-                            <!-- Los encabezados se cargarán dinámicamente -->
+                            <!-- encabezados -->
                             </thead>
                             <tbody>
-                            <!-- Los datos se cargarán dinámicamente -->
+                            <!--  datos -->
                             </tbody>
                         </table>
                     </div>
@@ -556,7 +555,7 @@ $frontendDataJson = json_encode($frontendData);
 
                 <div class="card">
                     <div id="relationships-diagram" class="relationships-diagram">
-                        <!-- El diagrama de relaciones se generará aquí -->
+                        <!--  diagrama  -->
                     </div>
                 </div>
             </section>
@@ -637,15 +636,13 @@ $frontendDataJson = json_encode($frontendData);
 
 <!-- AJAX Handler Script -->
 <script>
-    // Datos precargados desde PHP
+
     const initialData = <?php echo $frontendDataJson; ?>;
 </script>
 
 <script src="./assets/js/panel.js"></script>
 <script>
-    // Inicializar los datos de la aplicación
     document.addEventListener('DOMContentLoaded', function() {
-        // Establecer año actual para el copyright
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
         // Theme Toggle

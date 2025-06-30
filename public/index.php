@@ -1,21 +1,17 @@
 <?php
-// 1. Definir la ruta raíz del proyecto (importante para Bootstrap)
 if (!defined('PROJECT_ROOT')) {
-    define('PROJECT_ROOT', __DIR__ . '/..'); // Asume que index.php está en public/ y .env en la raíz
+    define('PROJECT_ROOT', __DIR__ . '/..'); 
 }
 
-// 2. Cargar el autoloader de Composer
+// carga el autoloader de Composer
 require_once PROJECT_ROOT . '/vendor/autoload.php';
 
-// 3. Inicializar la aplicación a través de Bootstrap
+// inicializa la aplicación a través de Bootstrap
 \config\Bootstrap::initialize(PROJECT_ROOT);
 
-// 4. Obtener los planes para la vista desde Bootstrap
+
 $plans = \config\Bootstrap::getDisplayPlans();
 
-// La constante STRIPE_PUBLISHABLE_KEY ya está definida por Bootstrap::initialize()
-
-// Importar el Enum para usarlo en la vista (si no se importa en Bootstrap)
 use App\Commons\Enums\StripeProductsTypeEnum;
 ?>
 <!DOCTYPE html>
@@ -24,7 +20,9 @@ use App\Commons\Enums\StripeProductsTypeEnum;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StripeLabApp - Sistema de Pagos</title>
+    <link rel="icon" type="image/svg+xml" href="image/favicon.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,19 +94,17 @@ use App\Commons\Enums\StripeProductsTypeEnum;
                 <span class="nav-label">Panel de Control</span>
             </a>
 
-            <a href="logs/system.html" class="nav-item">
-                <div class="nav-icon"><i class="fas fa-list-alt"></i></div>
-                <span class="nav-label">Logs del Sistema</span>
-            </a>
 
-            <a href="doc/index.html" class="nav-item">
+            <a href="doc/documentation-index.html" class="nav-item">
                 <div class="nav-icon"><i class="fas fa-book"></i></div>
                 <span class="nav-label">Documentación</span>
             </a>
         </nav>
 
         <div class="sidebar-footer">
-            <div class="app-version">v1.2.5</div>
+            <a href="https://github.com/JosCarRub" target="_blank" rel="noopener noreferrer" class="github-link">
+                <i class="bi bi-github"></i>
+            </a>
             <button class="sidebar-toggle" id="sidebar-toggle">
                 <i class="fas fa-chevron-left"></i>
             </button>
@@ -243,12 +239,6 @@ use App\Commons\Enums\StripeProductsTypeEnum;
                 </div>
             </section>
 
-            <!-- La sección pricing-section ha sido removida -->
-            <!--
-            <section class="pricing-section">
-                ...código removido...
-            </section>
-            -->
 
             <section class="integration-section">
                 <div class="section-header">
@@ -305,12 +295,10 @@ volumes:
         <footer class="app-footer">
             <div class="footer-content">
                 <div class="footer-copyright">
-                    © <?= date('Y') ?> StripeLabApp. Todos los derechos reservados.
+                    © <?= date('Y') ?> StripeLabApp. JosCarRub.
                 </div>
                 <div class="footer-links">
-                    <a href="doc/index.html">Documentación</a>
-                    <a href="doc/api.html">API</a>
-                    <a href="doc/privacy.html">Privacidad</a>
+                <a href="doc/documentation-index.html">Documentación</a>
                 </div>
             </div>
         </footer>
