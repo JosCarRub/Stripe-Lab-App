@@ -1,5 +1,4 @@
 <?php
-// 1. Definir la ruta raíz del proyecto
 if (!defined('PROJECT_ROOT')) {
     define('PROJECT_ROOT', __DIR__ . '/..');
 }
@@ -297,11 +296,10 @@ $subscriptionPlans = array_filter($allPlans, function($key) {
     const STRIPE_PUBLISHABLE_KEY = '<?= STRIPE_PUBLISHABLE_KEY ?>';
 </script>
 <script>
-    // Contenido de lo que sería subscription-page.js
+
     document.addEventListener('DOMContentLoaded', () => {
         if (typeof STRIPE_PUBLISHABLE_KEY === 'undefined' || !STRIPE_PUBLISHABLE_KEY) {
             console.error('Stripe public key no está definida (STRIPE_PUBLISHABLE_KEY).');
-            // Podrías deshabilitar todos los botones de pago aquí o mostrar un mensaje general.
             document.querySelectorAll('.subscription-button').forEach(button => button.disabled = true);
             return;
         }
@@ -318,7 +316,7 @@ $subscriptionPlans = array_filter($allPlans, function($key) {
             if (loadingOverlay) loadingOverlay.style.display = 'none';
         }
 
-        // Toggle sidebar
+
         document.getElementById('sidebar-toggle').addEventListener('click', function() {
             document.querySelector('.app-container').classList.toggle('sidebar-collapsed');
         });
@@ -391,7 +389,7 @@ $subscriptionPlans = array_filter($allPlans, function($key) {
 
                     if (result.error) {
                         console.error("Frontend Error: redirectToCheckout (suscripción) falló.", { error_message: result.error.message, session_id: session.id });
-                        hideLoading(); // Solo si hay error ANTES de la redirección
+                        hideLoading();
                         throw new Error(result.error.message);
                     }
                 } catch (error) {
